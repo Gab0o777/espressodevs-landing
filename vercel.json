@@ -1,10 +1,10 @@
 {
   "rewrites": [
-    { "source": "/",            "destination": "/index.html"                   },
-    { "source": "/turnix",      "destination": "/turnix/index.html"            },
-    { "source": "/turnix/",     "destination": "/turnix/index.html"            },
-    { "source": "/terminos",    "destination": "/turnix/terminos.html"         },
-    { "source": "/privacidad",  "destination": "/turnix/privacidad.html"       }
+    { "source": "/",           "destination": "/index.html"             },
+    { "source": "/turnix",     "destination": "/turnix/index.html"      },
+    { "source": "/turnix/",    "destination": "/turnix/index.html"      },
+    { "source": "/terminos",   "destination": "/turnix/terminos.html"   },
+    { "source": "/privacidad", "destination": "/turnix/privacidad.html" }
   ],
   "headers": [
     {
@@ -18,19 +18,19 @@
       ]
     },
     {
-      "source": "/(.+\\.(png|jpg|jpeg|gif|webp|svg|ico))",
+      "source": "/assets/:file",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(.+\\.(css|js|woff|woff2|ttf))",
+      "source": "/turnix/assets/:file",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(.*\\.html)",
+      "source": "/(.*).html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
