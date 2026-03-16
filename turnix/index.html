@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>turnix · Gestioná turnos sin complicaciones</title>
+  <meta name="description" content="turnix es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 14 días gratis." />
+  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina" />
+  <meta name="author" content="espressodevs" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://espressodevs.com/turnix" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://espressodevs.com/turnix" />
+  <meta property="og:title" content="turnix · Gestioná turnos sin complicaciones" />
+  <meta property="og:description" content="Agenda online, recordatorios por WhatsApp y panel de control para tu negocio. Probá gratis 14 días, sin tarjeta de crédito." />
+  <meta property="og:image" content="https://espressodevs.com/Turnix_banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="turnix by espressodevs" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="turnix · Gestioná turnos sin complicaciones" />
+  <meta name="twitter:description" content="Agenda online, recordatorios por WhatsApp y panel de control. 14 días gratis." />
+  <meta name="twitter:image" content="https://espressodevs.com/Turnix_banner.png" />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "turnix",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "description": "Plataforma de gestión de turnos online para negocios de servicios. Agenda, recordatorios automáticos por WhatsApp y reservas online.",
+    "url": "https://espressodevs.com/turnix",
+    "screenshot": "https://espressodevs.com/Turnix_banner.png",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "35",
+        "priceCurrency": "USD",
+        "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "75",
+        "priceCurrency": "USD",
+        "billingIncrement": "month"
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "espressodevs",
+      "url": "https://espressodevs.com"
+    },
+    "featureList": [
+      "Agenda online en tiempo real",
+      "Recordatorios automáticos por WhatsApp",
+      "Reservas desde celular, web o redes sociales",
+      "Panel de control unificado",
+      "Gestión multi-usuario",
+      "14 días de prueba gratis"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Necesito tarjeta de crédito para probar turnix?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Podés probar turnix gratis durante 14 días sin necesidad de tarjeta de crédito."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué tipo de negocios es turnix?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turnix es ideal para peluquerías, barberías, tatuadores, veterinarias y cualquier negocio de servicios que necesite gestionar turnos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona turnix?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Creás tu cuenta, configurás tus horarios y servicios, y compartís tu link de reservas. Tus clientes reservan solos y turnix les envía recordatorios automáticos."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan:   #29B7D3;
+      --purple: #8B44BF;
+      --pink:   #E91E96;
+      --orange: #F5A623;
+      --yellow: #F5C800;
+      --green:  #7DC044;
+      --lime:   #8DC63F;
+      --dark:   #1E1E2E;
+      --mid:    #4A4A6A;
+      --light:  #F7F8FC;
+      --border: #E8EAF0;
+      --white:  #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── RAINBOW BAR ── */
+    .rainbow-bar {
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--cyan) 0%, var(--purple) 17%, var(--pink) 34%,
+        var(--orange) 50%, var(--yellow) 65%, var(--green) 82%, var(--lime) 100%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo img { height: 48px; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin-left: auto;
+      margin-right: 32px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--mid);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 11px 24px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .btn-primary { background: var(--cyan); color: var(--white); }
+    .btn-outline { background: transparent; border: 2px solid var(--cyan); color: var(--cyan); }
+    .btn-large { font-size: 17px; padding: 15px 36px; }
+    .btn-white { background: var(--white); color: var(--dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 60px;
+    }
+    .hero-content { flex: 1; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #E8F9FC;
+      border: 1.5px solid var(--cyan);
+      color: var(--cyan);
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-badge span { font-size: 14px; }
+    .hero-title {
+      font-weight: 900;
+      font-size: clamp(32px, 3.8vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      white-space: nowrap;
+    }
+    .hero-title .highlight-cyan   { color: var(--cyan); }
+    .hero-title .highlight-purple { color: var(--purple); }
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-note {
+      font-size: 12px;
+      font-weight: 700;
+      color: #AAAACC;
+      margin-top: 14px;
+    }
+
+    /* ── HERO VISUAL (right side) ── */
+    .hero-visual {
+      flex: 0 0 500px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hero-mascot {
+      height: 340px;
+      display: block;
+      flex-shrink: 0;
+      margin-right: -12px;
+      filter: drop-shadow(0 16px 32px rgba(41,183,211,.18));
+    }
+
+    /* ── BUSINESS CARDS ── */
+    .biz-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      flex: 1;
+    }
+    .biz-card {
+      border-radius: 20px;
+      aspect-ratio: 1;
+      padding: 16px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+      cursor: default;
+      border: none;
+    }
+    .biz-card:nth-child(1) { background: #E4F7FB; }
+    .biz-card:nth-child(2) { background: #EFE4F9; }
+    .biz-card:nth-child(3) { background: #FAE4F2; }
+    .biz-card:nth-child(4) { background: #E9F6DE; }
+    .biz-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
+
+    .biz-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      background: rgba(255,255,255,.7);
+    }
+    .biz-name {
+      font-weight: 800;
+      font-size: 11px;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--dark); padding: 28px 40px; }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-number { font-weight: 900; font-size: 28px; letter-spacing: -1px; }
+    .stat-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+    .stat-div { width: 1px; height: 40px; background: rgba(255,255,255,.1); }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 76px 40px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-weight: 900;
+      font-size: clamp(28px, 3.5vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 56px; }
+
+    /* ── FEATURES ── */
+    .features { background: var(--white); }
+    .features-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .features-hero-img {
+      height: 258px;
+      flex-shrink: 0;
+      margin-right: 130px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 20px 22px;
+      border: 1.5px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.08);
+    }
+    .feature-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .feature-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .feature-title { font-weight: 900; font-size: 15px; letter-spacing: -.2px; }
+    .feature-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.55; }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+    .how-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.66% + 16px);
+      right: calc(16.66% + 16px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      border-radius: 2px;
+      z-index: 0;
+    }
+    .how-card { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+    .how-number {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px currentColor;
+    }
+    .how-title { font-weight: 900; font-size: 18px; margin-bottom: 8px; }
+    .how-desc { font-size: 14px; font-weight: 600; color: var(--mid); line-height: 1.6; }
+
+    /* ── WSP BLOCK ── */
+    .wsp-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: stretch;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    .wsp-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .wsp-stat-card { margin-top: auto; padding-top: 40px; }
+    .wsp-title {
+      font-weight: 900;
+      font-size: 36px;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .wsp-desc {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .wsp-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .wsp-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 7px 14px;
+      border-radius: 100px;
+    }
+
+    .wsp-stat-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #E8F9FC, #EEF7E3);
+      border: 1.5px solid var(--cyan);
+      border-radius: 16px;
+      padding: 16px 20px;
+    }
+    .wsp-stat-number {
+      font-weight: 900;
+      font-size: 36px;
+      color: var(--cyan);
+      letter-spacing: -1.5px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .wsp-stat-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .wsp-stat-text strong { color: var(--dark); }
+
+    /* phone mockup */
+    .wsp-right { display: flex; justify-content: center; }
+    .wsp-phone {
+      width: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,.14);
+      border: 1.5px solid #D0D5DD;
+      background: #ECE5DD;
+    }
+    .wsp-phone-bar {
+      background: #1E1E2E;
+      padding: 10px 16px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .wsp-phone-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+    }
+    .wsp-header {
+      background: #075E54;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .wsp-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: white;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wsp-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .wsp-contact { font-weight: 800; font-size: 14px; color: white; }
+    .wsp-status { font-size: 11px; color: rgba(255,255,255,.7); font-weight: 600; }
+    .wsp-chat {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 220px;
+    }
+    .wsp-msg {
+      max-width: 82%;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 8px;
+      border-radius: 9px;
+      line-height: 1.35;
+      position: relative;
+    }
+    .wsp-msg-in {
+      background: white;
+      align-self: flex-start;
+      border-top-left-radius: 2px;
+      color: var(--dark);
+    }
+    .wsp-msg-out {
+      background: #DCF8C6;
+      align-self: flex-end;
+      border-top-right-radius: 2px;
+      color: var(--dark);
+    }
+    .wsp-time {
+      font-size: 10px;
+      color: #999;
+      text-align: right;
+      margin-top: 3px;
+      font-weight: 600;
+    }
+    .wsp-options {
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 82%;
+    }
+    .wsp-option {
+      background: white;
+      border-left: 3px solid #25D366;
+      padding: 6px 9px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #075E54;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--light); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      border: 2px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card .btn { margin-top: auto; }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.10); }
+    .pricing-card.featured {
+      border-color: var(--cyan);
+      background: linear-gradient(145deg, #F0FBFD, var(--white));
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-name { font-weight: 900; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+    .pricing-price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+    .pricing-currency { font-weight: 800; font-size: 22px; color: var(--mid); padding-bottom: 8px; }
+    .pricing-amount { font-weight: 900; font-size: 64px; letter-spacing: -3px; line-height: 1; }
+    .pricing-period { font-size: 14px; font-weight: 700; color: var(--mid); padding-bottom: 10px; }
+    .pricing-desc { font-size: 14px; font-weight: 600; color: var(--mid); margin-bottom: 28px; line-height: 1.5; }
+    .pricing-divider { height: 1.5px; background: var(--border); margin-bottom: 24px; }
+    .pricing-features { list-style: none; margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .free-trial-badge {
+      position: absolute;
+      top: 28px;
+      right: -42px;
+      width: 180px;
+      text-align: center;
+      background: var(--green);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 7px 0;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 8px rgba(125,192,68,.4);
+    }
+
+    /* ── TRIAL BANNER ── */
+    .trial-banner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, var(--dark) 0%, #2D1B4E 100%);
+      border-radius: 20px;
+      padding: 24px 32px;
+      margin: 0 auto 28px;
+      max-width: 860px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trial-banner::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(41,183,211,.2), transparent 70%);
+    }
+    .trial-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 80px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,68,191,.15), transparent 70%);
+    }
+    .trial-banner-left {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .trial-days {
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 1;
+      letter-spacing: -3px;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .trial-days-label {
+      font-weight: 900;
+      font-size: 22px;
+      color: white;
+      padding-bottom: 8px;
+    }
+    .trial-banner-center {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .trial-title {
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+      letter-spacing: -.5px;
+      margin-bottom: 6px;
+    }
+    .trial-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.5);
+      line-height: 1.5;
+    }
+    .trial-banner-right {
+      font-size: 48px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      background: var(--dark);
+      padding: 76px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before, .cta-section::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: .08;
+    }
+    .cta-section::before { width: 500px; height: 500px; background: var(--cyan); top: -200px; left: -100px; }
+    .cta-section::after { width: 400px; height: 400px; background: var(--purple); bottom: -150px; right: -80px; }
+    .cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+    .cta-mascot {
+      height: 150px;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 8px 24px rgba(41,183,211,.3));
+    }
+    .cta-title {
+      font-weight: 900;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--white);
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .cta-sub { font-size: 17px; font-weight: 600; color: rgba(255,255,255,.6); margin-bottom: 36px; line-height: 1.6; }
+    .cta-note { margin-top: 16px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.35); }
+
+    /* ── FOOTER ── */
+    footer { background: #13131F; padding: 48px 40px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 24px;
+    }
+    .footer-brand img { height: 34px; margin-bottom: 12px; }
+    .footer-tagline { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.4); max-width: 220px; line-height: 1.6; }
+    .footer-links-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 12px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.25); }
+    .footer-wordmark { font-weight: 900; font-size: 16px; letter-spacing: -.5px; }
+    .footer-wordmark span:nth-child(1) { color: var(--cyan); }
+    .footer-wordmark span:nth-child(2) { color: var(--purple); }
+    .footer-wordmark span:nth-child(3) { color: var(--pink); }
+    .footer-wordmark span:nth-child(4) { color: var(--orange); }
+    .footer-wordmark span:nth-child(5) { color: var(--yellow); }
+    .footer-wordmark span:nth-child(6) { color: var(--green); }
+
+    /* ── RESPONSIVE TABLET ── */
+    @media (max-width: 900px) {
+      /* Nav */
+      nav { padding: 0 20px; height: 64px; }
+      .nav-logo img { height: 36px; }
+      .nav-links { display: none; }
+      nav .btn:last-child { display: none; }
+      .btn { font-size: 13px; padding: 9px 18px; }
+      .btn-large { font-size: 15px; padding: 13px 26px; }
+
+      /* Sections */
+      section { padding: 52px 20px; }
+      .section-title { letter-spacing: -1px; }
+
+      /* Hero */
+      .hero { flex-direction: column; padding: 48px 20px 56px; min-height: auto; text-align: center; gap: 36px; }
+      .hero-title { white-space: normal; letter-spacing: -1px; }
+      .hero-subtitle { margin: 0 auto 32px; }
+      .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-visual { flex: none; width: 100%; justify-content: center; }
+      .hero-mascot { height: 200px; }
+      .biz-grid { max-width: 220px; }
+
+      /* Stats bar */
+      .stats-bar { padding: 20px; }
+      .stats-inner { gap: 16px; }
+      .stat-number { font-size: 22px; }
+      .stat-div { display: none; }
+
+      /* WSP block */
+      .wsp-block { grid-template-columns: 1fr; gap: 36px; }
+      .wsp-title { font-size: 28px; }
+      .wsp-right { order: 1; }
+      .wsp-phone { width: 100%; max-width: 300px; }
+
+      /* How it works */
+      .how-grid { grid-template-columns: 1fr; gap: 28px; }
+      .how-grid::before { display: none; }
+
+      /* Features */
+      .features-grid { grid-template-columns: 1fr; }
+      .features-header { flex-direction: column; gap: 20px; }
+      .features-hero-img { display: none; }
+
+      /* Pricing */
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .trial-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 12px; }
+      .trial-days { font-size: 52px; }
+
+      /* CTA */
+      .cta-title { letter-spacing: -1px; }
+
+      /* Footer */
+      .footer-top { flex-direction: column; gap: 28px; }
+      footer { padding: 40px 20px 28px; }
+    }
+
+    /* ── RESPONSIVE SMALL MOBILE ── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(30px, 8vw, 44px); }
+      .hero-mascot { height: 160px; }
+      .biz-grid { max-width: 180px; }
+      .wsp-pills { gap: 6px; }
+      .wsp-pill { font-size: 12px; padding: 5px 10px; }
+      .pricing-grid { max-width: 100%; }
+      .pricing-amount { font-size: 52px; }
+      .trial-days { font-size: 44px; }
+      .cta-mascot { height: 110px; }
+      .stats-inner { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rainbow-bar"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="assets/Turnix_banner.png" alt="turnix" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Funcionalidades</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#precios">Precios</a></li>
+    </ul>
+    <a href="#demo" class="btn btn-primary">Pedí tu demo</a>
+    <a href="https://turnix.espressodevs.com" class="btn btn-outline" style="margin-left:10px; font-size:14px; padding:9px 20px;">Acceder</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>✨</span> Gestión de turnos inteligente
+      </div>
+      <h1 class="hero-title">
+        Organizá tus turnos.<br /><span class="highlight-cyan">Sin esfuerzo.</span><br /><span class="highlight-purple">Sin líos.</span>
+      </h1>
+      <p class="hero-subtitle">
+        turnix simplifica la gestión de turnos para tu negocio. Tus clientes reservan en segundos, vos administrás todo desde un solo lugar.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo</a>
+        <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona</a>
+      </div>
+      <p class="hero-note">Sin tarjeta de crédito · Configuración en minutos</p>
+    </div>
+
+    <!-- VISUAL DERECHO: mascota + cards de rubros -->
+    <div class="hero-visual">
+      <img src="assets/isologobiggertransparent.png" alt="turnix mascota" class="hero-mascot" />
+      <div class="biz-grid">
+
+        <div class="biz-card">
+          <div class="biz-icon">✂️</div>
+          <div class="biz-name">Peluquerías y barberías</div>
+        </div>
+
+        <div class="biz-card">
+          <div class="biz-icon">🖊️</div>
+          <div class="biz-name">Estudios de tatuajes</div>
+        </div>
+
+        <div class="biz-card">
+          <div class="biz-icon">💆</div>
+          <div class="biz-name">Centros de estética</div>
+        </div>
+
+        <div class="biz-card">
+          <div class="biz-icon">🐾</div>
+          <div class="biz-name">Veterinarias</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number" style="color: var(--cyan);">-60%</div>
+        <div class="stat-label">Pérdidas por cancelaciones</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <div class="stat-number" style="color: var(--green);">98%</div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <div class="stat-number" style="color: var(--yellow);">5 min</div>
+        <div class="stat-label">Para dar de alta</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat-item">
+        <div class="stat-number" style="color: var(--pink);">24/7</div>
+        <div class="stat-label">Reservas online</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARA TUS CLIENTES (WSP) -->
+  <section id="para-clientes">
+    <div class="section-inner">
+      <div class="wsp-block">
+        <div class="wsp-left">
+          <div class="section-tag" style="color:#25D366; margin-bottom:12px;">Para tus clientes</div>
+          <h3 class="wsp-title">Así viven el turno<br />tus usuarios</h3>
+          <p class="wsp-desc">Tus clientes no necesitan descargar ninguna app ni crear ninguna cuenta. Todo pasa dentro de <strong>WhatsApp</strong>, donde ya están. El bot de turnix los guía paso a paso con opciones claras y simples.</p>
+          <div class="wsp-pills">
+            <span class="wsp-pill" style="background:#E8F9FC; color:var(--cyan);">📅 Agendan en segundos</span>
+            <span class="wsp-pill" style="background:#EEF7E3; color:var(--green);">🔔 Reciben recordatorios</span>
+            <span class="wsp-pill" style="background:#FEF3E2; color:var(--orange);">🔄 Reprograman fácil</span>
+            <span class="wsp-pill" style="background:#FCE8F3; color:var(--pink);">❌ Cancelan sin llamar</span>
+          </div>
+          <div class="wsp-stat-card">
+            <span class="wsp-stat-number">-60%</span>
+            <span class="wsp-stat-text">Mediante los recordatorios automáticos, reducís un <strong>60% las pérdidas</strong> por turnos cancelados.</span>
+          </div>
+        </div>
+        <div class="wsp-right">
+          <div class="wsp-phone">
+            <div class="wsp-phone-bar">
+              <div class="wsp-phone-dot"></div>
+              <div class="wsp-phone-dot"></div>
+              <div class="wsp-phone-dot"></div>
+            </div>
+            <div class="wsp-header">
+              <div class="wsp-avatar"><img src="assets/isologobiggertransparent.png" alt="turnix" /></div>
+              <div>
+                <div class="wsp-contact">turnix</div>
+                <div class="wsp-status">● en línea</div>
+              </div>
+            </div>
+            <div class="wsp-chat">
+              <div class="wsp-msg wsp-msg-in">
+                ¡Hola! 👋 Soy el asistente de <strong>Studio Ink</strong>. ¿Qué necesitás?
+                <div class="wsp-time">10:32</div>
+              </div>
+              <div class="wsp-options">
+                <div class="wsp-option">1 · Sacar un turno</div>
+                <div class="wsp-option">2 · Ver mis turnos</div>
+                <div class="wsp-option">3 · Reprogramar</div>
+              </div>
+              <div class="wsp-msg wsp-msg-out">
+                1
+                <div class="wsp-time">10:33</div>
+              </div>
+              <div class="wsp-msg wsp-msg-in">
+                Perfecto 🗓️ ¿Qué día y hora?
+                <div class="wsp-time">10:33</div>
+              </div>
+              <div class="wsp-msg wsp-msg-out">
+                Mañana a las 15hs
+                <div class="wsp-time">10:33</div>
+              </div>
+              <div class="wsp-msg wsp-msg-in">
+                ✅ Turno confirmado para mañana 15:00hs. Te recordamos antes. 🎉
+                <div class="wsp-time">10:34</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="como-funciona" style="background:var(--light);">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-tag" style="color: var(--purple);">Cómo funciona</div>
+        <h2 class="section-title">Tres pasos y listo</h2>
+        <p class="section-sub" style="margin: 0 auto;">No necesitás saber de tecnología. Si podés usar el celular, podés usar turnix.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-number" style="background:#E8F9FC; color:var(--cyan);">1</div>
+          <div class="how-title">Creá tu cuenta</div>
+          <p class="how-desc">Ingresá el nombre de tu negocio, tus horarios y los servicios que ofrecés. Listo en minutos.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number" style="background:#F2E8FA; color:var(--purple);">2</div>
+          <div class="how-title">Compartí tu link</div>
+          <p class="how-desc">Mandá tu enlace de reservas por WhatsApp, Instagram o donde quieras. Tus clientes reservan solos.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number" style="background:#EEF7E3; color:var(--green);">3</div>
+          <div class="how-title">Gestioná sin drama</div>
+          <p class="how-desc">Confirmá, cancelá o reprogramá turnos desde tu celular. turnix se encarga del resto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features" style="padding-top: 48px;">
+    <div class="section-inner">
+      <div class="features-header">
+        <div>
+          <div class="section-tag" style="color: var(--cyan);">Funcionalidades</div>
+          <h2 class="section-title">Todo lo que necesitás<br />en un solo lugar</h2>
+          <p class="section-sub">Pensado para negocios reales. Simple para vos, cómodo para tus clientes.</p>
+        </div>
+        <img src="assets/turnixenaccio_n.png" alt="turnix en acción" class="features-hero-img" />
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#E8F9FC; color:var(--cyan);">📅</div>
+            <div class="feature-title">Agenda en tiempo real</div>
+          </div>
+          <p class="feature-desc">Visualizá todos tus turnos del día, semana o mes. Actualizaciones instantáneas para que nunca te superpongas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#F2E8FA; color:var(--purple);">🔔</div>
+            <div class="feature-title">Recordatorios automáticos</div>
+          </div>
+          <p class="feature-desc">Turnix avisa a tus clientes antes de su turno. Reducí los ausentismos sin hacer nada.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#FCE8F3; color:var(--pink);">🔗</div>
+            <div class="feature-title">Reservas desde cualquier lado</div>
+          </div>
+          <p class="feature-desc">Tus clientes reservan desde el celular, la web o redes sociales. Sin llamadas, sin idas y venidas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#FEF3E2; color:var(--orange);">📊</div>
+            <div class="feature-title">Panel de control claro</div>
+          </div>
+          <p class="feature-desc">Un tablero simple que te muestra lo importante: quién viene, cuándo, y cuánto estás facturando.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#FFFBDB; color:var(--yellow);">⚡</div>
+            <div class="feature-title">Configuración exprés</div>
+          </div>
+          <p class="feature-desc">En menos de 5 minutos tu negocio ya está funcionando. Sin tutoriales kilométricos ni soporte técnico.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon" style="background:#EEF7E3; color:var(--green);">👥</div>
+            <div class="feature-title">Multi-usuario</div>
+          </div>
+          <p class="feature-desc">¿Tenés equipo? Sumá colaboradores y cada uno gestiona su propia agenda desde el mismo sistema.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="precios" style="padding-top: 48px;">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-tag" style="color: var(--green);">Precios</div>
+        <h2 class="section-title">Claro, sin sorpresas</h2>
+        <p class="section-sub" style="margin: 0 auto;">Elegí el plan que va con tu negocio. Cancelás cuando querés.</p>
+      </div>
+      <div class="trial-banner">
+        <div class="trial-banner-left">
+          <div class="trial-days">14</div>
+          <div class="trial-days-label">días</div>
+        </div>
+        <div class="trial-banner-center">
+          <div class="trial-title">Probá turnix gratis, sin compromiso</div>
+          <div class="trial-sub">Sin tarjeta de crédito · Cancelás cuando querés · Acceso completo a todas las funciones</div>
+        </div>
+        <div class="trial-banner-right">🎁</div>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price">
+            <span class="pricing-currency">USD</span>
+            <span class="pricing-amount" style="color:var(--purple);">35</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Ideal para profesionales y negocios unipersonales.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 usuario administrador</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Agenda ilimitada</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios automáticos</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Reservas online 24/7</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Soporte por WhatsApp</li>
+          </ul>
+          <a href="#demo" class="btn btn-outline" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <div class="free-trial-badge">🎁 14 días gratis</div>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-price">
+            <span class="pricing-currency">USD</span>
+            <span class="pricing-amount" style="color:var(--cyan);">75</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Para equipos y negocios que necesitan más de un profesional.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Usuarios ilimitados</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Agendas independientes por usuario</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios automáticos</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Reservas online 24/7</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Panel de control unificado</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Soporte prioritario</li>
+          </ul>
+          <a href="#demo" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <div class="free-trial-badge" style="top:40px;">🎁 14 días gratis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section" id="demo">
+    <div class="cta-inner">
+      <img src="assets/turnixfinal.png" alt="turnix" class="cta-mascot" />
+      <h2 class="cta-title">¿Listo para organizarte de una vez?</h2>
+      <p class="cta-sub">Pedí tu demo gratis y en minutos vas a ver cómo turnix le cambia la cara a tu negocio.</p>
+      <a href="mailto:hola@espressodevs.com" class="btn btn-white btn-large">📩 &nbsp;Pedí tu demo ahora</a>
+      <p class="cta-note">Sin compromiso · Respondemos en menos de 24hs</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-wordmark" style="font-size:28px; margin-bottom:12px;"><span>t</span><span>u</span><span>r</span><span>n</span><span>i</span><span>x</span></div>
+          <p class="footer-tagline">Gestión de turnos simple, ágil y sin complicaciones.</p>
+        </div>
+        <div>
+          <div class="footer-links-title">Producto</div>
+          <ul class="footer-links">
+            <li><a href="#features">Funcionalidades</a></li>
+            <li><a href="#precios">Precios</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-links-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="/">Sobre nosotros</a></li>
+            <li><a href="#demo">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-links-title">Legal</div>
+          <ul class="footer-links">
+            <li><a href="/turnix/terminos">Términos de uso</a></li>
+            <li><a href="/turnix/privacidad">Privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 turnix · espressodevs. Todos los derechos reservados.</span>
+        <div class="footer-wordmark">
+          <span>t</span><span>u</span><span>r</span><span>n</span><span>i</span><span>x</span>
+        </div>
+      </div>
+  
