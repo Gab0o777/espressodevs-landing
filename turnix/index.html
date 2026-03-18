@@ -615,9 +615,9 @@
     .pricing { background: var(--light); }
     .pricing-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      max-width: 860px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .pricing-card {
@@ -1176,45 +1176,117 @@
         <div class="trial-banner-right">🎁</div>
       </div>
 
-      <div class="pricing-grid">
+      <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+        <!-- BÁSICO -->
         <div class="pricing-card">
-          <div class="pricing-name">Starter</div>
+          <div class="pricing-name">Básico</div>
           <div class="pricing-price">
             <span class="pricing-currency">USD</span>
-            <span class="pricing-amount" style="color:var(--purple);">35</span>
+            <span class="pricing-amount" style="color:var(--purple);">15</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Ideal para profesionales y negocios unipersonales.</p>
+          <p class="pricing-desc">Ideal para profesionales independientes que quieren organizarse sin complicaciones.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 usuario administrador</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Agenda ilimitada</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios automáticos</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Reservas online 24/7</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Plataforma completa</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Link de reserva ilimitado</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Agenda online</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios manuales</li>
             <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Soporte por WhatsApp</li>
           </ul>
           <a href="#demo" class="btn btn-outline" style="width:100%; justify-content:center;">Pedí tu demo</a>
           <div class="free-trial-badge">🎁 14 días gratis</div>
         </div>
+
+        <!-- PRO -->
         <div class="pricing-card featured">
+          <div class="pricing-badge">Más popular</div>
           <div class="pricing-name">Pro</div>
           <div class="pricing-price">
             <span class="pricing-currency">USD</span>
             <span class="pricing-amount" style="color:var(--cyan);">75</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Para equipos y negocios que necesitan más de un profesional.</p>
+          <p class="pricing-desc">Para negocios que quieren automatizar reservas y recordatorios por WhatsApp.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Usuarios ilimitados</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Agendas independientes por usuario</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios automáticos</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Reservas online 24/7</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Básico</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>10 usuarios</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>200 reservas automáticas por WhatsApp</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>200 recordatorios por WhatsApp</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Bot de WhatsApp incluido</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Panel de control unificado</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Soporte prioritario</li>
           </ul>
           <a href="#demo" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
           <div class="free-trial-badge" style="top:40px;">🎁 14 días gratis</div>
+        </div>
+
+        <!-- MAX -->
+        <div class="pricing-card">
+          <div class="pricing-name">Max</div>
+          <div class="pricing-price">
+            <span class="pricing-currency">USD</span>
+            <span class="pricing-amount" style="color:var(--orange);">149</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Para negocios con alto volumen de turnos que necesitan el máximo rendimiento.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Todo lo del plan Pro</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Usuarios ilimitados</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>500 reservas automáticas por WhatsApp</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>500 recordatorios por WhatsApp</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Bot de WhatsApp incluido</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Panel de control unificado</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Soporte prioritario</li>
+          </ul>
+          <a href="#demo" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
+          <div class="free-trial-badge">🎁 14 días gratis</div>
+        </div>
+
+      </div>
+
+      <!-- PAQUETES ADICIONALES -->
+      <div style="margin-top: 56px;">
+        <div style="text-align:center; margin-bottom: 32px;">
+          <div class="section-tag" style="color:var(--purple); display:inline-block;">Paquetes adicionales</div>
+          <h3 style="font-size:26px; font-weight:900; color:var(--dark); margin-top:8px;">¿Necesitás más? Sumá un pack</h3>
+          <p style="color:var(--mid); font-size:15px; margin-top:8px;">Compatible con cualquier plan. Se acumulan a tus reservas y recordatorios mensuales.</p>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; max-width:700px; margin:0 auto;">
+
+          <div style="background:#fff; border:2px solid var(--border); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:12px;">
+            <div style="font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid);">Pack 100</div>
+            <div style="display:flex; align-items:flex-end; gap:4px;">
+              <span style="font-weight:800; font-size:18px; color:var(--mid);">USD</span>
+              <span style="font-weight:900; font-size:48px; line-height:1; letter-spacing:-2px; color:var(--purple);">50</span>
+            </div>
+            <div style="height:1.5px; background:var(--border);"></div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>100 reservas automáticas por bot</li>
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>100 recordatorios por WhatsApp</li>
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--mid);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>Se suma a tu plan actual</li>
+            </ul>
+          </div>
+
+          <div style="background:#fff; border:2px solid var(--purple); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:12px; position:relative;">
+            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--purple); color:#fff; font-size:11px; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:20px; white-space:nowrap;">Mejor valor</div>
+            <div style="font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid);">Pack 200</div>
+            <div style="display:flex; align-items:flex-end; gap:4px;">
+              <span style="font-weight:800; font-size:18px; color:var(--mid);">USD</span>
+              <span style="font-weight:900; font-size:48px; line-height:1; letter-spacing:-2px; color:var(--purple);">95</span>
+            </div>
+            <div style="height:1.5px; background:var(--border);"></div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>200 reservas automáticas por bot</li>
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>200 recordatorios por WhatsApp</li>
+              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--mid);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>Se suma a tu plan actual</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
