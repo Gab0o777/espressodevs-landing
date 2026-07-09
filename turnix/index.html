@@ -190,18 +190,35 @@
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
     .btn-primary { background: var(--cyan); color: var(--white); }
     .btn-outline { background: transparent; border: 2px solid var(--cyan); color: var(--cyan); }
-    .btn-large { font-size: 17px; padding: 15px 36px; }
+    .btn-large { font-size: 16px; padding: 14px 28px; }
     .btn-white { background: var(--white); color: var(--dark); }
 
     /* ── HERO ── */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-blob-1 { width: 520px; height: 520px; background: #DCCEF5; opacity: .5; top: -80px; right: -100px; }
+    .hero-blob-2 { width: 460px; height: 460px; background: #C9B4EE; opacity: .45; bottom: -180px; left: 32%; }
+    .hero-blob-3 { width: 380px; height: 380px; background: #F2CBE9; opacity: .45; bottom: -100px; left: -120px; }
+    .hero-blob-4 { width: 300px; height: 300px; background: #C7ECF5; opacity: .35; top: 80px; left: -110px; }
     .hero {
       min-height: calc(100vh - 72px);
       display: flex;
       align-items: center;
       padding: 80px 40px;
-      max-width: 1200px;
+      max-width: 1320px;
       margin: 0 auto;
-      gap: 60px;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
     }
     .hero-content { flex: 1; }
     .hero-badge {
@@ -244,31 +261,49 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    .hero-note {
-      font-size: 12px;
-      font-weight: 700;
-      color: #AAAACC;
-      margin-top: 14px;
-    }
-
-    /* ── HERO VISUAL (right side): live calendar mock ── */
-    .hero-visual {
-      flex: 0 0 620px;
-      position: relative;
-      height: 470px;
-    }
-    .hero-audience {
+    .hero-checks {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
+      align-items: center;
+      gap: 10px 22px;
+      margin-top: 24px;
+    }
+    .hero-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mid);
+    }
+    .hero-check::before {
+      content: '✓';
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── HERO VISUAL (right side): live app mock ── */
+    .hero-visual {
+      flex: 0 0 760px;
+      position: relative;
+      height: 560px;
     }
 
     .calmock {
       position: absolute;
-      top: 6px;
+      top: 14px;
       left: 0;
-      width: 440px;
+      width: 660px;
+      display: flex;
       background: var(--white);
       border-radius: 22px;
       border: 1.5px solid var(--border);
@@ -276,66 +311,130 @@
       overflow: hidden;
       z-index: 2;
     }
-    .calmock-header {
+    .calmock-side {
+      flex: 0 0 146px;
+      border-right: 1.5px solid var(--border);
+      padding: 16px 10px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      border-bottom: 1.5px solid var(--border);
+      flex-direction: column;
+      gap: 3px;
     }
-    .calmock-brand {
+    .calmock-side-brand {
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 900;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--dark);
+      padding: 2px 8px 16px;
     }
-    .calmock-brand img { height: 22px; }
-    .calmock-live {
+    .calmock-side-brand img { height: 26px; }
+    .calmock-side-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--mid);
+      padding: 8px 11px;
+      border-radius: 10px;
+    }
+    .calmock-side-item .cs-ico { font-size: 13px; width: 16px; text-align: center; }
+    .calmock-side-item.is-active {
+      background: #EFECFB;
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+    .calmock-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .calmock-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px 8px;
+    }
+    .calmock-nav-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 10px;
+      justify-content: center;
+      font-size: 13px;
       font-weight: 800;
-      color: var(--green);
-      background: #EEF7E3;
-      padding: 4px 10px;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
+      color: var(--mid);
+      flex-shrink: 0;
     }
-    .calmock-live-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: livePulse 1.6s ease-in-out infinite;
-    }
-    @keyframes livePulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(125,192,68,.5); }
-      50% { opacity: .5; box-shadow: 0 0 0 4px rgba(125,192,68,0); }
+    .calmock-range { font-weight: 900; font-size: 15px; color: var(--dark); }
+    .calmock-toolbar-icons {
+      margin-left: auto;
+      display: inline-flex;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--mid);
+      opacity: .7;
     }
     .calmock-days {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: 40px repeat(7, 1fr);
       text-align: center;
-      padding: 10px 14px 6px;
+      padding: 6px 16px 8px 10px;
     }
-    .calmock-days span {
+    .calmock-day span {
+      display: block;
       font-size: 10px;
       font-weight: 800;
       color: var(--mid);
-      text-transform: uppercase;
-      letter-spacing: .5px;
+      letter-spacing: .3px;
+      margin-bottom: 4px;
     }
+    .calmock-day strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .calmock-day.is-today strong { background: var(--cyan); color: var(--white); }
+
+    .calmock-body {
+      display: flex;
+      padding: 0 16px 16px 10px;
+    }
+    .calmock-hours {
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: right;
+      padding-right: 8px;
+    }
+    .calmock-hours span {
+      font-size: 9px;
+      font-weight: 700;
+      color: #AAAACC;
+      line-height: 1;
+      transform: translateY(-4px);
+    }
+    .calmock-hours span:first-child { transform: none; }
     .calmock-grid {
       position: relative;
+      flex: 1;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-      height: 270px;
-      padding: 0 14px 16px;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      height: 352px;
+      background-image: repeating-linear-gradient(to bottom, var(--border) 0, var(--border) 1px, transparent 1px, transparent 32px);
     }
     .calmock-col {
       position: relative;
@@ -361,75 +460,100 @@
     .calmock-appt-name { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .calmock-appt-time { display: block; opacity: .75; font-weight: 700; }
 
-    .calmock-toasts {
+    /* floating notification cards */
+    .hero-cards {
       position: absolute;
-      top: 76px;
-      right: 10px;
-      width: 190px;
+      top: 118px;
+      right: -24px;
+      width: 228px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 24px;
       z-index: 5;
     }
-    .calmock-toast {
+    .hero-card {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 16px 32px rgba(0,0,0,.14);
-      padding: 10px 12px;
-      opacity: 0;
-      transform: translateX(26px) scale(.9);
-      transition: opacity .4s ease, transform .4s ease;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(30,30,46,.14);
+      padding: 14px 16px;
+      animation: cardFloat 5s ease-in-out infinite;
     }
-    .calmock-toast.is-visible { opacity: 1; transform: translateX(0) scale(1); }
-    .calmock-toast-icon {
-      width: 30px;
-      height: 30px;
+    .hero-card:nth-child(2) { margin-left: 14px; animation-delay: -1.6s; }
+    .hero-card:nth-child(3) { margin-left: 28px; animation-delay: -3.2s; }
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .hero-card-icon {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 17px;
       flex-shrink: 0;
     }
-    .calmock-toast-title { font-size: 12px; font-weight: 900; color: var(--dark); }
-    .calmock-toast-sub { font-size: 10px; font-weight: 700; color: var(--mid); }
+    .hero-card-title { font-size: 13px; font-weight: 900; color: var(--dark); }
+    .hero-card-stars { color: #F5C800; font-size: 11px; letter-spacing: 1px; }
+    .hero-card-sub { font-size: 11.5px; font-weight: 700; color: var(--mid); }
+    .hero-card-time { font-size: 10px; font-weight: 700; color: #AAAACC; margin-top: 2px; }
 
     .hero-mascot {
       position: absolute;
-      right: -6px;
-      bottom: -6px;
-      height: 160px;
+      right: 96px;
+      bottom: -14px;
+      height: 200px;
       z-index: 6;
       filter: drop-shadow(0 16px 32px rgba(41,183,211,.18));
       pointer-events: none;
-      transform: scaleX(-1);
     }
 
     /* ── STATS BAR ── */
-    .stats-bar { background: var(--dark); padding: 28px 40px; }
+    .stats-bar { padding: 0 40px 64px; position: relative; z-index: 1; }
     .stats-inner {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 20px 48px rgba(30,30,46,.07);
+      padding: 36px 40px;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      gap: 20px;
+      gap: 24px;
       flex-wrap: wrap;
     }
-    .stat-item { text-align: center; }
-    .stat-number { font-weight: 900; font-size: 28px; letter-spacing: -1px; }
-    .stat-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: rgba(255,255,255,.5);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 2px;
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
     }
-    .stat-div { width: 1px; height: 40px; background: rgba(255,255,255,.1); }
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .stat-number { font-weight: 900; font-size: 32px; letter-spacing: -1px; color: var(--dark); line-height: 1.1; }
+    .stat-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mid);
+      line-height: 1.35;
+      margin-top: 2px;
+      max-width: 150px;
+    }
+    .stat-div { width: 1.5px; height: 56px; background: var(--border); }
 
     /* ── SECTIONS COMMON ── */
     section { padding: 76px 40px; }
@@ -960,16 +1084,19 @@
       .hero-subtitle { margin: 0 auto 32px; }
       .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .hero-visual { flex: none; width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; padding-bottom: 90px; }
-      .calmock { position: relative; top: auto; left: auto; width: 100%; max-width: 380px; }
-      .calmock-toasts { display: none; }
+      .hero-checks { justify-content: center; }
+      .hero-visual { flex: none; width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; padding-bottom: 96px; }
+      .calmock { position: relative; top: auto; left: auto; width: 100%; max-width: 440px; }
+      .calmock-side { display: none; }
+      .hero-cards { display: none; }
       .hero-mascot { height: 150px; right: 4px; bottom: 0; }
-      .hero-audience { justify-content: center; }
+      .hero-blob { filter: blur(50px); }
 
       /* Stats bar */
-      .stats-bar { padding: 20px; }
-      .stats-inner { gap: 16px; }
-      .stat-number { font-size: 22px; }
+      .stats-bar { padding: 0 20px 48px; }
+      .stats-inner { gap: 20px; padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+      .stat-number { font-size: 26px; }
+      .stat-label { max-width: none; }
       .stat-div { display: none; }
 
       /* WSP block */
@@ -1005,8 +1132,11 @@
     @media (max-width: 480px) {
       .hero-title { font-size: clamp(30px, 8vw, 44px); }
       .hero-mascot { height: 120px; }
-      .calmock { max-width: 300px; }
-      .calmock-days span { font-size: 8px; }
+      .calmock { max-width: 320px; }
+      .calmock-day span { font-size: 8px; }
+      .calmock-hours { width: 30px; }
+      .calmock-appt { font-size: 8px; padding: 4px 5px; }
+      .calmock-appt-time { display: none; }
       .wsp-pills { gap: 6px; }
       .wsp-pill { font-size: 12px; padding: 5px 10px; }
       .pricing-grid { max-width: 100%; }
@@ -1036,74 +1166,147 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>✨</span> Gestión de turnos inteligente
+  <div class="hero-wrap">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-blob hero-blob-4"></div>
+
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>✨</span> Gestión de turnos inteligente
+        </div>
+        <h1 class="hero-title">
+          Organizar turnos<br />nunca se vio<br /><span class="highlight-cyan">tan simple.</span>
+        </h1>
+        <p class="hero-subtitle">
+          turnix organiza tu agenda, confirma por WhatsApp y te ayuda a llenar tu negocio todos los días.
+        </p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo &nbsp;→</a>
+          <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona &nbsp;▷</a>
+        </div>
+        <div class="hero-checks">
+          <span class="hero-check">Sin tarjeta de crédito</span>
+          <span class="hero-check">Configuración en minutos</span>
+          <span class="hero-check">Soporte en español</span>
+        </div>
       </div>
-      <h1 class="hero-title">
-        Organizá tus turnos.<br /><span class="highlight-cyan">Sin esfuerzo.</span><br /><span class="highlight-purple">Sin líos.</span>
-      </h1>
-      <p class="hero-subtitle">
-        turnix simplifica la gestión de turnos para tu negocio. Tus clientes reservan en segundos, vos administrás todo desde un solo lugar.
-      </p>
-      <div class="hero-actions">
-        <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo</a>
-        <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona</a>
-      </div>
-      <p class="hero-note">Sin tarjeta de crédito · Configuración en minutos</p>
-      <div class="hero-audience">
-        <span class="wsp-pill" style="background:#E4F7FB; color:#0E7490;">✂️ Peluquerías y barberías</span>
-        <span class="wsp-pill" style="background:#EFE4F9; color:var(--purple);">🖊️ Estudios de tatuajes</span>
-        <span class="wsp-pill" style="background:#FAE4F2; color:var(--pink);">💆 Centros de estética</span>
-        <span class="wsp-pill" style="background:#E9F6DE; color:var(--green);">🐾 Veterinarias</span>
+
+      <!-- VISUAL DERECHO: app de agenda en vivo + notificaciones + mascota -->
+      <div class="hero-visual">
+        <div class="calmock" id="calmock">
+          <aside class="calmock-side">
+            <div class="calmock-side-brand">
+              <img src="assets/isologobiggertransparent.png" alt="" /> Agenda
+            </div>
+            <div class="calmock-side-item is-active"><span class="cs-ico">🗓️</span> Agenda</div>
+            <div class="calmock-side-item"><span class="cs-ico">👥</span> Clientes</div>
+            <div class="calmock-side-item"><span class="cs-ico">✂️</span> Servicios</div>
+            <div class="calmock-side-item"><span class="cs-ico">🧢</span> Equipo</div>
+            <div class="calmock-side-item"><span class="cs-ico">🕐</span> Horarios</div>
+            <div class="calmock-side-item"><span class="cs-ico">📣</span> Campañas</div>
+            <div class="calmock-side-item"><span class="cs-ico">⚙️</span> Ajustes</div>
+          </aside>
+          <div class="calmock-main">
+            <div class="calmock-toolbar">
+              <span class="calmock-nav-btn">‹</span>
+              <span class="calmock-range">Lun 6 – Dom 12</span>
+              <span class="calmock-toolbar-icons"><span>＋</span><span>⟳</span><span>🔔</span></span>
+            </div>
+            <div class="calmock-days">
+              <span></span>
+              <div class="calmock-day"><span>Lu</span><strong>6</strong></div>
+              <div class="calmock-day"><span>Ma</span><strong>7</strong></div>
+              <div class="calmock-day is-today"><span>Mi</span><strong>8</strong></div>
+              <div class="calmock-day"><span>Ju</span><strong>9</strong></div>
+              <div class="calmock-day"><span>Vi</span><strong>10</strong></div>
+              <div class="calmock-day"><span>Sá</span><strong>11</strong></div>
+              <div class="calmock-day"><span>Do</span><strong>12</strong></div>
+            </div>
+            <div class="calmock-body">
+              <div class="calmock-hours">
+                <span>8am</span><span>9am</span><span>10am</span><span>11am</span><span>12pm</span><span>1pm</span><span>2pm</span><span>3pm</span><span>4pm</span><span>5pm</span><span>6pm</span><span>7pm</span>
+              </div>
+              <div class="calmock-grid" id="calmock-grid">
+                <div class="calmock-col" data-col="0"></div>
+                <div class="calmock-col" data-col="1"></div>
+                <div class="calmock-col" data-col="2"></div>
+                <div class="calmock-col" data-col="3"></div>
+                <div class="calmock-col" data-col="4"></div>
+                <div class="calmock-col" data-col="5"></div>
+                <div class="calmock-col" data-col="6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cards">
+          <div class="hero-card">
+            <span class="hero-card-icon" style="background:#E5F8EA; color:#25D366;">💬</span>
+            <span>
+              <span class="hero-card-title">Nueva reserva</span><br />
+              <span class="hero-card-sub">por WhatsApp</span><br />
+              <span class="hero-card-time">Hace 2 min</span>
+            </span>
+          </div>
+          <div class="hero-card">
+            <span class="hero-card-icon" style="background:#F2E8FA;">🔔</span>
+            <span>
+              <span class="hero-card-title">Recordatorio enviado</span><br />
+              <span class="hero-card-sub">a 5 clientes</span><br />
+              <span class="hero-card-time">Hace 5 min</span>
+            </span>
+          </div>
+          <div class="hero-card">
+            <span class="hero-card-icon" style="background:#FFFBDB;">⭐</span>
+            <span>
+              <span class="hero-card-title">Nueva reseña <span class="hero-card-stars">★★★★★</span></span><br />
+              <span class="hero-card-sub">"Excelente atención!"</span><br />
+              <span class="hero-card-time">Hace 8 min</span>
+            </span>
+          </div>
+        </div>
+
+        <img src="assets/isologobiggertransparent.png" alt="turnix mascota señalando la agenda" class="hero-mascot" />
       </div>
     </div>
 
-    <!-- VISUAL DERECHO: agenda animada en vivo + mascota apuntando -->
-    <div class="hero-visual">
-      <div class="calmock" id="calmock">
-        <div class="calmock-header">
-          <div class="calmock-brand">📅 Agenda</div>
-          <span class="calmock-live"><span class="calmock-live-dot"></span> En vivo</span>
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-icon" style="background:#EEF7E3;">📅</div>
+          <div>
+            <div class="stat-number">+25.000</div>
+            <div class="stat-label">turnos confirmados esta semana</div>
+          </div>
         </div>
-        <div class="calmock-days">
-          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-icon" style="background:#F2E8FA;">😊</div>
+          <div>
+            <div class="stat-number">98%</div>
+            <div class="stat-label">clientes satisfechos</div>
+          </div>
         </div>
-        <div class="calmock-grid" id="calmock-grid">
-          <div class="calmock-col" data-col="0"></div>
-          <div class="calmock-col" data-col="1"></div>
-          <div class="calmock-col" data-col="2"></div>
-          <div class="calmock-col" data-col="3"></div>
-          <div class="calmock-col" data-col="4"></div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-icon" style="background:#E8F9FC;">⚡</div>
+          <div>
+            <div class="stat-number">-60%</div>
+            <div class="stat-label">cancelaciones de turnos</div>
+          </div>
         </div>
-      </div>
-      <div class="calmock-toasts" id="calmock-toasts"></div>
-      <img src="assets/isologobiggertransparent.png" alt="turnix mascota señalando la agenda" class="hero-mascot" />
-    </div>
-  </div>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat-item">
-        <div class="stat-number" style="color: var(--cyan);">-60%</div>
-        <div class="stat-label">Pérdidas por cancelaciones</div>
-      </div>
-      <div class="stat-div"></div>
-      <div class="stat-item">
-        <div class="stat-number" style="color: var(--green);">98%</div>
-        <div class="stat-label">Clientes satisfechos</div>
-      </div>
-      <div class="stat-div"></div>
-      <div class="stat-item">
-        <div class="stat-number" style="color: var(--yellow);">5 min</div>
-        <div class="stat-label">Para dar de alta</div>
-      </div>
-      <div class="stat-div"></div>
-      <div class="stat-item">
-        <div class="stat-number" style="color: var(--pink);">24/7</div>
-        <div class="stat-label">Reservas online</div>
+        <div class="stat-div"></div>
+        <div class="stat-item">
+          <div class="stat-icon" style="background:#FCE8F3;">🕐</div>
+          <div>
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">reservas online automáticas</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1450,8 +1653,7 @@
   <script>
     (function () {
       var grid = document.getElementById('calmock-grid');
-      var toastsWrap = document.getElementById('calmock-toasts');
-      if (!grid || !toastsWrap) return;
+      if (!grid) return;
 
       var cols = Array.prototype.slice.call(grid.querySelectorAll('.calmock-col'));
       var COLORS = [
@@ -1463,11 +1665,12 @@
       ];
       var NAMES = ['Cecilia Díaz', 'Wendy V.', 'María Eugenia', 'Ana Sosa', 'Carolina Damio', 'Olena S.', 'Vanesa López', 'Mariana Gómez', 'Julieta R.', 'Tomás Nuñez', 'Sofía Kern', 'Lucía Paz', 'Federico M.', 'Camila Ríos'];
       var SLOTS = [
-        { top: 4, height: 46 },
-        { top: 58, height: 46 },
-        { top: 112, height: 46 },
-        { top: 166, height: 46 },
-        { top: 220, height: 42 }
+        { top: 2, height: 46 },
+        { top: 66, height: 46 },
+        { top: 130, height: 46 },
+        { top: 194, height: 46 },
+        { top: 258, height: 46 },
+        { top: 322, height: 28 }
       ];
 
       // state[colIndex][slotIndex] = { el, name, time, colorIdx } | null
@@ -1545,60 +1748,15 @@
           } else {
             unmountAppt(cell.col, cell.slot, function () {
               mountAppt(cell.col, cell.slot, buildAppt());
-              showToast('booking');
             });
           }
         } else {
           mountAppt(cell.col, cell.slot, buildAppt());
-          showToast('booking');
         }
-      }
-
-      var TOAST_TYPES = {
-        booking: { icon: '💬', bg: '#DCF8C6', title: 'Nueva reserva', sub: 'por WhatsApp · hace instantes' },
-        reminder: { icon: '🔔', bg: '#F2E8FA', title: 'Recordatorio enviado', sub: 'a 5 clientes' },
-        review: { icon: '⭐', bg: '#FFFBDB', title: 'Nueva reseña', sub: '"Excelente atención!"' }
-      };
-      var activeToasts = [];
-
-      function showToast(type) {
-        var info = TOAST_TYPES[type];
-        var el = document.createElement('div');
-        el.className = 'calmock-toast';
-        el.innerHTML = '<span class="calmock-toast-icon" style="background:' + info.bg + '">' + info.icon + '</span>' +
-          '<span><span class="calmock-toast-title">' + info.title + '</span><br><span class="calmock-toast-sub">' + info.sub + '</span></span>';
-        toastsWrap.appendChild(el);
-        activeToasts.push(el);
-        void el.offsetWidth;
-        el.classList.add('is-visible');
-
-        while (activeToasts.length > 3) {
-          var oldest = activeToasts.shift();
-          dismissToast(oldest);
-        }
-
-        setTimeout(function () {
-          dismissToast(el);
-          var idx = activeToasts.indexOf(el);
-          if (idx > -1) activeToasts.splice(idx, 1);
-        }, 4200);
-      }
-
-      function dismissToast(el) {
-        if (!el.parentNode) return;
-        el.classList.remove('is-visible');
-        setTimeout(function () {
-          if (el.parentNode) el.parentNode.removeChild(el);
-        }, 400);
       }
 
       seedInitial();
-      setTimeout(function () { showToast('reminder'); }, 1600);
-      setTimeout(function () { showToast('review'); }, 3400);
-
       setInterval(tick, 2400);
-      setInterval(function () { showToast('reminder'); }, 9000);
-      setInterval(function () { showToast('review'); }, 13000);
     })();
   </script>
 </body>
