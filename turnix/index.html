@@ -251,63 +251,160 @@
       margin-top: 14px;
     }
 
-    /* ── HERO VISUAL (right side) ── */
+    /* ── HERO VISUAL (right side): live calendar mock ── */
     .hero-visual {
-      flex: 0 0 500px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      flex: 0 0 600px;
+      position: relative;
+      height: 470px;
     }
-    .hero-mascot {
-      height: 340px;
-      display: block;
-      flex-shrink: 0;
-      margin-right: -12px;
-      filter: drop-shadow(0 16px 32px rgba(41,183,211,.18));
+    .hero-audience {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
     }
 
-    /* ── BUSINESS CARDS ── */
-    .biz-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      flex: 1;
+    .calmock {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 400px;
+      background: var(--white);
+      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 28px 64px rgba(0,0,0,.14);
+      overflow: hidden;
+      z-index: 2;
     }
-    .biz-card {
-      border-radius: 20px;
-      aspect-ratio: 1;
-      padding: 16px 10px;
+    .calmock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .calmock-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    .calmock-brand img { height: 22px; }
+    .calmock-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--green);
+      background: #EEF7E3;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .calmock-live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: livePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(125,192,68,.5); }
+      50% { opacity: .5; box-shadow: 0 0 0 4px rgba(125,192,68,0); }
+    }
+    .calmock-days {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      text-align: center;
+      padding: 10px 14px 6px;
+    }
+    .calmock-days span {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .calmock-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      height: 270px;
+      padding: 0 14px 16px;
+    }
+    .calmock-col {
+      position: relative;
+      border-left: 1.5px dashed var(--border);
+    }
+    .calmock-col:first-child { border-left: none; }
+    .calmock-appt {
+      position: absolute;
+      left: 2px;
+      right: 2px;
+      border-radius: 7px;
+      padding: 5px 6px;
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1.3;
+      overflow: hidden;
+      border-left: 3px solid transparent;
+      opacity: 0;
+      transform: scale(.85) translateY(4px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .calmock-appt.is-visible { opacity: 1; transform: scale(1) translateY(0); }
+    .calmock-appt-name { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .calmock-appt-time { display: block; opacity: .75; font-weight: 700; }
+
+    .calmock-toasts {
+      position: absolute;
+      top: 76px;
+      right: 0;
+      width: 210px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 8px;
-      transition: transform .2s, box-shadow .2s;
-      cursor: default;
-      border: none;
+      gap: 12px;
+      z-index: 5;
     }
-    .biz-card:nth-child(1) { background: #E4F7FB; }
-    .biz-card:nth-child(2) { background: #EFE4F9; }
-    .biz-card:nth-child(3) { background: #FAE4F2; }
-    .biz-card:nth-child(4) { background: #E9F6DE; }
-    .biz-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
-
-    .biz-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
+    .calmock-toast {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 16px 32px rgba(0,0,0,.14);
+      padding: 10px 12px;
+      opacity: 0;
+      transform: translateX(26px) scale(.9);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .calmock-toast.is-visible { opacity: 1; transform: translateX(0) scale(1); }
+    .calmock-toast-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      background: rgba(255,255,255,.7);
+      font-size: 14px;
+      flex-shrink: 0;
     }
-    .biz-name {
-      font-weight: 800;
-      font-size: 11px;
-      color: var(--dark);
-      line-height: 1.3;
+    .calmock-toast-title { font-size: 12px; font-weight: 900; color: var(--dark); }
+    .calmock-toast-sub { font-size: 10px; font-weight: 700; color: var(--mid); }
+
+    .hero-mascot {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+      height: 240px;
+      z-index: 6;
+      filter: drop-shadow(0 16px 32px rgba(41,183,211,.18));
+      pointer-events: none;
     }
 
     /* ── STATS BAR ── */
@@ -862,9 +959,11 @@
       .hero-subtitle { margin: 0 auto 32px; }
       .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .hero-visual { flex: none; width: 100%; justify-content: center; }
-      .hero-mascot { height: 220px; }
-      .biz-grid { display: none; }
+      .hero-visual { flex: none; width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; padding-bottom: 90px; }
+      .calmock { position: relative; top: auto; left: auto; width: 100%; max-width: 380px; }
+      .calmock-toasts { display: none; }
+      .hero-mascot { height: 150px; right: 4px; bottom: 0; }
+      .hero-audience { justify-content: center; }
 
       /* Stats bar */
       .stats-bar { padding: 20px; }
@@ -904,8 +1003,9 @@
     /* ── RESPONSIVE SMALL MOBILE ── */
     @media (max-width: 480px) {
       .hero-title { font-size: clamp(30px, 8vw, 44px); }
-      .hero-mascot { height: 160px; }
-      .biz-grid { max-width: 180px; }
+      .hero-mascot { height: 120px; }
+      .calmock { max-width: 300px; }
+      .calmock-days span { font-size: 8px; }
       .wsp-pills { gap: 6px; }
       .wsp-pill { font-size: 12px; padding: 5px 10px; }
       .pricing-grid { max-width: 100%; }
@@ -951,34 +1051,34 @@
         <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona</a>
       </div>
       <p class="hero-note">Sin tarjeta de crédito · Configuración en minutos</p>
+      <div class="hero-audience">
+        <span class="wsp-pill" style="background:#E4F7FB; color:#0E7490;">✂️ Peluquerías y barberías</span>
+        <span class="wsp-pill" style="background:#EFE4F9; color:var(--purple);">🖊️ Estudios de tatuajes</span>
+        <span class="wsp-pill" style="background:#FAE4F2; color:var(--pink);">💆 Centros de estética</span>
+        <span class="wsp-pill" style="background:#E9F6DE; color:var(--green);">🐾 Veterinarias</span>
+      </div>
     </div>
 
-    <!-- VISUAL DERECHO: mascota + cards de rubros -->
+    <!-- VISUAL DERECHO: agenda animada en vivo + mascota apuntando -->
     <div class="hero-visual">
-      <img src="assets/isologobiggertransparent.png" alt="turnix mascota" class="hero-mascot" />
-      <div class="biz-grid">
-
-        <div class="biz-card">
-          <div class="biz-icon">✂️</div>
-          <div class="biz-name">Peluquerías y barberías</div>
+      <div class="calmock" id="calmock">
+        <div class="calmock-header">
+          <div class="calmock-brand">📅 Agenda</div>
+          <span class="calmock-live"><span class="calmock-live-dot"></span> En vivo</span>
         </div>
-
-        <div class="biz-card">
-          <div class="biz-icon">🖊️</div>
-          <div class="biz-name">Estudios de tatuajes</div>
+        <div class="calmock-days">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span>
         </div>
-
-        <div class="biz-card">
-          <div class="biz-icon">💆</div>
-          <div class="biz-name">Centros de estética</div>
+        <div class="calmock-grid" id="calmock-grid">
+          <div class="calmock-col" data-col="0"></div>
+          <div class="calmock-col" data-col="1"></div>
+          <div class="calmock-col" data-col="2"></div>
+          <div class="calmock-col" data-col="3"></div>
+          <div class="calmock-col" data-col="4"></div>
         </div>
-
-        <div class="biz-card">
-          <div class="biz-icon">🐾</div>
-          <div class="biz-name">Veterinarias</div>
-        </div>
-
       </div>
+      <div class="calmock-toasts" id="calmock-toasts"></div>
+      <img src="assets/isologobiggertransparent.png" alt="turnix mascota señalando la agenda" class="hero-mascot" />
     </div>
   </div>
 
@@ -1343,4 +1443,163 @@
           <span>t</span><span>u</span><span>r</span><span>n</span><span>i</span><span>x</span>
         </div>
       </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var grid = document.getElementById('calmock-grid');
+      var toastsWrap = document.getElementById('calmock-toasts');
+      if (!grid || !toastsWrap) return;
+
+      var cols = Array.prototype.slice.call(grid.querySelectorAll('.calmock-col'));
+      var COLORS = [
+        { bg: '#E4F7FB', text: '#0E7490', bar: '#29B7D3' },
+        { bg: '#F2E8FA', text: '#6B21A8', bar: '#8B44BF' },
+        { bg: '#FCE8F3', text: '#9D174D', bar: '#E91E96' },
+        { bg: '#FEF3E2', text: '#92400E', bar: '#F5A623' },
+        { bg: '#EEF7E3', text: '#365314', bar: '#7DC044' }
+      ];
+      var NAMES = ['Cecilia Díaz', 'Wendy V.', 'María Eugenia', 'Ana Sosa', 'Carolina Damio', 'Olena S.', 'Vanesa López', 'Mariana Gómez', 'Julieta R.', 'Tomás Nuñez', 'Sofía Kern', 'Lucía Paz', 'Federico M.', 'Camila Ríos'];
+      var SLOTS = [
+        { top: 4, height: 46 },
+        { top: 58, height: 46 },
+        { top: 112, height: 46 },
+        { top: 166, height: 46 },
+        { top: 220, height: 42 }
+      ];
+
+      // state[colIndex][slotIndex] = { el, name, time, colorIdx } | null
+      var state = cols.map(function () { return SLOTS.map(function () { return null; }); });
+
+      function randInt(max) { return Math.floor(Math.random() * max); }
+      function randomTime() {
+        var startHour = 9 + randInt(9);
+        var startMin = Math.random() < 0.5 ? 0 : 30;
+        var duration = [30, 45, 60][randInt(3)];
+        var endTotal = startHour * 60 + startMin + duration;
+        var endHour = Math.floor(endTotal / 60);
+        var endMin = endTotal % 60;
+        function pad(n) { return n < 10 ? '0' + n : '' + n; }
+        return pad(startHour) + ':' + pad(startMin) + ' - ' + pad(endHour) + ':' + pad(endMin);
+      }
+
+      function buildAppt(colorIdx) {
+        return {
+          name: NAMES[randInt(NAMES.length)],
+          time: randomTime(),
+          colorIdx: colorIdx === undefined ? randInt(COLORS.length) : colorIdx
+        };
+      }
+
+      function mountAppt(colIndex, slotIndex, data) {
+        var slot = SLOTS[slotIndex];
+        var color = COLORS[data.colorIdx];
+        var el = document.createElement('div');
+        el.className = 'calmock-appt';
+        el.style.top = slot.top + 'px';
+        el.style.height = slot.height + 'px';
+        el.style.background = color.bg;
+        el.style.color = color.text;
+        el.style.borderLeftColor = color.bar;
+        el.innerHTML = '<span class="calmock-appt-name">' + data.name + '</span><span class="calmock-appt-time">' + data.time + '</span>';
+        cols[colIndex].appendChild(el);
+        // force reflow so the transition to is-visible actually animates
+        void el.offsetWidth;
+        el.classList.add('is-visible');
+        data.el = el;
+        state[colIndex][slotIndex] = data;
+      }
+
+      function unmountAppt(colIndex, slotIndex, onDone) {
+        var data = state[colIndex][slotIndex];
+        if (!data) { if (onDone) onDone(); return; }
+        data.el.classList.remove('is-visible');
+        setTimeout(function () {
+          if (data.el.parentNode) data.el.parentNode.removeChild(data.el);
+          state[colIndex][slotIndex] = null;
+          if (onDone) onDone();
+        }, 350);
+      }
+
+      function seedInitial() {
+        cols.forEach(function (col, colIndex) {
+          SLOTS.forEach(function (slot, slotIndex) {
+            if (Math.random() < 0.55) mountAppt(colIndex, slotIndex, buildAppt());
+          });
+        });
+      }
+
+      function pickRandomCell() {
+        return { col: randInt(cols.length), slot: randInt(SLOTS.length) };
+      }
+
+      function tick() {
+        var cell = pickRandomCell();
+        var occupied = state[cell.col][cell.slot];
+        if (occupied) {
+          var action = Math.random();
+          if (action < 0.5) {
+            unmountAppt(cell.col, cell.slot);
+          } else {
+            unmountAppt(cell.col, cell.slot, function () {
+              mountAppt(cell.col, cell.slot, buildAppt());
+              showToast('booking');
+            });
+          }
+        } else {
+          mountAppt(cell.col, cell.slot, buildAppt());
+          showToast('booking');
+        }
+      }
+
+      var TOAST_TYPES = {
+        booking: { icon: '💬', bg: '#DCF8C6', title: 'Nueva reserva', sub: 'por WhatsApp · hace instantes' },
+        reminder: { icon: '🔔', bg: '#F2E8FA', title: 'Recordatorio enviado', sub: 'a 5 clientes' },
+        review: { icon: '⭐', bg: '#FFFBDB', title: 'Nueva reseña', sub: '"Excelente atención!"' }
+      };
+      var activeToasts = [];
+
+      function showToast(type) {
+        var info = TOAST_TYPES[type];
+        var el = document.createElement('div');
+        el.className = 'calmock-toast';
+        el.innerHTML = '<span class="calmock-toast-icon" style="background:' + info.bg + '">' + info.icon + '</span>' +
+          '<span><span class="calmock-toast-title">' + info.title + '</span><br><span class="calmock-toast-sub">' + info.sub + '</span></span>';
+        toastsWrap.appendChild(el);
+        activeToasts.push(el);
+        void el.offsetWidth;
+        el.classList.add('is-visible');
+
+        while (activeToasts.length > 3) {
+          var oldest = activeToasts.shift();
+          dismissToast(oldest);
+        }
+
+        setTimeout(function () {
+          dismissToast(el);
+          var idx = activeToasts.indexOf(el);
+          if (idx > -1) activeToasts.splice(idx, 1);
+        }, 4200);
+      }
+
+      function dismissToast(el) {
+        if (!el.parentNode) return;
+        el.classList.remove('is-visible');
+        setTimeout(function () {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        }, 400);
+      }
+
+      seedInitial();
+      setTimeout(function () { showToast('reminder'); }, 1600);
+      setTimeout(function () { showToast('review'); }, 3400);
+
+      setInterval(tick, 2400);
+      setInterval(function () { showToast('reminder'); }, 9000);
+      setInterval(function () { showToast('review'); }, 13000);
+    })();
+  </script>
+</body>
+</html>
   
