@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>turnix · Gestioná turnos sin complicaciones</title>
-  <meta name="description" content="turnix es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 14 días gratis." />
+  <meta name="description" content="turnix es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 30 días gratis." />
   <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina" />
   <meta name="author" content="espressodevs" />
   <meta name="robots" content="index, follow" />
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://espressodevs.com/turnix" />
   <meta property="og:title" content="turnix · Gestioná turnos sin complicaciones" />
-  <meta property="og:description" content="Agenda online, recordatorios por WhatsApp y panel de control para tu negocio. Probá gratis 14 días, sin tarjeta de crédito." />
+  <meta property="og:description" content="Agenda online, recordatorios por WhatsApp y panel de control para tu negocio. Probá gratis 30 días, sin tarjeta de crédito." />
   <meta property="og:image" content="https://espressodevs.com/Turnix_banner.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -26,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="turnix · Gestioná turnos sin complicaciones" />
-  <meta name="twitter:description" content="Agenda online, recordatorios por WhatsApp y panel de control. 14 días gratis." />
+  <meta name="twitter:description" content="Agenda online, recordatorios por WhatsApp y panel de control. 30 días gratis." />
   <meta name="twitter:image" content="https://espressodevs.com/Turnix_banner.png" />
 
   <!-- Structured Data: SoftwareApplication -->
@@ -43,16 +43,23 @@
     "offers": [
       {
         "@type": "Offer",
-        "name": "Starter",
-        "price": "35",
-        "priceCurrency": "USD",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "UYU",
         "billingIncrement": "month"
       },
       {
         "@type": "Offer",
         "name": "Pro",
-        "price": "75",
-        "priceCurrency": "USD",
+        "price": "799",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Max",
+        "price": "1499",
+        "priceCurrency": "UYU",
         "billingIncrement": "month"
       }
     ],
@@ -67,7 +74,7 @@
       "Reservas desde celular, web o redes sociales",
       "Panel de control unificado",
       "Gestión multi-usuario",
-      "14 días de prueba gratis"
+      "30 días de prueba gratis"
     ]
   }
   </script>
@@ -83,7 +90,7 @@
         "name": "¿Necesito tarjeta de crédito para probar turnix?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Podés probar turnix gratis durante 14 días sin necesidad de tarjeta de crédito."
+          "text": "No. Podés probar turnix gratis durante 30 días sin necesidad de tarjeta de crédito."
         }
       },
       {
@@ -1106,47 +1113,50 @@
       line-height: 1.5;
     }
     .trial-banner-right {
-      font-size: 48px;
       flex-shrink: 0;
       position: relative;
       z-index: 1;
+      color: var(--cyan);
     }
+    .trial-banner-right svg { width: 46px; height: 46px; }
 
-    /* ── CTA FINAL ── */
-    .cta-section {
-      background: var(--dark);
-      padding: 76px 40px;
+    /* ── CURRENCY SWITCH ── */
+    .currency-switch {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      padding: 5px;
+      width: fit-content;
+      margin: 0 auto 36px;
+      box-shadow: 0 6px 18px rgba(30,30,46,.05);
+    }
+    .currency-btn {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--mid);
+      background: transparent;
+      border: none;
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .currency-btn:hover { color: var(--cyan); }
+    .currency-btn.is-active { background: var(--cyan); color: var(--white); }
+    .pricing-fx-note {
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      font-size: 12px;
+      font-weight: 700;
+      color: #AAAACC;
+      margin-top: 24px;
     }
-    .cta-section::before, .cta-section::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      opacity: .08;
-    }
-    .cta-section::before { width: 500px; height: 500px; background: var(--cyan); top: -200px; left: -100px; }
-    .cta-section::after { width: 400px; height: 400px; background: var(--purple); bottom: -150px; right: -80px; }
-    .cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-    .cta-mascot {
-      height: 150px;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 8px 24px rgba(41,183,211,.3));
-    }
-    .cta-title {
-      font-weight: 900;
-      font-size: clamp(30px, 4vw, 48px);
-      color: var(--white);
-      letter-spacing: -1.5px;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .cta-sub { font-size: 17px; font-weight: 600; color: rgba(255,255,255,.6); margin-bottom: 36px; line-height: 1.6; }
-    .cta-note { margin-top: 16px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.35); }
 
     /* ── FOOTER ── */
-    footer { background: #13131F; padding: 48px 40px 32px; }
+    footer { background: var(--white); border-top: 1.5px solid var(--border); padding: 48px 40px 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top {
       display: flex;
@@ -1154,18 +1164,18 @@
       justify-content: space-between;
       gap: 40px;
       padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1.5px solid var(--border);
       margin-bottom: 24px;
     }
     .footer-brand img { height: 34px; margin-bottom: 12px; }
-    .footer-tagline { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.4); max-width: 220px; line-height: 1.6; }
-    .footer-links-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 12px; }
+    .footer-tagline { font-size: 13px; font-weight: 600; color: var(--mid); max-width: 220px; line-height: 1.6; }
+    .footer-links-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #AAAACC; margin-bottom: 12px; }
     .footer-links { list-style: none; }
     .footer-links li { margin-bottom: 8px; }
-    .footer-links a { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .footer-links a { font-size: 13px; font-weight: 600; color: var(--mid); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--cyan); }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-copy { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.25); }
+    .footer-copy { font-size: 12px; font-weight: 600; color: #AAAACC; }
     .footer-wordmark { font-weight: 900; font-size: 16px; letter-spacing: -.5px; }
     .footer-wordmark span:nth-child(1) { color: var(--cyan); }
     .footer-wordmark span:nth-child(2) { color: var(--purple); }
@@ -1239,12 +1249,10 @@
 
       /* Pricing */
       .pricing-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
-      .pricing-packs-grid { grid-template-columns: 1fr !important; max-width: 420px; }
+      .currency-switch { flex-wrap: wrap; border-radius: 20px; }
       .trial-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 12px; }
       .trial-days { font-size: 52px; }
 
-      /* CTA */
-      .cta-title { letter-spacing: -1px; }
 
       /* Footer */
       .footer-top { flex-direction: column; gap: 28px; }
@@ -1267,7 +1275,6 @@
       .pricing-grid { max-width: 100%; }
       .pricing-amount { font-size: 52px; }
       .trial-days { font-size: 44px; }
-      .cta-mascot { height: 110px; }
       .stats-inner { flex-wrap: wrap; justify-content: center; }
     }
   </style>
@@ -1643,12 +1650,12 @@
       </div>
 
       <!-- CTA BAND -->
-      <div class="cta-band">
+      <div class="cta-band" id="demo">
         <img src="assets/turnixenaccio_n.png" alt="turni marcando turnos confirmados en el calendario" class="cta-band-img" />
         <div class="cta-band-content">
           <h2 class="cta-band-title">¿Listo para olvidarte<br />de los mensajes?</h2>
           <p class="cta-band-sub">Probá turnix gratis y empezá a llenar tu agenda hoy mismo.</p>
-          <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo ahora &nbsp;→</a>
+          <a href="mailto:hola@espressodevs.com" class="btn btn-primary btn-large">Pedí tu demo ahora &nbsp;→</a>
           <div class="hero-checks cta-band-checks">
             <span class="hero-check">Sin tarjeta de crédito</span>
             <span class="hero-check">Configuración en minutos</span>
@@ -1669,38 +1676,41 @@
       </div>
       <div class="trial-banner">
         <div class="trial-banner-left">
-          <div class="trial-days">14</div>
+          <div class="trial-days">30</div>
           <div class="trial-days-label">días</div>
         </div>
         <div class="trial-banner-center">
-          <div class="trial-title">Probá turnix gratis, sin compromiso</div>
+          <div class="trial-title">Probá turnix Pro gratis, sin compromiso</div>
           <div class="trial-sub">Sin tarjeta de crédito · Cancelás cuando querés · Acceso completo a todas las funciones</div>
         </div>
-        <div class="trial-banner-right">🎁</div>
+        <div class="trial-banner-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+      </div>
+
+      <div class="currency-switch" id="currency-switch">
+        <button class="currency-btn is-active" data-currency="UYU">UYU</button>
+        <button class="currency-btn" data-currency="ARS">ARS</button>
+        <button class="currency-btn" data-currency="CLP">CLP</button>
+        <button class="currency-btn" data-currency="PEN">PEN</button>
       </div>
 
       <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
 
-        <!-- BÁSICO -->
+        <!-- FREE -->
         <div class="pricing-card">
-          <div class="pricing-name">Básico</div>
+          <div class="pricing-name">Free</div>
           <div class="pricing-price">
-            <span class="pricing-currency">USD</span>
-            <span class="pricing-amount" style="color:var(--purple);">15</span>
-            <span class="pricing-period">/mes</span>
+            <span class="pricing-amount" style="color:var(--purple);">Gratis</span>
           </div>
-          <p class="pricing-desc">Ideal para profesionales independientes que quieren organizarse sin complicaciones.</p>
+          <p class="pricing-desc">Para empezar a organizar tu negocio hoy mismo, sin pagar nada.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 usuario administrador</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Plataforma completa</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Link de reserva ilimitado</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Agenda online</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios manuales</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Soporte por WhatsApp</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 salón, 1 sucursal, 1 profesional</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Calendario ilimitado</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Reservas a través del link (limitadas)</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>CRM completo</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios y confirmaciones por email</li>
           </ul>
-          <a href="https://turnix.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Crear cuenta</a>
-          <div class="free-trial-badge">🎁 14 días gratis</div>
+          <a href="https://turnix.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Crear cuenta gratis</a>
         </div>
 
         <!-- PRO -->
@@ -1708,101 +1718,48 @@
           <div class="pricing-badge">Más popular</div>
           <div class="pricing-name">Pro</div>
           <div class="pricing-price">
-            <span class="pricing-currency">USD</span>
-            <span class="pricing-amount" style="color:var(--cyan);">75</span>
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-pro" style="color:var(--cyan);">799</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Para negocios que quieren automatizar reservas y recordatorios por WhatsApp.</p>
+          <p class="pricing-desc">Para negocios que quieren automatizar reservas, cobros y recordatorios.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Básico</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>10 usuarios</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>200 reservas automáticas por WhatsApp</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>200 recordatorios por WhatsApp</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Bot de WhatsApp incluido</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Panel de control unificado</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Soporte prioritario</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Free</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios automáticos y confirmaciones por WhatsApp</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Pago de seña integrado con Mercado Pago</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Reservas ilimitadas a través del link</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Hasta 5 profesionales</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Página de perfil propia con imágenes</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Link de reserva totalmente personalizable: apariencia, preguntas, horarios y recordatorios</li>
           </ul>
           <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Pro" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
-          <div class="free-trial-badge" style="top:40px;">🎁 14 días gratis</div>
+          <div class="free-trial-badge" style="top:40px;">30 días gratis</div>
         </div>
 
         <!-- MAX -->
         <div class="pricing-card">
           <div class="pricing-name">Max</div>
           <div class="pricing-price">
-            <span class="pricing-currency">USD</span>
-            <span class="pricing-amount" style="color:var(--orange);">149</span>
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-max" style="color:var(--orange);">1.499</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Para negocios con alto volumen de turnos que necesitan el máximo rendimiento.</p>
+          <p class="pricing-desc">Para negocios que quieren crecer con campañas y datos de verdad.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Todo lo del plan Pro</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Usuarios ilimitados</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>500 reservas automáticas por WhatsApp</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>500 recordatorios por WhatsApp</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Bot de WhatsApp incluido</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Panel de control unificado</li>
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Soporte prioritario</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Campañas promocionales por email y WhatsApp</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del negocio</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del cliente</li>
           </ul>
           <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Max" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
-          <div class="free-trial-badge">🎁 14 días gratis</div>
+          <div class="free-trial-badge">30 días gratis</div>
         </div>
 
       </div>
-
-      <!-- PAQUETES ADICIONALES -->
-      <div style="margin-top: 56px;">
-        <div style="text-align:center; margin-bottom: 32px;">
-          <div class="section-tag" style="color:var(--purple); display:inline-block;">Paquetes adicionales</div>
-          <h3 style="font-size:26px; font-weight:900; color:var(--dark); margin-top:8px;">¿Necesitás más? Sumá un pack</h3>
-          <p style="color:var(--mid); font-size:15px; margin-top:8px;">Compatible con cualquier plan. Se acumulan a tus reservas y recordatorios mensuales.</p>
-        </div>
-        <div class="pricing-packs-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; max-width:700px; margin:0 auto;">
-
-          <div style="background:#fff; border:2px solid var(--border); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:12px;">
-            <div style="font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid);">Pack 100</div>
-            <div style="display:flex; align-items:flex-end; gap:4px;">
-              <span style="font-weight:800; font-size:18px; color:var(--mid);">USD</span>
-              <span style="font-weight:900; font-size:48px; line-height:1; letter-spacing:-2px; color:var(--purple);">50</span>
-            </div>
-            <div style="height:1.5px; background:var(--border);"></div>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>100 reservas automáticas por bot</li>
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>100 recordatorios por WhatsApp</li>
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--mid);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>Se suma a tu plan actual</li>
-            </ul>
-          </div>
-
-          <div style="background:#fff; border:2px solid var(--purple); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:12px; position:relative;">
-            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--purple); color:#fff; font-size:11px; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:4px 14px; border-radius:20px; white-space:nowrap;">Mejor valor</div>
-            <div style="font-weight:900; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid);">Pack 200</div>
-            <div style="display:flex; align-items:flex-end; gap:4px;">
-              <span style="font-weight:800; font-size:18px; color:var(--mid);">USD</span>
-              <span style="font-weight:900; font-size:48px; line-height:1; letter-spacing:-2px; color:var(--purple);">95</span>
-            </div>
-            <div style="height:1.5px; background:var(--border);"></div>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>200 reservas automáticas por bot</li>
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--dark);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>200 recordatorios por WhatsApp</li>
-              <li style="display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--mid);"><span style="background:#F2E8FA; color:var(--purple); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; flex-shrink:0;">✓</span>Se suma a tu plan actual</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-section" id="demo">
-    <div class="cta-inner">
-      <img src="assets/turnixfinal.png" alt="turnix" class="cta-mascot" />
-      <h2 class="cta-title">¿Listo para organizarte de una vez?</h2>
-      <p class="cta-sub">Pedí tu demo gratis y en minutos vas a ver cómo turnix le cambia la cara a tu negocio.</p>
-      <a href="mailto:hola@espressodevs.com" class="btn btn-white btn-large">📩 &nbsp;Pedí tu demo ahora</a>
-      <p class="cta-note">Sin compromiso · Respondemos en menos de 24hs</p>
+      <p class="pricing-fx-note" id="pricing-fx-note" hidden>Precio de referencia según el tipo de cambio del día. La facturación se realiza en UYU.</p>
     </div>
   </section>
 
@@ -2031,6 +1988,36 @@
       });
       window.addEventListener('resize', renderDots);
       renderDots();
+    })();
+
+    // switch de moneda en precios
+    // Cotizaciones del 2026-07-09 (exchangerate-api.com, base UYU):
+    // ARS 36.98 · CLP 23.03 · PEN 0.0845 — redondeado hacia arriba a terminación 999/9
+    (function () {
+      var PRICES = {
+        UYU: { pro: '799', max: '1.499' },
+        ARS: { pro: '29.999', max: '55.999' },
+        CLP: { pro: '18.999', max: '34.999' },
+        PEN: { pro: '69', max: '129' }
+      };
+      var wrap = document.getElementById('currency-switch');
+      if (!wrap) return;
+      var note = document.getElementById('pricing-fx-note');
+      var buttons = wrap.querySelectorAll('.currency-btn');
+
+      function setCurrency(code) {
+        var p = PRICES[code];
+        if (!p) return;
+        document.querySelectorAll('.js-currency').forEach(function (el) { el.textContent = code; });
+        document.querySelectorAll('.js-price-pro').forEach(function (el) { el.textContent = p.pro; });
+        document.querySelectorAll('.js-price-max').forEach(function (el) { el.textContent = p.max; });
+        buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === code); });
+        if (note) note.hidden = (code === 'UYU');
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setCurrency(b.dataset.currency); });
+      });
     })();
   </script>
 </body>
