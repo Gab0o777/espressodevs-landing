@@ -198,6 +198,18 @@
       position: relative;
       overflow: hidden;
     }
+    /* funde los blobs hacia blanco para que no se corten contra la sección siguiente */
+    .hero-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white));
+      pointer-events: none;
+      z-index: 0;
+    }
     .hero-blob {
       position: absolute;
       border-radius: 50%;
@@ -583,54 +595,217 @@
     }
     .section-header { margin-bottom: 56px; }
 
-    /* ── FEATURES ── */
-    .features { background: var(--white); }
-    .features-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      margin-bottom: 48px;
-    }
-    .features-hero-img {
-      height: 258px;
-      flex-shrink: 0;
-      margin-right: 130px;
-    }
-    .features-grid {
+    /* ── NEGOCIOS (carrusel) ── */
+    .biz-carousel { position: relative; }
+    .biz-track {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 72px) / 4);
       gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 6px 2px 10px;
     }
-    .feature-card {
-      background: var(--light);
-      border-radius: 16px;
-      padding: 20px 22px;
+    .biz-track::-webkit-scrollbar { display: none; }
+    .biz-card {
+      background: var(--white);
       border: 1.5px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      box-shadow: 0 10px 28px rgba(30,30,46,.05);
+      display: flex;
+      flex-direction: column;
       transition: transform .2s, box-shadow .2s;
     }
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.08);
-    }
-    .feature-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .feature-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
+    .biz-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(30,30,46,.09); }
+    .biz-photo {
+      height: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+    }
+    .biz-photo svg { width: 52px; height: 52px; color: rgba(255,255,255,.92); }
+    .biz-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .biz-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .biz-name svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .biz-desc { font-size: 13.5px; font-weight: 600; color: var(--mid); line-height: 1.5; margin-bottom: 14px; }
+    .biz-link {
+      margin-top: auto;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    .biz-link:hover { text-decoration: underline; }
+    .biz-arrow {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 20px rgba(30,30,46,.10);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid);
+      z-index: 2;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .biz-arrow:hover { transform: translateY(-50%) scale(1.06); box-shadow: 0 10px 24px rgba(30,30,46,.16); }
+    .biz-arrow svg { width: 18px; height: 18px; }
+    .biz-prev { left: -58px; }
+    .biz-next { right: -58px; }
+    .biz-dots { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+    .biz-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #D6DAE6;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .biz-dot.is-active { background: var(--cyan); }
+
+    /* ── FUNCIONALIDADES CLAVE ── */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .feat-item { text-align: center; }
+    .feat-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .feat-icon svg { width: 28px; height: 28px; }
+    .feat-title { font-weight: 900; font-size: 15px; line-height: 1.3; margin-bottom: 8px; }
+    .feat-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.5; }
+
+    /* ── TESTIMONIAL ── */
+    .testi {
+      background: linear-gradient(115deg, #EFEAFB 0%, #FAEFF8 55%, #ECE6FA 100%);
+      border-radius: 26px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 72px;
+    }
+    .testi-mark { flex-shrink: 0; color: var(--purple); opacity: .85; }
+    .testi-mark svg { width: 52px; height: 52px; }
+    .testi-text {
+      flex: 1;
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.45;
+      letter-spacing: -.3px;
+    }
+    .testi-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .testi-avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: var(--white);
+      font-weight: 900;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
-    .feature-title { font-weight: 900; font-size: 15px; letter-spacing: -.2px; }
-    .feature-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.55; }
+    .testi-name { font-weight: 900; font-size: 15px; }
+    .testi-role { font-size: 13px; font-weight: 600; color: var(--mid); }
+    .testi-stars { color: #F5C800; font-size: 13px; letter-spacing: 2px; margin-top: 2px; }
+    .testi-div { width: 1.5px; height: 84px; background: rgba(30,30,46,.09); flex-shrink: 0; }
+    .testi-count { flex-shrink: 0; }
+    .testi-count-num { font-size: 32px; font-weight: 900; color: var(--purple); letter-spacing: -1px; line-height: 1.1; }
+    .testi-count-label { font-size: 13px; font-weight: 700; color: var(--mid); line-height: 1.35; max-width: 140px; }
+    .testi-faces { display: flex; align-items: center; margin-top: 10px; }
+    .testi-face {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .testi-face:first-child { margin-left: 0; }
+    .testi-face-more { font-size: 12px; font-weight: 800; color: var(--mid); margin-left: 8px; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      position: relative;
+      background: linear-gradient(160deg, #EAF7FB 0%, #F1FAF3 100%);
+      border-radius: 30px;
+      padding: 52px 56px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      overflow: hidden;
+      margin-top: 28px;
+    }
+    .cta-band::before,
+    .cta-band::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-band::before { width: 340px; height: 340px; background: rgba(41,183,211,.10); top: -160px; right: -100px; }
+    .cta-band::after { width: 280px; height: 280px; background: rgba(125,192,68,.10); bottom: -140px; left: 32%; }
+    .cta-band-img {
+      height: 225px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      border-radius: 22px;
+      box-shadow: 0 18px 44px rgba(30,30,46,.10);
+    }
+    .cta-band-content { flex: 1; text-align: center; position: relative; z-index: 1; }
+    .cta-band-title {
+      font-weight: 900;
+      font-size: clamp(26px, 3vw, 38px);
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .cta-band-sub { font-size: 16px; font-weight: 600; color: var(--mid); margin-bottom: 26px; }
+    .cta-band-checks {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 20px;
+    }
 
     /* ── ANTES / DESPUÉS ── */
     .ba-grid {
@@ -1045,10 +1220,22 @@
       .how-card::after { display: none !important; }
       .how-mascot img { max-width: 200px; }
 
-      /* Features */
-      .features-grid { grid-template-columns: 1fr; }
-      .features-header { flex-direction: column; gap: 20px; }
-      .features-hero-img { display: none; }
+      /* Negocios */
+      .biz-track { grid-auto-columns: calc((100% - 24px) / 2); }
+      .biz-arrow { display: none; }
+
+      /* Funcionalidades clave */
+      .feat-grid { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
+
+      /* Testimonial */
+      .testi { flex-direction: column; text-align: center; padding: 32px 24px; gap: 20px; margin-top: 52px; }
+      .testi-div { width: 84px; height: 1.5px; }
+      .testi-count-label { max-width: none; }
+      .testi-faces { justify-content: center; }
+
+      /* CTA band */
+      .cta-band { flex-direction: column; padding: 36px 24px; gap: 24px; }
+      .cta-band-img { height: 160px; }
 
       /* Pricing */
       .pricing-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
@@ -1075,6 +1262,8 @@
       .calmock-appt-time { display: none; }
       .ba-card { padding: 28px 24px 0; }
       .ba-list li { font-size: 14px; }
+      .biz-track { grid-auto-columns: 82%; }
+      .feat-grid { grid-template-columns: repeat(2, 1fr); }
       .pricing-grid { max-width: 100%; }
       .pricing-amount { font-size: 52px; }
       .trial-days { font-size: 44px; }
@@ -1321,59 +1510,150 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features" id="features" style="padding-top: 48px;">
+  <!-- PARA CADA NEGOCIO -->
+  <section id="negocios" style="padding-bottom: 36px;">
     <div class="section-inner">
-      <div class="features-header">
-        <div>
-          <div class="section-tag" style="color: var(--cyan);">Funcionalidades</div>
-          <h2 class="section-title">Todo lo que necesitás<br />en un solo lugar</h2>
-          <p class="section-sub">Pensado para negocios reales. Simple para vos, cómodo para tus clientes.</p>
-        </div>
-        <img src="assets/turnixenaccio_n.png" alt="turnix en acción" class="features-hero-img" />
+      <div class="section-header" style="text-align:center; margin-bottom: 36px;">
+        <div class="section-tag" style="color: var(--cyan);">Para cada negocio</div>
+        <h2 class="section-title">turnix se adapta a vos</h2>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#E8F9FC; color:var(--cyan);">📅</div>
-            <div class="feature-title">Agenda en tiempo real</div>
+      <div class="biz-carousel">
+        <button class="biz-arrow biz-prev" id="biz-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="biz-track" id="biz-track">
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #29B7D3, #1E8FAB);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Barberías</div>
+              <p class="biz-desc">Agenda, recordatorios y más clientes.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
           </div>
-          <p class="feature-desc">Visualizá todos tus turnos del día, semana o mes. Actualizaciones instantáneas para que nunca te superpongas.</p>
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #E91E96, #B8156F);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Nail Studio</div>
+              <p class="biz-desc">Organizá servicios, profesionales y horarios.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #7DC044, #5A9A2B);"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--green)"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg>Veterinarias</div>
+              <p class="biz-desc">Turnos, vacunas y recordatorios automáticos.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #8B44BF, #62308A);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg>Centros de estética</div>
+              <p class="biz-desc">Agendá, confirmá y fidelizá a tus clientes.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #F5A623, #D68410);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>Estudios de tatuajes</div>
+              <p class="biz-desc">Sesiones, señas y seguimiento de cada trabajo.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo" style="background: linear-gradient(135deg, #F5C800, #D1A900);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Peluquerías</div>
+              <p class="biz-desc">Color, corte y agenda siempre llena.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#F2E8FA; color:var(--purple);">🔔</div>
-            <div class="feature-title">Recordatorios automáticos</div>
-          </div>
-          <p class="feature-desc">Turnix avisa a tus clientes antes de su turno. Reducí los ausentismos sin hacer nada.</p>
+        <button class="biz-arrow biz-next" id="biz-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="biz-dots" id="biz-dots"></div>
+    </div>
+  </section>
+
+  <!-- FUNCIONALIDADES CLAVE -->
+  <section id="features" style="padding-top: 36px;">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center; margin-bottom: 44px;">
+        <div class="section-tag" style="color: var(--purple);">Funcionalidades clave</div>
+        <h2 class="section-title">Todo lo que necesitás, en un solo lugar</h2>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E7ECFB; color:#3B5BDB;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16.01" y2="14"/><line x1="8" y1="18" x2="8.01" y2="18"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="feat-title">Agenda inteligente</div>
+          <p class="feat-desc">Visualizá tu día, semana y mes en segundos.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#FCE8F3; color:var(--pink);">🔗</div>
-            <div class="feature-title">Reservas desde cualquier lado</div>
-          </div>
-          <p class="feature-desc">Tus clientes reservan desde el celular, la web o redes sociales. Sin llamadas, sin idas y venidas.</p>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#F2E8FA; color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="feat-title">Reservas 24/7</div>
+          <p class="feat-desc">Tus clientes reservan incluso mientras dormís.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#FEF3E2; color:var(--orange);">📊</div>
-            <div class="feature-title">Panel de control claro</div>
-          </div>
-          <p class="feature-desc">Un tablero simple que te muestra lo importante: quién viene, cuándo, y cuánto estás facturando.</p>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E5F8EA; color:#25D366;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+          <div class="feat-title">Recordatorios por WhatsApp</div>
+          <p class="feat-desc">Menos olvidos, más asistencia.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#FFFBDB; color:var(--yellow);">⚡</div>
-            <div class="feature-title">Configuración exprés</div>
-          </div>
-          <p class="feature-desc">En menos de 5 minutos tu negocio ya está funcionando. Sin tutoriales kilométricos ni soporte técnico.</p>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E8F9FC; color:var(--cyan);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <div class="feat-title">Reprogramación fácil</div>
+          <p class="feat-desc">Tus clientes cambian sin escribirte.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon" style="background:#EEF7E3; color:var(--green);">👥</div>
-            <div class="feature-title">Multi-usuario</div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#FFFBDB; color:var(--yellow);"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="feat-title">Reseñas y feedback</div>
+          <p class="feat-desc">Construí reputación y confianza.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#F2E8FA; color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></svg></div>
+          <div class="feat-title">Estadísticas</div>
+          <p class="feat-desc">Tomá mejores decisiones con datos reales.</p>
+        </div>
+      </div>
+
+      <!-- TESTIMONIAL -->
+      <div class="testi">
+        <div class="testi-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C13.5 7.5 12 5 9.5 5zm10 0c-3 0-5.5 2.5-5.5 5.5 0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C23.5 7.5 22 5 19.5 5z"/></svg></div>
+        <p class="testi-text">turnix cambió la forma en que trabajamos. Más orden, más clientes y mucho menos estrés.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">CR</div>
+          <div>
+            <div class="testi-name">Camila Rodríguez</div>
+            <div class="testi-role">Studio Glam</div>
+            <div class="testi-stars">★★★★★</div>
           </div>
-          <p class="feature-desc">¿Tenés equipo? Sumá colaboradores y cada uno gestiona su propia agenda desde el mismo sistema.</p>
+        </div>
+        <div class="testi-div"></div>
+        <div class="testi-count">
+          <div class="testi-count-num">+1.200</div>
+          <div class="testi-count-label">negocios ya confían en turnix</div>
+          <div class="testi-faces">
+            <span class="testi-face" style="background:var(--cyan);">MA</span>
+            <span class="testi-face" style="background:var(--purple);">JL</span>
+            <span class="testi-face" style="background:var(--pink);">SO</span>
+            <span class="testi-face" style="background:var(--orange);">DP</span>
+            <span class="testi-face" style="background:var(--green);">LU</span>
+            <span class="testi-face-more">+987</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA BAND -->
+      <div class="cta-band">
+        <img src="assets/turnixenaccio_n.png" alt="turni marcando turnos confirmados en el calendario" class="cta-band-img" />
+        <div class="cta-band-content">
+          <h2 class="cta-band-title">¿Listo para olvidarte<br />de los mensajes?</h2>
+          <p class="cta-band-sub">Probá turnix gratis y empezá a llenar tu agenda hoy mismo.</p>
+          <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo ahora &nbsp;→</a>
+          <div class="hero-checks cta-band-checks">
+            <span class="hero-check">Sin tarjeta de crédito</span>
+            <span class="hero-check">Configuración en minutos</span>
+            <span class="hero-check">Cancelás cuando quieras</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1694,6 +1974,63 @@
 
       seedInitial();
       setInterval(tick, 1500);
+    })();
+
+    // carrusel "para cada negocio"
+    (function () {
+      var track = document.getElementById('biz-track');
+      var prev = document.getElementById('biz-prev');
+      var next = document.getElementById('biz-next');
+      var dotsWrap = document.getElementById('biz-dots');
+      if (!track || !prev || !next || !dotsWrap) return;
+
+      function step() {
+        var card = track.querySelector('.biz-card');
+        return card ? card.offsetWidth + 24 : 320;
+      }
+
+      function pageCount() {
+        var scrollable = track.scrollWidth - track.clientWidth;
+        if (scrollable <= 4) return 1;
+        return Math.round(scrollable / step()) + 1;
+      }
+
+      function currentPage() {
+        return Math.round(track.scrollLeft / step());
+      }
+
+      function renderDots() {
+        var count = pageCount();
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'biz-dot' + (i === currentPage() ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'Ir a la posición ' + (i + 1));
+          (function (idx) {
+            dot.addEventListener('click', function () {
+              track.scrollTo({ left: idx * step(), behavior: 'smooth' });
+            });
+          })(i);
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        var dots = dotsWrap.querySelectorAll('.biz-dot');
+        var page = currentPage();
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === page); });
+      }
+
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+
+      var scrollTimer;
+      track.addEventListener('scroll', function () {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateDots, 80);
+      });
+      window.addEventListener('resize', renderDots);
+      renderDots();
     })();
   </script>
 </body>
