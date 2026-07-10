@@ -473,7 +473,7 @@
     .client-logo.caps { font-size: 12px; letter-spacing: .5px; line-height: 1.15; font-weight: 900; }
 
     /* ── STATS BAND ── */
-    .stats-band { padding: 44px 48px 80px; background: var(--white); }
+    .stats-band { padding: 44px 48px 56px; background: var(--white); }
     .stats-card {
       max-width: 1240px;
       margin: 0 auto;
@@ -535,137 +535,179 @@
     .text-center { text-align: center; }
     .text-center .section-sub { margin: 0 auto; }
 
-    /* ── SERVICIOS ── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .service-card {
-      background: var(--light);
-      border-radius: 14px;
-      padding: 20px 22px;
-      border: 1.5px solid var(--border);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .service-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(0,0,0,.07);
-    }
-    .service-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
+    /* ── CARRUSEL (compartido) ── */
+    .carousel-wrap { position: relative; }
+    .car-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 10px;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 8px 2px;
     }
-    .service-title { font-weight: 900; font-size: 15px; letter-spacing: -.2px; margin-bottom: 12px; }
-    .service-divider { height: 1px; background: var(--border); margin-bottom: 12px; opacity: .6; }
-    .service-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.55; }
-
-    /* ── PRODUCTS ── */
-    .products { background: var(--light); }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .product-card {
-      background: var(--white);
-      border-radius: 24px;
-      border: 2px solid var(--border);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 56px rgba(0,0,0,.10);
-    }
-    .product-card.featured { border-color: var(--cyan); }
-    .product-card-header {
-      padding: 20px 24px 16px;
-      border-bottom: 1.5px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .product-logo { height: 160px; margin-bottom: 8px; display: block; }
-    .product-tag {
+    .car-track::-webkit-scrollbar { display: none; }
+    .car-btn {
       position: absolute;
-      top: 20px; right: 20px;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 100px;
-    }
-    .product-name { font-weight: 900; font-size: 22px; letter-spacing: -.5px; margin-bottom: 8px; }
-    .product-tagline { font-size: 14px; font-weight: 600; color: var(--mid); line-height: 1.55; margin-top: -39px; }
-    .product-card-body {
-      padding: 16px 24px 24px;
-      flex: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 6px 18px rgba(26,26,46,.09);
       display: flex;
-      flex-direction: column;
-    }
-    .product-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .product-pill { font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 100px; }
-    .product-desc { font-size: 14px; font-weight: 600; color: var(--mid); line-height: 1.7; margin-bottom: 28px; flex: 1; }
-    .product-cta { margin-top: auto; }
-
-    .product-card.soon {
-      border: 2px dashed var(--border);
-      opacity: .65;
-    }
-    .product-card.soon:hover { transform: none; box-shadow: none; }
-    .soon-center {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 64px 32px;
-      text-align: center;
-      gap: 14px;
-    }
-    .soon-icon { font-size: 48px; opacity: .4; }
-    .soon-title { font-weight: 900; font-size: 17px; color: var(--mid); }
-    .soon-badge {
-      font-size: 11px;
+      font-size: 17px;
       font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 100px;
-      background: var(--light);
-      color: var(--mid);
+      color: var(--dark);
+      cursor: pointer;
+      z-index: 2;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .car-btn:hover { transform: translateY(-50%) scale(1.06); box-shadow: 0 8px 22px rgba(26,26,46,.13); }
+    .car-prev { left: -58px; }
+    .car-next { right: -58px; }
+    .car-dots { display: flex; gap: 8px; justify-content: center; margin-top: 26px; }
+    .car-dot { width: 8px; height: 8px; border-radius: 50%; background: #DDE0EE; transition: background .2s; }
+    .car-dot.active { background: var(--violet); }
+
+    /* ── PRODUCTOS ── */
+    .prod-section { position: relative; }
+    .dots-deco {
+      position: absolute;
+      width: 130px; height: 96px;
+      background-image: radial-gradient(#D9DCEC 2px, transparent 2.5px);
+      background-size: 17px 17px;
+      bottom: 34px; left: 8px;
+      pointer-events: none;
+    }
+    .prod-card {
+      flex: 0 0 calc((100% - 44px) * .3);
+      min-width: 0;
+      scroll-snap-align: start;
+      background: var(--white);
       border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,26,46,.08); }
+    .prod-icon {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+    .prod-title { font-weight: 900; font-size: 16px; letter-spacing: -.2px; margin-bottom: 10px; }
+    .prod-desc { font-size: 13.5px; font-weight: 600; color: var(--mid); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+    .prod-link { font-size: 13.5px; font-weight: 800; color: var(--violet); text-decoration: none; margin-top: auto; }
+    .prod-link:hover { text-decoration: underline; }
+
+    .prod-card-turnix {
+      flex: 0 0 calc((100% - 44px) * .4);
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 20px;
+      border-color: #D8C8F7;
+      box-shadow: 0 12px 36px rgba(124,58,237,.09);
+      padding: 24px 26px 24px 20px;
+    }
+    .prod-card-turnix:hover { box-shadow: 0 18px 44px rgba(124,58,237,.14); }
+    .turnix-mascot { width: 41%; flex-shrink: 0; align-self: flex-end; }
+    .turnix-mascot img { width: 100%; display: block; }
+    .turnix-body { flex: 1; min-width: 0; display: flex; flex-direction: column; align-self: stretch; }
+    .turnix-wordmark { font-weight: 900; font-size: 32px; letter-spacing: -1px; line-height: 1; margin-bottom: 12px; }
+    .turnix-wordmark span:nth-child(1) { color: var(--cyan); }
+    .turnix-wordmark span:nth-child(2) { color: var(--purple); }
+    .turnix-wordmark span:nth-child(3) { color: var(--pink); }
+    .turnix-wordmark span:nth-child(4) { color: var(--orange); }
+    .turnix-wordmark span:nth-child(5) { color: var(--yellow); }
+    .turnix-wordmark span:nth-child(6) { color: var(--green); }
+    .turnix-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.6; margin-bottom: 14px; }
+    .turnix-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .turnix-pill {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 100px;
+      background: #E7F1EA;
+      color: var(--dark);
+      white-space: nowrap;
     }
 
-    /* ── VALUES ── */
-    .values-grid {
+    /* ── SERVICIOS ── */
+    .svc-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 860px;
-      margin: 0 auto;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
     }
-    .value-card {
-      text-align: center;
-      padding: 36px 20px;
-      border-radius: 20px;
+    .svc-card {
+      background: var(--white);
       border: 1.5px solid var(--border);
-      transition: transform .2s;
+      border-radius: 18px;
+      padding: 26px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
     }
-    .value-card:hover { transform: translateY(-3px); }
-    .value-emoji { font-size: 36px; margin-bottom: 14px; }
-    .value-title { font-weight: 900; font-size: 16px; margin-bottom: 8px; }
-    .value-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.55; }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,26,46,.08); }
+    .svc-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .svc-title { font-weight: 900; font-size: 15px; letter-spacing: -.2px; margin-bottom: 10px; }
+    .svc-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+    .svc-link { font-size: 13px; font-weight: 800; color: var(--violet); text-decoration: none; margin-top: auto; }
+    .svc-link:hover { text-decoration: underline; }
+
+    /* ── PROCESO ── */
+    .process-track { gap: 0; padding: 8px 0 4px; }
+    .p-step {
+      flex: 1 0 14.28%;
+      min-width: 132px;
+      scroll-snap-align: start;
+      position: relative;
+      text-align: center;
+      padding: 0 10px;
+    }
+    .p-step::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      right: 50%;
+      width: 100%;
+      border-top: 2px dashed #E0E4F0;
+      z-index: 0;
+    }
+    .p-step:first-child::before { display: none; }
+    .p-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 6px 18px rgba(26,26,46,.08);
+    }
+    .p-icon.code { font-size: 16px; font-weight: 900; color: #22A15C; letter-spacing: -.5px; }
+    .p-num { font-size: 11px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 5px; }
+    .p-title { font-size: 13px; font-weight: 900; letter-spacing: -.2px; margin-bottom: 6px; }
+    .p-desc { font-size: 11.5px; font-weight: 600; color: var(--mid); line-height: 1.55; }
 
     /* ── CTA ── */
     .cta-section {
@@ -774,9 +816,14 @@
       .stat-item { padding: 4px 0 4px 24px; }
       .stat-item:nth-child(odd) { padding-left: 0; }
     }
+    @media (max-width: 1240px) {
+      .car-prev { left: -10px; }
+      .car-next { right: -10px; }
+    }
     @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .values-grid   { grid-template-columns: 1fr 1fr; }
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .prod-card { flex-basis: 44%; }
+      .prod-card-turnix { flex-basis: 62%; }
     }
 
     /* ── RESPONSIVE MOBILE ── */
@@ -837,14 +884,21 @@
       .stats-band { padding: 36px 20px 60px; }
       .stats-card { padding: 26px 24px; }
 
+      /* Productos carrusel */
+      .prod-card { flex-basis: 74%; }
+      .prod-card-turnix { flex-basis: 88%; flex-direction: column; align-items: stretch; }
+      .turnix-mascot { width: 52%; margin: 0 auto; }
+      .car-btn { width: 38px; height: 38px; }
+      .car-prev { left: -6px; }
+      .car-next { right: -6px; }
+      .dots-deco { display: none; }
+
       /* Servicios */
-      .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .svc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .svc-card { padding: 18px 16px; }
 
-      /* Productos */
-      .products-grid { grid-template-columns: 1fr; max-width: 100%; }
-
-      /* Valores */
-      .values-grid { grid-template-columns: 1fr; max-width: 100%; }
+      /* Proceso */
+      .p-step { min-width: 150px; }
 
       /* CTA */
       .cta-section { padding: 64px 20px; }
@@ -859,7 +913,9 @@
 
     /* ── RESPONSIVE SMALL MOBILE ── */
     @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .prod-card { flex-basis: 86%; }
+      .prod-card-turnix { flex-basis: 92%; }
       .hero-title { font-size: clamp(30px, 8.4vw, 40px); }
       .journey { padding: 0; }
       .journey-icon { width: 32px; height: 32px; font-size: 14px; }
@@ -869,8 +925,6 @@
       .chart-badge { bottom: 8px; right: 8px; }
       .stats-card { grid-template-columns: 1fr; gap: 20px; }
       .stat-item { border-right: none; padding: 0; }
-      .products-grid { gap: 16px; }
-      .soon-center { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -1082,121 +1136,148 @@
     </div>
   </div>
 
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-tag" style="color:var(--purple);">Lo que hacemos</div>
-        <h2 class="section-title">Servicios que<br />mueven negocios</h2>
-        <p class="section-sub">Desde la idea hasta el deploy. Trabajamos con startups, PYMEs y emprendedores que quieren crecer con tecnología.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon" style="background:#F2E8FA;">🌐</div>
-          <div class="service-title">Desarrollo Web</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">Sitios, plataformas y sistemas web a medida. Performance, SEO y diseño que convierte.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon" style="background:#E8F9FC;">📱</div>
-          <div class="service-title">Apps Móviles</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">iOS y Android con React Native. Una base de código, dos plataformas, toda la experiencia nativa.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon" style="background:#FCE8F3;">🤖</div>
-          <div class="service-title">Automatizaciones con IA</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">Bots inteligentes, flujos automáticos e integración de modelos de lenguaje en tus procesos.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon" style="background:#FEF3E2;">🎨</div>
-          <div class="service-title">Diseño UX/UI</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">Interfaces que los usuarios entienden y disfrutan. De wireframe a producto final con criterio y detalle.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon" style="background:#EEF7E3;">🔗</div>
-          <div class="service-title">Integraciones API</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">Conectamos tu negocio con pasarelas de pago, CRMs, ERPs, WhatsApp y cualquier servicio externo.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon" style="background:#FFFBDB;">⚡</div>
-          <div class="service-title">Consultoría Tech</div>
-          <div class="service-divider"></div>
-          <p class="service-desc">Te ayudamos a elegir el stack, definir la arquitectura y tomar mejores decisiones tecnológicas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- PRODUCTOS -->
-  <section class="products" id="productos">
+  <section class="prod-section" id="productos" style="padding-top: 56px;">
+    <div class="dots-deco"></div>
     <div class="section-inner">
       <div class="section-header text-center">
-        <div class="section-tag" style="color:var(--cyan);">Nuestros productos</div>
-        <h2 class="section-title">Software que creamos<br />para el mundo</h2>
-        <p class="section-sub">Además de trabajar con clientes, construimos nuestros propios productos. Soluciones reales a problemas reales.</p>
+        <div class="section-tag" style="color:var(--violet);">Nuestros productos</div>
+        <h2 class="section-title">Construimos productos que usamos<br />y mejoramos cada día</h2>
       </div>
-      <div class="products-grid">
+      <div class="carousel-wrap">
+        <button class="car-btn car-prev" data-scroll="#prodTrack" aria-label="Anterior">‹</button>
+        <div class="car-track" id="prodTrack">
 
-        <!-- TURNIX -->
-        <div class="product-card featured">
-          <div class="product-card-header" style="background: linear-gradient(145deg, #E8F9FC, #F2E8FA);">
-            <img src="turnix/assets/turnix_logo_transparent.png" alt="turnix" class="product-logo" />
-            <div class="product-tag" style="background:#E8F9FC; color:var(--cyan); border:1.5px solid var(--cyan);">Disponible</div>
-            <div class="product-tagline">Gestión de turnos inteligente vía WhatsApp para negocios de servicios.</div>
-          </div>
-          <div class="product-card-body">
-            <div class="product-pills">
-              <span class="product-pill" style="background:#E8F9FC; color:var(--cyan);">📅 Agenda online</span>
-              <span class="product-pill" style="background:#EEF7E3; color:var(--green);">🔔 Recordatorios</span>
-              <span class="product-pill" style="background:#F2E8FA; color:var(--purple);">🤖 Bot WhatsApp</span>
-              <span class="product-pill" style="background:#FEF3E2; color:var(--orange);">📊 Panel de control</span>
+          <div class="prod-card prod-card-turnix">
+            <div class="turnix-mascot">
+              <img src="turnix/assets/turni_ok.png" alt="Turni, la mascota de Turnix" />
             </div>
-            <p class="product-desc">
-              Peluquerías, barberías, tatuadores, veterinarias y más. Tus clientes reservan en segundos desde WhatsApp, vos gestionás todo desde un solo lugar.
-            </p>
-            <div class="product-cta">
-              <a href="/turnix/" class="btn btn-cyan" style="width:100%; justify-content:center;">Conocer turnix →</a>
+            <div class="turnix-body">
+              <div class="turnix-wordmark"><span>t</span><span>u</span><span>r</span><span>n</span><span>i</span><span>x</span></div>
+              <p class="turnix-desc">Gestión de turnos inteligente vía WhatsApp para negocios de servicios.</p>
+              <div class="turnix-pills">
+                <span class="turnix-pill">🏷️ SaaS</span>
+                <span class="turnix-pill">+12.000 reservas este mes</span>
+              </div>
+              <a href="/turnix/" class="prod-link">Conocer Turnix →</a>
             </div>
           </div>
-        </div>
 
-        <!-- TU PROYECTO CTA -->
-        <div class="product-card" style="background: linear-gradient(145deg, var(--dark), #2D1050); border-color: transparent; justify-content: center;">
-          <div class="soon-center" style="padding: 48px 32px; gap: 18px;">
-            <div style="font-size: 48px;">🚀</div>
-            <div style="font-weight: 900; font-size: 22px; color: white; letter-spacing: -.5px; text-align:center;">Tu proyecto,<br />nuestro código.</div>
-            <p style="font-size: 14px; font-weight: 600; color: rgba(255,255,255,.55); text-align: center; line-height: 1.65;">Contanos la idea. Te respondemos con un plan concreto en menos de 24hs.</p>
-            <a href="#contacto" class="btn btn-large" style="background: var(--purple); color: white; margin-top: 8px;">Hablemos →</a>
+          <div class="prod-card">
+            <div class="prod-icon" style="background:#E3F2FF;">📦</div>
+            <div class="prod-title">Próximamente</div>
+            <p class="prod-desc">Nuevos productos en camino. Estamos trabajando en ideas que resuelven problemas reales.</p>
+            <a href="#contacto" class="prod-link">Ver roadmap →</a>
           </div>
-        </div>
 
+          <div class="prod-card">
+            <div class="prod-icon" style="background:#FFF4CC;">💡</div>
+            <div class="prod-title">Ideas en validación</div>
+            <p class="prod-desc">Exploramos, validamos y construimos solo lo que tiene potencial real de generar impacto.</p>
+            <a href="#contacto" class="prod-link">Más sobre nuestro enfoque →</a>
+          </div>
+
+        </div>
+        <button class="car-btn car-next" data-scroll="#prodTrack" aria-label="Siguiente">›</button>
+      </div>
+      <div class="car-dots" id="prodDots">
+        <span class="car-dot active"></span>
+        <span class="car-dot"></span>
+        <span class="car-dot"></span>
       </div>
     </div>
   </section>
 
-  <!-- VALORES -->
-  <section style="background:var(--light); padding-top:0; padding-bottom:80px;">
+  <!-- SERVICIOS -->
+  <section id="servicios" style="padding-top: 48px;">
     <div class="section-inner">
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-emoji">⚡</div>
-          <div class="value-title">Velocidad</div>
-          <p class="value-desc">Iteramos rápido. Preferimos mostrar que explicar.</p>
+      <div class="section-header text-center">
+        <div class="section-tag" style="color:var(--violet);">Cómo te podemos ayudar</div>
+        <h2 class="section-title">Servicios que aceleran tu negocio</h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-icon" style="background:#F0EAFE;">📅</div>
+          <div class="svc-title">Producto Digital</div>
+          <p class="svc-desc">Desarrollamos SaaS, plataformas y MVPs que validan ideas y se convierten en negocios.</p>
+          <a href="#contacto" class="svc-link">Ver más →</a>
         </div>
-        <div class="value-card">
-          <div class="value-emoji">🎯</div>
-          <div class="value-title">Foco en el resultado</div>
-          <p class="value-desc">No construimos features por construir. Cada decisión tiene un por qué.</p>
+        <div class="svc-card">
+          <div class="svc-icon" style="background:#E9F7E9;">🤖</div>
+          <div class="svc-title">IA y Automatizaciones</div>
+          <p class="svc-desc">Implementamos inteligencia artificial, agentes y flujos que optimizan procesos y costos.</p>
+          <a href="#contacto" class="svc-link">Ver más →</a>
         </div>
-        <div class="value-card">
-          <div class="value-emoji">💬</div>
-          <div class="value-title">Comunicación directa</div>
-          <p class="value-desc">Sin intermediarios, sin burocracia. Hablás directo con quien escribe el código.</p>
+        <div class="svc-card">
+          <div class="svc-icon" style="background:#E3F2FF;">☁️</div>
+          <div class="svc-title">Escalamiento</div>
+          <p class="svc-desc">Arquitectura, performance y cloud para productos que necesitan crecer sin límites.</p>
+          <a href="#contacto" class="svc-link">Ver más →</a>
         </div>
+        <div class="svc-card">
+          <div class="svc-icon" style="background:#FCE8F3;">👥</div>
+          <div class="svc-title">Equipos y Consultoría</div>
+          <p class="svc-desc">Te acompañamos con equipos dedicados o como tu CTO tecnológico.</p>
+          <a href="#contacto" class="svc-link">Ver más →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso" style="padding-top: 48px;">
+    <div class="section-inner">
+      <div class="section-header text-center">
+        <div class="section-tag" style="color:var(--violet);">Nuestro proceso</div>
+        <h2 class="section-title">Un proceso claro. Transparente. Eficiente.</h2>
+      </div>
+      <div class="carousel-wrap">
+        <button class="car-btn car-prev" data-scroll="#processTrack" aria-label="Anterior">‹</button>
+        <div class="car-track process-track" id="processTrack">
+          <div class="p-step">
+            <div class="p-icon" style="background:#FFF4CC;">🔍</div>
+            <div class="p-num" style="color:var(--orange);">01</div>
+            <div class="p-title">Descubrimiento</div>
+            <p class="p-desc">Entendemos el problema y el objetivo del negocio.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon" style="background:#F0EAFE;">🎯</div>
+            <div class="p-num" style="color:var(--violet);">02</div>
+            <div class="p-title">Estrategia</div>
+            <p class="p-desc">Definimos el plan, alcance y métricas de éxito.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon" style="background:#E3F2FF;">✏️</div>
+            <div class="p-num" style="color:#2E9BD6;">03</div>
+            <div class="p-title">Diseño UX/UI</div>
+            <p class="p-desc">Diseñamos experiencias que tus usuarios aman.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon code" style="background:#E9F7E9;">&lt;/&gt;</div>
+            <div class="p-num" style="color:#22A15C;">04</div>
+            <div class="p-title">Desarrollo</div>
+            <p class="p-desc">Escribimos código limpio, probado y escalable.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon" style="background:#FCE8F3;">🛡️</div>
+            <div class="p-num" style="color:var(--pink);">05</div>
+            <div class="p-title">Testing</div>
+            <p class="p-desc">Probamos, iteramos y aseguramos calidad.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon" style="background:#E8F9FC;">🚀</div>
+            <div class="p-num" style="color:var(--cyan);">06</div>
+            <div class="p-title">Deploy</div>
+            <p class="p-desc">Llevamos tu producto a producción.</p>
+          </div>
+          <div class="p-step">
+            <div class="p-icon" style="background:#F0EAFE;">📊</div>
+            <div class="p-num" style="color:var(--violet);">07</div>
+            <div class="p-title">Escalar</div>
+            <p class="p-desc">Medimos, aprendemos y escalamos juntos.</p>
+          </div>
+        </div>
+        <button class="car-btn car-next" data-scroll="#processTrack" aria-label="Siguiente">›</button>
       </div>
     </div>
   </section>
@@ -1259,6 +1340,23 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('.car-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var track = document.querySelector(btn.dataset.scroll);
+        var dir = btn.classList.contains('car-prev') ? -1 : 1;
+        track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+    var prodTrack = document.getElementById('prodTrack');
+    var prodDots = document.querySelectorAll('#prodDots .car-dot');
+    prodTrack.addEventListener('scroll', function () {
+      var max = prodTrack.scrollWidth - prodTrack.clientWidth;
+      var idx = max > 0 ? Math.round((prodTrack.scrollLeft / max) * (prodDots.length - 1)) : 0;
+      prodDots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
