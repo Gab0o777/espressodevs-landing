@@ -632,8 +632,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
-    .biz-photo svg { width: 52px; height: 52px; color: rgba(255,255,255,.92); }
+    .biz-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .biz-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
     .biz-name {
       display: flex;
@@ -953,7 +954,7 @@
     .how-mascot img { width: 100%; max-width: 240px; }
 
     /* ── PRICING ── */
-    .pricing { background: var(--light); }
+    .pricing { background: var(--white); }
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1156,7 +1157,7 @@
     }
 
     /* ── FOOTER ── */
-    footer { background: var(--white); border-top: 1.5px solid var(--border); padding: 48px 40px 32px; }
+    footer { background: var(--white); padding: 48px 40px 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top {
       display: flex;
@@ -1528,7 +1529,7 @@
         <button class="biz-arrow biz-prev" id="biz-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="biz-track" id="biz-track">
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #29B7D3, #1E8FAB);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+            <div class="biz-photo"><img src="assets/barber.png" alt="Barbería usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Barberías</div>
               <p class="biz-desc">Agenda, recordatorios y más clientes.</p>
@@ -1536,7 +1537,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #E91E96, #B8156F);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+            <div class="biz-photo"><img src="assets/nail.png" alt="Nail Studio usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Nail Studio</div>
               <p class="biz-desc">Organizá servicios, profesionales y horarios.</p>
@@ -1544,7 +1545,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #7DC044, #5A9A2B);"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg></div>
+            <div class="biz-photo"><img src="assets/vet.png" alt="Veterinaria usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--green)"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg>Veterinarias</div>
               <p class="biz-desc">Turnos, vacunas y recordatorios automáticos.</p>
@@ -1552,7 +1553,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #8B44BF, #62308A);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg></div>
+            <div class="biz-photo"><img src="assets/cosmetic.png" alt="Centro de estética usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg>Centros de estética</div>
               <p class="biz-desc">Agendá, confirmá y fidelizá a tus clientes.</p>
@@ -1560,7 +1561,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #F5A623, #D68410);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg></div>
+            <div class="biz-photo"><img src="assets/tatoo.png" alt="Estudio de tatuajes usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>Estudios de tatuajes</div>
               <p class="biz-desc">Sesiones, señas y seguimiento de cada trabajo.</p>
@@ -1568,7 +1569,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo" style="background: linear-gradient(135deg, #F5C800, #D1A900);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="biz-photo"><img src="assets/hair.png" alt="Peluquería usando turnix" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Peluquerías</div>
               <p class="biz-desc">Color, corte y agenda siempre llena.</p>
