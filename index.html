@@ -81,18 +81,23 @@
       --green:  #7DC044;
       --red:    #E53E3E;
       --dark:   #1A1A2E;
-      --mid:    #4A4A6A;
+      --mid:    #9EA1C2;
       --light:  #F7F8FC;
-      --border: #E8EAF0;
+      --border: rgba(255,255,255,.10);
       --white:  #FFFFFF;
+      --text:   #F5F6FB;
+      --bg:     #0A0A16;
+      --bg-soft:#0E0E1D;
+      --surface: rgba(255,255,255,.035);
+      --surface-hover: rgba(255,255,255,.065);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Nunito', sans-serif;
-      color: var(--dark);
-      background: var(--white);
+      color: var(--text);
+      background: var(--bg);
       overflow-x: hidden;
     }
 
@@ -109,7 +114,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.96);
+      background: rgba(10,10,22,0.82);
       backdrop-filter: blur(16px);
       border-bottom: 1.5px solid var(--border);
       padding: 0 48px;
@@ -118,7 +123,22 @@
       justify-content: space-between;
       height: 72px;
     }
-    .nav-logo img { height: 44px; display: block; }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 38px; display: block; }
+    .nav-logo-word {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.3px;
+    }
+    .nav-logo-word span { display: block; }
+    .nav-logo-word .w-top { color: var(--text); }
+    .nav-logo-word .w-bottom { color: var(--mid); font-weight: 700; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -134,7 +154,7 @@
       color: var(--mid);
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--purple); }
+    .nav-links a:hover { color: var(--text); }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -149,9 +169,10 @@
       text-decoration: none;
       transition: transform .15s, box-shadow .15s;
     }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
     .btn-primary  { background: var(--violet); color: var(--white); }
-    .btn-outline  { background: transparent; border: 2px solid var(--violet); color: var(--violet); }
+    .btn-outline  { background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.14); color: var(--text); }
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
     .btn-large    { font-size: 17px; padding: 15px 36px; }
     .btn-white    { background: var(--white); color: var(--dark); }
     .btn-cyan     { background: var(--cyan); color: var(--white); }
@@ -160,10 +181,10 @@
     /* ── HERO ── */
     .hero-wrap {
       background:
-        radial-gradient(ellipse 720px 520px at 88% 12%, rgba(124,58,237,.08), transparent 62%),
-        radial-gradient(ellipse 620px 460px at 96% 88%, rgba(245,166,35,.09), transparent 62%),
-        radial-gradient(ellipse 500px 400px at 60% 100%, rgba(233,30,150,.05), transparent 60%),
-        var(--white);
+        radial-gradient(ellipse 760px 560px at 88% 18%, rgba(124,58,237,.22), transparent 62%),
+        radial-gradient(ellipse 620px 460px at 98% 78%, rgba(245,166,35,.10), transparent 62%),
+        radial-gradient(ellipse 500px 400px at 60% 100%, rgba(233,30,150,.07), transparent 60%),
+        var(--bg);
     }
     .hero {
       width: 100%;
@@ -176,24 +197,29 @@
       gap: 64px;
     }
     .hero-eyebrow {
-      font-size: 12px;
+      display: inline-block;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--violet);
-      margin-bottom: 22px;
+      color: #C4B5FD;
+      background: rgba(124,58,237,.14);
+      border: 1px solid rgba(124,58,237,.3);
+      border-radius: 100px;
+      padding: 7px 16px;
+      margin-bottom: 26px;
     }
     .hero-title {
       font-weight: 900;
       font-size: clamp(34px, 3.5vw, 50px);
       line-height: 1.12;
       letter-spacing: -2px;
-      color: var(--dark);
+      color: var(--text);
       margin-bottom: 24px;
     }
     .hero-title em {
       font-style: normal;
-      background: linear-gradient(90deg, var(--violet) 0%, #38BDF8 100%);
+      background: linear-gradient(90deg, #8B5CF6 0%, #C084FC 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -220,234 +246,46 @@
     }
     .hero-features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 28px;
     }
-    .hero-feature-head {
+    .hero-feature {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13.5px;
       letter-spacing: -.2px;
-      margin-bottom: 8px;
+      color: var(--text);
+      white-space: nowrap;
     }
     .hf-icon {
-      width: 32px; height: 32px;
-      border-radius: 10px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
+      width: 20px; height: 20px;
       flex-shrink: 0;
+      color: var(--violet);
     }
-    .hf-icon.code { font-size: 11px; font-weight: 900; color: var(--violet); letter-spacing: -.5px; }
-    .hero-feature p {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--mid);
-      line-height: 1.6;
-    }
+    .hf-icon svg { width: 100%; height: 100%; display: block; }
 
-    /* ── HERO VISUAL (dashboard mock) ── */
+    /* ── HERO VISUAL ── */
     .hero-visual {
       position: relative;
       min-width: 0;
     }
-    .mock-panel {
-      background: rgba(255,255,255,.75);
-      border: 1.5px solid rgba(232,234,240,.9);
-      border-radius: 28px;
-      padding: 26px 26px 34px;
-      box-shadow: 0 24px 64px rgba(45,16,80,.09);
-      backdrop-filter: blur(6px);
-      position: relative;
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .journey-title {
-      text-align: center;
-      font-weight: 800;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-    .journey {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      margin-bottom: 28px;
-      padding: 0 6px;
-    }
-    .journey::before {
-      content: '';
-      position: absolute;
-      top: 23px; left: 9%; right: 9%;
-      border-top: 2px dashed #DFE3F0;
-    }
-    .journey-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      position: relative;
-      z-index: 1;
-    }
-    .journey-icon {
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 19px;
-      box-shadow: 0 4px 14px rgba(26,26,46,.08);
-    }
-    .journey-icon.code { font-size: 13px; font-weight: 900; color: var(--green); letter-spacing: -.5px; }
-    .journey-label { font-size: 11px; font-weight: 800; color: var(--dark); }
-    .journey-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 2px; }
-
-    .mock-dash {
-      display: flex;
-      align-items: stretch;
-      position: relative;
-    }
-    .mock-sidebar {
-      width: 62px;
-      background: #171630;
-      border-radius: 18px;
-      padding: 14px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      margin: -10px -16px -10px 0;
-      z-index: 2;
-      box-shadow: 8px 0 24px rgba(23,22,48,.14);
-      flex-shrink: 0;
-    }
-    .mock-sidebar img { width: 30px; display: block; margin-bottom: 4px; }
-    .side-ic {
-      width: 30px; height: 30px;
-      border-radius: 9px;
-      background: rgba(255,255,255,.07);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      filter: saturate(.4);
-      opacity: .85;
-    }
-    .mock-main {
-      flex: 1;
-      min-width: 0;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 18px;
-      padding: 18px 18px 18px 32px;
-    }
-    .mock-main-title { font-weight: 900; font-size: 14px; margin-bottom: 14px; }
-    .mock-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .mstat {
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 11px 12px;
-      min-width: 0;
-    }
-    .mstat-label { font-size: 10px; font-weight: 700; color: #9A9AB8; margin-bottom: 4px; white-space: nowrap; }
-    .mstat-value { font-size: 19px; font-weight: 900; letter-spacing: -.6px; line-height: 1.1; }
-    .mstat-delta { font-size: 10px; font-weight: 800; color: #16A34A; margin-top: 3px; }
-    .mock-grid {
-      display: grid;
-      grid-template-columns: 1.55fr 1fr;
-      gap: 12px;
-    }
-    .mock-activity {
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-    .mock-activity-title { font-size: 11px; font-weight: 800; margin-bottom: 8px; }
-    .mock-activity svg { width: 100%; height: auto; display: block; }
-    .chart-badge {
-      position: absolute;
-      bottom: 12px; right: 12px;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 9px;
-      font-weight: 800;
-      line-height: 1.3;
-      text-align: center;
-      color: var(--mid);
-      box-shadow: 0 4px 10px rgba(26,26,46,.07);
-    }
-    .chart-badge strong { display: block; color: #16A34A; font-size: 10px; }
-    .mock-side-cards { display: flex; flex-direction: column; gap: 12px; }
-    .mcard {
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      flex: 1;
-    }
-    .mcard-icon {
-      width: 36px; height: 36px;
-      border-radius: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .mcard-label { font-size: 10px; font-weight: 700; color: #9A9AB8; }
-    .mcard-value { font-size: 17px; font-weight: 900; letter-spacing: -.5px; line-height: 1.15; }
-    .mcard-sub { font-size: 10px; font-weight: 700; color: #9A9AB8; }
-    .mock-deploy {
-      position: absolute;
-      bottom: -22px; left: 22px;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: 16px;
-      padding: 12px 20px 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      box-shadow: 0 14px 36px rgba(26,26,46,.13);
-      z-index: 3;
-    }
-    .deploy-check {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: #22C55E;
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-    .deploy-title { font-size: 13px; font-weight: 800; line-height: 1.2; }
-    .deploy-sub { font-size: 11px; font-weight: 700; color: #9A9AB8; }
 
     /* ── CLIENTES ── */
-    .clients { padding: 52px 48px 8px; background: var(--white); }
+    .clients { padding: 52px 48px 8px; background: var(--bg); }
     .clients-inner { max-width: 1240px; margin: 0 auto; }
     .clients-label {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: #9A9AB8;
+      color: var(--mid);
       margin-bottom: 30px;
     }
     .clients-logos {
@@ -461,7 +299,7 @@
       font-size: 21px;
       font-weight: 800;
       letter-spacing: -.4px;
-      color: #8E93A6;
+      color: rgba(245,246,251,.5);
       white-space: nowrap;
       display: inline-flex;
       align-items: center;
@@ -473,17 +311,17 @@
     .client-logo.caps { font-size: 12px; letter-spacing: .5px; line-height: 1.15; font-weight: 900; }
 
     /* ── STATS BAND ── */
-    .stats-band { padding: 44px 48px 56px; background: var(--white); }
+    .stats-band { padding: 44px 48px 56px; background: var(--bg); }
     .stats-card {
       max-width: 1240px;
       margin: 0 auto;
-      background: var(--white);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: 24px;
       padding: 36px 44px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      box-shadow: 0 12px 36px rgba(26,26,46,.05);
+      box-shadow: 0 12px 36px rgba(0,0,0,.25);
     }
     .stat-item {
       display: flex;
@@ -553,20 +391,20 @@
       transform: translateY(-50%);
       width: 44px; height: 44px;
       border-radius: 50%;
-      background: var(--white);
+      background: var(--surface-hover);
       border: 1.5px solid var(--border);
-      box-shadow: 0 6px 18px rgba(26,26,46,.09);
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 17px;
       font-weight: 800;
-      color: var(--dark);
+      color: var(--text);
       cursor: pointer;
       z-index: 2;
       transition: transform .15s, box-shadow .15s;
     }
-    .car-btn:hover { transform: translateY(-50%) scale(1.06); box-shadow: 0 8px 22px rgba(26,26,46,.13); }
+    .car-btn:hover { transform: translateY(-50%) scale(1.06); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
     .car-prev { left: -58px; }
     .car-next { right: -58px; }
     .car-dots { display: flex; gap: 8px; justify-content: center; margin-top: 26px; }
@@ -578,7 +416,7 @@
     .dots-deco {
       position: absolute;
       width: 130px; height: 96px;
-      background-image: radial-gradient(#D9DCEC 2px, transparent 2.5px);
+      background-image: radial-gradient(rgba(255,255,255,.14) 2px, transparent 2.5px);
       background-size: 17px 17px;
       bottom: 34px; left: 8px;
       pointer-events: none;
@@ -587,7 +425,7 @@
       flex: 0 0 calc((100% - 44px) * .3);
       min-width: 0;
       scroll-snap-align: start;
-      background: var(--white);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: 20px;
       padding: 28px 26px 26px;
@@ -595,7 +433,7 @@
       flex-direction: column;
       transition: transform .2s, box-shadow .2s;
     }
-    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,26,46,.08); }
+    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(124,58,237,.15); }
     .prod-icon {
       width: 54px; height: 54px;
       border-radius: 50%;
@@ -615,11 +453,11 @@
       flex-direction: row;
       align-items: flex-end;
       gap: 20px;
-      border-color: #D8C8F7;
-      box-shadow: 0 12px 36px rgba(124,58,237,.09);
+      border-color: rgba(124,58,237,.35);
+      box-shadow: 0 12px 36px rgba(124,58,237,.13);
       padding: 24px 26px 24px 20px;
     }
-    .prod-card-turnix:hover { box-shadow: 0 18px 44px rgba(124,58,237,.14); }
+    .prod-card-turnix:hover { box-shadow: 0 18px 44px rgba(124,58,237,.2); }
     .turnix-mascot { width: 41%; flex-shrink: 0; align-self: flex-end; }
     .turnix-mascot img { width: 100%; display: block; }
     .turnix-body { flex: 1; min-width: 0; display: flex; flex-direction: column; align-self: stretch; }
@@ -649,7 +487,7 @@
       gap: 22px;
     }
     .svc-card {
-      background: var(--white);
+      background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: 18px;
       padding: 26px 24px 24px;
@@ -657,7 +495,7 @@
       flex-direction: column;
       transition: transform .2s, box-shadow .2s;
     }
-    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,26,46,.08); }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(124,58,237,.15); }
     .svc-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
@@ -688,7 +526,7 @@
       top: 32px;
       right: 50%;
       width: 100%;
-      border-top: 2px dashed #E0E4F0;
+      border-top: 2px dashed rgba(255,255,255,.14);
       z-index: 0;
     }
     .p-step:first-child::before { display: none; }
@@ -702,7 +540,7 @@
       font-size: 25px;
       position: relative;
       z-index: 1;
-      box-shadow: 0 6px 18px rgba(26,26,46,.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,.3);
     }
     .p-icon.code { font-size: 16px; font-weight: 900; color: #22A15C; letter-spacing: -.5px; }
     .p-num { font-size: 11px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 5px; }
@@ -793,6 +631,9 @@
       gap: 12px;
     }
     .footer-copy { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.35); text-decoration: none; }
+    .footer-legal a:hover { color: var(--cyan); }
     .footer-rainbow { font-weight: 900; font-size: 18px; letter-spacing: -.5px; }
     .footer-rainbow span:nth-child(1)  { color: var(--purple); }
     .footer-rainbow span:nth-child(2)  { color: var(--cyan);   }
@@ -856,21 +697,6 @@
         margin: 0 auto;
         text-align: left;
       }
-      .mock-panel { padding: 18px 14px 26px; border-radius: 22px; }
-      .journey-icon { width: 38px; height: 38px; font-size: 16px; }
-      .journey::before { top: 19px; }
-      .journey-label { font-size: 9px; }
-      .mock-sidebar { width: 46px; gap: 10px; }
-      .mock-sidebar img { width: 24px; }
-      .side-ic { width: 24px; height: 24px; font-size: 11px; }
-      .mock-main { padding: 14px 12px 14px 26px; }
-      .mock-stats { gap: 8px; }
-      .mstat { padding: 8px 9px; }
-      .mstat-value { font-size: 15px; }
-      .mstat-label { font-size: 8.5px; }
-      .mock-grid { gap: 8px; }
-      .mock-deploy { left: 12px; bottom: -18px; padding: 10px 16px 10px 12px; }
-
       /* Clientes */
       .clients { padding: 40px 20px 4px; }
       .clients-label { text-align: center; }
@@ -917,12 +743,6 @@
       .prod-card { flex-basis: 86%; }
       .prod-card-turnix { flex-basis: 92%; }
       .hero-title { font-size: clamp(30px, 8.4vw, 40px); }
-      .journey { padding: 0; }
-      .journey-icon { width: 32px; height: 32px; font-size: 14px; }
-      .journey::before { top: 16px; }
-      .journey-label { font-size: 8px; }
-      .mock-grid { grid-template-columns: 1fr; }
-      .chart-badge { bottom: 8px; right: 8px; }
       .stats-card { grid-template-columns: 1fr; gap: 20px; }
       .stat-item { border-right: none; padding: 0; }
     }
@@ -934,9 +754,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">
-      <img src="assets/espressodevslogonuevo.png" alt="espressodevs" />
-    </div>
+    <a href="#" class="nav-logo">
+      <img src="assets/espresso_icon_new.png" alt="espressodevs" />
+      <span class="nav-logo-word"><span class="w-top">espresso</span><span class="w-bottom">devs</span></span>
+    </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#productos">Productos</a></li>
@@ -944,7 +765,7 @@
       <li><a href="#tecnologia">Tecnología</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
     </ul>
-    <a href="#contacto" class="btn btn-primary">Hablemos →</a>
+    <a href="#contacto" class="btn btn-primary">Hablemos ↗</a>
   </nav>
 
   <!-- HERO -->
@@ -953,136 +774,37 @@
       <div class="hero-content">
         <div class="hero-eyebrow">Software Factory</div>
         <h1 class="hero-title">
-          Transformamos ideas en <em>productos digitales</em> que generan valor.
+          Construimos software que <em>impulsa ideas</em>
         </h1>
         <p class="hero-subtitle">
-          Somos un equipo de builders. Construimos software para startups y empresas, y también lanzamos nuestros propios productos para seguir aprendiendo, iterando y escalando.
+          Desarrollamos soluciones a medida y productos propios para empresas y personas que quieren ir más allá.
         </p>
         <div class="hero-actions">
-          <a href="#contacto" class="btn btn-primary btn-large">Hablemos de tu proyecto →</a>
-          <a href="#productos" class="btn btn-outline btn-large">Ver nuestros productos 📦</a>
+          <a href="#servicios" class="btn btn-primary btn-large">Ver servicios →</a>
+          <a href="#productos" class="btn btn-outline btn-large">Conocer productos</a>
         </div>
         <div class="hero-features">
           <div class="hero-feature">
-            <div class="hero-feature-head"><span class="hf-icon" style="background:#FFF4CC;">⚡</span> Entregas rápidas</div>
-            <p>Iteramos en días, no en meses.</p>
+            <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></span>
+            Enfoque en resultados
           </div>
           <div class="hero-feature">
-            <div class="hero-feature-head"><span class="hf-icon code" style="background:#F0EAFE;">&lt;/&gt;</span> Enfoque en resultado</div>
-            <p>No escribimos código. Construimos soluciones.</p>
+            <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6L3 12l5 6M16 6l5 6-5 6"/></svg></span>
+            Tecnología escalable
           </div>
           <div class="hero-feature">
-            <div class="hero-feature-head"><span class="hf-icon" style="background:#E8F9FC;">🛡️</span> Partners tecnológicos</div>
-            <p>Nos involucramos como parte de tu equipo.</p>
+            <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            Equipo especializado
+          </div>
+          <div class="hero-feature">
+            <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+            Acompañamiento continuo
           </div>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="mock-panel">
-          <div class="journey-title">De una idea a impacto</div>
-          <div class="journey">
-            <div class="journey-step">
-              <div class="journey-icon" style="background:#FFF4CC;">💡</div>
-              <div class="journey-label">Idea</div>
-              <span class="journey-dot" style="background:var(--dark);"></span>
-            </div>
-            <div class="journey-step">
-              <div class="journey-icon" style="background:#F0EAFE;">✏️</div>
-              <div class="journey-label">Diseño</div>
-              <span class="journey-dot" style="background:var(--violet);"></span>
-            </div>
-            <div class="journey-step">
-              <div class="journey-icon code" style="background:#E9F7E9;">&lt;/&gt;</div>
-              <div class="journey-label">Desarrollo</div>
-              <span class="journey-dot" style="background:#22C55E;"></span>
-            </div>
-            <div class="journey-step">
-              <div class="journey-icon" style="background:#E3F2FF;">🚀</div>
-              <div class="journey-label">Lanzamiento</div>
-              <span class="journey-dot" style="background:var(--pink);"></span>
-            </div>
-            <div class="journey-step">
-              <div class="journey-icon" style="background:#E9F7E9;">📊</div>
-              <div class="journey-label">Crecimiento</div>
-              <span class="journey-dot" style="background:#15803D;"></span>
-            </div>
-          </div>
-
-          <div class="mock-dash">
-            <div class="mock-sidebar">
-              <img src="assets/rocket_transparent.png" alt="" />
-              <span class="side-ic">📦</span>
-              <span class="side-ic">📈</span>
-              <span class="side-ic">👥</span>
-              <span class="side-ic">💬</span>
-              <span class="side-ic">⚙️</span>
-              <span class="side-ic">🕐</span>
-            </div>
-            <div class="mock-main">
-              <div class="mock-main-title">Resumen del producto</div>
-              <div class="mock-stats">
-                <div class="mstat">
-                  <div class="mstat-label">Usuarios activos</div>
-                  <div class="mstat-value">12.540</div>
-                  <div class="mstat-delta">↑ 34%</div>
-                </div>
-                <div class="mstat">
-                  <div class="mstat-label">Ingresos (MRR)</div>
-                  <div class="mstat-value">$28.340</div>
-                  <div class="mstat-delta">↑ 18%</div>
-                </div>
-                <div class="mstat">
-                  <div class="mstat-label">Satisfacción</div>
-                  <div class="mstat-value">98%</div>
-                  <div class="mstat-delta">😀 Excelente</div>
-                </div>
-              </div>
-              <div class="mock-grid">
-                <div class="mock-activity">
-                  <div class="mock-activity-title">Actividad</div>
-                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <line x1="0" y1="28"  x2="300" y2="28"  stroke="#EEF0F7" stroke-width="1.5"/>
-                    <line x1="0" y1="58"  x2="300" y2="58"  stroke="#EEF0F7" stroke-width="1.5"/>
-                    <line x1="0" y1="88"  x2="300" y2="88"  stroke="#EEF0F7" stroke-width="1.5"/>
-                    <path d="M4 96 C 26 96, 32 62, 54 62 S 82 94, 104 90 S 132 52, 154 52 S 182 88, 204 82 S 232 38, 254 38 S 284 74, 298 64 L298 108 L4 108 Z" fill="rgba(124,58,237,.09)"/>
-                    <path d="M4 96 C 26 96, 32 62, 54 62 S 82 94, 104 90 S 132 52, 154 52 S 182 88, 204 82 S 232 38, 254 38 S 284 74, 298 64" stroke="var(--violet)" stroke-width="2.5" stroke-linecap="round"/>
-                    <circle cx="54"  cy="62" r="3.5" fill="var(--violet)"/>
-                    <circle cx="154" cy="52" r="3.5" fill="var(--violet)"/>
-                    <circle cx="254" cy="38" r="3.5" fill="var(--violet)"/>
-                  </svg>
-                  <div class="chart-badge"><strong>↑ 22%</strong>vs mes anterior</div>
-                </div>
-                <div class="mock-side-cards">
-                  <div class="mcard">
-                    <div class="mcard-icon" style="background:#E9F7E9;">📅</div>
-                    <div>
-                      <div class="mcard-label">Nuevas reservas</div>
-                      <div class="mcard-value">+1.250</div>
-                      <div class="mcard-sub">Este mes</div>
-                    </div>
-                  </div>
-                  <div class="mcard">
-                    <div class="mcard-icon" style="background:#FEF3E2;">✅</div>
-                    <div>
-                      <div class="mcard-label">Tareas completadas</div>
-                      <div class="mcard-value">24/32</div>
-                      <div class="mcard-sub">En progreso</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mock-deploy">
-            <div class="deploy-check">✓</div>
-            <div>
-              <div class="deploy-title">Deploy realizado</div>
-              <div class="deploy-sub">Hace 20 min</div>
-            </div>
-          </div>
-        </div>
+        <img src="assets/hero_espresso.png" alt="espressodevs — ilustración de desarrollo de software" />
       </div>
     </div>
   </div>
@@ -1302,7 +1024,7 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/rocket_transparent.png" alt="espressodevs" />
+          <img src="assets/espresso_icon_new.png" alt="espressodevs" />
           <p class="footer-tagline">Construimos productos digitales que funcionan. Montevideo, Uruguay. Gonzalo Ramírez 1791 (11800). Tel: +598 92 878 906.</p>
         </div>
         <div>
