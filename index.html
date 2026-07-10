@@ -73,6 +73,7 @@
 
     :root {
       --purple: #8B44BF;
+      --violet: #7C3AED;
       --cyan:   #29B7D3;
       --pink:   #E91E96;
       --orange: #F5A623;
@@ -149,8 +150,8 @@
       transition: transform .15s, box-shadow .15s;
     }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
-    .btn-primary  { background: var(--purple); color: var(--white); }
-    .btn-outline  { background: transparent; border: 2px solid var(--purple); color: var(--purple); }
+    .btn-primary  { background: var(--violet); color: var(--white); }
+    .btn-outline  { background: transparent; border: 2px solid var(--violet); color: var(--violet); }
     .btn-large    { font-size: 17px; padding: 15px 36px; }
     .btn-white    { background: var(--white); color: var(--dark); }
     .btn-cyan     { background: var(--cyan); color: var(--white); }
@@ -158,178 +159,352 @@
 
     /* ── HERO ── */
     .hero-wrap {
-      background: var(--white);
-      min-height: calc(100vh - 77px);
-      display: flex;
-      align-items: center;
-      border-bottom: 1.5px solid var(--border);
+      background:
+        radial-gradient(ellipse 720px 520px at 88% 12%, rgba(124,58,237,.08), transparent 62%),
+        radial-gradient(ellipse 620px 460px at 96% 88%, rgba(245,166,35,.09), transparent 62%),
+        radial-gradient(ellipse 500px 400px at 60% 100%, rgba(233,30,150,.05), transparent 60%),
+        var(--white);
     }
     .hero {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 80px 64px;
+      padding: 72px 48px;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
       align-items: center;
-      gap: 80px;
+      gap: 64px;
     }
-    .hero-content {}
     .hero-eyebrow {
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--purple);
-      border-radius: 2px;
+      color: var(--violet);
+      margin-bottom: 22px;
     }
     .hero-title {
       font-weight: 900;
-      font-size: clamp(38px, 4.4vw, 64px);
-      line-height: .95;
-      letter-spacing: -3px;
+      font-size: clamp(34px, 3.5vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -2px;
       color: var(--dark);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     .hero-title em {
       font-style: normal;
-      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      background: linear-gradient(90deg, var(--violet) 0%, #38BDF8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .hero-subtitle {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--mid);
-      line-height: 1.7;
-      max-width: 480px;
-      margin-bottom: 44px;
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 36px;
     }
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
+      margin-bottom: 52px;
     }
-    .hero-stats {
+    .hero-actions .btn-large {
+      font-size: 15px;
+      padding: 14px 26px;
+      white-space: nowrap;
+    }
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .hero-feature-head {
       display: flex;
-      gap: 0;
-      margin-top: 64px;
-      padding-top: 40px;
-      border-top: 1.5px solid var(--border);
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -.2px;
+      margin-bottom: 8px;
     }
-    .hero-stat {
-      flex: 1;
-      padding-right: 32px;
-      border-right: 1.5px solid var(--border);
-      margin-right: 32px;
+    .hf-icon {
+      width: 32px; height: 32px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
     }
-    .hero-stat:last-child {
-      border-right: none;
-      padding-right: 0;
-      margin-right: 0;
-    }
-    .hero-stat-num {
-      font-weight: 900;
-      font-size: 34px;
-      letter-spacing: -2px;
-      line-height: 1;
-    }
-    .hero-stat-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #AAAACC;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-top: 6px;
+    .hf-icon.code { font-size: 11px; font-weight: 900; color: var(--violet); letter-spacing: -.5px; }
+    .hero-feature p {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.6;
     }
 
-    /* ── HERO VISUAL ── */
+    /* ── HERO VISUAL (dashboard mock) ── */
     .hero-visual {
-      width: 560px;
+      position: relative;
+      min-width: 0;
+    }
+    .mock-panel {
+      background: rgba(255,255,255,.75);
+      border: 1.5px solid rgba(232,234,240,.9);
+      border-radius: 28px;
+      padding: 26px 26px 34px;
+      box-shadow: 0 24px 64px rgba(45,16,80,.09);
+      backdrop-filter: blur(6px);
+      position: relative;
+    }
+    .journey-title {
+      text-align: center;
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .journey {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 28px;
+      padding: 0 6px;
+    }
+    .journey::before {
+      content: '';
+      position: absolute;
+      top: 23px; left: 9%; right: 9%;
+      border-top: 2px dashed #DFE3F0;
+    }
+    .journey-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .journey-icon {
+      width: 46px; height: 46px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      font-size: 19px;
+      box-shadow: 0 4px 14px rgba(26,26,46,.08);
     }
-    .hero-rocket {
-      width: 300px;
-      display: block;
-      position: relative;
-      z-index: 2;
-      animation: rocket-float 4s ease-in-out infinite;
-    }
-    @keyframes rocket-float {
-      0%, 100% { transform: translateY(0) rotate(-4deg); }
-      50%       { transform: translateY(-22px) rotate(4deg); }
-    }
-    .hero-orbit {
-      position: absolute;
-      border-radius: 50%;
-      border: 1.5px dashed rgba(139,68,191,.22);
-      animation: orbit-spin 18s linear infinite;
-    }
-    .hero-orbit-2 {
-      width: 480px; height: 480px;
-      border-color: rgba(41,183,211,.15);
-      animation-duration: 28s;
-      animation-direction: reverse;
-    }
-    .hero-orbit-1 { width: 360px; height: 360px; }
-    @keyframes orbit-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    .orbit-dot {
-      position: absolute;
-      width: 12px; height: 12px;
-      border-radius: 50%;
-    }
-    .orbit-dot-t  { top: -6px;    left: calc(50% - 6px); }
-    .orbit-dot-b  { bottom: -6px; left: calc(50% - 6px); }
-    .orbit-dot-l  { left: -6px;   top:  calc(50% - 6px); }
-    .orbit-dot-r  { right: -6px;  top:  calc(50% - 6px); }
+    .journey-icon.code { font-size: 13px; font-weight: 900; color: var(--green); letter-spacing: -.5px; }
+    .journey-label { font-size: 11px; font-weight: 800; color: var(--dark); }
+    .journey-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 2px; }
 
-    /* ── TAGLINE BAND ── */
-    .tagline-band {
-      background: var(--dark);
-      padding: 20px 48px;
-      overflow: hidden;
-    }
-    .tagline-scroll {
+    .mock-dash {
       display: flex;
-      gap: 64px;
-      animation: scroll-x 22s linear infinite;
-      width: max-content;
+      align-items: stretch;
+      position: relative;
     }
-    @keyframes scroll-x {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .tagline-item {
+    .mock-sidebar {
+      width: 62px;
+      background: #171630;
+      border-radius: 18px;
+      padding: 14px 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.45);
-      white-space: nowrap;
+      gap: 14px;
+      margin: -10px -16px -10px 0;
+      z-index: 2;
+      box-shadow: 8px 0 24px rgba(23,22,48,.14);
       flex-shrink: 0;
     }
-    .tagline-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .mock-sidebar img { width: 30px; display: block; margin-bottom: 4px; }
+    .side-ic {
+      width: 30px; height: 30px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      filter: saturate(.4);
+      opacity: .85;
+    }
+    .mock-main {
+      flex: 1;
+      min-width: 0;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 18px 18px 18px 32px;
+    }
+    .mock-main-title { font-weight: 900; font-size: 14px; margin-bottom: 14px; }
+    .mock-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .mstat {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+      min-width: 0;
+    }
+    .mstat-label { font-size: 10px; font-weight: 700; color: #9A9AB8; margin-bottom: 4px; white-space: nowrap; }
+    .mstat-value { font-size: 19px; font-weight: 900; letter-spacing: -.6px; line-height: 1.1; }
+    .mstat-delta { font-size: 10px; font-weight: 800; color: #16A34A; margin-top: 3px; }
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 12px;
+    }
+    .mock-activity {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .mock-activity-title { font-size: 11px; font-weight: 800; margin-bottom: 8px; }
+    .mock-activity svg { width: 100%; height: auto; display: block; }
+    .chart-badge {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1.3;
+      text-align: center;
+      color: var(--mid);
+      box-shadow: 0 4px 10px rgba(26,26,46,.07);
+    }
+    .chart-badge strong { display: block; color: #16A34A; font-size: 10px; }
+    .mock-side-cards { display: flex; flex-direction: column; gap: 12px; }
+    .mcard {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex: 1;
+    }
+    .mcard-icon {
+      width: 36px; height: 36px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .mcard-label { font-size: 10px; font-weight: 700; color: #9A9AB8; }
+    .mcard-value { font-size: 17px; font-weight: 900; letter-spacing: -.5px; line-height: 1.15; }
+    .mcard-sub { font-size: 10px; font-weight: 700; color: #9A9AB8; }
+    .mock-deploy {
+      position: absolute;
+      bottom: -22px; left: 22px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 20px 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      box-shadow: 0 14px 36px rgba(26,26,46,.13);
+      z-index: 3;
+    }
+    .deploy-check {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: #22C55E;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .deploy-title { font-size: 13px; font-weight: 800; line-height: 1.2; }
+    .deploy-sub { font-size: 11px; font-weight: 700; color: #9A9AB8; }
+
+    /* ── CLIENTES ── */
+    .clients { padding: 52px 48px 8px; background: var(--white); }
+    .clients-inner { max-width: 1240px; margin: 0 auto; }
+    .clients-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #9A9AB8;
+      margin-bottom: 30px;
+    }
+    .clients-logos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px 40px;
+      flex-wrap: wrap;
+    }
+    .client-logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+      color: #8E93A6;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      opacity: .9;
+    }
+    .client-logo.two-line { font-size: 15px; line-height: .95; text-align: left; font-weight: 800; }
+    .client-logo.script { font-style: italic; font-weight: 900; font-size: 23px; }
+    .client-logo.caps { font-size: 12px; letter-spacing: .5px; line-height: 1.15; font-weight: 900; }
+
+    /* ── STATS BAND ── */
+    .stats-band { padding: 44px 48px 80px; background: var(--white); }
+    .stats-card {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 44px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      box-shadow: 0 12px 36px rgba(26,26,46,.05);
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 4px 28px;
+      border-right: 1.5px solid var(--border);
+    }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-item:last-child { border-right: none; padding-right: 0; }
+    .stat-icon {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      flex-shrink: 0;
+    }
+    .stat-num { font-size: 30px; font-weight: 900; letter-spacing: -1.2px; line-height: 1; }
+    .stat-label { font-size: 13px; font-weight: 700; color: var(--mid); margin-top: 5px; line-height: 1.3; }
 
     /* ── SECTION COMMONS ── */
     section { padding: 96px 48px; }
@@ -591,6 +766,14 @@
     .footer-rainbow span:nth-child(12) { color: var(--yellow); }
 
     /* ── RESPONSIVE TABLET ── */
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; gap: 56px; }
+      .hero-visual { max-width: 660px; margin: 0 auto; width: 100%; }
+      .stats-card { grid-template-columns: 1fr 1fr; gap: 24px; padding: 32px 32px; }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item { padding: 4px 0 4px 24px; }
+      .stat-item:nth-child(odd) { padding-left: 0; }
+    }
     @media (max-width: 1024px) {
       .products-grid { grid-template-columns: 1fr 1fr; }
       .values-grid   { grid-template-columns: 1fr 1fr; }
@@ -610,25 +793,49 @@
       .section-title { letter-spacing: -1px; }
 
       /* Hero */
-      .hero-wrap { min-height: auto; }
       .hero {
-        grid-template-columns: 1fr;
-        padding: 48px 20px 56px;
+        padding: 44px 20px 56px;
         text-align: center;
-        gap: 40px;
+        gap: 48px;
       }
-      .hero-eyebrow { justify-content: center; }
-      .hero-title { letter-spacing: -2px; }
-      .hero-subtitle { margin: 0 auto 36px; font-size: 17px; }
-      .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
+      .hero-title { letter-spacing: -1.5px; }
+      .hero-subtitle { margin: 0 auto 32px; }
+      .hero-actions { justify-content: center; flex-direction: column; align-items: center; margin-bottom: 44px; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .hero-visual { width: 100%; order: -1; }
-      .hero-rocket { width: 180px; }
-      .hero-orbit-1 { width: 240px; height: 240px; }
-      .hero-orbit-2 { width: 320px; height: 320px; }
+      .hero-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 340px;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .mock-panel { padding: 18px 14px 26px; border-radius: 22px; }
+      .journey-icon { width: 38px; height: 38px; font-size: 16px; }
+      .journey::before { top: 19px; }
+      .journey-label { font-size: 9px; }
+      .mock-sidebar { width: 46px; gap: 10px; }
+      .mock-sidebar img { width: 24px; }
+      .side-ic { width: 24px; height: 24px; font-size: 11px; }
+      .mock-main { padding: 14px 12px 14px 26px; }
+      .mock-stats { gap: 8px; }
+      .mstat { padding: 8px 9px; }
+      .mstat-value { font-size: 15px; }
+      .mstat-label { font-size: 8.5px; }
+      .mock-grid { gap: 8px; }
+      .mock-deploy { left: 12px; bottom: -18px; padding: 10px 16px 10px 12px; }
 
-      /* Tagline */
-      .tagline-band { padding: 16px 20px; }
+      /* Clientes */
+      .clients { padding: 40px 20px 4px; }
+      .clients-label { text-align: center; }
+      .clients-logos { justify-content: center; gap: 20px 32px; }
+      .client-logo { font-size: 17px; }
+      .client-logo.script { font-size: 19px; }
+      .client-logo.two-line { font-size: 13px; }
+      .client-logo.caps { font-size: 10px; }
+
+      /* Stats band */
+      .stats-band { padding: 36px 20px 60px; }
+      .stats-card { padding: 26px 24px; }
 
       /* Servicios */
       .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -653,10 +860,15 @@
     /* ── RESPONSIVE SMALL MOBILE ── */
     @media (max-width: 480px) {
       .services-grid { grid-template-columns: 1fr; }
-      .hero-orbit-1 { width: 200px; height: 200px; }
-      .hero-orbit-2 { display: none; }
-      .hero-rocket { width: 150px; }
-      .hero-title { font-size: clamp(36px, 9vw, 52px); }
+      .hero-title { font-size: clamp(30px, 8.4vw, 40px); }
+      .journey { padding: 0; }
+      .journey-icon { width: 32px; height: 32px; font-size: 14px; }
+      .journey::before { top: 16px; }
+      .journey-label { font-size: 8px; }
+      .mock-grid { grid-template-columns: 1fr; }
+      .chart-badge { bottom: 8px; right: 8px; }
+      .stats-card { grid-template-columns: 1fr; gap: 20px; }
+      .stat-item { border-right: none; padding: 0; }
       .products-grid { gap: 16px; }
       .soon-center { padding: 40px 20px; }
     }
@@ -674,59 +886,199 @@
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#productos">Productos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#casos">Casos de estudio</a></li>
+      <li><a href="#tecnologia">Tecnología</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
     </ul>
-    <a href="#contacto" class="btn btn-primary">Hablemos</a>
+    <a href="#contacto" class="btn btn-primary">Hablemos →</a>
   </nav>
 
   <!-- HERO -->
   <div class="hero-wrap">
     <div class="hero">
       <div class="hero-content">
-        <div class="hero-eyebrow">Software agency</div>
+        <div class="hero-eyebrow">Software Factory</div>
         <h1 class="hero-title">
-          Código que<br />convierte ideas<br />en <em>productos.</em>
+          Transformamos ideas en <em>productos digitales</em> que generan valor.
         </h1>
         <p class="hero-subtitle">
-          Construimos software con velocidad y criterio. Desde el primer commit hasta producción, sin burocracia.
+          Somos un equipo de builders. Construimos software para startups y empresas, y también lanzamos nuestros propios productos para seguir aprendiendo, iterando y escalando.
         </p>
         <div class="hero-actions">
-          <a href="#contacto" class="btn btn-primary btn-large">Hablemos de tu proyecto</a>
-          <a href="#productos" class="btn btn-outline btn-large">Ver nuestros productos</a>
+          <a href="#contacto" class="btn btn-primary btn-large">Hablemos de tu proyecto →</a>
+          <a href="#productos" class="btn btn-outline btn-large">Ver nuestros productos 📦</a>
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature">
+            <div class="hero-feature-head"><span class="hf-icon" style="background:#FFF4CC;">⚡</span> Entregas rápidas</div>
+            <p>Iteramos en días, no en meses.</p>
+          </div>
+          <div class="hero-feature">
+            <div class="hero-feature-head"><span class="hf-icon code" style="background:#F0EAFE;">&lt;/&gt;</span> Enfoque en resultado</div>
+            <p>No escribimos código. Construimos soluciones.</p>
+          </div>
+          <div class="hero-feature">
+            <div class="hero-feature-head"><span class="hf-icon" style="background:#E8F9FC;">🛡️</span> Partners tecnológicos</div>
+            <p>Nos involucramos como parte de tu equipo.</p>
+          </div>
         </div>
       </div>
+
       <div class="hero-visual">
-        <div class="hero-orbit hero-orbit-2">
-          <div class="orbit-dot orbit-dot-t" style="background:var(--cyan);"></div>
-          <div class="orbit-dot orbit-dot-b" style="background:var(--orange);"></div>
+        <div class="mock-panel">
+          <div class="journey-title">De una idea a impacto</div>
+          <div class="journey">
+            <div class="journey-step">
+              <div class="journey-icon" style="background:#FFF4CC;">💡</div>
+              <div class="journey-label">Idea</div>
+              <span class="journey-dot" style="background:var(--dark);"></span>
+            </div>
+            <div class="journey-step">
+              <div class="journey-icon" style="background:#F0EAFE;">✏️</div>
+              <div class="journey-label">Diseño</div>
+              <span class="journey-dot" style="background:var(--violet);"></span>
+            </div>
+            <div class="journey-step">
+              <div class="journey-icon code" style="background:#E9F7E9;">&lt;/&gt;</div>
+              <div class="journey-label">Desarrollo</div>
+              <span class="journey-dot" style="background:#22C55E;"></span>
+            </div>
+            <div class="journey-step">
+              <div class="journey-icon" style="background:#E3F2FF;">🚀</div>
+              <div class="journey-label">Lanzamiento</div>
+              <span class="journey-dot" style="background:var(--pink);"></span>
+            </div>
+            <div class="journey-step">
+              <div class="journey-icon" style="background:#E9F7E9;">📊</div>
+              <div class="journey-label">Crecimiento</div>
+              <span class="journey-dot" style="background:#15803D;"></span>
+            </div>
+          </div>
+
+          <div class="mock-dash">
+            <div class="mock-sidebar">
+              <img src="assets/rocket_transparent.png" alt="" />
+              <span class="side-ic">📦</span>
+              <span class="side-ic">📈</span>
+              <span class="side-ic">👥</span>
+              <span class="side-ic">💬</span>
+              <span class="side-ic">⚙️</span>
+              <span class="side-ic">🕐</span>
+            </div>
+            <div class="mock-main">
+              <div class="mock-main-title">Resumen del producto</div>
+              <div class="mock-stats">
+                <div class="mstat">
+                  <div class="mstat-label">Usuarios activos</div>
+                  <div class="mstat-value">12.540</div>
+                  <div class="mstat-delta">↑ 34%</div>
+                </div>
+                <div class="mstat">
+                  <div class="mstat-label">Ingresos (MRR)</div>
+                  <div class="mstat-value">$28.340</div>
+                  <div class="mstat-delta">↑ 18%</div>
+                </div>
+                <div class="mstat">
+                  <div class="mstat-label">Satisfacción</div>
+                  <div class="mstat-value">98%</div>
+                  <div class="mstat-delta">😀 Excelente</div>
+                </div>
+              </div>
+              <div class="mock-grid">
+                <div class="mock-activity">
+                  <div class="mock-activity-title">Actividad</div>
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="0" y1="28"  x2="300" y2="28"  stroke="#EEF0F7" stroke-width="1.5"/>
+                    <line x1="0" y1="58"  x2="300" y2="58"  stroke="#EEF0F7" stroke-width="1.5"/>
+                    <line x1="0" y1="88"  x2="300" y2="88"  stroke="#EEF0F7" stroke-width="1.5"/>
+                    <path d="M4 96 C 26 96, 32 62, 54 62 S 82 94, 104 90 S 132 52, 154 52 S 182 88, 204 82 S 232 38, 254 38 S 284 74, 298 64 L298 108 L4 108 Z" fill="rgba(124,58,237,.09)"/>
+                    <path d="M4 96 C 26 96, 32 62, 54 62 S 82 94, 104 90 S 132 52, 154 52 S 182 88, 204 82 S 232 38, 254 38 S 284 74, 298 64" stroke="var(--violet)" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="54"  cy="62" r="3.5" fill="var(--violet)"/>
+                    <circle cx="154" cy="52" r="3.5" fill="var(--violet)"/>
+                    <circle cx="254" cy="38" r="3.5" fill="var(--violet)"/>
+                  </svg>
+                  <div class="chart-badge"><strong>↑ 22%</strong>vs mes anterior</div>
+                </div>
+                <div class="mock-side-cards">
+                  <div class="mcard">
+                    <div class="mcard-icon" style="background:#E9F7E9;">📅</div>
+                    <div>
+                      <div class="mcard-label">Nuevas reservas</div>
+                      <div class="mcard-value">+1.250</div>
+                      <div class="mcard-sub">Este mes</div>
+                    </div>
+                  </div>
+                  <div class="mcard">
+                    <div class="mcard-icon" style="background:#FEF3E2;">✅</div>
+                    <div>
+                      <div class="mcard-label">Tareas completadas</div>
+                      <div class="mcard-value">24/32</div>
+                      <div class="mcard-sub">En progreso</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock-deploy">
+            <div class="deploy-check">✓</div>
+            <div>
+              <div class="deploy-title">Deploy realizado</div>
+              <div class="deploy-sub">Hace 20 min</div>
+            </div>
+          </div>
         </div>
-        <div class="hero-orbit hero-orbit-1">
-          <div class="orbit-dot orbit-dot-l" style="background:var(--pink);"></div>
-          <div class="orbit-dot orbit-dot-r" style="background:var(--green);"></div>
-        </div>
-        <img src="assets/rocket_transparent.png" alt="espressodevs" class="hero-rocket" />
       </div>
     </div>
   </div>
 
-  <!-- TAGLINE BAND -->
-  <div class="tagline-band">
-    <div class="tagline-scroll">
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--purple);"></span>Desarrollo Web</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--cyan);"></span>Apps Móviles</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--pink);"></span>Automatizaciones con IA</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--orange);"></span>Diseño UX/UI</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--yellow);"></span>Bots de WhatsApp</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--green);"></span>Integraciones API</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--red);"></span>Consultoría Tech</span>
-      <!-- duplicate for seamless loop -->
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--purple);"></span>Desarrollo Web</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--cyan);"></span>Apps Móviles</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--pink);"></span>Automatizaciones con IA</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--orange);"></span>Diseño UX/UI</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--yellow);"></span>Bots de WhatsApp</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--green);"></span>Integraciones API</span>
-      <span class="tagline-item"><span class="tagline-dot" style="background:var(--red);"></span>Consultoría Tech</span>
+  <!-- CLIENTES -->
+  <div class="clients">
+    <div class="clients-inner">
+      <div class="clients-label">Trabajamos con startups, pymes y empresas líderes</div>
+      <div class="clients-logos">
+        <span class="client-logo two-line">mercado<br />pago</span>
+        <span class="client-logo">Globant&nbsp;❯</span>
+        <span class="client-logo">PedidosYa</span>
+        <span class="client-logo">d·local</span>
+        <span class="client-logo script">Rappi</span>
+        <span class="client-logo caps">BANCO<br />REPÚBLICA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="stats-card">
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#F0EAFE;">🚀</div>
+        <div>
+          <div class="stat-num">+25</div>
+          <div class="stat-label">Proyectos lanzados</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#F0EAFE;">📦</div>
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Productos propios</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#F0EAFE;">😀</div>
+        <div>
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Clientes satisfechos</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon" style="background:#E9F7E9;">📅</div>
+        <div>
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Años construyendo software</div>
+        </div>
+      </div>
     </div>
   </div>
 
