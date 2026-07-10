@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>turnix · Gestioná turnos sin complicaciones</title>
   <meta name="description" content="turnix es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 30 días gratis." />
-  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina" />
+  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, fidelización de clientes, respuesta automática reseñas Google, mejor sistema de turnos" />
   <meta name="author" content="espressodevs" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://espressodevs.com/turnix" />
@@ -61,6 +61,14 @@
         "price": "1499",
         "priceCurrency": "UYU",
         "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "2999",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Soporte exclusivo por WhatsApp, sistema de fidelización de clientes y módulo de Google Reviews con respuestas automáticas."
       }
     ],
     "publisher": {
@@ -74,6 +82,9 @@
       "Reservas desde celular, web o redes sociales",
       "Panel de control unificado",
       "Gestión multi-usuario",
+      "Sistema de fidelización de clientes",
+      "Módulo de Google Reviews con respuestas automáticas",
+      "Soporte exclusivo por WhatsApp",
       "30 días de prueba gratis"
     ]
   }
@@ -107,6 +118,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Creás tu cuenta, configurás tus horarios y servicios, y compartís tu link de reservas. Tus clientes reservan solos y turnix les envía recordatorios automáticos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el plan Business de turnix?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan Business incluye todo lo del plan Max, más soporte exclusivo a través de WhatsApp, un sistema de fidelización de clientes y un módulo que responde automáticamente las reseñas de Google del negocio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es el mejor sistema de gestión de turnos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del negocio, pero turnix es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios y confirmaciones por WhatsApp, cobro de seña integrado con Mercado Pago, fidelización de clientes y respuesta automática de reseñas de Google, con un plan gratuito para empezar."
         }
       }
     ]
@@ -1148,6 +1175,76 @@
     }
     .currency-btn:hover { color: var(--cyan); }
     .currency-btn.is-active { background: var(--cyan); color: var(--white); }
+    .pricing-card-wide {
+      background: linear-gradient(135deg, #FDF1F9, var(--white));
+      border-radius: 24px;
+      padding: 40px 44px;
+      border: 2px solid var(--pink);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 24px auto 0;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pricing-card-wide:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.10); }
+    .pricing-wide-badge {
+      position: absolute;
+      top: -14px;
+      left: 44px;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-wide-left { flex: 1 1 auto; min-width: 0; }
+    .pricing-wide-left .pricing-name { color: var(--pink); }
+    .pricing-wide-left .pricing-desc { margin-bottom: 20px; }
+    .pricing-wide-features {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 24px;
+    }
+    .pricing-wide-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 7px 0;
+    }
+    .pricing-wide-features .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      background: #FDE3F1;
+      color: var(--pink);
+    }
+    .pricing-wide-right {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      gap: 6px;
+    }
+    .pricing-wide-right .pricing-price { margin-bottom: 0; }
+    .pricing-wide-right .btn { margin-top: 14px; white-space: nowrap; }
     .pricing-fx-note {
       text-align: center;
       font-size: 12px;
@@ -1251,6 +1348,10 @@
       /* Pricing */
       .pricing-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
       .currency-switch { flex-wrap: wrap; border-radius: 20px; }
+      .pricing-card-wide { flex-direction: column; align-items: stretch; padding: 36px 28px; max-width: 420px; }
+      .pricing-wide-features { grid-template-columns: 1fr; }
+      .pricing-wide-right { align-items: flex-start; text-align: left; }
+      .pricing-wide-right .btn { width: 100%; justify-content: center; }
       .trial-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 12px; }
       .trial-days { font-size: 52px; }
 
@@ -1760,6 +1861,30 @@
         </div>
 
       </div>
+
+      <!-- BUSINESS -->
+      <div class="pricing-card-wide">
+        <div class="pricing-wide-badge">Soporte exclusivo por WhatsApp</div>
+        <div class="pricing-wide-left">
+          <div class="pricing-name">Business</div>
+          <p class="pricing-desc">Para negocios que quieren fidelizar clientes y cuidar su reputación online sin esfuerzo extra.</p>
+          <ul class="pricing-wide-features">
+            <li><span class="check">✓</span>Todo lo del plan Max</li>
+            <li><span class="check">✓</span>Soporte exclusivo a través de WhatsApp</li>
+            <li><span class="check">✓</span>Sistema de fidelización de clientes</li>
+            <li><span class="check">✓</span>Módulo de Google Reviews con respuestas automáticas</li>
+          </ul>
+        </div>
+        <div class="pricing-wide-right">
+          <div class="pricing-price">
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-business" style="font-size:52px; color:var(--pink);">2.999</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Business" target="_blank" class="btn btn-primary" style="background:var(--pink); border-color:var(--pink);">Pedí tu demo</a>
+        </div>
+      </div>
+
       <p class="pricing-fx-note" id="pricing-fx-note" hidden>Precio de referencia según el tipo de cambio del día. La facturación se realiza en UYU.</p>
     </div>
   </section>
@@ -1996,10 +2121,10 @@
     // ARS 36.98 · CLP 23.03 · PEN 0.0845 — redondeado hacia arriba a terminación 999/9
     (function () {
       var PRICES = {
-        UYU: { pro: '799', max: '1.499' },
-        ARS: { pro: '29.999', max: '55.999' },
-        CLP: { pro: '18.999', max: '34.999' },
-        PEN: { pro: '69', max: '129' }
+        UYU: { pro: '799', max: '1.499', business: '2.999' },
+        ARS: { pro: '29.999', max: '55.999', business: '110.999' },
+        CLP: { pro: '18.999', max: '34.999', business: '69.999' },
+        PEN: { pro: '69', max: '129', business: '259' }
       };
       var wrap = document.getElementById('currency-switch');
       if (!wrap) return;
@@ -2012,6 +2137,7 @@
         document.querySelectorAll('.js-currency').forEach(function (el) { el.textContent = code; });
         document.querySelectorAll('.js-price-pro').forEach(function (el) { el.textContent = p.pro; });
         document.querySelectorAll('.js-price-max').forEach(function (el) { el.textContent = p.max; });
+        document.querySelectorAll('.js-price-business').forEach(function (el) { el.textContent = p.business; });
         buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === code); });
         if (note) note.hidden = (code === 'UYU');
       }
