@@ -673,11 +673,25 @@
 
     @media (max-width: 680px) {
       .hero-visual { aspect-ratio: auto; display: flex; flex-direction: column; }
-      .hv-photo-a { position: static; width: 100%; height: 200px; order: 1; }
+      .hv-photo-a { position: static; width: 100%; height: 160px; order: 1; border-radius: 12px; }
       .hv-photo-b, .hv-photo-c { display: none; }
-      .hv-card { position: static; width: 100%; height: auto; margin-top: 14px; order: 2; }
-      .hv-card-cup { margin: 20px auto; }
-      .hv-quote { position: static; width: 100%; margin-top: 12px; order: 3; }
+      .hv-card {
+        position: static;
+        width: 100%; height: auto;
+        margin-top: 14px; order: 2;
+        padding: 26px 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,.5);
+      }
+      .hv-card-brand { font-size: 17px; }
+      .hv-card-cup { width: 130px; max-width: 130px; margin: 18px auto; }
+      .hv-card-code { font-size: 15px; margin-bottom: 6px; }
+      .hv-card-tag { font-size: 18px; }
+      .hv-quote {
+        position: static;
+        width: 100%; margin-top: 12px; order: 3;
+        padding: 20px 22px;
+      }
+      .hv-quote-line { font-size: 13px; }
       .hv-badge { display: none; }
     }
 
