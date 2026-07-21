@@ -126,7 +126,7 @@
     }
     .nav-links a {
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 600;
       font-size: 13px;
       letter-spacing: .4px;
       text-transform: uppercase;
@@ -228,15 +228,25 @@
     .hero-feature {
       display: flex;
       align-items: center;
-      gap: 9px;
-      font-weight: 700;
-      font-size: 13px;
+      gap: 14px;
+      font-weight: 800;
+      font-size: 14.5px;
       letter-spacing: -.1px;
-      color: #D6D6D6;
+      color: var(--white);
       white-space: nowrap;
+      padding-right: 32px;
+      border-right: 1px solid var(--border);
     }
-    .hf-icon { width: 17px; height: 17px; flex-shrink: 0; color: var(--lime); }
-    .hf-icon svg { width: 100%; height: 100%; display: block; }
+    .hero-feature:last-child { border-right: none; padding-right: 0; }
+    .hf-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hf-icon svg { width: 20px; height: 20px; display: block; }
 
     /* ── HERO VISUAL ── */
     .hero-visual { position: relative; min-width: 0; width: 100%; aspect-ratio: 1.04 / 1; }
@@ -270,7 +280,7 @@
     }
     .hv-card-brand { font-weight: 900; font-size: clamp(15px, 1.9vw, 21px); line-height: 1.12; letter-spacing: -.3px; }
     .hv-card-brand em { color: var(--lime); font-style: normal; }
-    .hv-card-cup { display: block; width: 92%; max-width: 260px; margin: auto; }
+    .hv-card-cup { display: block; width: 118%; max-width: 330px; margin: auto; }
     .hv-card-code { font-weight: 900; font-size: clamp(14px, 1.7vw, 20px); color: var(--white); margin-bottom: 8px; }
     .hv-card-tag {
       font-weight: 900;
@@ -309,12 +319,12 @@
       background: var(--black);
       border: 1px solid rgba(255,255,255,.16);
       border-radius: 0;
-      padding: 7% 8%;
+      padding: 5% 6%;
       box-shadow: 0 20px 40px rgba(0,0,0,.55);
       z-index: 6;
     }
     .hv-quote-line { font-weight: 800; font-size: clamp(11px, 1.3vw, 13.5px); line-height: 1.5; margin-bottom: 3px; white-space: nowrap; }
-    .hv-quote-line.magic { color: var(--violet-soft); }
+    .hv-quote-line.magic { color: var(--violet); }
     .hv-quote img { height: 34px; margin-top: 10px; opacity: .9; }
 
     /* ── SECTION COMMONS ── */
@@ -488,7 +498,7 @@
       position: relative;
       overflow: hidden;
     }
-    .robot-cta img { position: absolute; right: -6px; bottom: -10px; height: 82%; opacity: .8; pointer-events: none; }
+    .robot-cta img { position: absolute; right: -6px; bottom: -10px; height: 82%; opacity: 1; pointer-events: none; }
     .robot-cta-title { font-weight: 900; font-size: 26px; letter-spacing: -1px; line-height: 1.2; color: var(--black); margin-bottom: 10px; position: relative; z-index: 1; }
     .robot-cta-sub { font-size: 14px; font-weight: 700; color: rgba(10,10,10,.7); margin-bottom: 26px; position: relative; z-index: 1; }
     .robot-cta .btn { background: var(--black); color: var(--white); align-self: flex-start; position: relative; z-index: 1; }
@@ -624,6 +634,8 @@
       .doing-wrap section, .tech-wrap { padding-left: 20px; padding-right: 20px; }
 
       .hero { padding: 44px 20px 56px; text-align: center; gap: 44px; }
+      .hero-content { order: 2; }
+      .hero-visual { order: 1; margin-top: 0; }
       .hero-title { letter-spacing: -1.5px; }
       .hero-eyebrow { justify-content: center; }
       .hero-subtitle { margin: 0 auto 32px; }
@@ -631,6 +643,9 @@
       .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
       .hero-features-bar { padding: 24px 20px; }
       .hero-features { justify-content: center; }
+      .hero-feature { border-right: none; padding-right: 0; font-size: 13px; }
+      .hf-icon { width: 36px; height: 36px; }
+      .hf-icon svg { width: 17px; height: 17px; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
 
@@ -747,19 +762,19 @@
     <div class="hero-features-bar">
       <div class="hero-features">
         <div class="hero-feature">
-          <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="hf-icon" style="background:rgba(124,58,237,.15);"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
           Equipos senior
         </div>
         <div class="hero-feature">
-          <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></span>
+          <span class="hf-icon" style="background:rgba(198,255,0,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></span>
           Enfoque en resultados
         </div>
         <div class="hero-feature">
-          <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+          <span class="hf-icon" style="background:rgba(0,240,255,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
           Tecnología moderna
         </div>
         <div class="hero-feature">
-          <span class="hf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+          <span class="hf-icon" style="background:rgba(124,58,237,.15);"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
           Acompañamiento continuo
         </div>
       </div>
@@ -932,7 +947,7 @@
         </div>
 
         <div class="robot-cta">
-          <img src="assets/brand/logo-icon-transparent.png" alt="" />
+          <img src="assets/brand/mascot-mac.png" alt="" />
           <div>
             <div class="robot-cta-title">Este robot trabaja 24/7.</div>
             <div class="robot-cta-sub">Y no toma café (pero le gusta).</div>
