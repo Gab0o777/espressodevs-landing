@@ -777,6 +777,7 @@
       .hf-icon svg { width: 17px; height: 17px; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
+      .section-header > div { width: 100%; min-width: 0; }
 
       .doing-visual { display: none; }
       .doing-arrow { display: none; }
@@ -862,7 +863,25 @@
         margin-bottom: 12px;
       }
       .stat-icon svg { width: 16px; height: 16px; }
-      .robot-cta { margin-top: 4px; }
+
+      .robot-cta {
+        margin-top: 4px;
+        padding: 36px 28px 28px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 420px;
+      }
+      .robot-cta img {
+        position: static;
+        order: -1;
+        width: 58%;
+        max-width: 200px;
+        height: auto;
+        margin: 0 auto 20px;
+      }
+      .robot-cta-title, .robot-cta-sub { text-align: center; }
+      .robot-cta .btn { align-self: center; }
 
       .tech-row { flex-direction: column; align-items: stretch; gap: 10px; }
       .tech-pill {
@@ -876,10 +895,40 @@
       }
       .tech-dot { width: 10px; height: 10px; box-shadow: 0 0 0 5px rgba(255,255,255,.04); }
 
-      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-top { flex-direction: column; gap: 32px; align-items: center; }
       .footer-cols { gap: 40px; }
       footer { padding: 40px 20px 28px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .footer-brand { text-align: center; }
+      .footer-brand img { height: 60px; margin: 0 auto 16px; }
+      .footer-tagline { margin: 0 auto; }
+
+      /* ── ONE SECTION = ONE SCREEN, SWIPE-THROUGH-CARDS FEEL ── */
+      html { scroll-snap-type: y mandatory; }
+      .hero-wrap,
+      .doing-wrap,
+      #servicios,
+      #casos,
+      .results-section,
+      .tech-wrap,
+      .cta-section,
+      footer {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 66px;
+        min-height: calc(100vh - 66px);
+        min-height: calc(100dvh - 66px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      /* direct children use margin:0 auto to center; flex needs an explicit
+         width or the auto-margin shrinks them to their content's width */
+      .section-inner, .tech-inner, .cta-inner, .footer-inner {
+        width: 100%;
+      }
     }
 
     @media (max-width: 680px) {
@@ -1227,7 +1276,7 @@
   </section>
 
   <!-- RESULTADOS -->
-  <section style="padding-top: 40px;">
+  <section class="results-section" style="padding-top: 40px;">
     <div class="section-inner">
       <div class="section-header">
         <div>
