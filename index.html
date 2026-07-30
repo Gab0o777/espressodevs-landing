@@ -110,9 +110,6 @@
       transition: opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .svc-grid > .reveal:nth-child(2) { transition-delay: .06s; }
-    .svc-grid > .reveal:nth-child(3) { transition-delay: .12s; }
-    .svc-grid > .reveal:nth-child(4) { transition-delay: .18s; }
     .case-grid > .reveal:nth-child(2) { transition-delay: .06s; }
     .case-grid > .reveal:nth-child(3) { transition-delay: .12s; }
     .case-grid > .reveal:nth-child(4) { transition-delay: .18s; }
@@ -527,36 +524,6 @@
     .doing-quote p .hl { color: var(--lime); }
     .doing-quote img { height: 26px; margin-top: 12px; filter: none; border: none; aspect-ratio: auto; width: auto; }
 
-    /* ── SERVICIOS ── */
-    .svc-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-    .svc-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px 24px 26px;
-      display: flex;
-      flex-direction: column;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-    }
-    .svc-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: 0 16px 36px rgba(0,0,0,.4); }
-    .svc-icon {
-      width: 50px; height: 50px;
-      border-radius: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .svc-icon svg { width: 22px; height: 22px; }
-    .svc-title { font-weight: 800; font-size: 16px; letter-spacing: -.2px; margin-bottom: 10px; color: var(--white); }
-    .svc-desc { font-size: 13.5px; font-weight: 500; color: var(--mid); line-height: 1.65; margin-bottom: 20px; flex: 1; }
-    .svc-link { font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; margin-top: auto; }
-    .svc-link:hover { color: var(--lime); }
-
     /* ── CASOS DE ÉXITO ── */
     .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .case-card {
@@ -574,14 +541,14 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      filter: grayscale(.3) contrast(1.05) brightness(.55) blur(1.5px);
+      filter: grayscale(.25) contrast(1.05) brightness(.72) blur(1px);
       transform: scale(1.03);
       transition: transform .4s ease;
     }
     .case-card::after {
       content: '';
       position: absolute; inset: 0;
-      background: rgba(0,0,0,.32);
+      background: rgba(0,0,0,.2);
     }
     .case-body { position: relative; z-index: 1; height: 100%; padding: 22px; display: flex; flex-direction: column; }
     .case-project {
@@ -772,7 +739,6 @@
       .results-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 1024px) {
-      .svc-grid { grid-template-columns: 1fr 1fr; }
       .case-grid { grid-template-columns: 1fr 1fr; }
       .stat-item { padding: 26px 20px; }
     }
@@ -851,9 +817,6 @@
       .doing-item-link { display: inline-block; font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; padding-left: 48px; padding-bottom: 20px; }
       .doing-item-link:active { color: var(--lime); }
 
-      .svc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .svc-card { padding: 20px 18px; }
-
       .case-grid {
         display: flex;
         grid-template-columns: unset;
@@ -900,7 +863,12 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        min-height: 420px;
+        min-height: calc(100vh - 66px);
+        min-height: calc(100dvh - 66px);
+        box-sizing: border-box;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 66px;
       }
       .robot-cta img {
         position: static;
@@ -938,9 +906,7 @@
       html { scroll-snap-type: y mandatory; }
       .hero-wrap,
       .doing-wrap,
-      #servicios,
       #casos,
-      .results-section,
       .tech-wrap,
       .cta-section,
       footer {
@@ -953,6 +919,11 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+      }
+      .results-section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 66px;
       }
       /* direct children use margin:0 auto to center; flex needs an explicit
          width or the auto-margin shrinks them to their content's width */
@@ -1014,7 +985,6 @@
     }
 
     @media (max-width: 480px) {
-      .svc-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: clamp(32px, 9vw, 42px); }
     }
   </style>
@@ -1027,7 +997,6 @@
       <img src="assets/brand/logo-horizontal.png" alt="espressodevs" />
     </a>
     <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#casos">Proyectos</a></li>
       <li><a href="#lo-que-hacemos">Nosotros</a></li>
       <li><a href="#">Insights</a></li>
@@ -1042,7 +1011,6 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-menu-links">
-      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#casos">Proyectos</a></li>
       <li><a href="#lo-que-hacemos">Nosotros</a></li>
       <li><a href="#">Insights</a></li>
@@ -1157,7 +1125,7 @@
                 <div class="doing-item-panel">
                   <div class="doing-item-panel-inner">
                     <p class="doing-item-desc">Convertimos ideas en productos digitales escalables y validados en el mercado.</p>
-                    <a href="#servicios" class="doing-item-link">Ver más →</a>
+                    <a href="#contacto" class="doing-item-link">Ver más →</a>
                   </div>
                 </div>
               </li>
@@ -1171,7 +1139,7 @@
                 <div class="doing-item-panel">
                   <div class="doing-item-panel-inner">
                     <p class="doing-item-desc">Implementamos IA, agentes y flujos que optimizan procesos y reducen costos operativos.</p>
-                    <a href="#servicios" class="doing-item-link">Ver más →</a>
+                    <a href="#contacto" class="doing-item-link">Ver más →</a>
                   </div>
                 </div>
               </li>
@@ -1185,7 +1153,7 @@
                 <div class="doing-item-panel">
                   <div class="doing-item-panel-inner">
                     <p class="doing-item-desc">Productos a medida, integraciones y plataformas robustas construidas con tecnología moderna.</p>
-                    <a href="#servicios" class="doing-item-link">Ver más →</a>
+                    <a href="#contacto" class="doing-item-link">Ver más →</a>
                   </div>
                 </div>
               </li>
@@ -1199,7 +1167,7 @@
                 <div class="doing-item-panel">
                   <div class="doing-item-panel-inner">
                     <p class="doing-item-desc">Modelos y agentes de inteligencia artificial integrados a los procesos reales del negocio.</p>
-                    <a href="#servicios" class="doing-item-link">Ver más →</a>
+                    <a href="#contacto" class="doing-item-link">Ver más →</a>
                   </div>
                 </div>
               </li>
@@ -1216,52 +1184,6 @@
       </div>
     </section>
   </div>
-
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <div class="section-inner">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Cómo te podemos ayudar</div>
-          <h2 class="section-title">Servicios que aceleran tu negocio</h2>
-        </div>
-      </div>
-      <div class="svc-grid">
-        <div class="svc-card">
-          <div class="svc-icon" style="background:rgba(124,58,237,.15);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
-          </div>
-          <div class="svc-title">Producto Digital</div>
-          <p class="svc-desc">Desarrollamos SaaS, plataformas y MVPs que validan ideas y se convierten en negocios.</p>
-          <a href="#contacto" class="svc-link">Ver más →</a>
-        </div>
-        <div class="svc-card">
-          <div class="svc-icon" style="background:rgba(198,255,0,.14);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg>
-          </div>
-          <div class="svc-title">IA y Automatizaciones</div>
-          <p class="svc-desc">Implementamos inteligencia artificial, agentes y flujos que optimizan procesos y costos.</p>
-          <a href="#contacto" class="svc-link">Ver más →</a>
-        </div>
-        <div class="svc-card">
-          <div class="svc-icon" style="background:rgba(0,240,255,.14);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          </div>
-          <div class="svc-title">Escalamiento</div>
-          <p class="svc-desc">Arquitectura, performance y cloud para productos que necesitan crecer sin límites.</p>
-          <a href="#contacto" class="svc-link">Ver más →</a>
-        </div>
-        <div class="svc-card">
-          <div class="svc-icon" style="background:rgba(124,58,237,.15);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="svc-title">Equipos y Consultoría</div>
-          <p class="svc-desc">Te acompañamos con equipos dedicados o como tu CTO tecnológico.</p>
-          <a href="#contacto" class="svc-link">Ver más →</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CASOS DE ÉXITO -->
   <section id="casos" style="padding-top: 48px;">
@@ -1419,15 +1341,6 @@
         </div>
         <div class="footer-cols">
           <div>
-            <div class="footer-col-title">Servicios</div>
-            <ul class="footer-links">
-              <li><a href="#servicios">Producto Digital</a></li>
-              <li><a href="#servicios">IA y Automatizaciones</a></li>
-              <li><a href="#servicios">Escalamiento</a></li>
-              <li><a href="#servicios">Equipos y Consultoría</a></li>
-            </ul>
-          </div>
-          <div>
             <div class="footer-col-title">Proyectos</div>
             <ul class="footer-links">
               <li><a href="/turnix/">turnix</a></li>
@@ -1528,7 +1441,7 @@
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if ('IntersectionObserver' in window && !prefersReducedMotion) {
         var revealSelectors = [
-          '.section-header', '.svc-card', '.case-card', '.stat-item',
+          '.section-header', '.case-card', '.stat-item',
           '.robot-cta', '.doing-item-row', '.doing-visual', '.cta-inner'
         ];
         var revealEls = document.querySelectorAll(revealSelectors.join(','));
