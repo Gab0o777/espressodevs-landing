@@ -411,6 +411,8 @@
     .hv-quote img { height: 34px; margin-top: 10px; opacity: .9; }
     .hv-quote-code { display: none; }
 
+    .hv-cup-float { display: none; }
+
     .hero-scroll-cue {
       display: none;
       align-items: center;
@@ -939,10 +941,10 @@
       .hv-quote {
         position: absolute;
         left: auto; top: auto;
-        right: 16px; bottom: -28px;
-        width: 58%; max-width: 230px;
+        right: 16px; bottom: -24px;
+        width: 52%; max-width: 190px;
         margin-top: 0;
-        padding: 20px 20px 18px;
+        padding: 18px 18px 16px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -958,8 +960,17 @@
         color: var(--violet-soft);
         margin-bottom: 4px;
       }
-      .hv-quote-line { font-size: 14px; }
-      .hv-quote img { height: 68px; margin: 14px auto 0; align-self: center; opacity: 1; }
+      .hv-quote-line { font-size: 13.5px; }
+      .hv-quote img { display: none; }
+
+      .hv-cup-float {
+        display: block;
+        position: absolute;
+        left: 16px; bottom: -24px;
+        width: clamp(110px, 34vw, 150px);
+        z-index: 5;
+        filter: drop-shadow(0 16px 28px rgba(0,0,0,.65));
+      }
 
       .hv-badge {
         top: -16px; left: auto;
@@ -1068,6 +1079,8 @@
           </div>
           <img src="assets/brand/logo-icon.png" alt="" />
         </div>
+
+        <img class="hv-cup-float" src="assets/brand/logo-icon.png" alt="" aria-hidden="true" />
       </div>
 
       <a href="#lo-que-hacemos" class="hero-scroll-cue" aria-label="Desplazate para ver más">
