@@ -89,7 +89,7 @@
       --surface-hover: rgba(255,255,255,.075);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -405,11 +405,14 @@
       padding: 5% 6%;
       box-shadow: 0 20px 40px rgba(0,0,0,.55);
       z-index: 6;
+      text-align: left;
     }
     .hv-quote-line { font-weight: 800; font-size: clamp(11px, 1.3vw, 13.5px); line-height: 1.5; margin-bottom: 3px; white-space: nowrap; }
     .hv-quote-line.magic { color: var(--violet); }
     .hv-quote img { height: 34px; margin-top: 10px; opacity: .9; }
     .hv-quote-code { display: none; }
+
+    .hv-cup-float { display: none; }
 
     .hero-scroll-cue {
       display: none;
@@ -932,31 +935,55 @@
     }
 
     @media (max-width: 680px) {
-      .hero-visual { aspect-ratio: auto; display: flex; flex-direction: column; }
-      .hv-photo-a { position: static; width: 100%; height: 200px; order: 1; border-radius: 14px; }
-      .hv-photo-b, .hv-photo-c { display: none; }
+      .hero-visual { aspect-ratio: auto; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .hv-photo-a { position: relative; width: calc(63% - 5px); height: 280px; order: 1; border-radius: 14px; }
+      .hv-photo-b { display: none; }
+      .hv-photo-c { display: block; position: relative; width: calc(37% - 5px); height: 280px; order: 2; border-radius: 14px; }
       .hv-card { display: none; }
       .hv-quote {
-        position: static;
-        width: 100%; margin-top: 14px; order: 3;
-        padding: 22px 24px;
+        position: absolute;
+        left: auto; top: auto;
+        right: 16px; bottom: -24px;
+        width: fit-content; max-width: 68%;
+        margin-top: 0;
+        padding: 16px 18px 14px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        border-radius: 16px;
+        box-shadow: 0 24px 50px rgba(0,0,0,.65);
+        z-index: 5;
       }
       .hv-quote-code {
         display: block;
         font-weight: 900;
         font-size: 15px;
         color: var(--violet-soft);
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
-      .hv-quote-line { font-size: 14px; }
-      .hv-quote img { height: 40px; margin-top: 0; }
-      .hv-badge { display: none; }
+      .hv-quote-line { font-size: 13.5px; }
+      .hv-quote img { display: none; }
 
-      .hero-scroll-cue { display: flex; }
+      .hv-cup-float {
+        display: block;
+        position: absolute;
+        left: 16px; bottom: -24px;
+        width: clamp(110px, 34vw, 150px);
+        z-index: 5;
+        filter: drop-shadow(0 16px 28px rgba(0,0,0,.65));
+      }
+
+      .hv-badge {
+        top: -16px; left: auto;
+        bottom: auto; right: 16px;
+        transform: none;
+        width: 68px;
+        z-index: 4;
+        filter: drop-shadow(0 8px 18px rgba(0,0,0,.55));
+      }
+
+      .hero-scroll-cue { display: flex; margin-top: 56px; }
     }
 
     @media (max-width: 480px) {
@@ -1054,6 +1081,8 @@
           </div>
           <img src="assets/brand/logo-icon.png" alt="" />
         </div>
+
+        <img class="hv-cup-float" src="assets/brand/logo-icon.png" alt="" aria-hidden="true" />
       </div>
 
       <a href="#lo-que-hacemos" class="hero-scroll-cue" aria-label="Desplazate para ver más">
