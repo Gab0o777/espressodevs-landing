@@ -598,7 +598,7 @@
 
     /* ── NUESTROS PRODUCTOS ── */
     .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .product-grid .case-card { aspect-ratio: 16 / 11; }
+    .product-grid .case-card { aspect-ratio: 5 / 4.6; }
     .case-card--soon { background: linear-gradient(135deg, #14202e, #1f1430); }
     .case-card--soon .case-bg {
       position: absolute; inset: auto; right: 4%; bottom: -8%; top: auto; left: auto;
@@ -609,6 +609,38 @@
     }
     .case-card--soon:hover .case-bg { transform: none; }
     .case-card--soon::after { background: rgba(0,0,0,.05); }
+
+    /* mini vista de la landing real de turnix, con barra de navegador */
+    .browser-chrome {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+      display: flex; align-items: center; gap: 6px;
+      padding: 11px 14px;
+      background: #17171c;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .chrome-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .chrome-url {
+      margin-left: 8px;
+      font-size: 11px; font-weight: 700; color: var(--mid);
+      background: rgba(255,255,255,.06);
+      padding: 4px 12px; border-radius: 100px;
+      flex: 1;
+    }
+    .case-card--preview .case-bg {
+      inset: auto 0 0 0;
+      top: 34px;
+      height: calc(100% - 34px);
+      object-fit: cover;
+      object-position: top center;
+      filter: none;
+      transform: none;
+    }
+    .case-card--preview:hover .case-bg { transform: scale(1.02); }
+    .case-card--preview::after {
+      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 30%, rgba(0,0,0,.35) 55%, transparent 80%);
+    }
+    .case-card--preview .case-body { justify-content: flex-end; }
+    .case-card--preview .case-footer { margin-top: 14px; }
 
     /* ── RESULTADOS ── */
     .results-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: stretch; }
@@ -865,7 +897,7 @@
       }
       .case-grid::-webkit-scrollbar, .product-grid::-webkit-scrollbar { display: none; }
       .case-card { flex: 0 0 84%; scroll-snap-align: center; }
-      .product-grid .case-card { aspect-ratio: 4 / 3; }
+      .product-grid .case-card { aspect-ratio: 4 / 4.4; }
       .case-dots {
         display: flex;
         align-items: center;
@@ -1375,8 +1407,14 @@
         </div>
       </div>
       <div class="product-grid">
-        <a href="/turnix/" class="case-card">
-          <img class="case-bg" src="turnix/assets/turnixenaccio_n.png" alt="" />
+        <a href="/turnix/" class="case-card case-card--preview">
+          <div class="browser-chrome">
+            <span class="chrome-dot" style="background:#FF5F57;"></span>
+            <span class="chrome-dot" style="background:#FEBC2E;"></span>
+            <span class="chrome-dot" style="background:#28C840;"></span>
+            <span class="chrome-url">espressodevs.com/turnix</span>
+          </div>
+          <img class="case-bg" src="assets/photos/turnix-preview.png" alt="" />
           <div class="case-body">
             <span class="case-project">Turnix</span>
             <div class="case-headline">Gestión de turnos online para negocios de servicios</div>
