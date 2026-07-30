@@ -560,35 +560,67 @@
     /* ── CASOS DE ÉXITO ── */
     .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .case-card {
-      background: var(--surface);
+      position: relative;
+      aspect-ratio: 285 / 350;
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
       transition: transform .2s, box-shadow .2s, border-color .2s;
     }
     .case-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: 0 16px 36px rgba(0,0,0,.4); }
+    .case-card:hover .case-bg { transform: scale(1.05); }
     .case-dots { display: none; }
-    .case-visual { aspect-ratio: 640 / 880; height: auto; position: relative; overflow: hidden; }
-    .case-visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.3) contrast(1.1) brightness(.6); }
-    .case-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
-    .case-tag {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 10.5px;
+    .case-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(.4) contrast(1.05) brightness(.32) blur(2px);
+      transform: scale(1.03);
+      transition: transform .4s ease;
+    }
+    .case-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.5);
+    }
+    .case-body { position: relative; z-index: 1; height: 100%; padding: 22px; display: flex; flex-direction: column; }
+    .case-project {
+      display: block;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 5px 10px;
-      border-radius: 100px;
+      color: var(--lime);
       margin-bottom: 16px;
     }
+    .case-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--text);
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 100px;
+      margin-top: 14px;
+    }
     .case-stat { font-weight: 900; font-size: 34px; letter-spacing: -1.5px; line-height: 1; margin-bottom: 10px; }
-    .case-headline { font-weight: 800; font-size: 17px; line-height: 1.35; letter-spacing: -.3px; margin-bottom: 10px; color: var(--white); }
-    .case-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.5; margin-bottom: 18px; flex: 1; }
-    .case-link { font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; }
+    .case-headline { font-weight: 800; font-size: 17px; line-height: 1.35; letter-spacing: -.3px; color: var(--white); }
+    .case-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+    .case-link { font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
     .case-link:hover { color: var(--lime); }
+    .case-arrow-btn {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      transition: background .2s, border-color .2s;
+    }
+    .case-arrow-btn svg { width: 15px; height: 15px; }
+    .case-card:hover .case-arrow-btn { background: var(--lime); border-color: var(--lime); color: var(--black); }
 
     /* ── RESULTADOS ── */
     .results-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: stretch; }
@@ -1244,44 +1276,55 @@
       <div class="case-grid">
 
         <div class="case-card">
-          <div class="case-visual"><img src="assets/photos/case-turnix.png" alt="Dashboard de Turnix mostrando +92% menos tiempo administrativo" /></div>
+          <img class="case-bg" src="assets/photos/case-turnix.png" alt="" />
           <div class="case-body">
-            <span class="case-tag" style="background:rgba(198,255,0,.15); color:var(--lime);">Automatización</span>
+            <span class="case-project">Turnix</span>
             <div class="case-stat">+92%</div>
             <div class="case-headline">menos tiempo administrativo</div>
-            <p class="case-desc">Turnix, nuestro propio producto de gestión de turnos vía WhatsApp.</p>
-            <a href="/turnix/" class="case-link">Ver caso →</a>
+            <span class="case-tag">Automatización</span>
+            <div class="case-footer">
+              <a href="/turnix/" class="case-link">Ver caso →</a>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
           </div>
         </div>
 
         <div class="case-card">
-          <div class="case-visual"><img src="assets/photos/case-mercadopago.png" alt="Código del proyecto de automatización con Mercado Pago" /></div>
+          <img class="case-bg" src="assets/photos/case-mercadopago.png" alt="" />
           <div class="case-body">
-            <span class="case-tag" style="background:rgba(124,58,237,.18); color:var(--violet-soft);">Mercado Pago</span>
+            <span class="case-project">Mercado Pago</span>
             <div class="case-headline">Automatización de operaciones internas</div>
-            <p class="case-desc">Flujos automatizados que redujeron trabajo manual en procesos clave.</p>
-            <a href="#contacto" class="case-link">Ver caso →</a>
+            <div class="case-footer">
+              <a href="#contacto" class="case-link">Ver caso →</a>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
           </div>
         </div>
 
         <div class="case-card">
-          <div class="case-visual"><img src="assets/photos/case-healthypets.png" alt="Golden retriever, proyecto Healthy Pets" /></div>
+          <img class="case-bg" src="assets/photos/case-healthypets.png" alt="" />
           <div class="case-body">
-            <span class="case-tag" style="background:rgba(0,240,255,.15); color:var(--cyan);">Desarrollo a medida</span>
+            <span class="case-project">Healthy Pets</span>
             <div class="case-stat">-70%</div>
             <div class="case-headline">en tiempo de respuesta</div>
-            <p class="case-desc">Healthy Pets, plataforma a medida para gestión veterinaria.</p>
-            <a href="#contacto" class="case-link">Ver caso →</a>
+            <span class="case-tag">Desarrollo a medida</span>
+            <div class="case-footer">
+              <a href="#contacto" class="case-link">Ver caso →</a>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
           </div>
         </div>
 
         <div class="case-card">
-          <div class="case-visual"><img src="assets/photos/case-dataflow.png" alt="Dashboard de Data Flow con métricas en tiempo real" /></div>
+          <img class="case-bg" src="assets/photos/case-dataflow.png" alt="" />
           <div class="case-body">
-            <span class="case-tag" style="background:rgba(198,255,0,.15); color:var(--lime);">Data & Analytics</span>
+            <span class="case-project">Data Flow</span>
             <div class="case-headline">Dashboard en tiempo real para toma de decisiones</div>
-            <p class="case-desc">Data Flow, panel de métricas conectado a las fuentes del negocio.</p>
-            <a href="#contacto" class="case-link">Ver caso →</a>
+            <span class="case-tag">Data &amp; Analytics</span>
+            <div class="case-footer">
+              <a href="#contacto" class="case-link">Ver caso →</a>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
           </div>
         </div>
 
