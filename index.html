@@ -499,6 +499,10 @@
     }
     .doing-item-icon, .doing-item-chevron { display: none; }
     .doing-item-panel { display: none; }
+    .doing-item-row.is-open .doing-item-panel { display: block; margin-top: 10px; }
+    .doing-item-desc { font-size: 15px; font-weight: 500; color: var(--mid); line-height: 1.65; max-width: 460px; }
+    .doing-item-link { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; }
+    .doing-item-link:hover { color: var(--lime); }
 
     .doing-visual { position: relative; }
     .doing-visual img {
@@ -633,17 +637,31 @@
       font-size: 12px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
       color: var(--mid); margin-bottom: 30px; text-align: center;
     }
-    .tech-row { display: flex; align-items: center; justify-content: center; gap: 20px 14px; flex-wrap: wrap; }
-    .tech-pill {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-size: 14px; font-weight: 700; color: #C9C9C9;
-      padding: 10px 18px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      transition: border-color .2s, color .2s;
+    .tech-row {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 10px; max-width: 900px; margin: 0 auto;
     }
-    .tech-pill:hover { border-color: var(--lime); color: var(--white); }
-    .tech-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tech-pill {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      font-weight: 800; color: #C9C9C9; text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      transition: border-color .2s, color .2s, transform .2s, background .2s;
+    }
+    .tech-pill:hover { border-color: var(--lime); color: var(--white); background: var(--surface-hover); transform: translateY(-4px); }
+    .tech-dot { border-radius: 50%; flex-shrink: 0; }
+
+    /* tamaños relativos: los círculos ocupan distinto espacio según
+       qué tan central es cada tecnología para lo que hacemos */
+    .tech-pill--xl { width: clamp(108px, 12vw, 156px); height: clamp(108px, 12vw, 156px); font-size: 15px; }
+    .tech-pill--xl .tech-dot { width: 10px; height: 10px; }
+    .tech-pill--lg { width: clamp(92px, 10vw, 128px); height: clamp(92px, 10vw, 128px); font-size: 14px; }
+    .tech-pill--lg .tech-dot { width: 9px; height: 9px; }
+    .tech-pill--md { width: clamp(78px, 8.5vw, 106px); height: clamp(78px, 8.5vw, 106px); font-size: 13px; }
+    .tech-pill--md .tech-dot { width: 8px; height: 8px; }
+    .tech-pill--sm { width: clamp(66px, 7vw, 88px); height: clamp(66px, 7vw, 88px); font-size: 12px; }
+    .tech-pill--sm .tech-dot { width: 7px; height: 7px; }
 
     /* ── CTA / FOOTER ── */
     .cta-section {
@@ -881,17 +899,7 @@
       .robot-cta-title, .robot-cta-sub { text-align: center; }
       .robot-cta .btn { align-self: center; }
 
-      .tech-row { flex-direction: column; align-items: stretch; gap: 10px; }
-      .tech-pill {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 14px;
-        font-size: 15px;
-        padding: 16px 18px;
-        border-radius: 12px;
-        background: var(--surface);
-      }
-      .tech-dot { width: 10px; height: 10px; box-shadow: 0 0 0 5px rgba(255,255,255,.04); }
+      .tech-row { gap: 8px; }
 
       .footer-top { flex-direction: column; gap: 32px; align-items: center; }
       .footer-cols { gap: 40px; }
@@ -899,7 +907,7 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; }
 
       .footer-brand { text-align: center; }
-      .footer-brand img { height: 60px; margin: 0 auto 16px; }
+      .footer-brand img { height: 108px; margin: 0 auto 16px; }
       .footer-tagline { margin: 0 auto; }
 
       /* ── ONE SECTION = ONE SCREEN, SWIPE-THROUGH-CARDS FEEL ── */
@@ -907,7 +915,6 @@
       .hero-wrap,
       .doing-wrap,
       #casos,
-      .results-section,
       .tech-wrap,
       .cta-section,
       footer {
@@ -920,6 +927,25 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+      }
+      /* "Resultados" and "robot-cta" are two independent snap cards.
+         robot-cta already snaps on its own further down the markup, so
+         the snap point for this card lives on its header (a sibling of
+         robot-cta's grid, not an ancestor) to avoid nesting two snap
+         targets inside one another, which some mobile browsers handle
+         inconsistently. */
+      .results-section {
+        min-height: calc(100vh - 66px);
+        min-height: calc(100dvh - 66px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .results-section .section-header {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 66px;
       }
       /* direct children use margin:0 auto to center; flex needs an explicit
          width or the auto-margin shrinks them to their content's width */
@@ -1305,15 +1331,15 @@
     <div class="tech-inner">
       <h2 class="tech-label">Tecnologías que usamos</h2>
       <div class="tech-row">
-        <span class="tech-pill"><span class="tech-dot" style="background:var(--white);"></span>Next.js</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#3178C6;"></span>TypeScript</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#FFD43B;"></span>Python</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#4169E1;"></span>PostgreSQL</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#FF9900;"></span>AWS</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:#2496ED;"></span>Docker</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:var(--lime);"></span>OpenAI</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:var(--violet-soft);"></span>n8n</span>
-        <span class="tech-pill"><span class="tech-dot" style="background:var(--cyan);"></span>React Native</span>
+        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:var(--white);"></span>Next.js</span>
+        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:#FFD43B;"></span>Python</span>
+        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:var(--lime);"></span>OpenAI</span>
+        <span class="tech-pill tech-pill--lg"><span class="tech-dot" style="background:#3178C6;"></span>TypeScript</span>
+        <span class="tech-pill tech-pill--lg"><span class="tech-dot" style="background:#FF9900;"></span>AWS</span>
+        <span class="tech-pill tech-pill--md"><span class="tech-dot" style="background:#4169E1;"></span>PostgreSQL</span>
+        <span class="tech-pill tech-pill--md"><span class="tech-dot" style="background:#2496ED;"></span>Docker</span>
+        <span class="tech-pill tech-pill--sm"><span class="tech-dot" style="background:var(--violet-soft);"></span>n8n</span>
+        <span class="tech-pill tech-pill--sm"><span class="tech-dot" style="background:var(--cyan);"></span>React Native</span>
       </div>
     </div>
   </div>
@@ -1418,6 +1444,12 @@
       // ── Casos de éxito carousel dots ──
       var caseGrid = document.querySelector('.case-grid');
       var caseDots = document.querySelectorAll('.case-dot');
+      if (caseGrid && window.matchMedia('(max-width: 900px)').matches) {
+        var healthyPetsCard = caseGrid.querySelectorAll('.case-card')[2];
+        if (healthyPetsCard) {
+          healthyPetsCard.scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' });
+        }
+      }
       if (caseGrid && caseDots.length && 'IntersectionObserver' in window) {
         var caseCards = caseGrid.querySelectorAll('.case-card');
         var caseObserver = new IntersectionObserver(function (entries) {
