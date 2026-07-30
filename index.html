@@ -935,9 +935,10 @@
     }
 
     @media (max-width: 680px) {
-      .hero-visual { aspect-ratio: auto; display: flex; flex-direction: column; }
-      .hv-photo-a { position: relative; width: 100%; height: 280px; order: 1; border-radius: 14px; }
-      .hv-photo-b, .hv-photo-c { display: none; }
+      .hero-visual { aspect-ratio: auto; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .hv-photo-a { position: relative; width: calc(63% - 5px); height: 280px; order: 1; border-radius: 14px; }
+      .hv-photo-b { display: none; }
+      .hv-photo-c { display: block; position: relative; width: calc(37% - 5px); height: 280px; order: 2; border-radius: 14px; }
       .hv-card { display: none; }
       .hv-quote {
         position: absolute;
