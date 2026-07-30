@@ -531,11 +531,14 @@
     /* ── CASOS DE ÉXITO ── */
     .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .case-card {
+      display: block;
       position: relative;
       aspect-ratio: 285 / 350;
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
+      color: inherit;
+      text-decoration: none;
       transition: transform .2s, box-shadow .2s, border-color .2s;
     }
     .case-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: 0 16px 36px rgba(0,0,0,.4); }
@@ -581,7 +584,7 @@
     .case-headline { font-weight: 800; font-size: 17px; line-height: 1.35; letter-spacing: -.3px; color: var(--white); }
     .case-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
     .case-link { font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-    .case-link:hover { color: var(--lime); }
+    .case-link:hover, .case-card:hover .case-link { color: var(--lime); }
     .case-arrow-btn {
       width: 32px; height: 32px; flex-shrink: 0;
       border: 1px solid rgba(255,255,255,.35);
@@ -592,6 +595,20 @@
     }
     .case-arrow-btn svg { width: 15px; height: 15px; }
     .case-card:hover .case-arrow-btn { background: var(--lime); border-color: var(--lime); color: var(--black); }
+
+    /* ── NUESTROS PRODUCTOS ── */
+    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .product-grid .case-card { aspect-ratio: 16 / 11; }
+    .case-card--soon { background: linear-gradient(135deg, #14202e, #1f1430); }
+    .case-card--soon .case-bg {
+      position: absolute; inset: auto; right: 4%; bottom: -8%; top: auto; left: auto;
+      width: 48%; height: auto;
+      object-fit: contain;
+      filter: none;
+      transform: none;
+    }
+    .case-card--soon:hover .case-bg { transform: none; }
+    .case-card--soon::after { background: rgba(0,0,0,.05); }
 
     /* ── RESULTADOS ── */
     .results-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: stretch; }
@@ -835,7 +852,8 @@
       .doing-item-link { display: inline-block; font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; padding-left: 48px; padding-bottom: 20px; }
       .doing-item-link:active { color: var(--lime); }
 
-      .case-grid {
+      .case-grid,
+      .product-grid {
         display: flex;
         grid-template-columns: unset;
         overflow-x: auto;
@@ -845,8 +863,9 @@
         padding: 0 20px 4px;
         scrollbar-width: none;
       }
-      .case-grid::-webkit-scrollbar { display: none; }
+      .case-grid::-webkit-scrollbar, .product-grid::-webkit-scrollbar { display: none; }
       .case-card { flex: 0 0 84%; scroll-snap-align: center; }
+      .product-grid .case-card { aspect-ratio: 4 / 3; }
       .case-dots {
         display: flex;
         align-items: center;
@@ -902,7 +921,7 @@
       .tech-row { gap: 8px; }
 
       .footer-top { flex-direction: column; gap: 32px; align-items: center; }
-      .footer-cols { gap: 40px; }
+      .footer-cols { flex-direction: column; align-items: center; gap: 28px; text-align: center; }
       footer { padding: 40px 20px 28px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
 
@@ -916,6 +935,7 @@
       .doing-wrap,
       #casos,
       .tech-wrap,
+      #productos,
       .cta-section,
       footer {
         scroll-snap-align: start;
@@ -946,6 +966,7 @@
         scroll-snap-align: start;
         scroll-snap-stop: always;
         scroll-margin-top: 66px;
+        margin-bottom: 20px;
       }
       /* direct children use margin:0 auto to center; flex needs an explicit
          width or the auto-margin shrinks them to their content's width */
@@ -1007,7 +1028,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: clamp(32px, 9vw, 42px); }
+      .hero-title { font-size: clamp(42px, 13vw, 58px); }
     }
   </style>
 </head>
@@ -1344,6 +1365,45 @@
     </div>
   </div>
 
+  <!-- NUESTROS PRODUCTOS -->
+  <section id="productos" style="padding-top: 48px;">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <div class="section-tag">Nuestros productos</div>
+          <h2 class="section-title">SaaS propios que construimos y operamos</h2>
+        </div>
+      </div>
+      <div class="product-grid">
+        <a href="/turnix/" class="case-card">
+          <img class="case-bg" src="turnix/assets/turnixenaccio_n.png" alt="" />
+          <div class="case-body">
+            <span class="case-project">Turnix</span>
+            <div class="case-headline">Gestión de turnos online para negocios de servicios</div>
+            <span class="case-tag">Producto propio</span>
+            <div class="case-footer">
+              <span class="case-link">Ver turnix →</span>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <div class="case-card case-card--soon">
+          <img class="case-bg" src="turnix/assets/turni_ultra_happy.png" alt="" />
+          <div class="case-body">
+            <span class="case-project">Turnix Creators</span>
+            <div class="case-headline">Nuestro próximo producto ya se está cocinando.</div>
+            <span class="case-tag">Próximamente</span>
+            <div class="case-footer">
+              <a href="#contacto" class="case-link">Quiero que me avisen →</a>
+              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA / CONTACTO -->
   <section class="cta-section" id="contacto">
     <div class="cta-inner">
@@ -1366,6 +1426,7 @@
             <div class="footer-col-title">Proyectos</div>
             <ul class="footer-links">
               <li><a href="/turnix/">turnix</a></li>
+              <li><a href="#productos">Turnix Creators</a></li>
               <li><a href="#casos">Ver casos de éxito</a></li>
             </ul>
           </div>
@@ -1374,6 +1435,11 @@
             <ul class="footer-links">
               <li><a href="#lo-que-hacemos">Nosotros</a></li>
               <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <ul class="footer-links">
               <li><a href="mailto:hola@espressodevs.com">hola@espressodevs.com</a></li>
               <li><a href="tel:+59892878906">+598 92 878 906</a></li>
             </ul>
@@ -1383,8 +1449,8 @@
       <div class="footer-bottom">
         <span class="footer-copy">&copy; 2026 espressodevs. Todos los derechos reservados.</span>
         <div class="footer-legal">
-          <a href="/turnix/terminos">Términos</a>
-          <a href="/turnix/privacidad">Privacidad</a>
+          <a href="/terminos">Términos</a>
+          <a href="/privacidad">Privacidad</a>
         </div>
         <div class="footer-social">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -1447,7 +1513,7 @@
       if (caseGrid && window.matchMedia('(max-width: 900px)').matches) {
         var healthyPetsCard = caseGrid.querySelectorAll('.case-card')[2];
         if (healthyPetsCard) {
-          healthyPetsCard.scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' });
+          caseGrid.scrollLeft = healthyPetsCard.offsetLeft - (caseGrid.clientWidth - healthyPetsCard.clientWidth) / 2;
         }
       }
       if (caseGrid && caseDots.length && 'IntersectionObserver' in window) {
