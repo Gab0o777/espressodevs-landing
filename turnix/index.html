@@ -1326,6 +1326,16 @@
       .hero-actions .btn { width: 100%; justify-content: center; }
       .hero-checks { justify-content: center; }
       .hero-visual { flex: none; width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; padding-bottom: 96px; }
+
+      /* EXPERIMENTAL: hero mobile — badge+título arriba, calendario en el
+         medio, resto del texto abajo. Para volver a lo de antes: borrar
+         este bloque (y dejar .hero-content como estaba, sin los wrappers
+         -top/-bottom no hace falta tocarlos, quedan inertes en desktop). */
+      .hero-content { display: contents; }
+      .hero-content-top, .hero-content-bottom { width: 100%; }
+      .hero-content-top { order: 1; }
+      .hero-visual { order: 2; }
+      .hero-content-bottom { order: 3; }
       .calmock { position: relative; top: auto; left: auto; width: 100%; max-width: 440px; }
       .calmock-side { display: none; }
       .hero-cards { display: none; }
@@ -1438,23 +1448,27 @@
 
     <div class="hero">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span>✨</span> Gestión de turnos inteligente
+        <div class="hero-content-top">
+          <div class="hero-badge">
+            <span>✨</span> Gestión de turnos inteligente
+          </div>
+          <h1 class="hero-title">
+            Organizar turnos<br />nunca se vio<br /><span class="highlight-cyan">tan simple.</span>
+          </h1>
         </div>
-        <h1 class="hero-title">
-          Organizar turnos<br />nunca se vio<br /><span class="highlight-cyan">tan simple.</span>
-        </h1>
-        <p class="hero-subtitle">
-          turnix organiza tu agenda, confirma por WhatsApp y te ayuda a llenar tu negocio todos los días.
-        </p>
-        <div class="hero-actions">
-          <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo &nbsp;→</a>
-          <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona &nbsp;▷</a>
-        </div>
-        <div class="hero-checks">
-          <span class="hero-check">Sin tarjeta de crédito</span>
-          <span class="hero-check">Configuración en minutos</span>
-          <span class="hero-check">Soporte en español</span>
+        <div class="hero-content-bottom">
+          <p class="hero-subtitle">
+            turnix organiza tu agenda, confirma por WhatsApp y te ayuda a llenar tu negocio todos los días.
+          </p>
+          <div class="hero-actions">
+            <a href="#demo" class="btn btn-primary btn-large">Pedí tu demo &nbsp;→</a>
+            <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona &nbsp;▷</a>
+          </div>
+          <div class="hero-checks">
+            <span class="hero-check">Sin tarjeta de crédito</span>
+            <span class="hero-check">Configuración en minutos</span>
+            <span class="hero-check">Soporte en español</span>
+          </div>
         </div>
       </div>
 
