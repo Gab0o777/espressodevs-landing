@@ -245,6 +245,7 @@
     }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
     .btn-primary { background: var(--cyan); color: var(--white); }
+    .nav-cta-mobile { display: none; }
     .btn-outline { background: transparent; border: 2px solid var(--cyan); color: var(--cyan); }
     .btn-large { font-size: 15px; padding: 13px 24px; }
     .btn-white { background: var(--white); color: var(--dark); }
@@ -365,7 +366,7 @@
       position: relative;
       height: 600px;
     }
-    .hero-visual-label, .hero-mobile-cards { display: none; }
+    .hero-mobile-cards { display: none; }
 
     .calmock {
       position: absolute;
@@ -1308,8 +1309,10 @@
     /* ── RESPONSIVE TABLET ── */
     @media (max-width: 900px) {
       /* Nav */
-      nav { padding: 0 20px; height: 64px; }
-      .nav-logo img { height: 36px; }
+      nav { padding: 0 20px; height: 68px; }
+      .nav-logo img { height: 46px; }
+      .nav-cta-desktop { display: none; }
+      .nav-cta-mobile { display: inline-flex; }
       .nav-links { display: none; }
       nav .btn:last-child { display: none; }
       .btn { font-size: 13px; padding: 9px 18px; }
@@ -1357,21 +1360,18 @@
       .hero-mascot { height: 150px; right: 4px; bottom: 0; }
       .hero-blob { filter: blur(50px); }
 
-      /* turnix arriba del calendario */
-      .hero-visual-label {
-        display: flex; align-items: center; justify-content: center; gap: 8px;
-        font-weight: 900; font-size: 15px; color: var(--dark);
-        margin-bottom: 14px;
+      /* cards con lo que decía el subtítulo, flotando sobre el calendario
+         (como las hero-cards de desktop), no como bloque separado abajo */
+      .hero-mobile-cards {
+        display: flex; flex-direction: column; gap: 10px; width: 100%;
+        position: relative; z-index: 5;
+        margin-top: -78px;
       }
-      .hero-visual-label img { height: 22px; }
-
-      /* cards con lo que decía el subtítulo, ahora sobre/debajo del calendario */
-      .hero-mobile-cards { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 20px; }
       .hero-mobile-card {
         display: flex; align-items: center; gap: 12px;
         background: var(--white);
         border-radius: 16px;
-        box-shadow: 0 12px 30px rgba(30,30,46,.12);
+        box-shadow: 0 12px 30px rgba(30,30,46,.18);
         padding: 12px 16px;
         text-align: left;
       }
@@ -1463,7 +1463,8 @@
       <li><a href="#como-funciona">Cómo funciona</a></li>
       <li><a href="#precios">Precios</a></li>
     </ul>
-    <a href="#demo" class="btn btn-primary">Pedí tu demo</a>
+    <a href="#demo" class="btn btn-primary nav-cta-desktop">Pedí tu demo</a>
+    <a href="https://turnix.espressodevs.com/auth/register" class="btn btn-primary nav-cta-mobile">Empezar ya</a>
     <a href="https://turnix.espressodevs.com" class="btn btn-outline" style="margin-left:10px; font-size:14px; padding:9px 20px;">Acceder</a>
   </nav>
 
@@ -1503,7 +1504,6 @@
 
       <!-- VISUAL DERECHO: app de agenda en vivo + notificaciones + mascota -->
       <div class="hero-visual">
-        <div class="hero-visual-label"><img src="assets/isologobiggertransparent.png" alt="" /> turnix</div>
         <div class="calmock" id="calmock">
           <aside class="calmock-side">
             <div class="calmock-side-brand">
@@ -2156,6 +2156,12 @@
 
       seedInitial();
       setInterval(tick, 1500);
+
+      // en mobile arrancamos con el martes como primer día visible
+      if (isMobile) {
+        var calmockScroll = document.querySelector('.calmock-scroll');
+        if (calmockScroll) calmockScroll.scrollLeft = 92;
+      }
     })();
 
     // carrusel "para cada negocio"
