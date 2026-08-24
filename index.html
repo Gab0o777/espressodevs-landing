@@ -251,7 +251,7 @@
       margin: 0 auto;
       padding: 80px 48px 56px;
       display: grid;
-      grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+      grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
       align-items: center;
       gap: 60px;
     }
@@ -294,7 +294,7 @@
     }
     /* ── HERO VISUAL ── */
     .hero-visual { position: relative; min-width: 0; width: 100%; display: flex; align-items: center; }
-    .hv-dashboard { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.65)); }
+    .hv-dashboard { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.65)); transform: scale(1.1); transform-origin: right center; }
 
     .hero-scroll-cue {
       display: none;
@@ -388,8 +388,8 @@
     .ts-feature-icon svg { width: 100%; height: 100%; }
     .ts-cta { margin-top: auto; align-self: flex-start; }
 
-    .ts-shot { padding: 10px; }
-    .ts-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ts-shot { padding: 22px; }
+    .ts-shot img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; }
 
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
     .ts-small { padding: 20px; display: flex; flex-direction: column; }
@@ -415,7 +415,7 @@
     }
     .ts-building-text {
       font-weight: 900;
-      font-size: clamp(46px, 8vw, 108px);
+      font-size: 6vw;
       letter-spacing: -2px;
       text-transform: uppercase;
       line-height: 1;
@@ -768,7 +768,8 @@
     /* ── RESPONSIVE TABLET ── */
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; gap: 52px; }
-      .hero-visual { max-width: 620px; margin: 30px auto 0; width: 100%; }
+      .hero-visual { max-width: 680px; margin: 30px auto 0; width: 100%; }
+      .hv-dashboard { transform: scale(1.08); transform-origin: center; }
       .doing-grid { grid-template-columns: 1fr; gap: 60px; }
       .doing-visual { max-width: 560px; margin: 0 auto; }
       .results-grid { grid-template-columns: 1fr; }
@@ -1027,7 +1028,7 @@
       <div class="hero-content">
         <div class="hero-eyebrow">Software Factory</div>
         <h1 class="hero-title">
-          Build.<br />Ship.<br />Automate.<br /><span class="accent">Repeat_</span>
+          Build.<br />Ship.<br />Automate.<br /><span class="accent">Grow_</span>
         </h1>
         <p class="hero-subtitle">
           Creamos productos digitales, automatizamos procesos e implementamos IA para que las empresas escalen más rápido.
