@@ -348,6 +348,78 @@
     .section-link { font-size: 14px; font-weight: 800; color: var(--white); text-decoration: none; white-space: nowrap; }
     .section-link:hover { color: var(--lime); }
 
+    /* ── PROYECTOS SELECCIONADOS (TURNIX SHOWCASE) ── */
+    .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
+    .ts-header { margin-bottom: 44px; }
+    .ts-grid { display: grid; grid-template-columns: 1fr 2.6fr 2.1fr; gap: 22px; align-items: stretch; }
+    .ts-card {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+    .ts-info { padding: 26px 24px; display: flex; flex-direction: column; }
+    .ts-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .ts-logo-img { height: 26px; width: auto; display: block; }
+    .ts-max {
+      font-size: 10px; font-weight: 800; letter-spacing: .5px;
+      color: var(--white); background: rgba(255,255,255,.08);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 3px 8px;
+    }
+    .ts-bigname {
+      font-weight: 900; font-size: 40px; letter-spacing: -1.5px;
+      line-height: 1; color: var(--white); text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .ts-kicker {
+      font-size: 11.5px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 16px;
+    }
+    .ts-desc { font-size: 14.5px; color: var(--mid); line-height: 1.6; margin-bottom: 22px; }
+    .ts-features { list-style: none; padding: 18px 0 0; margin: 0 0 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 14px; }
+    .ts-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--white); }
+    .ts-feature-icon { width: 18px; height: 18px; flex-shrink: 0; display: flex; }
+    .ts-feature-icon svg { width: 100%; height: 100%; }
+    .ts-cta { margin-top: auto; align-self: flex-start; }
+
+    .ts-shot { padding: 18px 18px 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+    .ts-shot img { width: 100%; height: auto; display: block; border-radius: 10px 10px 0 0; }
+
+    .ts-col { display: flex; flex-direction: column; gap: 22px; }
+    .ts-small { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .ts-small-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 16px; }
+    .ts-small-shot { border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+    .ts-small-shot img { width: 100%; height: auto; display: block; }
+    .ts-small-caption { font-size: 13.5px; color: var(--mid); margin-bottom: 16px; }
+    .ts-status {
+      display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+      font-size: 12px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+      color: var(--white); border: 1px solid rgba(198,255,0,.35); border-radius: 20px;
+      padding: 7px 14px;
+    }
+    .ts-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); display: inline-block; box-shadow: 0 0 8px rgba(198,255,0,.7); }
+    .ts-link { font-size: 14px; font-weight: 800; color: var(--lime); text-decoration: none; align-self: flex-start; margin-top: auto; }
+    .ts-link:hover { color: var(--white); }
+
+    .ts-building {
+      position: relative;
+      margin-top: 64px;
+      padding: 40px 0 46px;
+      display: flex; align-items: center;
+    }
+    .ts-building-text {
+      font-weight: 900;
+      font-size: clamp(46px, 8vw, 108px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.14);
+      white-space: nowrap;
+    }
+    .ts-building-text .accent { -webkit-text-stroke: 1px rgba(198,255,0,.5); }
+    .ts-mascot { position: absolute; right: 0; bottom: 8px; width: 96px; height: auto; }
+
     /* ── LO QUE HACEMOS ── */
     .doing-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .doing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
@@ -695,6 +767,9 @@
       .doing-grid { grid-template-columns: 1fr; gap: 60px; }
       .doing-visual { max-width: 560px; margin: 0 auto; }
       .results-grid { grid-template-columns: 1fr; }
+      .ts-grid { grid-template-columns: 1fr; }
+      .ts-col { flex-direction: row; }
+      .ts-col .ts-small { flex: 1 1 0; }
     }
     @media (max-width: 1024px) {
       .case-grid { grid-template-columns: 1fr 1fr; }
@@ -724,6 +799,12 @@
       .hero-subtitle { margin: 0 auto 32px; }
       .hero-actions { justify-content: center; }
       .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+
+      .ts-wrap { padding: 60px 20px 0; }
+      .ts-col { flex-direction: column; }
+      .ts-building { flex-wrap: wrap; row-gap: 10px; }
+      .ts-building-text { font-size: clamp(28px, 11vw, 40px); line-height: .95; white-space: normal; flex: 1 1 100%; }
+      .ts-mascot { position: static; width: 56px; margin-left: auto; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
@@ -961,6 +1042,59 @@
       </a>
     </div>
   </div>
+
+  <!-- PROYECTOS SELECCIONADOS -->
+  <section class="ts-wrap">
+    <div class="section-inner">
+      <div class="ts-header">
+        <div class="section-tag">Proyectos seleccionados_</div>
+        <h2 class="section-title">Software que ya está en movimiento.</h2>
+        <p class="section-sub">Productos reales, construidos para resolver problemas reales.</p>
+      </div>
+
+      <div class="ts-grid">
+        <div class="ts-card ts-info">
+          <div class="ts-logo-row">
+            <img class="ts-logo-img" src="assets/turnix-showcase/turnix-logo.png" alt="Turnix" />
+            <span class="ts-max">MAX</span>
+          </div>
+          <div class="ts-bigname">TURNIX</div>
+          <div class="ts-kicker">Producto · Agenda + IA</div>
+          <p class="ts-desc">Agenda, reservas online y métricas para que los negocios de servicios trabajen con más orden.</p>
+          <ul class="ts-features">
+            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>Agenda</li>
+            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>Reservas online</li>
+            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/></svg></span>Métricas</li>
+          </ul>
+          <a href="/turnix/" class="btn btn-outline ts-cta">Ver Turnix →</a>
+        </div>
+
+        <div class="ts-card ts-shot">
+          <img src="assets/turnix-showcase/calendar.png" alt="Agenda semanal de Turnix con turnos organizados por profesional" />
+        </div>
+
+        <div class="ts-col">
+          <div class="ts-card ts-small">
+            <h3 class="ts-small-title">Reservas online</h3>
+            <div class="ts-small-shot"><img src="assets/turnix-showcase/link-reserva.png" alt="Modal de link de reserva de Turnix con código QR" /></div>
+            <p class="ts-small-caption">Link público, QR y WhatsApp.</p>
+            <span class="ts-status"><i></i>Portal activo</span>
+          </div>
+          <div class="ts-card ts-small">
+            <h3 class="ts-small-title">Control del negocio</h3>
+            <div class="ts-small-shot"><img src="assets/turnix-showcase/dashboard.png" alt="Dashboard de control del negocio de Turnix con turnos e ingresos" /></div>
+            <p class="ts-small-caption">Turnos, ingresos y oportunidades en un solo lugar.</p>
+            <a href="/turnix/" class="ts-link">Ver producto →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ts-building">
+      <span class="ts-building-text">Building what's next<span class="accent">_</span></span>
+      <img class="ts-mascot" src="assets/turnix-showcase/mascot.png" alt="" aria-hidden="true" />
+    </div>
+  </section>
 
   <!-- LO QUE HACEMOS -->
   <div class="doing-wrap" id="lo-que-hacemos">
