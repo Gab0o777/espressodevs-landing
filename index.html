@@ -353,14 +353,15 @@
     .ts-layout {
       display: grid;
       grid-template-columns: 1.1fr 2.55fr 2.05fr;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto 1fr;
       column-gap: 22px;
-      row-gap: 28px;
+      row-gap: 14px;
     }
-    .ts-header { grid-column: 1 / 3; grid-row: 1; }
-    .ts-info { grid-column: 1; grid-row: 2; }
-    .ts-shot { grid-column: 2; grid-row: 2; }
-    .ts-col { grid-column: 3; grid-row: 1 / 3; }
+    .ts-eyebrow-row { grid-column: 1 / 3; grid-row: 1; }
+    .ts-title-row { grid-column: 1 / 3; grid-row: 2; margin-bottom: 14px; }
+    .ts-info { grid-column: 1; grid-row: 3; }
+    .ts-shot { grid-column: 2; grid-row: 3; }
+    .ts-col { grid-column: 3; grid-row: 2 / 4; }
     .ts-card {
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
@@ -387,8 +388,8 @@
     .ts-feature-icon svg { width: 100%; height: 100%; }
     .ts-cta { margin-top: auto; align-self: flex-start; }
 
-    .ts-shot { display: flex; align-items: center; justify-content: center; padding: 22px; }
-    .ts-shot img { width: 100%; height: auto; display: block; }
+    .ts-shot { padding: 10px; }
+    .ts-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
     .ts-small { padding: 20px; display: flex; flex-direction: column; }
@@ -772,7 +773,8 @@
       .doing-visual { max-width: 560px; margin: 0 auto; }
       .results-grid { grid-template-columns: 1fr; }
       .ts-layout { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: 22px; }
-      .ts-header, .ts-info, .ts-shot, .ts-col { grid-column: 1; grid-row: auto; }
+      .ts-eyebrow-row, .ts-title-row, .ts-info, .ts-shot, .ts-col { grid-column: 1; grid-row: auto; }
+      .ts-title-row { margin-bottom: 0; }
       .ts-col { flex-direction: row; }
       .ts-col .ts-small { flex: 1 1 0; }
     }
@@ -1050,8 +1052,11 @@
   <section class="ts-wrap">
     <div class="section-inner">
       <div class="ts-layout">
-        <div class="ts-header">
+        <div class="ts-eyebrow-row">
           <div class="section-tag">Proyectos seleccionados_</div>
+        </div>
+
+        <div class="ts-title-row">
           <h2 class="section-title">Software que ya está en movimiento.</h2>
           <p class="section-sub">Productos reales, construidos para resolver problemas reales.</p>
         </div>
@@ -1091,10 +1096,10 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="ts-building">
-      <span class="ts-building-text">Building what's next<span class="accent">_</span></span>
+      <div class="ts-building">
+        <span class="ts-building-text">Building what's next<span class="accent">_</span></span>
+      </div>
     </div>
   </section>
 
