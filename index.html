@@ -356,6 +356,7 @@
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
       border-radius: 18px;
+      overflow: hidden;
     }
     .ts-info { padding: 26px 24px; display: flex; flex-direction: column; }
     .ts-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
@@ -382,15 +383,15 @@
     .ts-feature-icon svg { width: 100%; height: 100%; }
     .ts-cta { margin-top: auto; align-self: flex-start; }
 
-    .ts-shot { padding: 18px 18px 0; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
-    .ts-shot img { width: 100%; height: auto; display: block; border-radius: 10px 10px 0 0; }
+    .ts-shot { min-height: 320px; }
+    .ts-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
-    .ts-small { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-    .ts-small-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 16px; }
-    .ts-small-shot { border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-    .ts-small-shot img { width: 100%; height: auto; display: block; }
-    .ts-small-caption { font-size: 13.5px; color: var(--mid); margin-bottom: 16px; }
+    .ts-small { padding: 20px; display: flex; flex-direction: column; }
+    .ts-small-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
+    .ts-small-shot { border-radius: 10px; overflow: hidden; margin-bottom: 14px; height: 150px; }
+    .ts-small-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .ts-small-caption { font-size: 13.5px; color: var(--mid); margin-bottom: 14px; }
     .ts-status {
       display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
       font-size: 12px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
