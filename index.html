@@ -409,6 +409,8 @@
       display: flex; align-items: center;
     }
     .ts-building-text {
+      display: inline-block;
+      transform-origin: left center;
       font-weight: 900;
       font-size: 6vw;
       letter-spacing: -2px;
@@ -531,52 +533,6 @@
     .case-arrow-btn svg { width: 15px; height: 15px; }
     .case-card:hover .case-arrow-btn { background: var(--lime); border-color: var(--lime); color: var(--black); }
 
-    /* ── NUESTROS PRODUCTOS ── */
-    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .product-grid .case-card { aspect-ratio: 5 / 4.6; }
-    .case-card--soon { background: linear-gradient(135deg, #14202e, #1f1430); }
-    .case-card--soon .case-bg {
-      position: absolute; inset: auto; right: 4%; bottom: -8%; top: auto; left: auto;
-      width: 48%; height: auto;
-      object-fit: contain;
-      filter: none;
-      transform: none;
-    }
-    .case-card--soon:hover .case-bg { transform: none; }
-    .case-card--soon::after { background: rgba(0,0,0,.05); }
-
-    /* mini vista de la landing real de turnix, con barra de navegador */
-    .browser-chrome {
-      position: absolute; top: 0; left: 0; right: 0; z-index: 2;
-      display: flex; align-items: center; gap: 6px;
-      padding: 11px 14px;
-      background: #17171c;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .chrome-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .chrome-url {
-      margin-left: 8px;
-      font-size: 11px; font-weight: 700; color: var(--mid);
-      background: rgba(255,255,255,.06);
-      padding: 4px 12px; border-radius: 100px;
-      flex: 1;
-    }
-    .case-card--preview .case-bg {
-      inset: auto 0 0 0;
-      top: 34px;
-      height: calc(100% - 34px);
-      object-fit: cover;
-      object-position: top center;
-      filter: none;
-      transform: none;
-    }
-    .case-card--preview:hover .case-bg { transform: scale(1.02); }
-    .case-card--preview::after {
-      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 30%, rgba(0,0,0,.35) 55%, transparent 80%);
-    }
-    .case-card--preview .case-body { justify-content: flex-end; }
-    .case-card--preview .case-footer { margin-top: 14px; }
-
     /* ── RESULTADOS ── */
     .results-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: stretch; }
     .stats-card {
@@ -614,38 +570,6 @@
     .robot-cta .btn { background: var(--black); color: var(--white); align-self: flex-start; position: relative; z-index: 1; }
     .robot-cta .btn:hover { background: #1a1a1a; }
 
-    /* ── TECNOLOGÍAS ── */
-    .tech-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 48px; }
-    .tech-inner { max-width: 1220px; margin: 0 auto; }
-    .tech-label {
-      font-size: 12px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--mid); margin-bottom: 30px; text-align: center;
-    }
-    .tech-row {
-      display: flex; align-items: center; justify-content: center;
-      flex-wrap: wrap; gap: 10px; max-width: 900px; margin: 0 auto;
-    }
-    .tech-pill {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      font-weight: 800; color: #C9C9C9; text-align: center;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      background: var(--surface);
-      transition: border-color .2s, color .2s, transform .2s, background .2s;
-    }
-    .tech-pill:hover { border-color: var(--lime); color: var(--white); background: var(--surface-hover); transform: translateY(-4px); }
-    .tech-dot { border-radius: 50%; flex-shrink: 0; }
-
-    /* tamaños relativos: los círculos ocupan distinto espacio según
-       qué tan central es cada tecnología para lo que hacemos */
-    .tech-pill--xl { width: clamp(108px, 12vw, 156px); height: clamp(108px, 12vw, 156px); font-size: 15px; }
-    .tech-pill--xl .tech-dot { width: 10px; height: 10px; }
-    .tech-pill--lg { width: clamp(92px, 10vw, 128px); height: clamp(92px, 10vw, 128px); font-size: 14px; }
-    .tech-pill--lg .tech-dot { width: 9px; height: 9px; }
-    .tech-pill--md { width: clamp(78px, 8.5vw, 106px); height: clamp(78px, 8.5vw, 106px); font-size: 13px; }
-    .tech-pill--md .tech-dot { width: 8px; height: 8px; }
-    .tech-pill--sm { width: clamp(66px, 7vw, 88px); height: clamp(66px, 7vw, 88px); font-size: 12px; }
-    .tech-pill--sm .tech-dot { width: 7px; height: 7px; }
 
     /* ── CTA / FOOTER ── */
     .cta-section {
@@ -772,7 +696,7 @@
       .btn-large { font-size: 14px; padding: 13px 24px; }
 
       section { padding: 60px 20px; }
-      .doing-wrap section, .tech-wrap { padding-left: 20px; padding-right: 20px; }
+      .doing-wrap section { padding-left: 20px; padding-right: 20px; }
 
       .hero { padding: 44px 20px 56px; text-align: center; gap: 44px; }
       .hero-content { order: 1; }
@@ -786,7 +710,10 @@
 
       .ts-wrap { padding: 60px 20px 0; }
       .ts-col { flex-direction: column; }
-      .ts-building-text { font-size: clamp(28px, 11vw, 40px); line-height: .95; white-space: normal; }
+      .ts-info { padding: 20px; }
+      .ts-logo-row { flex-direction: row; justify-content: center; gap: 10px; margin-bottom: 16px; }
+      .ts-logo-mascot { height: 40px; }
+      .ts-logo-wordmark { width: auto; height: 30px; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
@@ -861,8 +788,6 @@
       .robot-cta-title, .robot-cta-sub { text-align: center; }
       .robot-cta .btn { align-self: center; }
 
-      .tech-row { gap: 8px; }
-
       .footer-top { flex-direction: column; gap: 32px; align-items: center; }
       .footer-cols { flex-direction: column; align-items: center; gap: 28px; text-align: center; }
       footer { padding: 40px 20px 28px; }
@@ -871,52 +796,6 @@
       .footer-brand { text-align: center; }
       .footer-brand img { height: 108px; margin: 0 auto 16px; }
       .footer-tagline { margin: 0 auto; }
-
-      /* ── ONE SECTION = ONE SCREEN, SWIPE-THROUGH-CARDS FEEL ── */
-      html { scroll-snap-type: y mandatory; }
-      .hero-wrap,
-      .ts-wrap,
-      .doing-wrap,
-      #casos,
-      .tech-wrap,
-      #productos,
-      .cta-section,
-      footer {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        scroll-margin-top: 66px;
-        min-height: calc(100vh - 66px);
-        min-height: calc(100dvh - 66px);
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      /* "Resultados" and "robot-cta" are two independent snap cards.
-         robot-cta already snaps on its own further down the markup, so
-         the snap point for this card lives on its header (a sibling of
-         robot-cta's grid, not an ancestor) to avoid nesting two snap
-         targets inside one another, which some mobile browsers handle
-         inconsistently. */
-      .results-section {
-        min-height: calc(100vh - 66px);
-        min-height: calc(100dvh - 66px);
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .results-section .section-header {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        scroll-margin-top: 66px;
-        margin-bottom: 20px;
-      }
-      /* direct children use margin:0 auto to center; flex needs an explicit
-         width or the auto-margin shrinks them to their content's width */
-      .section-inner, .tech-inner, .cta-inner, .footer-inner {
-        width: 100%;
-      }
     }
 
     @media (max-width: 680px) {
@@ -1198,69 +1077,6 @@
     </div>
   </section>
 
-  <!-- TECNOLOGÍAS -->
-  <div class="tech-wrap">
-    <div class="tech-inner">
-      <h2 class="tech-label">Tecnologías que usamos</h2>
-      <div class="tech-row">
-        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:var(--white);"></span>Next.js</span>
-        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:#FFD43B;"></span>Python</span>
-        <span class="tech-pill tech-pill--xl"><span class="tech-dot" style="background:var(--lime);"></span>OpenAI</span>
-        <span class="tech-pill tech-pill--lg"><span class="tech-dot" style="background:#3178C6;"></span>TypeScript</span>
-        <span class="tech-pill tech-pill--lg"><span class="tech-dot" style="background:#FF9900;"></span>AWS</span>
-        <span class="tech-pill tech-pill--md"><span class="tech-dot" style="background:#4169E1;"></span>PostgreSQL</span>
-        <span class="tech-pill tech-pill--md"><span class="tech-dot" style="background:#2496ED;"></span>Docker</span>
-        <span class="tech-pill tech-pill--sm"><span class="tech-dot" style="background:var(--violet-soft);"></span>n8n</span>
-        <span class="tech-pill tech-pill--sm"><span class="tech-dot" style="background:var(--cyan);"></span>React Native</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- NUESTROS PRODUCTOS -->
-  <section id="productos" style="padding-top: 48px;">
-    <div class="section-inner">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Nuestros productos</div>
-          <h2 class="section-title">SaaS propios que construimos y operamos</h2>
-        </div>
-      </div>
-      <div class="product-grid">
-        <a href="/turnix/" class="case-card case-card--preview">
-          <div class="browser-chrome">
-            <span class="chrome-dot" style="background:#FF5F57;"></span>
-            <span class="chrome-dot" style="background:#FEBC2E;"></span>
-            <span class="chrome-dot" style="background:#28C840;"></span>
-            <span class="chrome-url">espressodevs.com/turnix</span>
-          </div>
-          <img class="case-bg" src="assets/photos/turnix-preview.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Turnix</span>
-            <div class="case-headline">Gestión de turnos online para negocios de servicios</div>
-            <span class="case-tag">Producto propio</span>
-            <div class="case-footer">
-              <span class="case-link">Ver turnix →</span>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <div class="case-card case-card--soon">
-          <img class="case-bg" src="turnix/assets/turni_ultra_happy.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Turnix Creators</span>
-            <div class="case-headline">Nuestro próximo producto ya se está cocinando.</div>
-            <span class="case-tag">Próximamente</span>
-            <div class="case-footer">
-              <a href="#contacto" class="case-link">Quiero que me avisen →</a>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA / CONTACTO -->
   <section class="cta-section" id="contacto">
     <div class="cta-inner">
@@ -1283,7 +1099,7 @@
             <div class="footer-col-title">Proyectos</div>
             <ul class="footer-links">
               <li><a href="/turnix/">turnix</a></li>
-              <li><a href="#productos">Turnix Creators</a></li>
+              <li><a href="#contacto">Turnix Creators</a></li>
               <li><a href="#casos">Ver casos de éxito</a></li>
             </ul>
           </div>
@@ -1368,12 +1184,32 @@
         caseCards.forEach(function (card) { caseObserver.observe(card); });
       }
 
+      // ── Stretch "Building what's next_" to fill the section width ──
+      var buildingText = document.querySelector('.ts-building-text');
+      if (buildingText) {
+        var fitBuildingText = function () {
+          buildingText.style.transform = 'none';
+          var containerWidth = buildingText.parentElement.clientWidth;
+          var textWidth = buildingText.getBoundingClientRect().width;
+          if (textWidth > 0) {
+            buildingText.style.transform = 'scaleX(' + (containerWidth / textWidth) + ')';
+          }
+        };
+        fitBuildingText();
+        var buildingResizeTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(buildingResizeTimer);
+          buildingResizeTimer = setTimeout(fitBuildingText, 120);
+        });
+      }
+
       // ── Smooth scroll-reveal on scroll ──
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if ('IntersectionObserver' in window && !prefersReducedMotion) {
         var revealSelectors = [
           '.section-header', '.case-card', '.stat-item',
-          '.robot-cta', '.dw-step', '.cta-inner'
+          '.robot-cta', '.dw-step', '.dw-header', '.dw-strip', '.cta-inner',
+          '.ts-eyebrow-row', '.ts-title-row', '.ts-main', '.ts-col .ts-small', '.ts-building'
         ];
         var revealEls = document.querySelectorAll(revealSelectors.join(','));
         var revealObserver = new IntersectionObserver(function (entries, obs) {
