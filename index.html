@@ -389,8 +389,8 @@
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
     .ts-small { padding: 20px; display: flex; flex-direction: column; }
     .ts-small-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 14px; }
-    .ts-small-shot { border-radius: 10px; overflow: hidden; margin-bottom: 14px; height: 150px; }
-    .ts-small-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .ts-small-shot { border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+    .ts-small-shot img { width: 100%; height: auto; display: block; }
     .ts-small-caption { font-size: 13.5px; color: var(--mid); margin-bottom: 14px; }
     .ts-status {
       display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
@@ -422,68 +422,41 @@
 
     /* ── LO QUE HACEMOS ── */
     .doing-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .doing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
-    .doing-list { list-style: none; }
-    .doing-item {
+    .dw-header { margin-bottom: 48px; }
+    .dw-steps { display: flex; align-items: flex-start; margin-bottom: 56px; }
+    .dw-step { flex: 1; min-width: 0; }
+    .dw-step img { width: 100%; height: auto; display: block; border-radius: 20px; }
+    .dw-connector { width: 44px; flex-shrink: 0; position: relative; margin-top: 58px; height: 8px; }
+    .dw-connector::before {
+      content: ''; position: absolute; left: 0; right: 0; top: 50%;
+      height: 2px; background: currentColor; opacity: .5; transform: translateY(-50%);
+    }
+    .dw-connector::after {
+      content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px;
+      border-radius: 50%; background: currentColor; transform: translate(-50%,-50%);
+      box-shadow: 0 0 10px currentColor;
+    }
+    .dw-connector-lime { color: var(--lime); }
+    .dw-connector-violet { color: var(--violet); }
+
+    .dw-strip {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .dw-strip-mascot { height: 64px; width: auto; flex-shrink: 0; }
+    .dw-strip-words { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
+    .dw-word {
       font-weight: 900;
-      font-size: clamp(24px, 2.6vw, 34px);
+      font-size: clamp(26px, 3.6vw, 48px);
       letter-spacing: -1px;
-      color: var(--white);
-      line-height: 1.15;
-    }
-    .doing-item .dot { color: var(--lime); }
-    .doing-arrow {
-      color: var(--lime);
-      font-weight: 900;
-      font-size: 22px;
-      margin: 10px 0 10px 4px;
+      text-transform: uppercase;
       line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,.35);
     }
-
-    .doing-item-toggle {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-      text-align: left;
-      font: inherit;
-      color: inherit;
-      cursor: default;
-      pointer-events: none;
-    }
-    .doing-item-icon, .doing-item-chevron { display: none; }
-    .doing-item-panel { display: none; }
-    .doing-item-row.is-open .doing-item-panel { display: block; margin-top: 10px; }
-    .doing-item-desc { font-size: 15px; font-weight: 500; color: var(--mid); line-height: 1.65; max-width: 460px; }
-    .doing-item-link { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; }
-    .doing-item-link:hover { color: var(--lime); }
-
-    .doing-visual { position: relative; }
-    .doing-visual img {
-      width: 100%;
-      aspect-ratio: 4/3.1;
-      object-fit: cover;
-      border-radius: 20px;
-      display: block;
-      filter: grayscale(.4) contrast(1.1) brightness(.68);
-      border: 1px solid var(--border);
-    }
-    .doing-quote {
-      position: absolute;
-      bottom: -30px; right: -26px;
-      width: 220px;
-      background: var(--black);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 16px;
-      padding: 20px 22px;
-      box-shadow: 0 24px 48px rgba(0,0,0,.5);
-    }
-    .doing-quote p { font-weight: 700; font-size: 14px; line-height: 1.6; color: var(--text); }
-    .doing-quote p .hl { color: var(--lime); }
-    .doing-quote img { height: 26px; margin-top: 12px; filter: none; border: none; aspect-ratio: auto; width: auto; }
+    .dw-word-fill { color: var(--lime); -webkit-text-stroke: 0; }
+    .dw-arrow { color: var(--mid); font-size: 22px; font-weight: 700; }
+    .dw-strip-cta { white-space: nowrap; }
 
     /* ── CASOS DE ÉXITO ── */
     .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -765,8 +738,8 @@
       .hero { grid-template-columns: 1fr; gap: 52px; }
       .hero-visual { max-width: 680px; margin: 30px auto 0; width: 100%; }
       .hv-dashboard { transform: scale(1.08); transform-origin: center; }
-      .doing-grid { grid-template-columns: 1fr; gap: 60px; }
-      .doing-visual { max-width: 560px; margin: 0 auto; }
+      .dw-steps { flex-direction: column; gap: 22px; }
+      .dw-connector { display: none; }
       .results-grid { grid-template-columns: 1fr; }
       .ts-layout { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: 22px; }
       .ts-eyebrow-row, .ts-title-row, .ts-main, .ts-col { grid-column: 1; grid-row: auto; }
@@ -813,47 +786,9 @@
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
 
-      .doing-visual { display: none; }
-      .doing-arrow { display: none; }
-      .doing-item-row { border-bottom: 1px solid var(--border); }
-      .doing-item-row:first-child { border-top: 1px solid var(--border); }
-      .doing-item-toggle {
-        pointer-events: auto;
-        cursor: pointer;
-        gap: 14px;
-        padding: 18px 0;
-      }
-      .doing-item { font-size: 20px; flex: 1; }
-      .doing-item-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 34px; height: 34px;
-        border-radius: 10px;
-        flex-shrink: 0;
-      }
-      .doing-item-icon svg { width: 18px; height: 18px; }
-      .doing-item-icon .code-glyph { font-weight: 900; font-size: 14px; }
-      .doing-item-chevron {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--lime);
-        flex-shrink: 0;
-        transition: transform .25s ease;
-      }
-      .doing-item-chevron svg { width: 18px; height: 18px; }
-      .doing-item-row.is-open .doing-item-chevron { transform: rotate(180deg); }
-      .doing-item-panel {
-        display: grid;
-        grid-template-rows: 0fr;
-        transition: grid-template-rows .32s ease;
-      }
-      .doing-item-row.is-open .doing-item-panel { grid-template-rows: 1fr; }
-      .doing-item-panel-inner { overflow: hidden; }
-      .doing-item-desc { font-size: 14px; font-weight: 500; color: var(--mid); line-height: 1.65; padding-top: 2px; padding-bottom: 18px; padding-left: 48px; }
-      .doing-item-link { display: inline-block; font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; padding-left: 48px; padding-bottom: 20px; }
-      .doing-item-link:active { color: var(--lime); }
+      .dw-strip { gap: 16px; padding-top: 28px; }
+      .dw-strip-mascot { height: 44px; }
+      .dw-word { font-size: clamp(22px, 8vw, 34px); }
 
       .case-grid,
       .product-grid {
@@ -1107,75 +1042,32 @@
   <div class="doing-wrap" id="lo-que-hacemos">
     <section style="padding-top: 100px; padding-bottom: 100px;">
       <div class="section-inner">
-        <div class="doing-grid">
-          <div>
-            <h2 class="sr-only">Lo que hacemos</h2>
-            <div class="section-tag">Lo que hacemos</div>
-            <ul class="doing-list">
-              <li class="doing-item-row is-open">
-                <button type="button" class="doing-item-toggle" aria-expanded="true">
-                  <span class="doing-item-icon" style="background:rgba(198,255,0,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
-                  <span class="doing-item">Creamos startups<span class="dot">.</span></span>
-                  <span class="doing-item-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="doing-item-panel">
-                  <div class="doing-item-panel-inner">
-                    <p class="doing-item-desc">Convertimos ideas en productos digitales escalables y validados en el mercado.</p>
-                    <a href="#contacto" class="doing-item-link">Ver más →</a>
-                  </div>
-                </div>
-              </li>
-              <li class="doing-arrow" aria-hidden="true">↓</li>
-              <li class="doing-item-row">
-                <button type="button" class="doing-item-toggle" aria-expanded="false">
-                  <span class="doing-item-icon" style="background:rgba(0,240,255,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 3v6h-6"/></svg></span>
-                  <span class="doing-item">Automatizamos procesos<span class="dot">.</span></span>
-                  <span class="doing-item-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="doing-item-panel">
-                  <div class="doing-item-panel-inner">
-                    <p class="doing-item-desc">Implementamos IA, agentes y flujos que optimizan procesos y reducen costos operativos.</p>
-                    <a href="#contacto" class="doing-item-link">Ver más →</a>
-                  </div>
-                </div>
-              </li>
-              <li class="doing-arrow" aria-hidden="true">↓</li>
-              <li class="doing-item-row">
-                <button type="button" class="doing-item-toggle" aria-expanded="false">
-                  <span class="doing-item-icon" style="background:rgba(124,58,237,.15);"><span class="code-glyph" style="color:#A78BFA;">&lt;/&gt;</span></span>
-                  <span class="doing-item">Desarrollamos software<span class="dot">.</span></span>
-                  <span class="doing-item-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="doing-item-panel">
-                  <div class="doing-item-panel-inner">
-                    <p class="doing-item-desc">Productos a medida, integraciones y plataformas robustas construidas con tecnología moderna.</p>
-                    <a href="#contacto" class="doing-item-link">Ver más →</a>
-                  </div>
-                </div>
-              </li>
-              <li class="doing-arrow" aria-hidden="true">↓</li>
-              <li class="doing-item-row">
-                <button type="button" class="doing-item-toggle" aria-expanded="false">
-                  <span class="doing-item-icon" style="background:rgba(198,255,0,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg></span>
-                  <span class="doing-item">Implementamos IA<span class="dot">.</span></span>
-                  <span class="doing-item-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
-                </button>
-                <div class="doing-item-panel">
-                  <div class="doing-item-panel-inner">
-                    <p class="doing-item-desc">Modelos y agentes de inteligencia artificial integrados a los procesos reales del negocio.</p>
-                    <a href="#contacto" class="doing-item-link">Ver más →</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+        <div class="dw-header">
+          <div class="section-tag">Lo que hacemos_</div>
+          <h2 class="section-title">Convertimos ideas y procesos en software que funciona.</h2>
+          <p class="section-sub">Del primer prototipo a la automatización completa de tu operación.</p>
+        </div>
+
+        <div class="dw-steps">
+          <div class="dw-step"><img src="assets/photos/step-01-productos.png" alt="Paso 1: Productos digitales — dashboard y app móvil de ejemplo" /></div>
+          <div class="dw-connector dw-connector-lime" aria-hidden="true"></div>
+          <div class="dw-step"><img src="assets/photos/step-02-automatizacion.png" alt="Paso 2: Automatización — flujo conectando leads, WhatsApp, CRM y pagos" /></div>
+          <div class="dw-connector dw-connector-violet" aria-hidden="true"></div>
+          <div class="dw-step"><img src="assets/photos/step-03-ia.png" alt="Paso 3: IA aplicada — asistente de IA e insights de negocio" /></div>
+        </div>
+
+        <div class="dw-strip">
+          <img class="dw-strip-mascot" src="assets/brand/mascot-head.png" alt="" aria-hidden="true" />
+          <div class="dw-strip-words">
+            <span class="dw-word">Build</span>
+            <span class="dw-arrow">→</span>
+            <span class="dw-word">Ship</span>
+            <span class="dw-arrow">→</span>
+            <span class="dw-word">Automate</span>
+            <span class="dw-arrow">→</span>
+            <span class="dw-word dw-word-fill">Grow_</span>
           </div>
-          <div class="doing-visual">
-            <img src="assets/photos/pic2-cup.png" alt="Escritorio de trabajo espressodevs" />
-            <div class="doing-quote">
-              <p>No escribimos código por escribir. Escribimos para que <span class="hl">las cosas pasen.</span></p>
-              <img src="assets/brand/logo-icon.png" alt="" />
-            </div>
-          </div>
+          <a href="#contacto" class="btn btn-outline dw-strip-cta">Ver cómo trabajamos →</a>
         </div>
       </div>
     </section>
@@ -1446,25 +1338,7 @@
         });
       }
 
-      // ── "Lo que hacemos" accordion ──
-      var accordionRows = document.querySelectorAll('.doing-item-row');
-      accordionRows.forEach(function (row) {
-        var toggle = row.querySelector('.doing-item-toggle');
-        if (!toggle) return;
-        toggle.addEventListener('click', function () {
-          var willOpen = !row.classList.contains('is-open');
-          accordionRows.forEach(function (r) {
-            r.classList.remove('is-open');
-            r.querySelector('.doing-item-toggle').setAttribute('aria-expanded', 'false');
-          });
-          if (willOpen) {
-            row.classList.add('is-open');
-            toggle.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-
-      // ── Casos de éxito carousel dots ──
+// ── Casos de éxito carousel dots ──
       var caseGrid = document.querySelector('.case-grid');
       var caseDots = document.querySelectorAll('.case-dot');
       if (caseGrid && window.matchMedia('(max-width: 900px)').matches) {
@@ -1493,7 +1367,7 @@
       if ('IntersectionObserver' in window && !prefersReducedMotion) {
         var revealSelectors = [
           '.section-header', '.case-card', '.stat-item',
-          '.robot-cta', '.doing-item-row', '.doing-visual', '.cta-inner'
+          '.robot-cta', '.dw-step', '.cta-inner'
         ];
         var revealEls = document.querySelectorAll(revealSelectors.join(','));
         var revealObserver = new IntersectionObserver(function (entries, obs) {
