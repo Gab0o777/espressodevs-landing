@@ -351,21 +351,23 @@
     /* ── PROYECTOS SELECCIONADOS (TURNIX SHOWCASE) ── */
     .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
     .ts-header { margin-bottom: 44px; }
-    .ts-grid { display: grid; grid-template-columns: 1fr 2.6fr 2.1fr; gap: 22px; align-items: stretch; }
+    .ts-grid { display: grid; grid-template-columns: 1.1fr 2.55fr 2.05fr; gap: 22px; align-items: start; }
     .ts-card {
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
     }
-    .ts-info { padding: 26px 24px; display: flex; flex-direction: column; }
-    .ts-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-    .ts-logo-img { height: 26px; width: auto; display: block; }
+    .ts-info { padding: 26px 22px; display: flex; flex-direction: column; }
+    .ts-logo-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; row-gap: 6px; margin-bottom: 22px; }
+    .ts-logo-mascot { height: 34px; width: auto; display: block; }
+    .ts-logo-wordmark { height: 21px; width: auto; display: block; }
     .ts-max {
-      font-size: 10px; font-weight: 800; letter-spacing: .5px;
+      font-size: 9px; font-weight: 800; letter-spacing: .5px;
       color: var(--white); background: rgba(255,255,255,.08);
       border: 1px solid var(--border); border-radius: 20px;
-      padding: 3px 8px;
+      padding: 2px 7px;
+      white-space: nowrap;
     }
     .ts-bigname {
       font-weight: 900; font-size: 40px; letter-spacing: -1.5px;
@@ -383,8 +385,7 @@
     .ts-feature-icon svg { width: 100%; height: 100%; }
     .ts-cta { margin-top: auto; align-self: flex-start; }
 
-    .ts-shot { min-height: 320px; }
-    .ts-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .ts-shot img { width: 100%; height: auto; display: block; }
 
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
     .ts-small { padding: 20px; display: flex; flex-direction: column; }
@@ -1056,7 +1057,8 @@
       <div class="ts-grid">
         <div class="ts-card ts-info">
           <div class="ts-logo-row">
-            <img class="ts-logo-img" src="assets/turnix-showcase/turnix-logo.png" alt="Turnix" />
+            <img class="ts-logo-mascot" src="assets/turnix-showcase/mascot-thumbsup.png" alt="" />
+            <img class="ts-logo-wordmark" src="assets/turnix-showcase/turnix-wordmark.png" alt="Turnix" />
             <span class="ts-max">MAX</span>
           </div>
           <div class="ts-bigname">TURNIX</div>
