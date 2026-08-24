@@ -350,25 +350,25 @@
 
     /* ── PROYECTOS SELECCIONADOS (TURNIX SHOWCASE) ── */
     .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
+    .ts-wrap .section-inner { max-width: 1400px; }
     .ts-layout {
       display: grid;
-      grid-template-columns: 1.1fr 2.55fr 2.05fr;
+      grid-template-columns: 2.1fr 1fr;
       grid-template-rows: auto auto 1fr;
       column-gap: 22px;
       row-gap: 14px;
     }
-    .ts-eyebrow-row { grid-column: 1 / 3; grid-row: 1; }
-    .ts-title-row { grid-column: 1 / 3; grid-row: 2; margin-bottom: 14px; }
-    .ts-info { grid-column: 1; grid-row: 3; }
-    .ts-shot { grid-column: 2; grid-row: 3; }
-    .ts-col { grid-column: 3; grid-row: 2 / 4; }
+    .ts-eyebrow-row { grid-column: 1 / 2; grid-row: 1; }
+    .ts-title-row { grid-column: 1 / 2; grid-row: 2; margin-bottom: 14px; }
+    .ts-main { grid-column: 1; grid-row: 3; display: flex; }
+    .ts-col { grid-column: 2; grid-row: 2 / 4; }
     .ts-card {
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
     }
-    .ts-info { padding: 26px 22px; display: flex; flex-direction: column; }
+    .ts-info { flex: 0 0 300px; padding: 26px 22px; display: flex; flex-direction: column; border-right: 1px solid var(--border); }
     .ts-logo-row { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 22px; }
     .ts-logo-mascot { height: 100px; width: auto; display: block; }
     .ts-logo-wordmark { width: 100%; height: auto; display: block; }
@@ -383,7 +383,7 @@
     .ts-feature-icon svg { width: 100%; height: 100%; }
     .ts-cta { margin-top: auto; align-self: flex-start; }
 
-    .ts-shot { padding: 22px; }
+    .ts-shot { flex: 1; min-width: 0; padding: 22px; }
     .ts-shot img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; }
 
     .ts-col { display: flex; flex-direction: column; gap: 22px; }
@@ -769,8 +769,11 @@
       .doing-visual { max-width: 560px; margin: 0 auto; }
       .results-grid { grid-template-columns: 1fr; }
       .ts-layout { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: 22px; }
-      .ts-eyebrow-row, .ts-title-row, .ts-info, .ts-shot, .ts-col { grid-column: 1; grid-row: auto; }
+      .ts-eyebrow-row, .ts-title-row, .ts-main, .ts-col { grid-column: 1; grid-row: auto; }
       .ts-title-row { margin-bottom: 0; }
+      .ts-main { flex-direction: column; }
+      .ts-info { flex: none; border-right: none; border-bottom: 1px solid var(--border); }
+      .ts-shot { min-height: 320px; }
       .ts-col { flex-direction: row; }
       .ts-col .ts-small { flex: 1 1 0; }
     }
@@ -1057,23 +1060,25 @@
           <p class="section-sub">Productos reales, construidos para resolver problemas reales.</p>
         </div>
 
-        <div class="ts-card ts-info">
-          <div class="ts-logo-row">
-            <img class="ts-logo-mascot" src="assets/turnix-showcase/mascot-thumbsup.png" alt="" />
-            <img class="ts-logo-wordmark" src="assets/turnix-showcase/turnix-wordmark.png" alt="Turnix" />
+        <div class="ts-card ts-main">
+          <div class="ts-info">
+            <div class="ts-logo-row">
+              <img class="ts-logo-mascot" src="assets/turnix-showcase/mascot-thumbsup.png" alt="" />
+              <img class="ts-logo-wordmark" src="assets/turnix-showcase/turnix-wordmark.png" alt="Turnix" />
+            </div>
+            <div class="ts-kicker">Producto · Agenda + IA</div>
+            <p class="ts-desc">Agenda, reservas online y métricas para que los negocios de servicios trabajen con más orden.</p>
+            <ul class="ts-features">
+              <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>Agenda</li>
+              <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>Reservas online</li>
+              <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/></svg></span>Métricas</li>
+            </ul>
+            <a href="/turnix/" target="_blank" rel="noopener noreferrer" class="btn btn-primary ts-cta">Ver Turnix →</a>
           </div>
-          <div class="ts-kicker">Producto · Agenda + IA</div>
-          <p class="ts-desc">Agenda, reservas online y métricas para que los negocios de servicios trabajen con más orden.</p>
-          <ul class="ts-features">
-            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>Agenda</li>
-            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>Reservas online</li>
-            <li><span class="ts-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 3 3 5-6"/></svg></span>Métricas</li>
-          </ul>
-          <a href="/turnix/" target="_blank" rel="noopener noreferrer" class="btn btn-primary ts-cta">Ver Turnix →</a>
-        </div>
 
-        <div class="ts-card ts-shot">
-          <img src="assets/turnix-showcase/calendar.png" alt="Agenda semanal de Turnix con turnos organizados por profesional" />
+          <div class="ts-shot">
+            <img src="assets/turnix-showcase/calendar.png" alt="Agenda semanal de Turnix con turnos organizados por profesional" />
+          </div>
         </div>
 
         <div class="ts-col">
