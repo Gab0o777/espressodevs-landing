@@ -350,8 +350,17 @@
 
     /* ── PROYECTOS SELECCIONADOS (TURNIX SHOWCASE) ── */
     .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
-    .ts-header { margin-bottom: 44px; }
-    .ts-grid { display: grid; grid-template-columns: 1.1fr 2.55fr 2.05fr; gap: 22px; align-items: start; }
+    .ts-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 2.55fr 2.05fr;
+      grid-template-rows: auto 1fr;
+      column-gap: 22px;
+      row-gap: 28px;
+    }
+    .ts-header { grid-column: 1 / 3; grid-row: 1; }
+    .ts-info { grid-column: 1; grid-row: 2; }
+    .ts-shot { grid-column: 2; grid-row: 2; }
+    .ts-col { grid-column: 3; grid-row: 1 / 3; }
     .ts-card {
       background: rgba(255,255,255,.02);
       border: 1px solid var(--border);
@@ -359,16 +368,9 @@
       overflow: hidden;
     }
     .ts-info { padding: 26px 22px; display: flex; flex-direction: column; }
-    .ts-logo-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; row-gap: 6px; margin-bottom: 22px; }
-    .ts-logo-mascot { height: 34px; width: auto; display: block; }
-    .ts-logo-wordmark { height: 21px; width: auto; display: block; }
-    .ts-max {
-      font-size: 9px; font-weight: 800; letter-spacing: .5px;
-      color: var(--white); background: rgba(255,255,255,.08);
-      border: 1px solid var(--border); border-radius: 20px;
-      padding: 2px 7px;
-      white-space: nowrap;
-    }
+    .ts-logo-row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; row-gap: 6px; margin-bottom: 22px; }
+    .ts-logo-mascot { height: 46px; width: auto; display: block; }
+    .ts-logo-wordmark { height: 28px; width: auto; display: block; }
     .ts-bigname {
       font-weight: 900; font-size: 40px; letter-spacing: -1.5px;
       line-height: 1; color: var(--white); text-transform: uppercase;
@@ -405,8 +407,8 @@
 
     .ts-building {
       position: relative;
-      margin-top: 64px;
-      padding: 40px 0 46px;
+      margin-top: 24px;
+      padding: 0 0 40px;
       display: flex; align-items: center;
     }
     .ts-building-text {
@@ -416,11 +418,10 @@
       text-transform: uppercase;
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.14);
+      -webkit-text-stroke: 2.5px rgba(255,255,255,.28);
       white-space: nowrap;
     }
-    .ts-building-text .accent { -webkit-text-stroke: 1px rgba(198,255,0,.5); }
-    .ts-mascot { position: absolute; right: 0; bottom: 8px; width: 96px; height: auto; }
+    .ts-building-text .accent { -webkit-text-stroke: 2.5px rgba(198,255,0,.65); }
 
     /* ── LO QUE HACEMOS ── */
     .doing-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -769,7 +770,8 @@
       .doing-grid { grid-template-columns: 1fr; gap: 60px; }
       .doing-visual { max-width: 560px; margin: 0 auto; }
       .results-grid { grid-template-columns: 1fr; }
-      .ts-grid { grid-template-columns: 1fr; }
+      .ts-layout { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: 22px; }
+      .ts-header, .ts-info, .ts-shot, .ts-col { grid-column: 1; grid-row: auto; }
       .ts-col { flex-direction: row; }
       .ts-col .ts-small { flex: 1 1 0; }
     }
@@ -804,9 +806,7 @@
 
       .ts-wrap { padding: 60px 20px 0; }
       .ts-col { flex-direction: column; }
-      .ts-building { flex-wrap: wrap; row-gap: 10px; }
-      .ts-building-text { font-size: clamp(28px, 11vw, 40px); line-height: .95; white-space: normal; flex: 1 1 100%; }
-      .ts-mascot { position: static; width: 56px; margin-left: auto; }
+      .ts-building-text { font-size: clamp(28px, 11vw, 40px); line-height: .95; white-space: normal; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
@@ -1048,18 +1048,17 @@
   <!-- PROYECTOS SELECCIONADOS -->
   <section class="ts-wrap">
     <div class="section-inner">
-      <div class="ts-header">
-        <div class="section-tag">Proyectos seleccionados_</div>
-        <h2 class="section-title">Software que ya está en movimiento.</h2>
-        <p class="section-sub">Productos reales, construidos para resolver problemas reales.</p>
-      </div>
+      <div class="ts-layout">
+        <div class="ts-header">
+          <div class="section-tag">Proyectos seleccionados_</div>
+          <h2 class="section-title">Software que ya está en movimiento.</h2>
+          <p class="section-sub">Productos reales, construidos para resolver problemas reales.</p>
+        </div>
 
-      <div class="ts-grid">
         <div class="ts-card ts-info">
           <div class="ts-logo-row">
             <img class="ts-logo-mascot" src="assets/turnix-showcase/mascot-thumbsup.png" alt="" />
             <img class="ts-logo-wordmark" src="assets/turnix-showcase/turnix-wordmark.png" alt="Turnix" />
-            <span class="ts-max">MAX</span>
           </div>
           <div class="ts-bigname">TURNIX</div>
           <div class="ts-kicker">Producto · Agenda + IA</div>
@@ -1095,7 +1094,6 @@
 
     <div class="ts-building">
       <span class="ts-building-text">Building what's next<span class="accent">_</span></span>
-      <img class="ts-mascot" src="assets/turnix-showcase/mascot.png" alt="" aria-hidden="true" />
     </div>
   </section>
 
