@@ -292,42 +292,6 @@
       flex-wrap: wrap;
       margin-bottom: 48px;
     }
-    .hero-features-bar {
-      border-top: 1px solid var(--border);
-      padding: 30px 48px;
-    }
-    .hero-features {
-      max-width: 1360px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px 28px;
-    }
-    .hero-feature {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 800;
-      font-size: 14.5px;
-      letter-spacing: -.1px;
-      color: var(--white);
-      white-space: nowrap;
-      padding-right: 32px;
-      border-right: 1px solid var(--border);
-    }
-    .hero-feature:last-child { border-right: none; padding-right: 0; }
-    .hf-icon {
-      width: 42px; height: 42px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .hf-icon svg { width: 20px; height: 20px; display: block; }
-
     /* ── HERO VISUAL ── */
     .hero-visual { position: relative; min-width: 0; width: 100%; display: flex; align-items: center; }
     .hv-dashboard { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.65)); }
@@ -718,6 +682,12 @@
     .footer-social a:hover { color: var(--black); background: var(--lime); border-color: var(--lime); }
     .footer-social svg { width: 15px; height: 15px; }
 
+    /* ── RESPONSIVE SMALL DESKTOP/LAPTOP ── */
+    @media (max-width: 1500px) and (min-width: 1101px) {
+      .hero { gap: 24px; padding-left: 32px; padding-right: 32px; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); }
+      .hv-dashboard { transform: scale(1.14); transform-origin: right center; }
+    }
+
     /* ── RESPONSIVE TABLET ── */
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; gap: 52px; }
@@ -754,11 +724,6 @@
       .hero-subtitle { margin: 0 auto 32px; }
       .hero-actions { justify-content: center; }
       .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
-      .hero-features-bar { display: none; }
-      .hero-features { justify-content: center; }
-      .hero-feature { border-right: none; padding-right: 0; font-size: 13px; }
-      .hf-icon { width: 36px; height: 36px; }
-      .hf-icon svg { width: 17px; height: 17px; }
 
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
@@ -994,27 +959,6 @@
       <a href="#lo-que-hacemos" class="hero-scroll-cue" aria-label="Desplazate para ver más">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
       </a>
-    </div>
-
-    <div class="hero-features-bar">
-      <div class="hero-features">
-        <div class="hero-feature">
-          <span class="hf-icon" style="background:rgba(124,58,237,.15);"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-          Equipos senior
-        </div>
-        <div class="hero-feature">
-          <span class="hf-icon" style="background:rgba(198,255,0,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></span>
-          Enfoque en resultados
-        </div>
-        <div class="hero-feature">
-          <span class="hf-icon" style="background:rgba(0,240,255,.14);"><svg viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-          Tecnología moderna
-        </div>
-        <div class="hero-feature">
-          <span class="hf-icon" style="background:rgba(124,58,237,.15);"><svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
-          Acompañamiento continuo
-        </div>
-      </div>
     </div>
   </div>
 
