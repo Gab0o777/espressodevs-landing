@@ -350,7 +350,7 @@
 
     /* ── PROYECTOS SELECCIONADOS (TURNIX SHOWCASE) ── */
     .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
-    .ts-wrap .section-inner { max-width: 1400px; }
+    .ts-wrap .section-inner, .doing-wrap .section-inner { max-width: 1400px; }
     .ts-layout {
       display: grid;
       grid-template-columns: 2.1fr 1fr;
@@ -424,8 +424,13 @@
     .doing-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .dw-header { margin-bottom: 48px; }
     .dw-steps { display: flex; align-items: flex-start; margin-bottom: 56px; }
-    .dw-step { flex: 1; min-width: 0; }
-    .dw-step img { width: 100%; height: auto; display: block; border-radius: 20px; }
+    .dw-step {
+      flex: 1; min-width: 0;
+      height: clamp(300px, 27vw, 400px);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .dw-step img { height: 100%; width: auto; max-width: 100%; object-fit: contain; display: block; border-radius: 20px; }
     .dw-connector { width: 44px; flex-shrink: 0; position: relative; margin-top: 58px; height: 8px; }
     .dw-connector::before {
       content: ''; position: absolute; left: 0; right: 0; top: 50%;
@@ -870,6 +875,7 @@
       /* ── ONE SECTION = ONE SCREEN, SWIPE-THROUGH-CARDS FEEL ── */
       html { scroll-snap-type: y mandatory; }
       .hero-wrap,
+      .ts-wrap,
       .doing-wrap,
       #casos,
       .tech-wrap,
