@@ -329,87 +329,8 @@
     .hf-icon svg { width: 20px; height: 20px; display: block; }
 
     /* ── HERO VISUAL ── */
-    .hero-visual { position: relative; min-width: 0; width: 100%; aspect-ratio: 1.04 / 1; }
-
-    .hv-photo { position: absolute; overflow: hidden; border-radius: 0; background: var(--black); }
-    .hv-photo img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: grayscale(.15) contrast(1.05) brightness(.85);
-    }
-    .hv-photo::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,.35), transparent 40%);
-    }
-    .hv-photo-a { left: 0%; top: 2.4%; width: 26.2%; height: 48.3%; z-index: 1; }
-    .hv-photo-b { left: 0%; top: 50.7%; width: 27.6%; height: 42%; z-index: 1; transform: rotate(-3deg); }
-    .hv-photo-c { right: 0%; top: 24.4%; width: 17.8%; height: 42.4%; z-index: 1; }
-
-    .hv-card {
-      position: absolute;
-      left: 26.6%; top: 0;
-      width: 46.7%; height: 92.7%;
-      background: var(--black);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 0;
-      padding: 5% 6%;
-      box-shadow: 0 30px 60px rgba(0,0,0,.65);
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-    }
-    .hv-card-brand { font-weight: 900; font-size: clamp(15px, 1.9vw, 21px); line-height: 1.12; letter-spacing: -.3px; }
-    .hv-card-brand em { color: var(--lime); font-style: normal; }
-    .hv-card-cup { display: block; width: 118%; max-width: 330px; margin: auto; }
-    .hv-card-code { font-weight: 900; font-size: clamp(14px, 1.7vw, 20px); color: var(--white); margin-bottom: 8px; }
-    .hv-card-tag {
-      font-weight: 900;
-      font-size: clamp(16px, 2.1vw, 23px);
-      letter-spacing: -.5px;
-      line-height: 1.16;
-      text-transform: uppercase;
-    }
-    .hv-card-tag .accent { color: var(--lime); }
-
-    .hv-badge {
-      position: absolute;
-      top: -2%; left: 83.2%;
-      transform: translateX(-50%);
-      width: 17.8%; aspect-ratio: 1 / 1;
-      z-index: 4;
-    }
-    .hv-badge-ring { position: absolute; inset: 0; animation: spin 16s linear infinite; }
-    .hv-badge-ring svg { width: 100%; height: 100%; }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .hv-badge-bolt {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 68%; aspect-ratio: 1 / 1;
-      background: var(--lime);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 5;
-    }
-    .hv-badge-bolt svg { width: 70%; height: 70%; }
-
-    .hv-quote {
-      position: absolute;
-      left: 68%; top: 70.2%;
-      width: 25%;
-      background: var(--black);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 0;
-      padding: 5% 6%;
-      box-shadow: 0 20px 40px rgba(0,0,0,.55);
-      z-index: 6;
-      text-align: left;
-    }
-    .hv-quote-line { font-weight: 800; font-size: clamp(11px, 1.3vw, 13.5px); line-height: 1.5; margin-bottom: 3px; white-space: nowrap; }
-    .hv-quote-line.magic { color: var(--violet); }
-    .hv-quote img { height: 34px; margin-top: 10px; opacity: .9; }
-    .hv-quote-code { display: none; }
-
-    .hv-cup-float { display: none; }
+    .hero-visual { position: relative; min-width: 0; width: 100%; display: flex; align-items: center; }
+    .hv-dashboard { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.65)); }
 
     .hero-scroll-cue {
       display: none;
@@ -1008,54 +929,7 @@
     }
 
     @media (max-width: 680px) {
-      .hero-visual { aspect-ratio: auto; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
-      .hv-photo-a { position: relative; width: calc(63% - 5px); height: 280px; order: 1; border-radius: 14px; }
-      .hv-photo-b { display: none; }
-      .hv-photo-c { display: block; position: relative; width: calc(37% - 5px); height: 280px; order: 2; border-radius: 14px; }
-      .hv-card { display: none; }
-      .hv-quote {
-        position: absolute;
-        left: auto; top: auto;
-        right: 16px; bottom: -24px;
-        width: fit-content; max-width: 68%;
-        margin-top: 0;
-        padding: 16px 18px 14px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        border-radius: 16px;
-        box-shadow: 0 24px 50px rgba(0,0,0,.65);
-        z-index: 5;
-      }
-      .hv-quote-code {
-        display: block;
-        font-weight: 900;
-        font-size: 15px;
-        color: var(--violet-soft);
-        margin-bottom: 4px;
-      }
-      .hv-quote-line { font-size: 13.5px; }
-      .hv-quote img { display: none; }
-
-      .hv-cup-float {
-        display: block;
-        position: absolute;
-        left: 16px; bottom: -24px;
-        width: clamp(110px, 34vw, 150px);
-        z-index: 5;
-        filter: drop-shadow(0 16px 28px rgba(0,0,0,.65));
-      }
-
-      .hv-badge {
-        top: -16px; left: auto;
-        bottom: auto; right: 16px;
-        transform: none;
-        width: 68px;
-        z-index: 4;
-        filter: drop-shadow(0 8px 18px rgba(0,0,0,.55));
-      }
-
+      .hv-dashboard { filter: drop-shadow(0 16px 28px rgba(0,0,0,.65)); }
       .hero-scroll-cue { display: flex; margin-top: 56px; }
     }
 
@@ -1114,45 +988,7 @@
       </div>
 
       <div class="hero-visual">
-        <div class="hv-photo hv-photo-a"><img src="assets/photos/pic1-team.png" alt="Equipo espressodevs trabajando en la oficina" /></div>
-        <div class="hv-photo hv-photo-b"><img src="assets/photos/photo-desk-cup.png" alt="Escritorio de trabajo espressodevs" /></div>
-        <div class="hv-photo hv-photo-c"><img src="assets/photos/pic4-dev.png" alt="Developer de espressodevs programando" /></div>
-
-        <div class="hv-badge">
-          <div class="hv-badge-ring">
-            <svg viewBox="0 0 100 100">
-              <defs>
-                <path id="badgeCircle" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-              </defs>
-              <text fill="#F5F5F5" font-size="10" font-weight="900" letter-spacing="1.5">
-                <textPath href="#badgeCircle" startOffset="0%">BUILD · SHIP · AUTOMATE · REPEAT ·</textPath>
-              </text>
-            </svg>
-          </div>
-          <span class="hv-badge-bolt">
-            <svg viewBox="0 0 24 24" fill="#000000"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          </span>
-        </div>
-
-        <div class="hv-card">
-          <div class="hv-card-brand">espresso<br />devs<em>_</em></div>
-          <img class="hv-card-cup" src="assets/brand/logo-icon.png" alt="" />
-          <div class="hv-card-code">&lt;/&gt;</div>
-          <div class="hv-card-tag">Build<br />Ship<br />Automate<br /><span class="accent">Repeat_</span></div>
-        </div>
-
-        <div class="hv-quote">
-          <div class="hv-quote-text">
-            <div class="hv-quote-code">&lt;/&gt;</div>
-            <div class="hv-quote-line">Ideas</div>
-            <div class="hv-quote-line">+ Código</div>
-            <div class="hv-quote-line">+ Café</div>
-            <div class="hv-quote-line magic">= Magia</div>
-          </div>
-          <img src="assets/brand/logo-icon.png" alt="" />
-        </div>
-
-        <img class="hv-cup-float" src="assets/brand/logo-icon.png" alt="" aria-hidden="true" />
+        <img class="hv-dashboard" src="assets/hero-dashboard.png" alt="Dashboard de espressodevs mostrando proyectos activos, automaciones y despliegues" />
       </div>
 
       <a href="#lo-que-hacemos" class="hero-scroll-cue" aria-label="Desplazate para ver más">
