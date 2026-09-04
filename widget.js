@@ -201,10 +201,24 @@
 
     // Quick-reply card — pulled up over the header's bottom edge so it
     // reads as a floating panel rather than just another list in the feed.
+    // Its height is driven frame-by-frame from messages scrollTop (see
+    // updateQrCollapse), not a CSS transition, so it scrubs with the drag
+    // instead of animating on a delay.
     ".umeia-quickreplies {",
     "  background: #fff; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,10,50,0.18);",
-    "  padding: 12px; flex-shrink: 0; position: relative; z-index: 1; margin: -34px 14px 0;",
+    "  flex-shrink: 0; position: relative; z-index: 1; margin: -34px 14px 0; overflow: hidden;",
     "}",
+    ".umeia-qr-full { padding: 12px; }",
+    ".umeia-qr-collapsed {",
+    "  position: absolute; inset: 0; display: flex; align-items: center; gap: 10px; padding: 0 14px;",
+    "  opacity: 0; cursor: pointer;",
+    "}",
+    ".umeia-qr-collapsed-icon {",
+    "  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;",
+    "  background: color-mix(in srgb, " + ACCENT_COLOR + " 14%, white); display: flex; align-items: center; justify-content: center;",
+    "}",
+    ".umeia-qr-collapsed-icon svg { width: 13px; height: 13px; fill: " + ACCENT_COLOR + "; }",
+    ".umeia-qr-collapsed-label { flex: 1; font-size: 13px; font-weight: 600; color: #201f26; }",
     ".umeia-qr-title { font-size: 12px; font-weight: 700; color: #9a98a5; padding: 4px 6px 10px; }",
     ".umeia-qr-item {",
     "  width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px; border: none;",
@@ -325,8 +339,15 @@
     "  </div>" +
     "</div>" +
     '<div class="umeia-quickreplies">' +
-    '  <div class="umeia-qr-title">Preguntas frecuentes</div>' +
+    '  <div class="umeia-qr-full">' +
+    '    <div class="umeia-qr-title">Preguntas frecuentes</div>' +
     quickReplyHtml() +
+    "  </div>" +
+    '  <div class="umeia-qr-collapsed">' +
+    '    <span class="umeia-qr-collapsed-icon"><svg viewBox="0 0 24 24">' + QR_ICONS.chat + "</svg></span>" +
+    '    <span class="umeia-qr-collapsed-label">Preguntas frecuentes</span>' +
+    '    <span class="umeia-qr-chevron">›</span>' +
+    "  </div>" +
     "</div>" +
     '<div class="umeia-messages">' +
     '  <div class="umeia-date-divider">Hoy</div>' +
@@ -344,10 +365,36 @@
   var inputEl = panel.querySelector("input");
   var sendBtn = panel.querySelector(".umeia-send");
   var closeBtn = panel.querySelector(".umeia-close");
+  var qrCard = panel.querySelector(".umeia-quickreplies");
+  var qrFull = panel.querySelector(".umeia-qr-full");
+  var qrCollapsed = panel.querySelector(".umeia-qr-collapsed");
 
   var transcript = loadTranscript();
   var conversationId = getConversationId();
   var sending = false;
+
+  // Collapses the FAQ card into a slim pill as the visitor scrolls the
+  // conversation, so the suggestions don't keep eating vertical space once
+  // there's an actual chat to read. Height/opacity are set directly from
+  // scrollTop on every scroll event (no CSS transition) so the collapse
+  // tracks the drag 1:1 instead of animating on a delay.
+  var QR_COLLAPSE_RANGE = 70;
+  var QR_COLLAPSED_HEIGHT = 52;
+  var qrNaturalHeight = 0;
+
+  function updateQrCollapse() {
+    var progress = Math.max(0, Math.min(1, messagesEl.scrollTop / QR_COLLAPSE_RANGE));
+    var height = qrNaturalHeight + (QR_COLLAPSED_HEIGHT - qrNaturalHeight) * progress;
+    qrCard.style.height = height + "px";
+    qrFull.style.opacity = String(1 - progress);
+    qrCollapsed.style.opacity = String(progress);
+    qrCollapsed.style.pointerEvents = progress > 0.5 ? "auto" : "none";
+  }
+
+  messagesEl.addEventListener("scroll", updateQrCollapse, { passive: true });
+  qrCollapsed.addEventListener("click", function () {
+    messagesEl.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
   function renderMessage(role, text, ts) {
     if (role === "error") {
@@ -494,6 +541,10 @@
   function openPanel() {
     panel.classList.add("umeia-open");
     opened = true;
+    // offsetHeight only resolves once the panel is actually laid out
+    // (display:none ancestors report 0), so measure on open, not at init.
+    qrNaturalHeight = qrFull.offsetHeight;
+    updateQrCollapse();
     inputEl.focus();
   }
 
