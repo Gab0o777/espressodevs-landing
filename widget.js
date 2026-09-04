@@ -203,7 +203,7 @@
     // reads as a floating panel rather than just another list in the feed.
     ".umeia-quickreplies {",
     "  background: #fff; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,10,50,0.18);",
-    "  padding: 12px; flex-shrink: 0; position: relative; z-index: 1; margin: -34px 0 0;",
+    "  padding: 12px; flex-shrink: 0; position: relative; z-index: 1; margin: -34px 14px 0;",
     "}",
     ".umeia-qr-title { font-size: 12px; font-weight: 700; color: #9a98a5; padding: 4px 6px 10px; }",
     ".umeia-qr-item {",
@@ -324,11 +324,11 @@
     '    <div class="umeia-greeting-sub">' + DESCRIPTION + "</div>" +
     "  </div>" +
     "</div>" +
-    '<div class="umeia-messages">' +
-    '  <div class="umeia-quickreplies">' +
-    '    <div class="umeia-qr-title">Preguntas frecuentes</div>' +
+    '<div class="umeia-quickreplies">' +
+    '  <div class="umeia-qr-title">Preguntas frecuentes</div>' +
     quickReplyHtml() +
-    "  </div>" +
+    "</div>" +
+    '<div class="umeia-messages">' +
     '  <div class="umeia-date-divider">Hoy</div>' +
     "</div>" +
     '<div class="umeia-inputrow">' +
@@ -397,14 +397,11 @@
   }
 
   function renderAll() {
-    // The quick-replies card and date divider are permanent fixtures, not
-    // part of the replayed transcript — everything else gets rebuilt.
+    // The date divider is a permanent fixture, not part of the replayed
+    // transcript — everything else gets rebuilt.
     var children = Array.prototype.slice.call(messagesEl.children);
     children.forEach(function (child) {
-      if (
-        !child.classList.contains("umeia-quickreplies") &&
-        !child.classList.contains("umeia-date-divider")
-      ) {
+      if (!child.classList.contains("umeia-date-divider")) {
         child.remove();
       }
     });
