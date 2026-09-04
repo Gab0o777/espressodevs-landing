@@ -129,11 +129,12 @@
 
     // Header — dark gradient, holds identity row + a persistent greeting.
     ".umeia-header {",
-    "  background: linear-gradient(160deg, #180f30 0%, " + ACCENT_COLOR + " 130%);",
+    "  background: linear-gradient(155deg, #140b28 0%, color-mix(in srgb, " + ACCENT_COLOR + " 55%, #140b28 45%) 130%);",
     "  color: #fff; padding: 14px 16px 18px; flex-shrink: 0;",
     "}",
     ".umeia-header-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }",
     ".umeia-header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }",
+    ".umeia-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }",
     ".umeia-avatar-wrap { position: relative; width: 36px; height: 36px; flex-shrink: 0; }",
     ".umeia-avatar-wrap img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; display: block; }",
     ".umeia-online-dot {",
@@ -143,6 +144,22 @@
     ".umeia-header-name { font-weight: 700; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }",
     ".umeia-header-subtitle { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 1px; display: flex; align-items: center; gap: 5px; }",
     ".umeia-header-subtitle::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #2ecc71; display: inline-block; }",
+    // Decorative "team is online" cluster — no real teammates behind this
+    // single-bot setup, so it's just three tinted circles, matching the
+    // reference's look without pretending there are staff accounts.
+    ".umeia-team-cluster { display: flex; align-items: center; }",
+    ".umeia-team-avatar {",
+    "  width: 20px; height: 20px; border-radius: 50%; margin-left: -8px;",
+    "  border: 2px solid color-mix(in srgb, " + ACCENT_COLOR + " 55%, #140b28 45%);",
+    "}",
+    ".umeia-team-avatar:first-child { margin-left: 0; }",
+    ".umeia-team-avatar:nth-child(1) { background: #ffb86c; }",
+    ".umeia-team-avatar:nth-child(2) { background: #6c3ce0; }",
+    ".umeia-team-avatar:nth-child(3) { background: #38bdf8; }",
+    ".umeia-kebab {",
+    "  background: transparent; border: none; color: rgba(255,255,255,.85); font-size: 16px; cursor: default;",
+    "  line-height: 1; width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; letter-spacing: 1px;",
+    "}",
     ".umeia-close {",
     "  background: rgba(255,255,255,.12); border: none; color: #fff; font-size: 18px; cursor: pointer;",
     "  line-height: 1; width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;",
@@ -258,7 +275,15 @@
     '        <div class="umeia-header-subtitle">' + SUBTITLE + "</div>" +
     "      </div>" +
     "    </div>" +
-    '    <button class="umeia-close" aria-label="Cerrar chat">×</button>' +
+    '    <div class="umeia-header-right">' +
+    '      <div class="umeia-team-cluster">' +
+    '        <span class="umeia-team-avatar"></span>' +
+    '        <span class="umeia-team-avatar"></span>' +
+    '        <span class="umeia-team-avatar"></span>' +
+    "      </div>" +
+    '      <button class="umeia-kebab" aria-hidden="true" tabindex="-1">⋮</button>' +
+    '      <button class="umeia-close" aria-label="Cerrar chat">×</button>' +
+    "    </div>" +
     "  </div>" +
     '  <div class="umeia-greeting">' +
     '    <div class="umeia-greeting-title">' + GREETING + "</div>" +
