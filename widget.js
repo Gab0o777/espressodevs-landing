@@ -55,6 +55,31 @@
     price: '<path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15.5v1h-2v-1.1c-1.4-.3-2.5-1.2-2.6-2.7h1.7c.1.8.7 1.4 1.9 1.4 1.3 0 2-.6 2-1.4 0-.8-.6-1.2-2.1-1.6-2-.5-3.3-1.2-3.3-2.9 0-1.4 1.1-2.4 2.5-2.7V6.5h2v1c1.3.3 2.2 1.2 2.3 2.5h-1.7c-.1-.7-.6-1.3-1.7-1.3-1.2 0-1.8.5-1.8 1.2 0 .7.6 1 2 1.4 2.1.5 3.4 1.3 3.4 3.1 0 1.5-1.2 2.5-2.6 2.8z"/>'
   };
 
+  // Faint constellation/network texture behind the header, matching the
+  // reference's "nucleus" look — decorative only, stretches to fill.
+  var HEADER_PATTERN_SVG =
+    '<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">' +
+    '<g fill="none" stroke="#ffffff" stroke-width="1" opacity="0.18">' +
+    '<line x1="40" y1="30" x2="110" y2="70"/>' +
+    '<line x1="110" y1="70" x2="90" y2="140"/>' +
+    '<line x1="110" y1="70" x2="200" y2="50"/>' +
+    '<line x1="200" y1="50" x2="270" y2="100"/>' +
+    '<line x1="270" y1="100" x2="340" y2="60"/>' +
+    '<line x1="270" y1="100" x2="230" y2="170"/>' +
+    '<line x1="90" y1="140" x2="160" y2="190"/>' +
+    "</g>" +
+    '<g fill="#ffffff" opacity="0.35">' +
+    '<circle cx="40" cy="30" r="2.5"/>' +
+    '<circle cx="110" cy="70" r="3.5"/>' +
+    '<circle cx="90" cy="140" r="2"/>' +
+    '<circle cx="200" cy="50" r="2.5"/>' +
+    '<circle cx="270" cy="100" r="3"/>' +
+    '<circle cx="340" cy="60" r="2"/>' +
+    '<circle cx="230" cy="170" r="2"/>' +
+    '<circle cx="160" cy="190" r="2"/>' +
+    "</g>" +
+    "</svg>";
+
   var STORAGE_PREFIX = "umeia_widget_" + TENANT_ID + "_";
   var CONVERSATION_KEY = STORAGE_PREFIX + "conversation_id";
   var TRANSCRIPT_KEY = STORAGE_PREFIX + "transcript";
@@ -129,10 +154,13 @@
 
     // Header — dark gradient, holds identity row + a persistent greeting.
     ".umeia-header {",
+    "  position: relative; overflow: hidden;",
     "  background: linear-gradient(155deg, #140b28 0%, color-mix(in srgb, " + ACCENT_COLOR + " 55%, #140b28 45%) 130%);",
-    "  color: #fff; padding: 14px 16px 18px; flex-shrink: 0;",
+    "  color: #fff; padding: 14px 16px 46px; flex-shrink: 0;",
     "}",
-    ".umeia-header-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }",
+    ".umeia-header-pattern { position: absolute; inset: 0; z-index: 0; pointer-events: none; }",
+    ".umeia-header-pattern svg { width: 100%; height: 100%; display: block; }",
+    ".umeia-header-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 8px; }",
     ".umeia-header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }",
     ".umeia-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }",
     ".umeia-avatar-wrap { position: relative; width: 36px; height: 36px; flex-shrink: 0; }",
@@ -165,24 +193,29 @@
     "  line-height: 1; width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;",
     "}",
     ".umeia-close:hover { background: rgba(255,255,255,.22); }",
-    ".umeia-greeting { margin-top: 14px; }",
+    ".umeia-greeting { position: relative; z-index: 1; margin-top: 14px; }",
     ".umeia-greeting-title { font-size: 18px; font-weight: 700; }",
     ".umeia-greeting-sub { font-size: 13px; color: rgba(255,255,255,.8); margin-top: 3px; }",
 
     ".umeia-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 12px; background: #f7f6fb; }",
 
-    // Quick-reply card
-    ".umeia-quickreplies { background: #fff; border-radius: 14px; box-shadow: 0 6px 20px rgba(20,10,50,0.1); padding: 10px; flex-shrink: 0; }",
-    ".umeia-qr-title { font-size: 12px; font-weight: 700; color: #9a98a5; padding: 4px 6px 8px; }",
-    ".umeia-qr-item {",
-    "  width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 6px; border: none; background: transparent;",
-    "  border-radius: 10px; cursor: pointer; text-align: left; font-family: inherit;",
+    // Quick-reply card — pulled up over the header's bottom edge so it
+    // reads as a floating panel rather than just another list in the feed.
+    ".umeia-quickreplies {",
+    "  background: #fff; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,10,50,0.18);",
+    "  padding: 12px; flex-shrink: 0; position: relative; z-index: 1; margin: -34px 0 0;",
     "}",
-    ".umeia-qr-item:hover { background: #f7f6fb; }",
-    ".umeia-qr-item + .umeia-qr-item { border-top: 1px solid #f1eff7; }",
+    ".umeia-qr-title { font-size: 12px; font-weight: 700; color: #9a98a5; padding: 4px 6px 10px; }",
+    ".umeia-qr-item {",
+    "  width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px; border: none;",
+    "  background: #f4f2fa; border-radius: 12px; cursor: pointer; text-align: left; font-family: inherit;",
+    "  margin-bottom: 8px; transition: background .15s ease;",
+    "}",
+    ".umeia-qr-item:last-child { margin-bottom: 0; }",
+    ".umeia-qr-item:hover { background: color-mix(in srgb, " + ACCENT_COLOR + " 10%, #f4f2fa); }",
     ".umeia-qr-icon {",
-    "  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;",
-    "  background: color-mix(in srgb, " + ACCENT_COLOR + " 14%, white); display: flex; align-items: center; justify-content: center;",
+    "  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;",
+    "  background: #fff; display: flex; align-items: center; justify-content: center;",
     "}",
     ".umeia-qr-icon svg { width: 15px; height: 15px; fill: " + ACCENT_COLOR + "; }",
     ".umeia-qr-label { flex: 1; font-size: 13px; color: #201f26; }",
@@ -264,6 +297,7 @@
   panel.className = "umeia-panel";
   panel.innerHTML =
     '<div class="umeia-header">' +
+    '  <div class="umeia-header-pattern">' + HEADER_PATTERN_SVG + "</div>" +
     '  <div class="umeia-header-top">' +
     '    <div class="umeia-header-left">' +
     '      <div class="umeia-avatar-wrap">' +
