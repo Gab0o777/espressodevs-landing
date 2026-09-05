@@ -154,6 +154,23 @@
     "}",
     ".umeia-panel.umeia-open { display: flex; }",
 
+    // On phones the floating card doesn't work — mount as a fullscreen
+    // sheet instead, like every mobile chat widget does, and hide the
+    // bubble underneath it so there's no floating leftover behind the sheet.
+    "@media (max-width: 480px) {",
+    "  .umeia-panel {",
+    "    inset: 0; bottom: 0; right: 0; left: 0; top: 0;",
+    "    width: 100%; max-width: 100%;",
+    // dvh tracks the browser's dynamic toolbar; JS (syncMobileViewportHeight)
+    // additionally pins this to visualViewport.height so the on-screen
+    // keyboard doesn't leave the input row hidden below the fold.
+    "    height: 100vh; max-height: 100vh;",
+    "    height: 100dvh; max-height: 100dvh;",
+    "    border-radius: 0;",
+    "  }",
+    "  .umeia-root.umeia-panel-open .umeia-bubble-wrap { display: none; }",
+    "}",
+
     // Header — dark gradient, holds identity row + a persistent greeting.
     ".umeia-header {",
     "  position: relative; overflow: hidden;",
@@ -256,14 +273,35 @@
     ".umeia-pill input {",
     "  border: none; background: transparent; padding: 2px 0; font-size: 14px; outline: none; width: 100%;",
     "}",
-    // Emoji/attachment icons are decorative — there's no picker or upload
-    // capability behind this single-bot widget yet, just the visual match.
-    ".umeia-pill-icons { display: flex; align-items: center; gap: 12px; margin-top: 4px; }",
+    ".umeia-pill-icons { display: flex; align-items: center; gap: 12px; margin-top: 4px; position: relative; }",
     ".umeia-icon-btn {",
-    "  background: transparent; border: none; padding: 0; cursor: default; color: #9a98a5;",
+    "  background: transparent; border: none; padding: 0; cursor: pointer; color: #9a98a5;",
     "  display: flex; align-items: center; justify-content: center; width: 18px; height: 18px;",
     "}",
+    ".umeia-icon-btn:hover { color: " + ACCENT_COLOR + "; }",
     ".umeia-icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }",
+    // Emoji popover — anchored above the icon row since the input sits at
+    // the bottom of the panel.
+    ".umeia-emoji-picker {",
+    "  position: absolute; bottom: 100%; left: -6px; margin-bottom: 8px; width: 216px;",
+    "  background: #fff; border-radius: 14px; box-shadow: 0 8px 26px rgba(20,10,50,0.22);",
+    "  padding: 8px; display: none; grid-template-columns: repeat(6, 1fr); gap: 2px; max-height: 168px; overflow-y: auto; z-index: 5;",
+    "}",
+    ".umeia-emoji-picker.umeia-open { display: grid; }",
+    ".umeia-emoji-picker button {",
+    "  background: transparent; border: none; cursor: pointer; font-size: 19px; line-height: 1;",
+    "  padding: 5px 0; border-radius: 8px;",
+    "}",
+    ".umeia-emoji-picker button:hover { background: #f4f2fa; }",
+    ".umeia-attach-chip {",
+    "  display: none; align-items: center; gap: 6px; font-size: 12px; color: #6c6a76;",
+    "  background: #f4f2fa; border-radius: 999px; padding: 4px 8px 4px 10px; margin-top: 4px; max-width: 100%;",
+    "}",
+    ".umeia-attach-chip.umeia-open { display: inline-flex; }",
+    ".umeia-attach-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 160px; }",
+    ".umeia-attach-chip button {",
+    "  background: transparent; border: none; cursor: pointer; color: #9a98a5; font-size: 14px; line-height: 1; padding: 0;",
+    "}",
     ".umeia-send {",
     "  width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; flex-shrink: 0;",
     "  background: " + ACCENT_COLOR + "; display: flex; align-items: center; justify-content: center;",
@@ -308,6 +346,18 @@
         '  <span class="umeia-qr-chevron">›</span>' +
         "</button>"
       );
+    }).join("");
+  }
+
+  var EMOJI_LIST = [
+    "😀", "😂", "🙂", "😍", "😅", "😊", "🤔", "😢",
+    "👍", "🙏", "👋", "🙌", "💪", "🤝", "🎉", "🔥",
+    "❤️", "✅", "❌", "⭐", "💡", "📅", "💬", "📎"
+  ];
+
+  function emojiPickerHtml() {
+    return EMOJI_LIST.map(function (e) {
+      return '<button type="button" data-emoji="' + e + '">' + e + "</button>";
     }).join("");
   }
 
@@ -358,13 +408,19 @@
     '<div class="umeia-inputrow">' +
     '  <div class="umeia-pill">' +
     '    <input type="text" placeholder="Escribí tu mensaje..." />' +
+    '    <div class="umeia-attach-chip">' +
+    "      <span></span>" +
+    '      <button type="button" aria-label="Quitar archivo">×</button>' +
+    "    </div>" +
     '    <div class="umeia-pill-icons">' +
-    '      <button class="umeia-icon-btn" aria-hidden="true" tabindex="-1">' +
+    '      <button class="umeia-emoji-btn umeia-icon-btn" type="button" aria-label="Emojis">' +
     '        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 10.5h.01M15.5 10.5h.01"/><path d="M8 14.5c1 1.2 2.4 1.8 4 1.8s3-.6 4-1.8"/></svg>' +
     "      </button>" +
-    '      <button class="umeia-icon-btn" aria-hidden="true" tabindex="-1">' +
+    '      <div class="umeia-emoji-picker">' + emojiPickerHtml() + "</div>" +
+    '      <button class="umeia-attach-btn umeia-icon-btn" type="button" aria-label="Adjuntar archivo">' +
     '        <svg viewBox="0 0 24 24"><path d="M16.5 6.5l-7.6 7.6a3 3 0 104.24 4.24l7.07-7.07a5 5 0 10-7.07-7.07L5.5 12.5a7 7 0 109.9 9.9"/></svg>' +
     "      </button>" +
+    '      <input type="file" class="umeia-file-input" style="display:none" />' +
     "    </div>" +
     "  </div>" +
     '  <button class="umeia-send" aria-label="Enviar">' +
@@ -381,6 +437,11 @@
   var qrCard = panel.querySelector(".umeia-quickreplies");
   var qrFull = panel.querySelector(".umeia-qr-full");
   var qrCollapsed = panel.querySelector(".umeia-qr-collapsed");
+  var emojiBtn = panel.querySelector(".umeia-emoji-btn");
+  var emojiPicker = panel.querySelector(".umeia-emoji-picker");
+  var attachBtn = panel.querySelector(".umeia-attach-btn");
+  var fileInput = panel.querySelector(".umeia-file-input");
+  var attachChip = panel.querySelector(".umeia-attach-chip");
 
   var transcript = loadTranscript();
   var conversationId = getConversationId();
@@ -537,10 +598,29 @@
       });
   }
 
+  // There's no upload endpoint on umeiacore's webchat channel yet — picking
+  // a file sends its name as a text marker so a human can follow up, rather
+  // than pretending the bytes actually went anywhere.
+  var pendingAttachmentName = null;
+
+  function updateAttachChip() {
+    if (pendingAttachmentName) {
+      attachChip.querySelector("span").textContent = pendingAttachmentName;
+      attachChip.classList.add("umeia-open");
+    } else {
+      attachChip.classList.remove("umeia-open");
+    }
+  }
+
   function handleSend() {
     var text = inputEl.value.trim();
+    if (pendingAttachmentName) {
+      text = (text ? text + " " : "") + "📎 " + pendingAttachmentName;
+    }
     if (!text || sending) return;
     inputEl.value = "";
+    pendingAttachmentName = null;
+    updateAttachChip();
     pushMessage("user", text);
     sendToServer(text);
   }
@@ -548,6 +628,44 @@
   sendBtn.addEventListener("click", handleSend);
   inputEl.addEventListener("keydown", function (e) {
     if (e.key === "Enter") handleSend();
+  });
+
+  emojiBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    emojiPicker.classList.toggle("umeia-open");
+  });
+  emojiPicker.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-emoji]");
+    if (!btn) return;
+    var emoji = btn.getAttribute("data-emoji");
+    var start = inputEl.selectionStart != null ? inputEl.selectionStart : inputEl.value.length;
+    var end = inputEl.selectionEnd != null ? inputEl.selectionEnd : inputEl.value.length;
+    inputEl.value = inputEl.value.slice(0, start) + emoji + inputEl.value.slice(end);
+    var newPos = start + emoji.length;
+    inputEl.focus();
+    inputEl.setSelectionRange(newPos, newPos);
+  });
+  document.addEventListener("click", function (e) {
+    var path = e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(emojiPicker) === -1 && path.indexOf(emojiBtn) === -1) {
+      emojiPicker.classList.remove("umeia-open");
+    }
+  });
+
+  attachBtn.addEventListener("click", function () {
+    fileInput.click();
+  });
+  fileInput.addEventListener("change", function () {
+    var file = fileInput.files && fileInput.files[0];
+    if (file) {
+      pendingAttachmentName = file.name;
+      updateAttachChip();
+    }
+    fileInput.value = "";
+  });
+  attachChip.querySelector("button").addEventListener("click", function () {
+    pendingAttachmentName = null;
+    updateAttachChip();
   });
 
   panel.querySelectorAll(".umeia-qr-item").forEach(function (btn) {
@@ -560,20 +678,56 @@
     });
   });
 
+  // On phones, pin the panel to the actual visible area (visualViewport),
+  // not just 100dvh — dvh doesn't reliably shrink for the on-screen
+  // keyboard across browsers, and without this the input row ends up
+  // hidden behind the keyboard.
+  var MOBILE_MEDIA = window.matchMedia ? window.matchMedia("(max-width: 480px)") : null;
+
+  function isMobileLayout() {
+    return !!(MOBILE_MEDIA && MOBILE_MEDIA.matches);
+  }
+
+  function syncMobileViewportHeight() {
+    if (!isMobileLayout()) {
+      panel.style.height = "";
+      return;
+    }
+    var vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    panel.style.height = vh + "px";
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", syncMobileViewportHeight);
+  }
+  window.addEventListener("resize", syncMobileViewportHeight);
+
   var opened = false;
   function openPanel() {
     panel.classList.add("umeia-open");
+    root.classList.add("umeia-panel-open");
     opened = true;
     // offsetHeight only resolves once the panel is actually laid out
     // (display:none ancestors report 0), so measure on open, not at init.
     qrNaturalHeight = qrFull.offsetHeight;
     updateQrCollapse();
-    inputEl.focus();
+    syncMobileViewportHeight();
+    if (isMobileLayout()) {
+      // Stop the page behind the fullscreen sheet from scrolling once the
+      // keyboard opens — otherwise the whole layout jumps around.
+      document.body.style.overflow = "hidden";
+    }
+    // Deliberately not auto-focusing the input: on mobile that pops the
+    // keyboard immediately, shrinking the chat before the visitor even
+    // sees it. Let them tap in when they're ready to type.
   }
 
   function closePanel() {
     panel.classList.remove("umeia-open");
+    root.classList.remove("umeia-panel-open");
     opened = false;
+    panel.style.height = "";
+    document.body.style.overflow = "";
   }
 
   bubble.addEventListener("click", function () {
