@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calendi · Gestioná turnos sin complicaciones</title>
+  <meta name="description" content="calendi es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 30 días gratis." />
+  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, fidelización de clientes, respuesta automática reseñas Google, mejor sistema de turnos" />
+  <meta name="author" content="espressodevs" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://espressodevs.com/calendi" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_180.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://espressodevs.com/calendi" />
+  <meta property="og:title" content="calendi · Gestioná turnos sin complicaciones" />
+  <meta property="og:description" content="Agenda online, recordatorios por WhatsApp y panel de control para tu negocio. Probá gratis 30 días, sin tarjeta de crédito." />
+  <meta property="og:image" content="https://espressodevs.com/Calendi_banner.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_UY" />
+  <meta property="og:site_name" content="calendi by espressodevs" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="calendi · Gestioná turnos sin complicaciones" />
+  <meta name="twitter:description" content="Agenda online, recordatorios por WhatsApp y panel de control. 30 días gratis." />
+  <meta name="twitter:image" content="https://espressodevs.com/Calendi_banner.png" />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "calendi",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "description": "Plataforma de gestión de turnos online para negocios de servicios. Agenda, recordatorios automáticos por WhatsApp y reservas online.",
+    "url": "https://espressodevs.com/calendi",
+    "screenshot": "https://espressodevs.com/Calendi_banner.png",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "799",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Max",
+        "price": "1499",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "2999",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Soporte exclusivo por WhatsApp, sistema de fidelización de clientes y módulo de Google Reviews con respuestas automáticas."
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "espressodevs",
+      "url": "https://espressodevs.com"
+    },
+    "featureList": [
+      "Agenda online en tiempo real",
+      "Recordatorios automáticos por WhatsApp",
+      "Reservas desde celular, web o redes sociales",
+      "Panel de control unificado",
+      "Gestión multi-usuario",
+      "Sistema de fidelización de clientes",
+      "Módulo de Google Reviews con respuestas automáticas",
+      "Soporte exclusivo por WhatsApp",
+      "30 días de prueba gratis"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Necesito tarjeta de crédito para probar calendi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Podés probar calendi gratis durante 30 días sin necesidad de tarjeta de crédito."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Para qué tipo de negocios es calendi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Calendi es ideal para peluquerías, barberías, tatuadores, veterinarias y cualquier negocio de servicios que necesite gestionar turnos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funciona calendi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Creás tu cuenta, configurás tus horarios y servicios, y compartís tu link de reservas. Tus clientes reservan solos y calendi les envía recordatorios automáticos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el plan Business de calendi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan Business incluye todo lo del plan Max, más soporte exclusivo a través de WhatsApp, un sistema de fidelización de clientes y un módulo que responde automáticamente las reseñas de Google del negocio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es el mejor sistema de gestión de turnos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del negocio, pero calendi es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios y confirmaciones por WhatsApp, cobro de seña integrado con Mercado Pago, fidelización de clientes y respuesta automática de reseñas de Google, con un plan gratuito para empezar."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "espressodevs",
+        "item": "https://espressodevs.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "calendi",
+        "item": "https://espressodevs.com/calendi"
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Kalam:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan:   #29B7D3;
+      --purple: #8B44BF;
+      --pink:   #E91E96;
+      --orange: #F5A623;
+      --yellow: #F5C800;
+      --green:  #7DC044;
+      --lime:   #8DC63F;
+      --dark:   #1E1E2E;
+      --mid:    #4A4A6A;
+      --light:  #F7F8FC;
+      --border: #E8EAF0;
+      --white:  #FFFFFF;
+      /* marca calendi (del isologo) */
+      --brand:  #4F43FD;
+      --ink:    #12175E;
+      --acid:   #C2F552;
+      --sky:    #1E56C8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 76px;
+    }
+    .nav-logo { margin-left: 14px; justify-self: start; }
+    .nav-logo img { height: 54px; width: auto; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      justify-self: center;
+    }
+    .nav-links a, .nav-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'Nunito', sans-serif;
+      color: var(--mid);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-dropdown-trigger:hover { color: var(--brand); }
+    .nav-chevron { width: 14px; height: 14px; transition: transform .18s; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown.is-open .nav-dropdown-trigger { color: var(--brand); }
+    .nav-dropdown.is-open .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 18px 44px rgba(30,30,46,.16);
+      padding: 8px;
+      min-width: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+    }
+    .nav-dropdown.is-open .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 9px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .nav-dropdown-menu a:hover { background: #F5F6FF; color: var(--brand); }
+    .nav-actions { justify-self: end; display: flex; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 11px 24px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+    .btn-primary { background: var(--cyan); color: var(--white); }
+    .nav-cta-mobile { display: none; }
+    .btn-outline { background: transparent; border: 2px solid var(--cyan); color: var(--cyan); }
+    .btn-brand-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+    .btn-acid { background: var(--acid); color: var(--ink); }
+    .btn-acid:hover { box-shadow: 0 8px 24px rgba(194,245,82,.55); }
+    .btn-large { font-size: 15px; padding: 13px 24px; }
+    .btn-white { background: var(--white); color: var(--dark); }
+    .nav-btn { font-size: 14px; padding: 10px 22px; }
+    .btn-play-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-play-badge svg { width: 12px; height: 12px; margin-left: 1px; }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      position: relative;
+      background: var(--white);
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 8px 28px 32px;
+      max-width: 1520px;
+      margin: 0 auto;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content { flex: 1; padding-left: 24px; }
+    .hero-note {
+      display: inline-block;
+      position: relative;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.3;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(-6deg);
+      margin: 0 0 22px 8px;
+    }
+    .hero-note::before, .hero-note::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2.5px;
+      background: var(--brand);
+      opacity: .6;
+      border-radius: 2px;
+    }
+    .hero-note::before { top: 2px; left: -36px; transform: rotate(-38deg); }
+    .hero-note::after { top: 24px; right: -28px; transform: rotate(24deg); }
+    .hero-title {
+      font-weight: 900;
+      font-size: clamp(32px, 3.4vw, 50px);
+      line-height: 1.16;
+      letter-spacing: -1.5px;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero-title .highlight-brand { color: var(--brand); }
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: nowrap;
+    }
+    /* reutilizado por la CTA band más abajo */
+    .hero-checks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 22px;
+      margin-top: 24px;
+    }
+    .hero-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mid);
+    }
+    .hero-check::before {
+      content: '✓';
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── HERO VISUAL (right side): jumbo art + embedded video ── */
+    .hero-visual {
+      flex: 0 1 912px;
+      max-width: 65%;
+      position: relative;
+    }
+    .hero-jumbo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1536 / 1024;
+    }
+    .hero-jumbo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+    .hero-play-zone {
+      position: absolute;
+      left: 26.2%;
+      top: 21.2%;
+      width: 47.1%;
+      height: 49.3%;
+    }
+    .hero-play-btn {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 15%;
+      height: auto;
+      min-width: 52px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: var(--brand);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      box-shadow: 0 14px 32px rgba(30,20,120,.35);
+      cursor: pointer;
+      transition: transform .18s ease;
+      padding: 0;
+    }
+    .hero-play-btn:hover { transform: scale(1.08); }
+    .hero-play-btn svg { width: 42%; height: 42%; margin-left: 6%; }
+
+    /* ── VIDEO MODAL (lightbox "Ver cómo funciona") ── */
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 5vw;
+    }
+    .video-modal.is-open { display: flex; }
+    .video-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,8,32,.88);
+    }
+    .video-modal-inner {
+      position: relative;
+      width: min(1040px, 92vw, calc(85vh * 16 / 9));
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 40px 90px rgba(0,0,0,.5);
+    }
+    .video-modal-video { width: 100%; height: 100%; display: block; }
+    .video-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.5);
+      color: var(--white);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .video-modal-close:hover { background: rgba(255,255,255,.26); }
+    .video-modal-close svg { width: 18px; height: 18px; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { padding: 0 28px 64px; position: relative; z-index: 1; }
+    .stats-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: #F5F6FF;
+      border-radius: 28px;
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat-headline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+      flex: 1 1 300px;
+    }
+    .stat-headline-icon { width: 42px; height: 42px; color: var(--brand); flex-shrink: 0; }
+    .stat-headline span { font-weight: 900; font-size: 17px; color: var(--ink); line-height: 1.4; }
+    .stat-feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .stat-feature-icon { width: 26px; height: 26px; color: var(--brand); }
+    .stat-feature span { font-weight: 700; font-size: 13.5px; color: var(--ink); }
+    .stat-div { width: 1.5px; height: 56px; background: rgba(79,67,253,.14); }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 76px 28px; }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-weight: 900;
+      font-size: clamp(28px, 3.5vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--mid);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 56px; }
+
+    /* ── AUTOMATIZACIÓN ── */
+    .auto-grid {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .auto-content { flex: 1 1 480px; min-width: 0; }
+    .auto-visual { flex: 0 0 720px; max-width: 55%; }
+    .auto-visual img { width: 100%; height: auto; display: block; }
+    .auto-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .auto-badge-num {
+      background: #E4F9B8;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 13px;
+      padding: 4px 13px;
+      border-radius: 100px;
+    }
+    .auto-badge-label {
+      font-weight: 800;
+      font-size: 12.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .auto-title {
+      position: relative;
+      font-weight: 900;
+      font-size: clamp(30px, 3.2vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .auto-title::before {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 2.5px;
+      background: var(--brand);
+      opacity: .55;
+      border-radius: 2px;
+      top: -16px;
+      left: -2px;
+      transform: rotate(-40deg);
+    }
+    .auto-title .highlight-brand { color: var(--brand); }
+    .auto-title-dashes {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      margin-left: 6px;
+      color: var(--lime);
+      vertical-align: middle;
+    }
+    .auto-title-dashes svg { width: 100%; height: 100%; }
+    .auto-desc {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .pillar-list { display: flex; flex-direction: column; gap: 26px; }
+    .pillar-item { display: flex; align-items: flex-start; gap: 16px; }
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      flex-shrink: 0;
+      background: #EDEFFE;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pillar-icon svg { width: 22px; height: 22px; }
+    .pillar-title { font-weight: 800; font-size: 16px; color: var(--sky); margin-bottom: 3px; }
+    .pillar-desc { font-size: 14px; font-weight: 600; color: var(--mid); }
+    .pillar-note {
+      position: relative;
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 19px;
+      line-height: 1.35;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(-5deg);
+      margin: 34px 0 0 8px;
+    }
+    .pillar-note::before, .pillar-note::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2.5px;
+      background: var(--brand);
+      opacity: .55;
+      border-radius: 2px;
+    }
+    .pillar-note::before { top: -12px; left: -30px; transform: rotate(-38deg); }
+    .pillar-note::after { top: 40px; right: -26px; transform: rotate(24deg); }
+    .pillar-note-heart { width: 17px; height: 17px; margin-left: 3px; vertical-align: middle; }
+
+    /* ── NEGOCIOS (carrusel) ── */
+    .biz-carousel { position: relative; }
+    .biz-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 72px) / 4);
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 6px 2px 10px;
+    }
+    .biz-track::-webkit-scrollbar { display: none; }
+    .biz-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      scroll-snap-align: start;
+      box-shadow: 0 10px 28px rgba(30,30,46,.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .biz-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(30,30,46,.09); }
+    .biz-photo {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .biz-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .biz-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .biz-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .biz-name svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .biz-desc { font-size: 13.5px; font-weight: 600; color: var(--mid); line-height: 1.5; margin-bottom: 14px; }
+    .biz-link {
+      margin-top: auto;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    .biz-link:hover { text-decoration: underline; }
+    .biz-arrow {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 20px rgba(30,30,46,.10);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid);
+      z-index: 2;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .biz-arrow:hover { transform: translateY(-50%) scale(1.06); box-shadow: 0 10px 24px rgba(30,30,46,.16); }
+    .biz-arrow svg { width: 18px; height: 18px; }
+    .biz-prev { left: -58px; }
+    .biz-next { right: -58px; }
+    .biz-dots { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+    .biz-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #D6DAE6;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .biz-dot.is-active { background: var(--cyan); }
+
+    /* ── FUNCIONALIDADES CLAVE ── */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    .feat-item { text-align: center; }
+    .feat-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .feat-icon svg { width: 28px; height: 28px; }
+    .feat-title { font-weight: 900; font-size: 15px; line-height: 1.3; margin-bottom: 8px; }
+    .feat-desc { font-size: 13px; font-weight: 600; color: var(--mid); line-height: 1.5; }
+
+    /* ── TESTIMONIAL ── */
+    .testi {
+      background: linear-gradient(115deg, #EFEAFB 0%, #FAEFF8 55%, #ECE6FA 100%);
+      border-radius: 26px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 72px;
+    }
+    .testi-mark { flex-shrink: 0; color: var(--purple); opacity: .85; }
+    .testi-mark svg { width: 52px; height: 52px; }
+    .testi-text {
+      flex: 1;
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.45;
+      letter-spacing: -.3px;
+    }
+    .testi-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .testi-avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: var(--white);
+      font-weight: 900;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 900; font-size: 15px; }
+    .testi-role { font-size: 13px; font-weight: 600; color: var(--mid); }
+    .testi-stars { color: #F5C800; font-size: 13px; letter-spacing: 2px; margin-top: 2px; }
+    .testi-div { width: 1.5px; height: 84px; background: rgba(30,30,46,.09); flex-shrink: 0; }
+    .testi-count { flex-shrink: 0; }
+    .testi-count-num { font-size: 32px; font-weight: 900; color: var(--purple); letter-spacing: -1px; line-height: 1.1; }
+    .testi-count-label { font-size: 13px; font-weight: 700; color: var(--mid); line-height: 1.35; max-width: 140px; }
+    .testi-faces { display: flex; align-items: center; margin-top: 10px; }
+    .testi-face {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .testi-face:first-child { margin-left: 0; }
+    .testi-face-more { font-size: 12px; font-weight: 800; color: var(--mid); margin-left: 8px; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      position: relative;
+      background: linear-gradient(160deg, #F5F6FF 0%, #FBFCFF 100%);
+      border-radius: 30px;
+      padding: 52px 56px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      overflow: hidden;
+      margin-top: 28px;
+    }
+    .cta-band::before,
+    .cta-band::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-band::before { width: 340px; height: 340px; background: rgba(79,67,253,.08); top: -160px; right: -100px; }
+    .cta-band::after { width: 280px; height: 280px; background: rgba(194,245,82,.20); bottom: -140px; left: 32%; }
+    .cta-band-img {
+      height: 225px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      border-radius: 22px;
+      box-shadow: 0 18px 44px rgba(30,30,46,.10);
+    }
+    .cta-band-content { flex: 1; text-align: center; position: relative; z-index: 1; }
+    .cta-band-title {
+      font-weight: 900;
+      font-size: clamp(26px, 3vw, 38px);
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .cta-band-sub { font-size: 16px; font-weight: 600; color: var(--mid); margin-bottom: 26px; }
+    .cta-band-checks {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 20px;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--white); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      border: 2px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card .btn { margin-top: auto; }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.10); }
+    .pricing-card.featured {
+      border-color: var(--cyan);
+      background: linear-gradient(145deg, #F0FBFD, var(--white));
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-name { font-weight: 900; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
+    .pricing-price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+    .pricing-currency { font-weight: 800; font-size: 22px; color: var(--mid); padding-bottom: 8px; }
+    .pricing-amount { font-weight: 900; font-size: 64px; letter-spacing: -3px; line-height: 1; }
+    .pricing-period { font-size: 14px; font-weight: 700; color: var(--mid); padding-bottom: 10px; }
+    .pricing-desc { font-size: 14px; font-weight: 600; color: var(--mid); margin-bottom: 28px; line-height: 1.5; }
+    .pricing-divider { height: 1.5px; background: var(--border); margin-bottom: 24px; }
+    .pricing-features { list-style: none; margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .free-trial-badge {
+      position: absolute;
+      top: 28px;
+      right: -42px;
+      width: 180px;
+      text-align: center;
+      background: var(--green);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 7px 0;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 8px rgba(125,192,68,.4);
+    }
+
+    /* ── TRIAL BANNER ── */
+    .trial-banner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, var(--dark) 0%, #2D1B4E 100%);
+      border-radius: 20px;
+      padding: 24px 32px;
+      margin: 0 auto 28px;
+      max-width: 860px;
+      position: relative;
+      overflow: hidden;
+    }
+    .trial-banner::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(41,183,211,.2), transparent 70%);
+    }
+    .trial-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -30px; left: 80px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,68,191,.15), transparent 70%);
+    }
+    .trial-banner-left {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .trial-days {
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 1;
+      letter-spacing: -3px;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .trial-days-label {
+      font-weight: 900;
+      font-size: 22px;
+      color: white;
+      padding-bottom: 8px;
+    }
+    .trial-banner-center {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .trial-title {
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+      letter-spacing: -.5px;
+      margin-bottom: 6px;
+    }
+    .trial-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.5);
+      line-height: 1.5;
+    }
+    .trial-banner-right {
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      color: var(--cyan);
+    }
+    .trial-banner-right svg { width: 46px; height: 46px; }
+
+    /* ── CURRENCY SWITCH ── */
+    .currency-switch {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      padding: 5px;
+      width: fit-content;
+      margin: 0 auto 36px;
+      box-shadow: 0 6px 18px rgba(30,30,46,.05);
+    }
+    .currency-btn {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--mid);
+      background: transparent;
+      border: none;
+      border-radius: 100px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .currency-btn:hover { color: var(--cyan); }
+    .currency-btn.is-active { background: var(--cyan); color: var(--white); }
+    .pricing-card-wide {
+      background: linear-gradient(135deg, #FDF1F9, var(--white));
+      border-radius: 24px;
+      padding: 40px 44px;
+      border: 2px solid var(--pink);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 24px auto 0;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pricing-card-wide:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.10); }
+    .pricing-wide-badge {
+      position: absolute;
+      top: -14px;
+      left: 44px;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-wide-left { flex: 1 1 auto; min-width: 0; }
+    .pricing-wide-left .pricing-name { color: var(--pink); }
+    .pricing-wide-left .pricing-desc { margin-bottom: 20px; }
+    .pricing-wide-features {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 24px;
+    }
+    .pricing-wide-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 7px 0;
+    }
+    .pricing-wide-features .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      background: #FDE3F1;
+      color: var(--pink);
+    }
+    .pricing-wide-right {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      gap: 6px;
+    }
+    .pricing-wide-right .pricing-price { margin-bottom: 0; }
+    .pricing-wide-right .btn { margin-top: 14px; white-space: nowrap; }
+    .pricing-fx-note {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #AAAACC;
+      margin-top: 24px;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--white); }
+    .footer-blob { position: relative; }
+    .footer-blob-bg {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+    }
+    .footer-blob-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 12% 48px 6%;
+    }
+    .footer-brand-col { flex: 0 0 250px; }
+    .footer-logo { height: 40px; width: auto; display: block; margin-bottom: 20px; }
+    .footer-note {
+      position: relative;
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.35;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(-4deg);
+    }
+    .footer-note::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 2.2px;
+      background: var(--brand);
+      opacity: .55;
+      border-radius: 2px;
+      top: 4px;
+      left: -24px;
+      transform: rotate(-38deg);
+    }
+    .footer-note-heart { width: 14px; height: 14px; margin-left: 2px; vertical-align: middle; }
+    .footer-links-col { flex: 0 0 130px; }
+    .footer-links-title { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 13.5px; font-weight: 600; color: var(--mid); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--brand); }
+    .footer-social-col {
+      flex: 0 0 140px;
+      padding-left: 32px;
+      border-left: 1.5px solid rgba(79,67,253,.14);
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .footer-social-note {
+      position: relative;
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(-3deg);
+      margin-bottom: 14px;
+    }
+    .footer-social-icons { display: flex; gap: 10px; }
+    .footer-social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--brand);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .15s, background .15s;
+    }
+    .footer-social-icon:hover { background: var(--ink); transform: translateY(-2px); }
+    .footer-social-icon svg { width: 18px; height: 18px; }
+    .footer-mascot-col { flex: 1; position: relative; display: flex; justify-content: flex-end; align-self: flex-end; }
+    .footer-mascot-img { width: 100%; max-width: 260px; height: auto; display: block; }
+    .footer-thanks-note {
+      position: absolute;
+      top: -6px;
+      right: 8px;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.3;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(5deg);
+      text-align: right;
+    }
+    .footer-thanks-heart { width: 14px; height: 14px; margin-left: 2px; vertical-align: middle; }
+    .footer-bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px 48px 32px;
+    }
+    .footer-copy { font-size: 12.5px; font-weight: 600; color: var(--mid); }
+    .footer-legal-links { display: flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; color: var(--mid); }
+    .footer-legal-links a { color: var(--mid); text-decoration: none; transition: color .2s; }
+    .footer-legal-links a:hover { color: var(--brand); }
+
+    /* ── RESPONSIVE TABLET ── */
+    @media (max-width: 900px) {
+      /* Nav */
+      nav { padding: 0 20px; height: 68px; }
+      .nav-logo { margin-left: 0; }
+      .nav-logo img { height: 42px; }
+      .nav-cta-desktop { display: none; }
+      .nav-cta-mobile { display: inline-flex; }
+      .nav-links { display: none; }
+      .btn { font-size: 13px; padding: 9px 18px; }
+      .btn-large { font-size: 15px; padding: 13px 26px; }
+
+      /* Sections */
+      section { padding: 52px 20px; }
+      .section-title { letter-spacing: -1px; }
+
+      /* Hero */
+      .hero { flex-direction: column; padding: 48px 20px 56px; min-height: auto; text-align: center; gap: 24px; }
+      .hero-content { padding-left: 0; }
+      .hero-note { letter-spacing: .5px; }
+      .hero-title { letter-spacing: -1px; }
+      .hero-subtitle { display: none; }
+      .hero-actions { justify-content: center; flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-checks { justify-content: center; }
+      .hero-visual { flex: none; width: 100%; max-width: 440px; height: auto; }
+
+      /* Stats bar */
+      .stats-bar { padding: 0 20px 48px; }
+      .stats-inner { gap: 20px; padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+      .stat-headline { flex: none; }
+      .stat-headline span { font-size: 15.5px; }
+      .stat-feature { flex-direction: row; text-align: left; gap: 12px; }
+      .stat-feature-icon { width: 22px; height: 22px; flex-shrink: 0; }
+      .stat-div { display: none; }
+
+      /* Automatización */
+      .auto-grid { flex-direction: column; text-align: center; gap: 32px; }
+      .auto-content { text-align: center; }
+      .auto-visual { max-width: 380px; width: 100%; flex: none; }
+      .auto-badge { justify-content: center; }
+      .auto-title::before { display: none; }
+      .pillar-item { text-align: left; }
+      .pillar-list { max-width: 420px; margin: 0 auto; }
+
+      /* Negocios */
+      .biz-track { grid-auto-columns: calc((100% - 24px) / 2); }
+      .biz-arrow { display: none; }
+
+      /* Funcionalidades clave */
+      .feat-grid { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
+
+      /* Testimonial */
+      .testi { flex-direction: column; text-align: center; padding: 32px 24px; gap: 20px; margin-top: 52px; }
+      .testi-div { width: 84px; height: 1.5px; }
+      .testi-count-label { max-width: none; }
+      .testi-faces { justify-content: center; }
+
+      /* CTA band */
+      .cta-band { flex-direction: column; padding: 36px 24px; gap: 24px; }
+      .cta-band-img { height: 160px; }
+
+      /* Pricing */
+      .pricing-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
+      .currency-switch { flex-wrap: wrap; border-radius: 20px; }
+      .pricing-card-wide { flex-direction: column; align-items: stretch; padding: 36px 28px; max-width: 420px; }
+      .pricing-wide-features { grid-template-columns: 1fr; }
+      .pricing-wide-right { align-items: flex-start; text-align: left; }
+      .pricing-wide-right .btn { width: 100%; justify-content: center; }
+      .trial-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 12px; }
+      .trial-days { font-size: 52px; }
+
+
+      /* Footer */
+      .footer-blob-bg { display: none; }
+      .footer-blob { background: #F5F6FF; }
+      .footer-blob-content {
+        position: static;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 32px;
+        max-width: none;
+        padding: 40px 20px;
+      }
+      .footer-brand-col { flex: 1 1 100%; }
+      .footer-links-col { flex: 1 1 45%; }
+      .footer-social-col {
+        flex: 1 1 100%;
+        width: 100%;
+        border-left: none;
+        border-top: 1.5px solid rgba(79,67,253,.14);
+        padding-left: 0;
+        padding-top: 24px;
+      }
+      .footer-mascot-col { flex: 1 1 100%; align-self: center; justify-content: center; }
+      .footer-mascot-img { max-width: 200px; }
+      .footer-thanks-note { position: static; text-align: center; margin-bottom: 12px; }
+      .footer-bottom-bar { max-width: none; padding: 20px 20px 28px; flex-direction: column; text-align: center; }
+    }
+
+    /* ── RESPONSIVE SMALL MOBILE ── */
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(30px, 8vw, 44px); }
+      .hero-visual { max-width: 320px; }
+      .ba-card { padding: 28px 24px 0; }
+      .ba-list li { font-size: 14px; }
+      .biz-track { grid-auto-columns: 82%; }
+      .feat-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { max-width: 100%; }
+      .pricing-amount { font-size: 52px; }
+      .trial-days { font-size: 44px; }
+      .stats-inner { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="assets/logo_complete.png" alt="calendi" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Funciones</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li class="nav-dropdown" id="navResourcesDropdown">
+        <button type="button" class="nav-dropdown-trigger" id="navResourcesBtn" aria-expanded="false">
+          Recursos <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="navResourcesMenu">
+          <a href="/">Sobre nosotros</a>
+          <a href="#demo">Contacto</a>
+          <a href="/calendi/terminos">Términos de uso</a>
+          <a href="/calendi/privacidad">Privacidad</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://calendi.espressodevs.com" class="btn btn-brand-outline nav-btn nav-cta-desktop">Iniciar sesión</a>
+      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-desktop" style="margin-left:10px;">Probar gratis</a>
+      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-mobile">Probar gratis</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-content-top">
+          <div class="hero-note">Más tiempo<br />para lo que<br />te importa</div>
+          <h1 class="hero-title">
+            Tus clientes<br />reservan solos.<br /><span class="highlight-brand">Vos te ocupás de<br />hacer crecer tu negocio.</span>
+          </h1>
+        </div>
+        <div class="hero-content-bottom">
+          <p class="hero-subtitle">
+            Calendi organiza tus reservas, recuerda tus citas y mantiene a tus clientes conectados con tu negocio.
+          </p>
+          <div class="hero-actions">
+            <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid btn-large">Empezar gratis &nbsp;→</a>
+            <button type="button" class="btn btn-brand-outline btn-large" id="heroVideoModalBtn">
+              <span class="btn-play-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+              Ver cómo funciona
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL DERECHO: notebook + celular con calendi funcionando, video demo embebido -->
+      <div class="hero-visual">
+        <div class="hero-jumbo">
+          <img src="assets/jumbo_art_nobackground.webp" alt="calendi funcionando en una notebook y un celular" class="hero-jumbo-img" />
+          <div class="hero-play-zone">
+            <button type="button" class="hero-play-btn" id="heroPlayBtn" aria-label="Reproducir video de demostración de calendi">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="stat-headline">
+          <svg class="stat-headline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <span>Todo lo que necesitás para dejar<br />de gestionar turnos a mano.</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat-feature">
+          <svg class="stat-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <span>Seguro y confiable</span>
+        </div>
+        <div class="stat-feature">
+          <svg class="stat-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10Z"/></svg>
+          <span>Sin instalaciones</span>
+        </div>
+        <div class="stat-feature">
+          <svg class="stat-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2Z"/><path d="M3 19a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2Z"/></svg>
+          <span>Soporte siempre</span>
+        </div>
+        <div class="stat-feature">
+          <svg class="stat-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Empezá en minutos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+    <div class="video-modal-inner">
+      <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <video id="modalVideo" class="video-modal-video" controls playsinline preload="none" src="assets/video_concept.mp4"></video>
+    </div>
+  </div>
+
+  <!-- AUTOMATIZACIÓN -->
+  <section id="automatizacion">
+    <div class="section-inner">
+      <div class="auto-grid">
+        <div class="auto-content">
+          <div class="auto-badge">
+            <span class="auto-badge-num">02</span>
+            <span class="auto-badge-label">Automatización</span>
+          </div>
+          <h2 class="auto-title">
+            Nunca más una<br />
+            <span class="highlight-brand">cita olvidada</span><span class="auto-title-dashes" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="30" x2="14" y2="18"/><line x1="18" y1="34" x2="24" y2="20"/><line x1="30" y1="30" x2="34" y2="16"/></svg></span>
+          </h2>
+          <p class="auto-desc">
+            Calendi se encarga de recordarle a tus clientes sus citas, enviar confirmaciones y mantenerlos al tanto en todo momento. Y si se libera un turno, la lista de espera se activa automáticamente.
+          </p>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+              <div>
+                <div class="pillar-title">Recordatorios automáticos</div>
+                <div class="pillar-desc">Por WhatsApp, SMS o email.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg></div>
+              <div>
+                <div class="pillar-title">Confirmaciones de turnos</div>
+                <div class="pillar-desc">Para que todos estén al tanto.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div>
+                <div class="pillar-title">Lista de espera inteligente</div>
+                <div class="pillar-desc">Si se cancela un turno, Calendi lo reasigna.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+              <div>
+                <div class="pillar-title">Turnos liberados</div>
+                <div class="pillar-desc">Tu agenda nunca se queda vacía.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="auto-visual">
+          <img src="assets/nuncamasunacitaolvidada.png" alt="Recordatorios y confirmaciones automáticas de calendi por WhatsApp" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRM DE CLIENTES -->
+  <section id="crm">
+    <div class="section-inner">
+      <div class="auto-grid">
+        <div class="auto-content">
+          <div class="auto-badge">
+            <span class="auto-badge-num">04</span>
+            <span class="auto-badge-label">CRM de clientes</span>
+          </div>
+          <h2 class="auto-title">
+            Conocé a tus<br />
+            <span class="highlight-brand">clientes de verdad</span><span class="auto-title-dashes" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="30" x2="14" y2="18"/><line x1="18" y1="34" x2="24" y2="20"/><line x1="30" y1="30" x2="34" y2="16"/></svg></span>
+          </h2>
+          <p class="auto-desc">
+            Calendi te da un CRM simple y completo para gestionar toda la información de tus clientes, ver su historial de reservas y mantener la relación siempre activa.
+          </p>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div>
+                <div class="pillar-title">Ficha completa de cada cliente</div>
+                <div class="pillar-desc">Datos de contacto, historial de turnos, notas y preferencias.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div>
+                <div class="pillar-title">Historial de reservas</div>
+                <div class="pillar-desc">Vé todas sus citas pasadas y próximas en un solo lugar.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82Z"/><circle cx="7" cy="7" r="1.5"/></svg></div>
+              <div>
+                <div class="pillar-title">Segmentación de clientes</div>
+                <div class="pillar-desc">Organizá, etiquetá y clasificá a tus clientes para comunicarte mejor.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              <div>
+                <div class="pillar-title">Mejor experiencia</div>
+                <div class="pillar-desc">Ofrecé un trato más personalizado y hacé que vuelvan.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="auto-visual">
+          <img src="assets/clientes.png" alt="Ficha de cliente y CRM de calendi con historial de reservas" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINCRONIZACIÓN DE CALENDARIO -->
+  <section id="sincronizacion">
+    <div class="section-inner">
+      <div class="auto-grid">
+        <div class="auto-content">
+          <div class="auto-badge">
+            <span class="auto-badge-num">06</span>
+            <span class="auto-badge-label">Sincronización de calendario</span>
+          </div>
+          <h2 class="auto-title">
+            Todo tu día,<br />
+            <span class="highlight-brand">en orden.</span><span class="auto-title-dashes" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="30" x2="14" y2="18"/><line x1="18" y1="34" x2="24" y2="20"/><line x1="30" y1="30" x2="34" y2="16"/></svg></span>
+          </h2>
+          <p class="auto-desc">
+            Sincronizá tu calendario de siempre con Calendi y evitá superposiciones. Toda tu agenda, en un solo lugar.
+          </p>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+              <div>
+                <div class="pillar-title">Sincronización automática</div>
+                <div class="pillar-desc">Conectá tu calendario de Google, Apple o Outlook en un clic.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="8 15 10.5 17.5 16 13"/></svg></div>
+              <div>
+                <div class="pillar-title">Evitá superposiciones</div>
+                <div class="pillar-desc">Calendi respeta tus horarios y mantiene todo organizado.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+              <div>
+                <div class="pillar-title">Accedé desde donde quieras</div>
+                <div class="pillar-desc">Tu agenda siempre con vos, en cualquier dispositivo.</div>
+              </div>
+            </div>
+          </div>
+          <div class="pillar-note">
+            Tu calendario<br />favorito,<br />en calendi
+            <svg class="pillar-note-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
+          </div>
+        </div>
+        <div class="auto-visual">
+          <img src="assets/syncalendar.png" alt="Sincronización del calendario de calendi con Google Calendar, Apple Calendar y Outlook" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TU PROPIO PERFIL -->
+  <section id="tu-perfil">
+    <div class="section-inner">
+      <div class="auto-grid">
+        <div class="auto-content">
+          <div class="auto-badge">
+            <span class="auto-badge-num">07</span>
+            <span class="auto-badge-label">Tu propio perfil</span>
+          </div>
+          <h2 class="auto-title">
+            Tu negocio,<br />
+            <span class="highlight-brand">siempre abierto.</span><span class="auto-title-dashes" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="30" x2="14" y2="18"/><line x1="18" y1="34" x2="24" y2="20"/><line x1="30" y1="30" x2="34" y2="16"/></svg></span>
+          </h2>
+          <p class="auto-desc">
+            Creá un perfil personalizado para tu local y dejá que tus clientes conozcan tus servicios, vean tus horarios y reserven cuando quieran.
+          </p>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 4.5L18 9l-4.1 1.5L12 15l-1.9-4.5L6 9l4.1-1.5L12 3Z"/><path d="M19 15.5 19.75 17.25 21.5 18 19.75 18.75 19 20.5 18.25 18.75 16.5 18 18.25 17.25 19 15.5Z"/></svg></div>
+              <div>
+                <div class="pillar-title">Tu marca, en un solo lugar</div>
+                <div class="pillar-desc">Mostrá lo mejor de tu negocio con fotos, servicios, horarios y más.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div>
+                <div class="pillar-title">Reservas online</div>
+                <div class="pillar-desc">Tus clientes eligen el servicio y el horario que prefieren.</div>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div>
+                <div class="pillar-title">Disponible 24/7</div>
+                <div class="pillar-desc">Tu perfil siempre activo, incluso cuando vos no estás.</div>
+              </div>
+            </div>
+          </div>
+          <div class="pillar-note">
+            Tu perfil,<br />tus reglas
+            <svg class="pillar-note-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
+          </div>
+        </div>
+        <div class="auto-visual">
+          <img src="assets/tuperfil.png" alt="Perfil de negocio de calendi conectado desde Instagram hasta la reserva de turno" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA CADA NEGOCIO -->
+  <section id="negocios" style="padding-bottom: 36px;">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center; margin-bottom: 36px;">
+        <div class="section-tag" style="color: var(--cyan);">Para cada negocio</div>
+        <h2 class="section-title">calendi se adapta a vos</h2>
+      </div>
+      <div class="biz-carousel">
+        <button class="biz-arrow biz-prev" id="biz-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <div class="biz-track" id="biz-track">
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/barber.png" alt="Barbería usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Barberías</div>
+              <p class="biz-desc">Agenda, recordatorios y más clientes.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/nail.png" alt="Nail Studio usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Nail Studio</div>
+              <p class="biz-desc">Organizá servicios, profesionales y horarios.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/vet.png" alt="Veterinaria usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--green)"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg>Veterinarias</div>
+              <p class="biz-desc">Turnos, vacunas y recordatorios automáticos.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/cosmetic.png" alt="Centro de estética usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg>Centros de estética</div>
+              <p class="biz-desc">Agendá, confirmá y fidelizá a tus clientes.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/tatoo.png" alt="Estudio de tatuajes usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>Estudios de tatuajes</div>
+              <p class="biz-desc">Sesiones, señas y seguimiento de cada trabajo.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+          <div class="biz-card">
+            <div class="biz-photo"><img src="assets/hair.png" alt="Peluquería usando calendi" loading="lazy" /></div>
+            <div class="biz-body">
+              <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Peluquerías</div>
+              <p class="biz-desc">Color, corte y agenda siempre llena.</p>
+              <a href="#demo" class="biz-link">Ver ejemplo &nbsp;→</a>
+            </div>
+          </div>
+        </div>
+        <button class="biz-arrow biz-next" id="biz-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+      <div class="biz-dots" id="biz-dots"></div>
+    </div>
+  </section>
+
+  <!-- FUNCIONALIDADES CLAVE -->
+  <section id="features" style="padding-top: 36px;">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center; margin-bottom: 44px;">
+        <div class="section-tag" style="color: var(--purple);">Funcionalidades clave</div>
+        <h2 class="section-title">Todo lo que necesitás, en un solo lugar</h2>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E7ECFB; color:#3B5BDB;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8.01" y2="14"/><line x1="12" y1="14" x2="12.01" y2="14"/><line x1="16" y1="14" x2="16.01" y2="14"/><line x1="8" y1="18" x2="8.01" y2="18"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="feat-title">Agenda inteligente</div>
+          <p class="feat-desc">Visualizá tu día, semana y mes en segundos.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#F2E8FA; color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="feat-title">Reservas 24/7</div>
+          <p class="feat-desc">Tus clientes reservan incluso mientras dormís.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E5F8EA; color:#25D366;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+          <div class="feat-title">Recordatorios por WhatsApp</div>
+          <p class="feat-desc">Menos olvidos, más asistencia.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E8F9FC; color:var(--cyan);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <div class="feat-title">Reprogramación fácil</div>
+          <p class="feat-desc">Tus clientes cambian sin escribirte.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#FFFBDB; color:var(--yellow);"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="feat-title">Reseñas y feedback</div>
+          <p class="feat-desc">Construí reputación y confianza.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#F2E8FA; color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></svg></div>
+          <div class="feat-title">Estadísticas</div>
+          <p class="feat-desc">Tomá mejores decisiones con datos reales.</p>
+        </div>
+      </div>
+
+      <!-- TESTIMONIAL -->
+      <div class="testi">
+        <div class="testi-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C13.5 7.5 12 5 9.5 5zm10 0c-3 0-5.5 2.5-5.5 5.5 0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C23.5 7.5 22 5 19.5 5z"/></svg></div>
+        <p class="testi-text">calendi cambió la forma en que trabajamos. Más orden, más clientes y mucho menos estrés.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">CR</div>
+          <div>
+            <div class="testi-name">Camila Rodríguez</div>
+            <div class="testi-role">Studio Glam</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="testi-div"></div>
+        <div class="testi-count">
+          <div class="testi-count-num">+1.200</div>
+          <div class="testi-count-label">negocios ya confían en calendi</div>
+          <div class="testi-faces">
+            <span class="testi-face" style="background:var(--cyan);">MA</span>
+            <span class="testi-face" style="background:var(--purple);">JL</span>
+            <span class="testi-face" style="background:var(--pink);">SO</span>
+            <span class="testi-face" style="background:var(--orange);">DP</span>
+            <span class="testi-face" style="background:var(--green);">LU</span>
+            <span class="testi-face-more">+987</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA BAND -->
+      <div class="cta-band" id="demo">
+        <img src="assets/calendienaccio_n.png" alt="turni marcando turnos confirmados en el calendario" class="cta-band-img" />
+        <div class="cta-band-content">
+          <h2 class="cta-band-title">¿Listo para olvidarte<br />de los mensajes?</h2>
+          <p class="cta-band-sub">Probá calendi gratis y empezá a llenar tu agenda hoy mismo.</p>
+          <a href="mailto:hola@espressodevs.com" class="btn btn-acid btn-large">Pedí tu demo ahora &nbsp;→</a>
+          <div class="hero-checks cta-band-checks">
+            <span class="hero-check">Sin tarjeta de crédito</span>
+            <span class="hero-check">Configuración en minutos</span>
+            <span class="hero-check">Cancelás cuando quieras</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="precios" style="padding-top: 48px;">
+    <div class="section-inner">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-tag" style="color: var(--green);">Precios</div>
+        <h2 class="section-title">Claro, sin sorpresas</h2>
+        <p class="section-sub" style="margin: 0 auto;">Elegí el plan que va con tu negocio. Cancelás cuando querés.</p>
+      </div>
+      <div class="trial-banner">
+        <div class="trial-banner-left">
+          <div class="trial-days">30</div>
+          <div class="trial-days-label">días</div>
+        </div>
+        <div class="trial-banner-center">
+          <div class="trial-title">Probá calendi Pro gratis, sin compromiso</div>
+          <div class="trial-sub">Sin tarjeta de crédito · Cancelás cuando querés · Acceso completo a todas las funciones</div>
+        </div>
+        <div class="trial-banner-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+      </div>
+
+      <div class="currency-switch" id="currency-switch">
+        <button class="currency-btn is-active" data-currency="UYU">UYU</button>
+        <button class="currency-btn" data-currency="ARS">ARS</button>
+        <button class="currency-btn" data-currency="CLP">CLP</button>
+        <button class="currency-btn" data-currency="PEN">PEN</button>
+      </div>
+
+      <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+        <!-- FREE -->
+        <div class="pricing-card">
+          <div class="pricing-name">Free</div>
+          <div class="pricing-price">
+            <span class="pricing-amount" style="color:var(--purple);">Gratis</span>
+          </div>
+          <p class="pricing-desc">Para empezar a organizar tu negocio hoy mismo, sin pagar nada.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 salón, 1 sucursal, 1 profesional</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Calendario ilimitado</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Reservas a través del link (limitadas)</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>CRM completo</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios y confirmaciones por email</li>
+          </ul>
+          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Crear cuenta gratis</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Más popular</div>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-price">
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-pro" style="color:var(--cyan);">799</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Para negocios que quieren automatizar reservas, cobros y recordatorios.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Free</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios automáticos y confirmaciones por WhatsApp</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Pago de seña integrado con Mercado Pago</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Reservas ilimitadas a través del link</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Hasta 5 profesionales</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Página de perfil propia con imágenes</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Link de reserva totalmente personalizable: apariencia, preguntas, horarios y recordatorios</li>
+          </ul>
+          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Pro" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <div class="free-trial-badge" style="top:40px;">30 días gratis</div>
+        </div>
+
+        <!-- MAX -->
+        <div class="pricing-card">
+          <div class="pricing-name">Max</div>
+          <div class="pricing-price">
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-max" style="color:var(--orange);">1.499</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Para negocios que quieren crecer con campañas y datos de verdad.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Todo lo del plan Pro</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Soporte prioritario</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Campañas promocionales por email y WhatsApp</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del negocio</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del cliente</li>
+          </ul>
+          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Max" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
+          <div class="free-trial-badge">30 días gratis</div>
+        </div>
+
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="pricing-card-wide">
+        <div class="pricing-wide-badge">Soporte exclusivo por WhatsApp</div>
+        <div class="pricing-wide-left">
+          <div class="pricing-name">Business</div>
+          <p class="pricing-desc">Para negocios que quieren fidelizar clientes y cuidar su reputación online sin esfuerzo extra.</p>
+          <ul class="pricing-wide-features">
+            <li><span class="check">✓</span>Todo lo del plan Max</li>
+            <li><span class="check">✓</span>Soporte exclusivo a través de WhatsApp</li>
+            <li><span class="check">✓</span>Sistema de fidelización de clientes</li>
+            <li><span class="check">✓</span>Módulo de Google Reviews con respuestas automáticas</li>
+          </ul>
+        </div>
+        <div class="pricing-wide-right">
+          <div class="pricing-price">
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-business" style="font-size:52px; color:var(--pink);">2.999</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Business" target="_blank" class="btn btn-primary" style="background:var(--pink); border-color:var(--pink);">Pedí tu demo</a>
+        </div>
+      </div>
+
+      <p class="pricing-fx-note" id="pricing-fx-note" hidden>Precio de referencia según el tipo de cambio del día. La facturación se realiza en UYU.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-blob">
+      <img src="assets/footer_bg.png" class="footer-blob-bg" alt="" aria-hidden="true" />
+      <div class="footer-blob-content">
+        <div class="footer-brand-col">
+          <img src="assets/logo_complete.png" alt="calendi" class="footer-logo" />
+          <div class="footer-note">
+            Agenda llena,<br />corazón contento
+            <svg class="footer-note-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-links-title">Producto</div>
+          <ul class="footer-links">
+            <li><a href="#features">Funciones</a></li>
+            <li><a href="#precios">Precios</a></li>
+            <li><a href="#">Integraciones</a></li>
+            <li><a href="#">Novedades</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-links-title">Recursos</div>
+          <ul class="footer-links">
+            <li><a href="#">Centro de ayuda</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Guías y tutoriales</a></li>
+            <li><a href="#">Casos de éxito</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-links-title">Empresa</div>
+          <ul class="footer-links">
+            <li><a href="/">Sobre Calendi</a></li>
+            <li><a href="#">Trabajá con nosotros</a></li>
+            <li><a href="#demo">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-social-col">
+          <div class="footer-social-note">
+            Seguinos<br />en redes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-left:2px;vertical-align:middle;"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </div>
+          <div class="footer-social-icons">
+            <a href="#" class="footer-social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v13.5a2.5 2.5 0 1 1-2.5-2.5c.17 0 .34.01.5.04V9.9a5.5 5.5 0 1 0 5 5.48V9.2a6.5 6.5 0 0 0 4 1.35V7.55a4 4 0 0 1-4-4.05z"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="20" height="14" rx="4"/><polygon points="10 9 16 12 10 15" fill="var(--brand)"/></svg></a>
+            <a href="#" class="footer-social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2 2 0 0 1 4 0V17" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-mascot-col">
+          <div class="footer-thanks-note">
+            ¡Gracias<br />por estar<br />acá!
+            <svg class="footer-thanks-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
+          </div>
+          <img src="assets/calendi_ft.png" alt="calendi despidiéndose junto a una planta" class="footer-mascot-img" loading="lazy" />
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-bar">
+      <span class="footer-copy">© 2025 Calendi. Todos los derechos reservados.</span>
+      <div class="footer-legal-links">
+        <a href="/calendi/terminos">Términos y condiciones</a>
+        <span>·</span>
+        <a href="/calendi/privacidad">Política de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // dropdown "Recursos" del nav
+    (function () {
+      var dropdown = document.getElementById('navResourcesDropdown');
+      var trigger = document.getElementById('navResourcesBtn');
+      if (!dropdown || !trigger) return;
+
+      function close() {
+        dropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+      function toggle(e) {
+        e.stopPropagation();
+        var isOpen = dropdown.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      trigger.addEventListener('click', toggle);
+      document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+
+    // modal con el video ampliado (botón "play" del art del hero + "Ver cómo funciona")
+    (function () {
+      var openBtns = [document.getElementById('heroPlayBtn'), document.getElementById('heroVideoModalBtn')];
+      var modal = document.getElementById('videoModal');
+      var backdrop = document.getElementById('videoModalBackdrop');
+      var closeBtn = document.getElementById('videoModalClose');
+      var video = document.getElementById('modalVideo');
+      if (!modal || !video) return;
+
+      function openModal() {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        video.currentTime = 0;
+        video.play();
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        video.pause();
+      }
+
+      openBtns.forEach(function (btn) {
+        if (btn) btn.addEventListener('click', openModal);
+      });
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+
+    // carrusel "para cada negocio"
+    (function () {
+      var track = document.getElementById('biz-track');
+      var prev = document.getElementById('biz-prev');
+      var next = document.getElementById('biz-next');
+      var dotsWrap = document.getElementById('biz-dots');
+      if (!track || !prev || !next || !dotsWrap) return;
+
+      function step() {
+        var card = track.querySelector('.biz-card');
+        return card ? card.offsetWidth + 24 : 320;
+      }
+
+      function pageCount() {
+        var scrollable = track.scrollWidth - track.clientWidth;
+        if (scrollable <= 4) return 1;
+        return Math.round(scrollable / step()) + 1;
+      }
+
+      function currentPage() {
+        return Math.round(track.scrollLeft / step());
+      }
+
+      function renderDots() {
+        var count = pageCount();
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+          var dot = document.createElement('button');
+          dot.className = 'biz-dot' + (i === currentPage() ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'Ir a la posición ' + (i + 1));
+          (function (idx) {
+            dot.addEventListener('click', function () {
+              track.scrollTo({ left: idx * step(), behavior: 'smooth' });
+            });
+          })(i);
+          dotsWrap.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        var dots = dotsWrap.querySelectorAll('.biz-dot');
+        var page = currentPage();
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === page); });
+      }
+
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+
+      var scrollTimer;
+      track.addEventListener('scroll', function () {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateDots, 80);
+      });
+      window.addEventListener('resize', renderDots);
+      renderDots();
+    })();
+
+    // switch de moneda en precios
+    // Cotizaciones del 2026-07-09 (exchangerate-api.com, base UYU):
+    // ARS 36.98 · CLP 23.03 · PEN 0.0845 — redondeado hacia arriba a terminación 999/9
+    (function () {
+      var PRICES = {
+        UYU: { pro: '799', max: '1.499', business: '2.999' },
+        ARS: { pro: '29.999', max: '55.999', business: '110.999' },
+        CLP: { pro: '18.999', max: '34.999', business: '69.999' },
+        PEN: { pro: '69', max: '129', business: '259' }
+      };
+      var wrap = document.getElementById('currency-switch');
+      if (!wrap) return;
+      var note = document.getElementById('pricing-fx-note');
+      var buttons = wrap.querySelectorAll('.currency-btn');
+
+      function setCurrency(code) {
+        var p = PRICES[code];
+        if (!p) return;
+        document.querySelectorAll('.js-currency').forEach(function (el) { el.textContent = code; });
+        document.querySelectorAll('.js-price-pro').forEach(function (el) { el.textContent = p.pro; });
+        document.querySelectorAll('.js-price-max').forEach(function (el) { el.textContent = p.max; });
+        document.querySelectorAll('.js-price-business').forEach(function (el) { el.textContent = p.business; });
+        buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === code); });
+        if (note) note.hidden = (code === 'UYU');
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setCurrency(b.dataset.currency); });
+      });
+    })();
+  </script>
+</body>
+</html>
+  

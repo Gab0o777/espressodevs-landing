@@ -4,7 +4,11 @@
     { "source": "/turnix",     "destination": "/turnix/index.html"      },
     { "source": "/turnix/",    "destination": "/turnix/index.html"      },
     { "source": "/terminos",   "destination": "/turnix/terminos.html"   },
-    { "source": "/privacidad", "destination": "/turnix/privacidad.html" }
+    { "source": "/privacidad", "destination": "/turnix/privacidad.html" },
+    { "source": "/calendi",            "destination": "/calendi/index.html"      },
+    { "source": "/calendi/",           "destination": "/calendi/index.html"      },
+    { "source": "/calendi/terminos",   "destination": "/calendi/terminos.html"   },
+    { "source": "/calendi/privacidad", "destination": "/calendi/privacidad.html" }
   ],
   "headers": [
     {
@@ -25,6 +29,12 @@
     },
     {
       "source": "/turnix/assets/:file",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/calendi/assets/:file",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
