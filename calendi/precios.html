@@ -1158,7 +1158,8 @@
     }
 
     /* ── FOOTER ── */
-    footer { background: #DBDBFB; }
+    footer { background: var(--white); }
+    .footer-bottom-wrap { background: #DBDBFB; }
     .footer-blob { position: relative; }
     .footer-blob-bg {
       display: block;
@@ -1354,6 +1355,7 @@
       /* Footer */
       .footer-blob-bg { display: none; }
       .footer-blob { background: #F5F6FF; }
+      .footer-bottom-wrap { background: #F5F6FF; }
       .footer-blob-content {
         position: static;
         flex-wrap: wrap;
@@ -1603,12 +1605,14 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom-bar">
-      <span class="footer-copy">© 2025 Calendi. Todos los derechos reservados.</span>
-      <div class="footer-legal-links">
-        <a href="/calendi/terminos">Términos y condiciones</a>
-        <span>·</span>
-        <a href="/calendi/privacidad">Política de privacidad</a>
+    <div class="footer-bottom-wrap">
+      <div class="footer-bottom-bar">
+        <span class="footer-copy">© 2025 Calendi. Todos los derechos reservados.</span>
+        <div class="footer-legal-links">
+          <a href="/calendi/terminos">Términos y condiciones</a>
+          <span>·</span>
+          <a href="/calendi/privacidad">Política de privacidad</a>
+        </div>
       </div>
     </div>
   </footer>
