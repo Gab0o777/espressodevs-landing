@@ -9,8 +9,8 @@
   <meta name="author" content="espressodevs" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://espressodevs.com/calendi" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_180.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/calendi/assets/favicon_32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/calendi/assets/favicon_180.png" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -532,7 +532,7 @@
     .stat-div { width: 1.5px; height: 56px; background: rgba(79,67,253,.14); }
 
     /* ── SECTIONS COMMON ── */
-    section { padding: 76px 28px; }
+    section { padding: 76px 50px; }
     .section-inner { max-width: 1280px; margin: 0 auto; }
     .section-tag {
       display: inline-block;
@@ -881,6 +881,154 @@
       gap: 10px 24px;
       margin-top: 20px;
     }
+
+    /* ── CTA FINAL (ES AHORA) ── */
+    #cta-final {
+      background: #FBF3E4;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      left: -180px;
+      bottom: -260px;
+      background: #DCD8FB;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-final-grid {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-final-content { flex: 1 1 480px; min-width: 0; }
+    .cta-final-note {
+      display: inline-block;
+      position: relative;
+      font-family: 'Kalam', cursive;
+      font-weight: 700;
+      font-size: 21px;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      transform: rotate(-6deg);
+      margin: 0 0 18px 8px;
+    }
+    .cta-final-note::before, .cta-final-note::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2.5px;
+      background: var(--brand);
+      opacity: .6;
+      border-radius: 2px;
+    }
+    .cta-final-note::before { top: 2px; left: -36px; transform: rotate(-38deg); }
+    .cta-final-note::after { top: 10px; right: -30px; transform: rotate(24deg); }
+    .cta-final-title {
+      font-weight: 900;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+    .cta-final-highlight {
+      position: relative;
+      display: inline-block;
+      font-family: 'Kalam', cursive;
+      color: var(--brand);
+      padding: 2px 6px;
+    }
+    .cta-final-highlight::before {
+      content: '';
+      position: absolute;
+      inset: 8% -4px 4% -4px;
+      background: var(--yellow);
+      transform: rotate(-1.5deg);
+      border-radius: 6px 10px 8px 12px;
+      z-index: -1;
+    }
+    .cta-final-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px 32px;
+    }
+    .cta-final-pillar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 140px;
+    }
+    .cta-final-pillar-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cta-final-pillar-icon svg { width: 20px; height: 20px; }
+    .cta-final-pillar span { font-size: 13.5px; font-weight: 800; color: var(--ink); line-height: 1.35; }
+    .cta-final-visual {
+      flex: 0 0 460px;
+      max-width: 46%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .cta-final-visual img { width: 100%; height: auto; display: block; }
+    .cta-final-btn {
+      position: absolute;
+      right: 4%;
+      bottom: 4%;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--brand);
+      color: var(--white);
+      padding: 14px 12px 14px 26px;
+      border-radius: 100px;
+      box-shadow: 0 16px 32px rgba(79,67,253,.35);
+      text-decoration: none;
+      transform: rotate(-4deg);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .cta-final-btn:hover { transform: rotate(-4deg) translateY(-3px); box-shadow: 0 20px 38px rgba(79,67,253,.42); }
+    .cta-final-btn-text {
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.3;
+      text-align: left;
+    }
+    .cta-final-btn-text .cta-final-btn-ahora {
+      display: block;
+      font-family: 'Kalam', cursive;
+      font-size: 19px;
+      text-decoration: underline;
+      text-decoration-color: var(--yellow);
+      text-decoration-thickness: 2.5px;
+      text-underline-offset: 3px;
+    }
+    .cta-final-btn-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cta-final-btn-arrow svg { width: 16px; height: 16px; }
 
     /* ── PRICING ── */
     .pricing { background: var(--white); }
@@ -1290,7 +1438,7 @@
       .btn-large { font-size: 15px; padding: 13px 26px; }
 
       /* Sections */
-      section { padding: 52px 20px; }
+      section { padding: 52px 50px; }
       .section-title { letter-spacing: -1px; }
 
       /* Hero */
@@ -1338,6 +1486,16 @@
       /* CTA band */
       .cta-band { flex-direction: column; padding: 36px 24px; gap: 24px; }
       .cta-band-img { height: 160px; }
+
+      /* CTA final */
+      .cta-final-grid { flex-direction: column; text-align: center; gap: 36px; }
+      .cta-final-content { text-align: center; }
+      .cta-final-note { margin-left: 0; }
+      .cta-final-pillars { justify-content: center; }
+      .cta-final-pillar { align-items: center; text-align: center; }
+      .cta-final-visual { max-width: 320px; width: 100%; flex: none; margin: 0 auto; }
+      .cta-final-btn { position: static; margin: 20px auto 0; transform: none; }
+      .cta-final-btn:hover { transform: translateY(-3px); }
 
       /* Pricing */
       .pricing-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
@@ -1398,7 +1556,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">
-      <img src="assets/logo_complete.png" alt="calendi" />
+      <img src="/calendi/assets/logo_complete.png" alt="calendi" />
     </div>
     <ul class="nav-links">
       <li><a href="#features">Funciones</a></li>
@@ -1449,7 +1607,7 @@
       <!-- VISUAL DERECHO: notebook + celular con calendi funcionando, video demo embebido -->
       <div class="hero-visual">
         <div class="hero-jumbo">
-          <img src="assets/jumbo_art_nobackground.webp" alt="calendi funcionando en una notebook y un celular" class="hero-jumbo-img" />
+          <img src="/calendi/assets/jumbo_art_nobackground.webp" alt="calendi funcionando en una notebook y un celular" class="hero-jumbo-img" />
           <div class="hero-play-zone">
             <button type="button" class="hero-play-btn" id="heroPlayBtn" aria-label="Reproducir video de demostración de calendi">
               <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
@@ -1494,17 +1652,17 @@
       <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <video id="modalVideo" class="video-modal-video" controls playsinline preload="none" src="assets/video_concept.mp4"></video>
+      <video id="modalVideo" class="video-modal-video" controls playsinline preload="none" src="/calendi/assets/video_concept.mp4"></video>
     </div>
   </div>
 
   <!-- AUTOMATIZACIÓN -->
-  <section id="automatizacion">
+  <section id="automatizacion" style="padding-top: 4px;">
     <div class="section-inner">
       <div class="auto-grid">
         <div class="auto-content">
           <div class="auto-badge">
-            <span class="auto-badge-num">02</span>
+            <span class="auto-badge-num">01</span>
             <span class="auto-badge-label">Automatización</span>
           </div>
           <h2 class="auto-title">
@@ -1546,7 +1704,7 @@
           </div>
         </div>
         <div class="auto-visual">
-          <img src="assets/nuncamasunacitaolvidada.png" alt="Recordatorios y confirmaciones automáticas de calendi por WhatsApp" loading="lazy" />
+          <img src="/calendi/assets/nuncamasunacitaolvidada.png" alt="Recordatorios y confirmaciones automáticas de calendi por WhatsApp" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1558,7 +1716,7 @@
       <div class="auto-grid">
         <div class="auto-content">
           <div class="auto-badge">
-            <span class="auto-badge-num">04</span>
+            <span class="auto-badge-num">02</span>
             <span class="auto-badge-label">CRM de clientes</span>
           </div>
           <h2 class="auto-title">
@@ -1600,7 +1758,7 @@
           </div>
         </div>
         <div class="auto-visual">
-          <img src="assets/clientes.png" alt="Ficha de cliente y CRM de calendi con historial de reservas" loading="lazy" />
+          <img src="/calendi/assets/clientes.png" alt="Ficha de cliente y CRM de calendi con historial de reservas" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1612,7 +1770,7 @@
       <div class="auto-grid">
         <div class="auto-content">
           <div class="auto-badge">
-            <span class="auto-badge-num">06</span>
+            <span class="auto-badge-num">03</span>
             <span class="auto-badge-label">Sincronización de calendario</span>
           </div>
           <h2 class="auto-title">
@@ -1651,7 +1809,7 @@
           </div>
         </div>
         <div class="auto-visual">
-          <img src="assets/syncalendar.png" alt="Sincronización del calendario de calendi con Google Calendar, Apple Calendar y Outlook" loading="lazy" />
+          <img src="/calendi/assets/syncalendar.png" alt="Sincronización del calendario de calendi con Google Calendar, Apple Calendar y Outlook" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1663,7 +1821,7 @@
       <div class="auto-grid">
         <div class="auto-content">
           <div class="auto-badge">
-            <span class="auto-badge-num">07</span>
+            <span class="auto-badge-num">04</span>
             <span class="auto-badge-label">Tu propio perfil</span>
           </div>
           <h2 class="auto-title">
@@ -1702,7 +1860,7 @@
           </div>
         </div>
         <div class="auto-visual">
-          <img src="assets/tuperfil.png" alt="Perfil de negocio de calendi conectado desde Instagram hasta la reserva de turno" loading="lazy" />
+          <img src="/calendi/assets/tuperfil.png" alt="Perfil de negocio de calendi conectado desde Instagram hasta la reserva de turno" loading="lazy" />
         </div>
       </div>
     </div>
@@ -1719,7 +1877,7 @@
         <button class="biz-arrow biz-prev" id="biz-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="biz-track" id="biz-track">
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/barber.png" alt="Barbería usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/barber.png" alt="Barbería usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Barberías</div>
               <p class="biz-desc">Agenda, recordatorios y más clientes.</p>
@@ -1727,7 +1885,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/nail.png" alt="Nail Studio usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/nail.png" alt="Nail Studio usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Nail Studio</div>
               <p class="biz-desc">Organizá servicios, profesionales y horarios.</p>
@@ -1735,7 +1893,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/vet.png" alt="Veterinaria usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/vet.png" alt="Veterinaria usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--green)"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg>Veterinarias</div>
               <p class="biz-desc">Turnos, vacunas y recordatorios automáticos.</p>
@@ -1743,7 +1901,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/cosmetic.png" alt="Centro de estética usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/cosmetic.png" alt="Centro de estética usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg>Centros de estética</div>
               <p class="biz-desc">Agendá, confirmá y fidelizá a tus clientes.</p>
@@ -1751,7 +1909,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/tatoo.png" alt="Estudio de tatuajes usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/tatoo.png" alt="Estudio de tatuajes usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>Estudios de tatuajes</div>
               <p class="biz-desc">Sesiones, señas y seguimiento de cada trabajo.</p>
@@ -1759,7 +1917,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="assets/hair.png" alt="Peluquería usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/hair.png" alt="Peluquería usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Peluquerías</div>
               <p class="biz-desc">Color, corte y agenda siempre llena.</p>
@@ -1842,7 +2000,7 @@
 
       <!-- CTA BAND -->
       <div class="cta-band" id="demo">
-        <img src="assets/calendi_asesor.png" alt="calendi con auriculares listo para ayudarte" class="cta-band-img" />
+        <img src="/calendi/assets/calendi_preparado_tiempo.png" alt="calendi con auriculares listo para ayudarte" class="cta-band-img" style="border-radius: 0; box-shadow: none;" />
         <div class="cta-band-content">
           <h2 class="cta-band-title">¿Preparado para<br />ganar más tiempo?</h2>
           <p class="cta-band-sub">Hablemos para entender cómo podemos ayudarte con tu problema particular.</p>
@@ -1857,13 +2015,54 @@
     </div>
   </section>
 
+  <!-- CTA FINAL (ES AHORA) -->
+  <section id="cta-final">
+    <div class="section-inner">
+      <div class="cta-final-grid">
+        <div class="cta-final-content">
+          <div class="cta-final-note">¡Es ahora!</div>
+          <h2 class="cta-final-title">
+            Para arrancar ya mismo<br />
+            a automatizar tu negocio,<br />
+            <span class="cta-final-highlight">completamente gratis.</span>
+          </h2>
+          <div class="cta-final-pillars">
+            <div class="cta-final-pillar">
+              <div class="cta-final-pillar-icon" style="background:#EDEBFF; color:var(--brand);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
+              <span>Sin tarjetas<br />ni costos ocultos</span>
+            </div>
+            <div class="cta-final-pillar">
+              <div class="cta-final-pillar-icon" style="background:#E5F8EA; color:var(--green);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <span>En pocos<br />minutos</span>
+            </div>
+            <div class="cta-final-pillar">
+              <div class="cta-final-pillar-icon" style="background:#FCE8F1; color:var(--pink);"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg></div>
+              <span>Más tiempo<br />para vos</span>
+            </div>
+            <div class="cta-final-pillar">
+              <div class="cta-final-pillar-icon" style="background:#F2E8FA; color:var(--purple);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="4"/></svg></div>
+              <span>Tu negocio<br />trabajando solo</span>
+            </div>
+          </div>
+        </div>
+        <div class="cta-final-visual">
+          <img src="/calendi/assets/calendi_empeza_ahora.png" alt="calendi con auriculares trabajando feliz en su laptop, listo para automatizar tu negocio" loading="lazy" />
+          <a href="https://calendi.espressodevs.com/auth/register" class="cta-final-btn">
+            <span class="cta-final-btn-text">¡Crear mi cuenta<span class="cta-final-btn-ahora">AHORA!</span></span>
+            <span class="cta-final-btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-blob">
-      <img src="assets/footer_bg.png" class="footer-blob-bg" alt="" aria-hidden="true" />
+      <img src="/calendi/assets/footer_bg.png" class="footer-blob-bg" alt="" aria-hidden="true" />
       <div class="footer-blob-content">
         <div class="footer-brand-col">
-          <img src="assets/logo_complete.png" alt="calendi" class="footer-logo" />
+          <img src="/calendi/assets/logo_complete.png" alt="calendi" class="footer-logo" />
           <div class="footer-note">
             Agenda llena,<br />corazón contento
             <svg class="footer-note-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
@@ -1912,7 +2111,7 @@
             ¡Gracias<br />por estar<br />acá!
             <svg class="footer-thanks-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.7-4.35-9.33-8.2C1 10.3 1.5 6.6 4.6 5.1c2.1-1 4.4-.3 5.9 1.5.5.6 1 .6 1.5 0 1.5-1.8 3.8-2.5 5.9-1.5 3.1 1.5 3.6 5.2 1.93 7.7C18.7 16.65 12 21 12 21z"/></svg>
           </div>
-          <img src="assets/calendi_ft.png" alt="calendi despidiéndose junto a una planta" class="footer-mascot-img" loading="lazy" />
+          <img src="/calendi/assets/calendi_ft.png" alt="calendi despidiéndose junto a una planta" class="footer-mascot-img" loading="lazy" />
         </div>
       </div>
     </div>
