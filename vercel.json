@@ -7,6 +7,7 @@
     { "source": "/privacidad", "destination": "/turnix/privacidad.html" },
     { "source": "/calendi",            "destination": "/calendi/index.html"      },
     { "source": "/calendi/",           "destination": "/calendi/index.html"      },
+    { "source": "/calendi/precios",    "destination": "/calendi/precios.html"    },
     { "source": "/calendi/terminos",   "destination": "/calendi/terminos.html"   },
     { "source": "/calendi/privacidad", "destination": "/calendi/privacidad.html" }
   ],
