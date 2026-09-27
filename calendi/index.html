@@ -1317,20 +1317,17 @@
     /* ── FOOTER ── */
     footer { background: var(--white); }
     .footer-bottom-wrap { background: #DBDBFB; }
-    .footer-blob { position: relative; }
-    .footer-blob-bg {
-      display: block;
-      width: 100%;
-      height: auto;
-      user-select: none;
-      pointer-events: none;
+    .footer-blob {
+      position: relative;
+      background-image: url('/calendi/assets/footer_bg.png');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: 100% auto;
     }
     .footer-blob-content {
-      position: absolute;
-      inset: 0;
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 10px;
       max-width: 1440px;
       margin: 0 auto;
       padding: 7% 50px 4%;
@@ -1549,11 +1546,9 @@
 
 
       /* Footer */
-      .footer-blob-bg { display: none; }
       .footer-blob { background: #F5F6FF; }
       .footer-bottom-wrap { background: #F5F6FF; }
       .footer-blob-content {
-        position: static;
         flex-wrap: wrap;
         align-items: flex-start;
         row-gap: 32px;
@@ -2101,7 +2096,6 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-blob">
-      <img src="/calendi/assets/footer_bg.png" class="footer-blob-bg" alt="" aria-hidden="true" />
       <div class="footer-blob-content">
         <div class="footer-brand-col">
           <img src="/calendi/assets/logo_complete.png" alt="calendi" class="footer-logo" />
