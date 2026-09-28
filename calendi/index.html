@@ -764,9 +764,9 @@
       position: absolute;
       width: 380px;
       height: 380px;
-      left: -140px;
-      bottom: -220px;
-      background: rgba(141,198,63,.18);
+      left: -6px;
+      bottom: 6px;
+      background: rgb(79 67 254 / 20%);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -775,8 +775,8 @@
       position: absolute;
       width: 380px;
       height: 380px;
-      right: -140px;
-      top: -220px;
+      right: 0;
+      top: 0;
       background: rgba(141,198,63,.18);
       border-radius: 50%;
       pointer-events: none;
@@ -806,7 +806,7 @@
     .clients-badge svg { width: 16px; height: 16px; color: var(--lime); }
     .clients-title {
       font-weight: 900;
-      font-size: clamp(28px, 3.2vw, 42px);
+      font-size: clamp(28px, 3.2vw, 50px);
       line-height: 1.2;
       letter-spacing: -1px;
       color: var(--ink);
@@ -1431,6 +1431,7 @@
       background-position: top center;
       background-size: 100% auto;
       padding: 99px 4px 7px 60px;
+      padding-left: 3%;
     }
     .footer-blob-content {
       display: flex;
@@ -1438,6 +1439,7 @@
       gap: 20px;
       padding: 7% 50px 4%;
       padding-bottom: 0;
+      padding-left: 3%;
       margin-bottom: 0;
     }
     .footer-brand-col { flex: 0 0 250px; margin-top: 75px; }
@@ -1545,6 +1547,15 @@
       .footer-blob-content { gap: 50px; }
     }
 
+    /* ── FOOTER MID BREAKPOINTS (desktop only, above the 900px mobile switch) ── */
+    @media (max-width: 1390px) and (min-width: 901px) {
+      .footer-logo { height: 54px; }
+      .footer-brand-col { flex: 0 0 200px; }
+    }
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .footer-social-col { display: none; }
+    }
+
     /* ── WHATSAPP FLOAT ── */
     .whatsapp-float {
       position: fixed;
@@ -1572,6 +1583,51 @@
     @media (max-width: 900px) {
       .whatsapp-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
       .whatsapp-float svg { width: 27px; height: 27px; }
+    }
+
+    /* ── WHATSAPP CHAT BUBBLES ── */
+    .wa-bubbles {
+      position: fixed;
+      right: 24px;
+      bottom: 96px;
+      z-index: 899;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .wa-bubble {
+      pointer-events: auto;
+      cursor: pointer;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      max-width: 220px;
+      padding: 12px 16px;
+      border-radius: 16px 16px 4px 16px;
+      box-shadow: 0 10px 28px rgba(20,10,50,.22);
+      animation: wa-bubble-in .38s cubic-bezier(.16,1,.3,1) both;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .wa-bubble:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(20,10,50,.28); }
+    .wa-bubble.wa-bubble-out { animation: wa-bubble-out .25s ease forwards; }
+    @keyframes wa-bubble-in {
+      from { opacity: 0; transform: translateY(16px) scale(.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes wa-bubble-out {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(8px) scale(.92); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wa-bubble, .wa-bubble.wa-bubble-out { animation: none; }
+    }
+    @media (max-width: 900px) {
+      .wa-bubbles { right: 16px; bottom: 82px; }
+      .wa-bubble { max-width: 190px; font-size: 13px; padding: 10px 14px; }
     }
 
     /* ── RESPONSIVE TABLET ── */
@@ -2356,9 +2412,103 @@
     </div>
   </footer>
 
+  <div class="wa-bubbles" id="waBubbles" aria-live="polite"></div>
+
   <a href="https://wa.me/59892166927?text=Hola%2C%20quiero%20crear%20una%20cuenta" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chatear por WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
   </a>
+
+  <script>
+    // burbujas de WhatsApp al 40% de scroll: aviso + sonido + click -> WhatsApp
+    (function () {
+      var waLink = document.querySelector('.whatsapp-float');
+      var container = document.getElementById('waBubbles');
+      if (!waLink || !container) return;
+
+      var messages = ['Holii! 👋', '¿Querés que te cuente más de Calendi?'];
+      var triggered = false;
+      var audioCtx = null;
+
+      function getAudioCtx() {
+        if (!audioCtx) {
+          var Ctx = window.AudioContext || window.webkitAudioContext;
+          if (!Ctx) return null;
+          audioCtx = new Ctx();
+        }
+        return audioCtx;
+      }
+
+      // Desbloquea el AudioContext apenas haya una interacción real del usuario.
+      ['click', 'keydown', 'touchstart'].forEach(function (evt) {
+        document.addEventListener(evt, function () {
+          var ctx = getAudioCtx();
+          if (ctx && ctx.state === 'suspended') ctx.resume();
+        }, { once: true, passive: true });
+      });
+
+      function playDing() {
+        try {
+          var ctx = getAudioCtx();
+          if (!ctx) return;
+          if (ctx.state === 'suspended') ctx.resume();
+          var now = ctx.currentTime;
+          [880, 1180].forEach(function (freq, i) {
+            var osc = ctx.createOscillator();
+            var gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            var start = now + i * 0.09;
+            gain.gain.setValueAtTime(0, start);
+            gain.gain.linearRampToValueAtTime(0.18, start + 0.015);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.22);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start(start);
+            osc.stop(start + 0.24);
+          });
+        } catch (e) {}
+      }
+
+      function goToWhatsapp() {
+        window.open(waLink.href, '_blank', 'noopener');
+      }
+
+      function showBubble(text, delay) {
+        setTimeout(function () {
+          var b = document.createElement('div');
+          b.className = 'wa-bubble';
+          b.textContent = text;
+          b.setAttribute('role', 'button');
+          b.setAttribute('tabindex', '0');
+          b.addEventListener('click', goToWhatsapp);
+          b.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') goToWhatsapp();
+          });
+          container.appendChild(b);
+          playDing();
+          setTimeout(function () {
+            b.classList.add('wa-bubble-out');
+            b.addEventListener('animationend', function () { b.remove(); }, { once: true });
+          }, 9000);
+        }, delay);
+      }
+
+      function maybeTrigger() {
+        if (triggered) return;
+        var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+        var pct = window.scrollY / scrollable;
+        if (pct >= 0.4) {
+          triggered = true;
+          window.removeEventListener('scroll', maybeTrigger);
+          showBubble(messages[0], 0);
+          showBubble(messages[1], 1400);
+        }
+      }
+
+      window.addEventListener('scroll', maybeTrigger, { passive: true });
+      maybeTrigger();
+    })();
+  </script>
 
   <script>
     // dropdown "Recursos" del nav
