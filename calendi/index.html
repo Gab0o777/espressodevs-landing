@@ -1470,7 +1470,7 @@
     /* ── RESPONSIVE TABLET ── */
     @media (max-width: 900px) {
       /* Nav */
-      nav { padding: 0 20px; height: 68px; }
+      nav { padding: 0 20px; height: 68px; grid-template-columns: auto 1fr; }
       .nav-logo { margin-left: 0; }
       .nav-logo img { height: 42px; }
       .nav-cta-desktop { display: none; }
@@ -1485,6 +1485,7 @@
 
       /* Hero */
       .hero { flex-direction: column; padding: 48px 20px 56px; min-height: auto; text-align: center; gap: 24px; }
+      .hero-visual { order: -1; }
       .hero-content { padding-left: 0; }
       .hero-note { letter-spacing: .5px; }
       .hero-title { letter-spacing: -1px; }
@@ -1536,7 +1537,7 @@
       .cta-final-note { margin-left: 0; }
       .cta-final-pillars { justify-content: center; }
       .cta-final-pillar { align-items: center; text-align: center; }
-      .cta-final-visual { max-width: 320px; width: 100%; flex: none; margin: 0 auto; }
+      .cta-final-visual { max-width: 320px; width: 100%; flex: none; margin: 0 auto; order: -1; }
       .cta-final-btn { position: static; margin: 20px auto 0; }
 
       /* Pricing */
@@ -1560,7 +1561,8 @@
         max-width: none;
         padding: 40px 20px;
       }
-      .footer-brand-col { flex: 1 1 100%; margin-top: 0; }
+      .footer-brand-col { flex: 1 1 100%; margin-top: 0; text-align: center; }
+      .footer-logo { margin-left: auto; margin-right: auto; }
       .footer-links-col { flex: 1 1 45%; margin-top: 0; }
       .footer-social-col {
         flex: 1 1 100%;
@@ -1570,8 +1572,9 @@
         padding-left: 0;
         padding-top: 24px;
         margin-top: 0;
+        align-items: center;
       }
-      .footer-mascot-col { flex: 1 1 100%; align-self: center; justify-content: center; }
+      .footer-mascot-col { flex: 1 1 100%; align-self: center; flex-direction: column; align-items: center; justify-content: center; }
       .footer-mascot-img { max-width: 200px; }
       .footer-thanks-note { position: static; text-align: center; margin-bottom: 12px; }
       .footer-bottom-bar { max-width: none; padding: 20px 20px 28px; flex-direction: column; text-align: center; }
@@ -1616,8 +1619,8 @@
     </ul>
     <div class="nav-actions">
       <a href="https://calendi.espressodevs.com" class="btn btn-brand-outline nav-btn nav-cta-desktop">Iniciar sesión</a>
-      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-desktop" style="margin-left:10px;">Probar gratis</a>
-      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-mobile">Probar gratis</a>
+      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-desktop" style="margin-left:10px;">Probar gratis YA</a>
+      <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-mobile">Probar gratis YA</a>
     </div>
   </nav>
 
@@ -1636,7 +1639,7 @@
             Calendi organiza tus reservas, recuerda tus citas y mantiene a tus clientes conectados con tu negocio.
           </p>
           <div class="hero-actions">
-            <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid btn-large">Empezar gratis &nbsp;→</a>
+            <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid btn-large">Empezar gratis YA &nbsp;→</a>
             <button type="button" class="btn btn-brand-outline btn-large" id="heroVideoModalBtn">
               <span class="btn-play-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
               Ver cómo funciona
@@ -1918,7 +1921,7 @@
         <button class="biz-arrow biz-prev" id="biz-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
         <div class="biz-track" id="biz-track">
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/barber.png" alt="Barbería usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/barber-v2.png" alt="Barbería usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Barberías</div>
               <p class="biz-desc">Agenda, recordatorios y más clientes.</p>
@@ -1926,7 +1929,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/nail.png" alt="Nail Studio usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/nail-v2.png" alt="Nail Studio usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Nail Studio</div>
               <p class="biz-desc">Organizá servicios, profesionales y horarios.</p>
@@ -1934,7 +1937,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/vet.png" alt="Veterinaria usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/vet-v2.png" alt="Veterinaria usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--green)"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 10.5c-2.9 0-5.5 2.6-5.5 5.3 0 1.8 1.4 3.2 3.2 3.2.9 0 1.6-.4 2.3-.4s1.4.4 2.3.4c1.8 0 3.2-1.4 3.2-3.2 0-2.7-2.6-5.3-5.5-5.3z"/></svg>Veterinarias</div>
               <p class="biz-desc">Turnos, vacunas y recordatorios automáticos.</p>
@@ -1942,7 +1945,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/cosmetic.png" alt="Centro de estética usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/cosmetic-v2.png" alt="Centro de estética usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="var(--purple)"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.95 2.55L22.5 18.5l-2.55.95L19 22l-.95-2.55L15.5 18.5l2.55-.95z"/></svg>Centros de estética</div>
               <p class="biz-desc">Agendá, confirmá y fidelizá a tus clientes.</p>
@@ -1950,7 +1953,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/tatoo.png" alt="Estudio de tatuajes usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/tatoo-v2.png" alt="Estudio de tatuajes usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>Estudios de tatuajes</div>
               <p class="biz-desc">Sesiones, señas y seguimiento de cada trabajo.</p>
@@ -1958,7 +1961,7 @@
             </div>
           </div>
           <div class="biz-card">
-            <div class="biz-photo"><img src="/calendi/assets/hair.png" alt="Peluquería usando calendi" loading="lazy" /></div>
+            <div class="biz-photo"><img src="/calendi/assets/hair-v2.png" alt="Peluquería usando calendi" loading="lazy" /></div>
             <div class="biz-body">
               <div class="biz-name"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Peluquerías</div>
               <p class="biz-desc">Color, corte y agenda siempre llena.</p>
