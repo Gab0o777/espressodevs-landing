@@ -758,7 +758,7 @@
     .biz-dot.is-active { background: var(--cyan); }
 
     /* ── CLIENTES (SOCIAL PROOF) ── */
-    #clientes { background: var(--light); position: relative; overflow: hidden; }
+    #clientes { position: relative; overflow: hidden; }
     #clientes::before {
       content: '';
       position: absolute;
@@ -801,9 +801,9 @@
       color: var(--ink);
       margin-bottom: 18px;
     }
-    .clients-title .highlight-lime { color: var(--lime); }
+    .clients-title .highlight-brand { color: var(--brand); }
     .clients-desc { font-size: 16px; font-weight: 600; color: var(--mid); line-height: 1.6; max-width: 480px; }
-    .clients-visual { flex: 0 0 260px; max-width: 30%; }
+    .clients-visual { flex: 0 0 460px; max-width: 46%; }
     .clients-visual img { width: 100%; height: auto; display: block; }
     .client-card {
       background: var(--white);
@@ -814,39 +814,43 @@
       box-shadow: 0 10px 28px rgba(30,30,46,.05);
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 16px 20px;
       transition: transform .2s, box-shadow .2s;
     }
     .client-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(30,30,46,.09); }
-    .client-logo {
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 12px;
+    .client-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(30,30,46,.10);
     }
-    .client-logo-text { font-size: 20px; line-height: 1.4; }
-    .client-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
-    .client-name { font-weight: 900; font-size: 16px; color: var(--ink); }
+    .client-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .client-name { font-weight: 900; font-size: 15px; color: var(--ink); margin-bottom: 8px; }
     .client-tag {
       display: inline-block;
-      align-self: flex-start;
       background: #E4F9B8;
       color: #4C7A1E;
       font-weight: 800;
-      font-size: 12px;
+      font-size: 11.5px;
       padding: 4px 12px;
       border-radius: 100px;
+      margin-bottom: 8px;
     }
     .client-loc {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 13.5px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--mid);
     }
-    .client-loc svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--mid); }
+    .client-loc svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--mid); }
+    .clients-track { grid-auto-columns: calc((100% - 120px) / 6); }
 
     /* ── FUNCIONALIDADES CLAVE ── */
     .feat-grid {
@@ -1612,7 +1616,7 @@
       .clients-header { flex-direction: column-reverse; text-align: center; gap: 20px; }
       .clients-content { text-align: center; }
       .clients-desc { max-width: none; margin: 0 auto; }
-      .clients-visual { max-width: 200px; flex: none; }
+      .clients-visual { max-width: 280px; flex: none; }
 
       /* Funcionalidades clave */
       .feat-grid { grid-template-columns: repeat(3, 1fr); gap: 24px 16px; }
@@ -2125,7 +2129,7 @@
           </div>
           <h2 class="clients-title">
             Ellos ya están organizando<br />
-            su negocio con <span class="highlight-lime">Calendi.</span>
+            su negocio con <span class="highlight-brand">Calendi.</span>
           </h2>
           <p class="clients-desc">
             Desde peluquerías y estudios de uñas hasta veterinarias y profesionales independientes.
@@ -2137,66 +2141,42 @@
       </div>
       <div class="biz-carousel">
         <button class="biz-arrow biz-prev" id="clients-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-        <div class="biz-track" id="clients-track">
+        <div class="biz-track clients-track" id="clients-track">
           <div class="client-card">
-            <div class="client-logo" style="background:#FBE4EC;">
-              <span class="client-logo-text" style="font-family:'Kalam',cursive; color:#C2447A;">Lunabella<br /><span style="font-family:'Nunito',sans-serif; font-size:11px; letter-spacing:1.5px; font-weight:800;">NAIL STUDIO</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Lunabella Nail Studio</div>
-              <span class="client-tag">Uñas</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-beauty-kiara.png" alt="Beauty Kiara" loading="lazy" /></div>
+            <div class="client-name">Beauty Kiara</div>
+            <span class="client-tag">Peluquería</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
           </div>
           <div class="client-card">
-            <div class="client-logo" style="background:#E4EFE2;">
-              <span class="client-logo-text" style="color:#4C8C3E; font-weight:800; letter-spacing:1px;">NATURA<br /><span style="font-size:11px; letter-spacing:2px; font-weight:700;">ESTÉTICA</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Natura Estética</div>
-              <span class="client-tag">Belleza</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Punta del Este</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-lourdes-peinados.png" alt="Lourdes Peinados" loading="lazy" style="object-position: top;" /></div>
+            <div class="client-name">Lourdes Peinados</div>
+            <span class="client-tag">Peluquería</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Punta del Este</div>
           </div>
           <div class="client-card">
-            <div class="client-logo" style="background:#F1E7D6;">
-              <span class="client-logo-text" style="font-family: 'Georgia', serif; color:#7A5A2E; font-weight:700; letter-spacing:2px;">BARBERÍA<br /><span style="font-size:13px; letter-spacing:1px;">EL GALPÓN</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Barbería El Galpón</div>
-              <span class="client-tag">Peluquería</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-magenta-ink.jpeg" alt="Magenta Ink" loading="lazy" /></div>
+            <div class="client-name">Magenta Ink</div>
+            <span class="client-tag">Tatuajes</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
           </div>
           <div class="client-card">
-            <div class="client-logo" style="background:#E7E5FA;">
-              <span class="client-logo-text" style="color:#5B4EC2; font-weight:900; letter-spacing:.5px;">HUELLAS<br /><span style="font-size:11px; letter-spacing:2px; font-weight:700;">VETERINARIA</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Huellas Veterinaria</div>
-              <span class="client-tag">Veterinaria</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Maldonado</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-beauty-carrasco.jpeg" alt="Beauty Carrasco" loading="lazy" /></div>
+            <div class="client-name">Beauty Carrasco</div>
+            <span class="client-tag">Estética</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
           </div>
           <div class="client-card">
-            <div class="client-logo" style="background:#DCEBF5;">
-              <span class="client-logo-text" style="color:#2C6E96; font-weight:800; letter-spacing:.5px;">EQUILIBRIO<br /><span style="font-size:11px; letter-spacing:2px; font-weight:700;">YOGA &amp; BIENESTAR</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Equilibrio Yoga</div>
-              <span class="client-tag">Bienestar</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Montevideo</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-isa-nails.jpeg" alt="Isa Nails" loading="lazy" /></div>
+            <div class="client-name">Isa Nails</div>
+            <span class="client-tag">Uñas</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Maldonado</div>
           </div>
           <div class="client-card">
-            <div class="client-logo" style="background:#F3E3D6;">
-              <span class="client-logo-text" style="color:#8A5A34; font-weight:800; letter-spacing:.5px;">CAFÉ BRÚJULA<br /><span style="font-size:11px; letter-spacing:2px; font-weight:700;">SPECIALTY COFFEE</span></span>
-            </div>
-            <div class="client-body">
-              <div class="client-name">Café Brújula</div>
-              <span class="client-tag">Gastronomía</span>
-              <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Colonia</div>
-            </div>
+            <div class="client-avatar"><img src="/calendi/assets/client-serena-skin.webp" alt="Serena Skin" loading="lazy" /></div>
+            <div class="client-name">Serena Skin</div>
+            <span class="client-tag">Estética</span>
+            <div class="client-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Punta del Este</div>
           </div>
         </div>
         <button class="biz-arrow biz-next" id="clients-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
