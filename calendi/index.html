@@ -770,6 +770,17 @@
       border-radius: 50%;
       pointer-events: none;
     }
+    #clientes::after {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -140px;
+      top: -220px;
+      background: rgba(141,198,63,.18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
     .clients-header {
       display: flex;
       align-items: center;
@@ -1412,19 +1423,21 @@
 
     /* ── FOOTER ── */
     footer { background: var(--white); }
-    .footer-bottom-wrap { background: #DBDBFB; }
+    .footer-bottom-wrap { background: #DBDBFB; margin: 0 16px; }
     .footer-blob {
       position: relative;
       background-image: url('/calendi/assets/footer_bg.png');
       background-repeat: no-repeat;
       background-position: top center;
       background-size: 100% auto;
+      padding: 99px 4px 7px 60px;
     }
     .footer-blob-content {
       display: flex;
       align-items: center;
       gap: 20px;
       padding: 7% 50px 4%;
+      padding-bottom: 0;
       margin-bottom: 0;
     }
     .footer-brand-col { flex: 0 0 250px; margin-top: 75px; }
@@ -1529,7 +1542,6 @@
 
     /* ── XLG ── */
     @media (min-width: 1600px) {
-      .footer-bottom-wrap { margin: 0 16px; }
       .footer-blob-content { gap: 50px; }
     }
 
@@ -1653,8 +1665,8 @@
 
 
       /* Footer */
-      .footer-blob { background: #F5F6FF; }
-      .footer-bottom-wrap { background: #F5F6FF; }
+      .footer-blob { background: #F5F6FF; padding: 0; }
+      .footer-bottom-wrap { background: #F5F6FF; margin: 0; }
       .footer-blob-content {
         flex-wrap: wrap;
         align-items: flex-start;
