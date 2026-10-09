@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>calendi · Gestioná turnos sin complicaciones</title>
   <meta name="description" content="calendi es la plataforma de gestión de turnos para peluquerías, barberías, veterinarias y más. Agenda online, recordatorios automáticos por WhatsApp y panel de control simple. Probá 30 días gratis." />
-  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, fidelización de clientes, respuesta automática reseñas Google, mejor sistema de turnos" />
+  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, IA que responde mensajes, difusiones por WhatsApp, mejor sistema de turnos" />
   <meta name="author" content="espressodevs" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://espressodevs.com/calendi" />
@@ -57,25 +57,43 @@
       },
       {
         "@type": "Offer",
-        "name": "Pro",
-        "price": "799",
+        "name": "Solo",
+        "price": "599",
         "priceCurrency": "UYU",
-        "billingIncrement": "month"
+        "billingIncrement": "month",
+        "description": "Para profesionales independientes: recordatorios y confirmaciones por email, cobros con Mercado Pago sin comisión de calendi, CRM con historial de visitas y perfil con link de reservas."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "1050",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Hasta 3 profesionales, servicios ilimitados y 300 mensajes de WhatsApp por mes para recordatorios, confirmaciones y reagendas."
       },
       {
         "@type": "Offer",
         "name": "Max",
-        "price": "1499",
+        "price": "2490",
         "priceCurrency": "UYU",
-        "billingIncrement": "month"
+        "billingIncrement": "month",
+        "description": "Hasta 10 profesionales, 1.500 mensajes de WhatsApp por mes, difusiones por WhatsApp y email, tu propio número de WhatsApp y asistente de recomendaciones."
       },
       {
         "@type": "Offer",
-        "name": "Business",
-        "price": "2999",
+        "name": "Solo + IA",
+        "price": "999",
         "priceCurrency": "UYU",
         "billingIncrement": "month",
-        "description": "Soporte exclusivo por WhatsApp, sistema de fidelización de clientes y módulo de Google Reviews con respuestas automáticas."
+        "description": "Plan Solo con una IA que responde los mensajes de tus clientes."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro + IA",
+        "price": "1799",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Plan Pro con una IA que responde los mensajes de tus clientes."
       }
     ],
     "publisher": {
@@ -85,13 +103,17 @@
     },
     "featureList": [
       "Agenda online en tiempo real",
-      "Recordatorios automáticos por WhatsApp",
-      "Reservas desde celular, web o redes sociales",
-      "Panel de control unificado",
-      "Gestión multi-usuario",
-      "Sistema de fidelización de clientes",
-      "Módulo de Google Reviews con respuestas automáticas",
-      "Soporte exclusivo por WhatsApp",
+      "Link de reservas personalizable",
+      "Sincronización con Google Calendar y el calendario del iPhone",
+      "Recordatorios y confirmaciones automáticas por WhatsApp y email",
+      "Re-recordatorios y reagendas automáticas por WhatsApp",
+      "CRM con historial de visitas",
+      "Cobros con Mercado Pago sin comisión de calendi desde el plan Solo",
+      "Difusiones por WhatsApp y email",
+      "Conexión con tu propio número de WhatsApp",
+      "IA que responde los mensajes de tus clientes",
+      "Tablero de tareas tipo kanban",
+      "Soporte gratis de 7 a 21 h todos los días",
       "30 días de prueba gratis"
     ]
   }
@@ -129,10 +151,10 @@
       },
       {
         "@type": "Question",
-        "name": "¿Qué incluye el plan Business de calendi?",
+        "name": "¿Qué incluye el plan Max de calendi?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "El plan Business incluye todo lo del plan Max, más soporte exclusivo a través de WhatsApp, un sistema de fidelización de clientes y un módulo que responde automáticamente las reseñas de Google del negocio."
+          "text": "El plan Max incluye todo lo del plan Pro, más hasta 10 profesionales activos, 1.500 mensajes de WhatsApp por mes, difusiones por WhatsApp y email, la opción de conectar tu propio número de WhatsApp, estadísticas más completas y un asistente que te recomienda mejoras para tu negocio."
         }
       },
       {
@@ -140,7 +162,7 @@
         "name": "¿Cuál es el mejor sistema de gestión de turnos?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Depende del negocio, pero calendi es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios y confirmaciones por WhatsApp, cobro de seña integrado con Mercado Pago, fidelización de clientes y respuesta automática de reseñas de Google, con un plan gratuito para empezar."
+          "text": "Depende del negocio, pero calendi es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios, confirmaciones y reagendas automáticas por WhatsApp, difusiones, una IA que responde los mensajes de tus clientes y soporte de 7 a 21 h todos los días, con un plan gratuito para empezar."
         }
       }
     ]
@@ -2427,7 +2449,7 @@
           <div class="footer-links-title">Recursos</div>
           <ul class="footer-links">
             <li><a href="#">Centro de ayuda</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="/calendi/blog">Blog</a></li>
             <li><a href="#">Guías y tutoriales</a></li>
             <li><a href="#">Casos de éxito</a></li>
           </ul>

@@ -9,7 +9,10 @@
     { "source": "/calendi/",           "destination": "/calendi/index.html"      },
     { "source": "/calendi/precios",    "destination": "/calendi/precios.html"    },
     { "source": "/calendi/terminos",   "destination": "/calendi/terminos.html"   },
-    { "source": "/calendi/privacidad", "destination": "/calendi/privacidad.html" }
+    { "source": "/calendi/privacidad", "destination": "/calendi/privacidad.html" },
+    { "source": "/calendi/blog",       "destination": "/calendi/blog/index.html" },
+    { "source": "/calendi/blog/",      "destination": "/calendi/blog/index.html" },
+    { "source": "/calendi/blog/:slug", "destination": "/calendi/blog/:slug.html" }
   ],
   "headers": [
     {

@@ -11,8 +11,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Precios · calendi</title>
-  <meta name="description" content="Conocé los planes y precios de calendi: Free, Pro, Max y Business. Elegí el plan que va con tu negocio, cancelás cuando querés." />
-  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, fidelización de clientes, respuesta automática reseñas Google, mejor sistema de turnos" />
+  <meta name="description" content="Conocé los planes y precios de calendi: Free, Solo, Pro, Max y combos con IA. Elegí el plan que va con tu negocio, cancelás cuando querés." />
+  <meta name="keywords" content="gestión de turnos, agenda online, reservas online, turnos WhatsApp, peluquería, barbería, veterinaria, recordatorios automáticos, turnos app Argentina, IA que responde mensajes, difusiones por WhatsApp, mejor sistema de turnos" />
   <meta name="author" content="espressodevs" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://espressodevs.com/calendi/precios" />
@@ -57,25 +57,43 @@
       },
       {
         "@type": "Offer",
-        "name": "Pro",
-        "price": "799",
+        "name": "Solo",
+        "price": "599",
         "priceCurrency": "UYU",
-        "billingIncrement": "month"
+        "billingIncrement": "month",
+        "description": "Para profesionales independientes: recordatorios y confirmaciones por email, cobros con Mercado Pago sin comisión de calendi, CRM con historial de visitas y perfil con link de reservas."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "1050",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Hasta 3 profesionales, servicios ilimitados y 300 mensajes de WhatsApp por mes para recordatorios, confirmaciones y reagendas."
       },
       {
         "@type": "Offer",
         "name": "Max",
-        "price": "1499",
+        "price": "2490",
         "priceCurrency": "UYU",
-        "billingIncrement": "month"
+        "billingIncrement": "month",
+        "description": "Hasta 10 profesionales, 1.500 mensajes de WhatsApp por mes, difusiones por WhatsApp y email, tu propio número de WhatsApp y asistente de recomendaciones."
       },
       {
         "@type": "Offer",
-        "name": "Business",
-        "price": "2999",
+        "name": "Solo + IA",
+        "price": "999",
         "priceCurrency": "UYU",
         "billingIncrement": "month",
-        "description": "Soporte exclusivo por WhatsApp, sistema de fidelización de clientes y módulo de Google Reviews con respuestas automáticas."
+        "description": "Plan Solo con una IA que responde los mensajes de tus clientes."
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro + IA",
+        "price": "1799",
+        "priceCurrency": "UYU",
+        "billingIncrement": "month",
+        "description": "Plan Pro con una IA que responde los mensajes de tus clientes."
       }
     ],
     "publisher": {
@@ -85,13 +103,17 @@
     },
     "featureList": [
       "Agenda online en tiempo real",
-      "Recordatorios automáticos por WhatsApp",
-      "Reservas desde celular, web o redes sociales",
-      "Panel de control unificado",
-      "Gestión multi-usuario",
-      "Sistema de fidelización de clientes",
-      "Módulo de Google Reviews con respuestas automáticas",
-      "Soporte exclusivo por WhatsApp",
+      "Link de reservas personalizable",
+      "Sincronización con Google Calendar y el calendario del iPhone",
+      "Recordatorios y confirmaciones automáticas por WhatsApp y email",
+      "Re-recordatorios y reagendas automáticas por WhatsApp",
+      "CRM con historial de visitas",
+      "Cobros con Mercado Pago sin comisión de calendi desde el plan Solo",
+      "Difusiones por WhatsApp y email",
+      "Conexión con tu propio número de WhatsApp",
+      "IA que responde los mensajes de tus clientes",
+      "Tablero de tareas tipo kanban",
+      "Soporte gratis de 7 a 21 h todos los días",
       "30 días de prueba gratis"
     ]
   }
@@ -129,10 +151,10 @@
       },
       {
         "@type": "Question",
-        "name": "¿Qué incluye el plan Business de calendi?",
+        "name": "¿Qué incluye el plan Max de calendi?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "El plan Business incluye todo lo del plan Max, más soporte exclusivo a través de WhatsApp, un sistema de fidelización de clientes y un módulo que responde automáticamente las reseñas de Google del negocio."
+          "text": "El plan Max incluye todo lo del plan Pro, más hasta 10 profesionales activos, 1.500 mensajes de WhatsApp por mes, difusiones por WhatsApp y email, la opción de conectar tu propio número de WhatsApp, estadísticas más completas y un asistente que te recomienda mejoras para tu negocio."
         }
       },
       {
@@ -140,7 +162,7 @@
         "name": "¿Cuál es el mejor sistema de gestión de turnos?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Depende del negocio, pero calendi es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios y confirmaciones por WhatsApp, cobro de seña integrado con Mercado Pago, fidelización de clientes y respuesta automática de reseñas de Google, con un plan gratuito para empezar."
+          "text": "Depende del negocio, pero calendi es una de las opciones más completas para peluquerías, barberías, veterinarias y negocios de servicios en Uruguay y la región: combina agenda online, recordatorios, confirmaciones y reagendas automáticas por WhatsApp, difusiones, una IA que responde los mensajes de tus clientes y soporte de 7 a 21 h todos los días, con un plan gratuito para empezar."
         }
       }
     ]
@@ -893,15 +915,15 @@
     .pricing { background: var(--white); }
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1280px;
       margin: 0 auto;
     }
     .pricing-card {
       background: var(--white);
       border-radius: 24px;
-      padding: 40px 36px;
+      padding: 36px 26px;
       border: 2px solid var(--border);
       position: relative;
       overflow: hidden;
@@ -915,21 +937,21 @@
       border-color: var(--cyan);
       background: linear-gradient(145deg, #F0FBFD, var(--white));
     }
-    .pricing-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
+    .pricing-badge, .pricing-wide-badge {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 8px;
       background: var(--cyan);
       color: var(--white);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      padding: 5px 16px;
+      padding: 4px 10px;
       border-radius: 100px;
       white-space: nowrap;
     }
+    .pricing-wide-badge { background: var(--pink); }
     .pricing-name { font-weight: 900; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
     .pricing-price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
     .pricing-currency { font-weight: 800; font-size: 22px; color: var(--mid); padding-bottom: 8px; }
@@ -1095,33 +1117,19 @@
       align-items: center;
       justify-content: space-between;
       gap: 40px;
-      max-width: 1100px;
+      max-width: 1280px;
       margin: 24px auto 0;
       transition: transform .2s, box-shadow .2s;
     }
     .pricing-card-wide:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.10); }
-    .pricing-wide-badge {
-      position: absolute;
-      top: -14px;
-      left: 44px;
-      background: var(--pink);
-      color: var(--white);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
     .pricing-wide-left { flex: 1 1 auto; min-width: 0; }
     .pricing-wide-left .pricing-name { color: var(--pink); }
     .pricing-wide-left .pricing-desc { margin-bottom: 20px; }
     .pricing-wide-features {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4px 24px;
+      grid-template-columns: 1fr;
+      gap: 0;
     }
     .pricing-wide-features li {
       display: flex;
@@ -1154,6 +1162,30 @@
     }
     .pricing-wide-right .pricing-price { margin-bottom: 0; }
     .pricing-wide-right .btn { margin-top: 14px; white-space: nowrap; }
+    .pricing-support {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: fit-content;
+      max-width: 100%;
+      margin: 28px auto 0;
+      padding: 12px 22px;
+      border-radius: 100px;
+      background: #F5F6FF;
+      color: var(--ink);
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+    .pricing-support strong { font-weight: 800; }
+    .pricing-support svg { width: 20px; height: 20px; flex: none; color: var(--brand); }
+    .pricing-combo { display: flex; align-items: flex-end; justify-content: flex-end; gap: 4px; }
+    .pricing-combo + .pricing-combo { margin-top: 6px; }
+    .pricing-combo-name { font-weight: 900; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--pink); margin-right: 10px; padding-bottom: 12px; }
+    .pricing-combo .pricing-amount { font-size: 48px; color: var(--pink); }
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 880px; }
+    }
     .pricing-fx-note {
       text-align: center;
       font-size: 12px;
@@ -1366,6 +1398,8 @@
       .pricing-card-wide { flex-direction: column; align-items: stretch; padding: 36px 28px; max-width: 420px; }
       .pricing-wide-features { grid-template-columns: 1fr; }
       .pricing-wide-right { align-items: flex-start; text-align: left; }
+      .pricing-combo { justify-content: flex-start; }
+      .pricing-support { border-radius: 18px; text-align: left; }
       .pricing-wide-right .btn { width: 100%; justify-content: center; }
       .trial-banner { flex-direction: column; text-align: center; padding: 24px 20px; gap: 12px; }
       .trial-days { font-size: 52px; }
@@ -1478,7 +1512,7 @@
         <button class="currency-btn" data-currency="PEN">PEN</button>
       </div>
 
-      <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="pricing-grid">
 
         <!-- FREE -->
         <div class="pricing-card">
@@ -1486,40 +1520,60 @@
           <div class="pricing-price">
             <span class="pricing-amount" style="color:var(--purple);">Gratis</span>
           </div>
-          <p class="pricing-desc">Para empezar a organizar tu negocio hoy mismo, sin pagar nada.</p>
+          <p class="pricing-desc">Para empezar a organizar tu agenda hoy mismo, sin pagar nada.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>1 salón, 1 sucursal, 1 profesional</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Calendario ilimitado</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Reservas a través del link (limitadas)</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>CRM completo</li>
-            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Recordatorios y confirmaciones por email</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Agenda online</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Link de reservas: hasta 30 reservas por mes</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Sincronización con tu calendario: Google Calendar, iPhone y más</li>
+            <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Tablero de tareas tipo kanban para organizar tu trabajo</li>
           </ul>
-          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center;">Crear cuenta gratis</a>
+          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--purple); color:var(--purple);">Crear cuenta gratis</a>
+        </div>
+
+        <!-- SOLO -->
+        <div class="pricing-card">
+          <div class="pricing-name">Solo</div>
+          <div class="pricing-price">
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-solo" style="color:var(--brand);">599</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <p class="pricing-desc">Para profesionales independientes que quieren automatizar su agenda.</p>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Todo lo del plan Free</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Recordatorios y confirmaciones automáticas por email</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Recordatorios manuales por WhatsApp</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span><span><strong>Cobros con Mercado Pago sin comisión de calendi</strong></span></li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>CRM con historial de visitas y bloqueo de contactos</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Estadísticas de seguimiento de clientes y recomendaciones</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Perfil personalizado con link para que tus clientes reserven solos</li>
+            <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Confirmación de turnos automática o manual, como prefieras</li>
+          </ul>
+          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Solo" target="_blank" class="btn btn-brand-outline" style="width:100%; justify-content:center;">Pedí tu demo</a>
         </div>
 
         <!-- PRO -->
         <div class="pricing-card featured">
-          <div class="pricing-badge">Más popular</div>
-          <div class="pricing-name">Pro</div>
+          <div class="pricing-name">Pro <span class="pricing-badge">Más popular</span></div>
           <div class="pricing-price">
             <span class="pricing-currency js-currency">UYU</span>
-            <span class="pricing-amount js-price-pro" style="color:var(--cyan);">799</span>
+            <span class="pricing-amount js-price-pro" style="color:var(--cyan);">1.050</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Para negocios que quieren automatizar reservas, cobros y recordatorios.</p>
+          <p class="pricing-desc">Para equipos chicos que quieren que WhatsApp trabaje por ellos.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Free</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios automáticos y confirmaciones por WhatsApp</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Pago de seña integrado con Mercado Pago</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Reservas ilimitadas a través del link</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Hasta 5 profesionales</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Página de perfil propia con imágenes</li>
-            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Link de reserva totalmente personalizable: apariencia, preguntas, horarios y recordatorios</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Solo</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Hasta 3 profesionales</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Servicios ilimitados</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>300 mensajes de WhatsApp incluidos por mes</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios, re-recordatorios, confirmaciones y reagendas automáticas por WhatsApp</li>
+            <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Agenda súper personalizable y totalmente configurable</li>
           </ul>
-          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Pro" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
-          <div class="free-trial-badge" style="top:40px;">30 días gratis</div>
+          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Pro" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <div class="free-trial-badge">30 días gratis</div>
         </div>
 
         <!-- MAX -->
@@ -1527,44 +1581,56 @@
           <div class="pricing-name">Max</div>
           <div class="pricing-price">
             <span class="pricing-currency js-currency">UYU</span>
-            <span class="pricing-amount js-price-max" style="color:var(--orange);">1.499</span>
+            <span class="pricing-amount js-price-max" style="color:var(--orange);">2.490</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <p class="pricing-desc">Para negocios que quieren crecer con campañas y datos de verdad.</p>
+          <p class="pricing-desc">Para negocios que quieren crecer con difusiones, datos y su propia marca.</p>
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Todo lo del plan Pro</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Soporte prioritario</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Campañas promocionales por email y WhatsApp</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del negocio</li>
-            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas completas del cliente</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Hasta 10 profesionales activos al mismo tiempo</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>1.500 mensajes de WhatsApp incluidos por mes</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Difusiones por WhatsApp y email</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Conectá tu propio WhatsApp: los recordatorios salen desde tu número</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas más completas</li>
+            <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Asistente interno que te recomienda mejoras para tu negocio</li>
           </ul>
-          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Max" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
+          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Max" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
           <div class="free-trial-badge">30 días gratis</div>
         </div>
 
       </div>
 
-      <!-- BUSINESS -->
+      <p class="pricing-support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+        <span>Todos los planes incluyen <strong>soporte gratis de 7 a 21 h, todos los días</strong>.</span>
+      </p>
+
+      <!-- COMBOS CON IA -->
       <div class="pricing-card-wide">
-        <div class="pricing-wide-badge">Soporte exclusivo por WhatsApp</div>
         <div class="pricing-wide-left">
-          <div class="pricing-name">Business</div>
-          <p class="pricing-desc">Para negocios que quieren fidelizar clientes y cuidar su reputación online sin esfuerzo extra.</p>
+          <div class="pricing-name">Tu plan + IA <span class="pricing-wide-badge">Nuevo</span></div>
+          <p class="pricing-desc">Sumale a tu plan una IA que contesta los mensajes de tus clientes por vos, mientras vos atendés.</p>
           <ul class="pricing-wide-features">
-            <li><span class="check">✓</span>Todo lo del plan Max</li>
-            <li><span class="check">✓</span>Soporte exclusivo a través de WhatsApp</li>
-            <li><span class="check">✓</span>Sistema de fidelización de clientes</li>
-            <li><span class="check">✓</span>Módulo de Google Reviews con respuestas automáticas</li>
+            <li><span class="check">✓</span>Responde los mensajes de tus clientes automáticamente</li>
+            <li><span class="check">✓</span><span><strong>Solo + IA:</strong> recordatorios por email y una IA que contesta por vos</span></li>
+            <li><span class="check">✓</span><span><strong>Pro + IA:</strong> todo lo del plan Pro, con una IA que contesta por vos</span></li>
           </ul>
         </div>
         <div class="pricing-wide-right">
-          <div class="pricing-price">
+          <div class="pricing-combo">
+            <span class="pricing-combo-name">Solo + IA</span>
             <span class="pricing-currency js-currency">UYU</span>
-            <span class="pricing-amount js-price-business" style="font-size:52px; color:var(--pink);">2.999</span>
+            <span class="pricing-amount js-price-soloia">999</span>
             <span class="pricing-period">/mes</span>
           </div>
-          <a href="https://wa.me/59892166927?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Business" target="_blank" class="btn btn-primary" style="background:var(--pink); border-color:var(--pink);">Pedí tu demo</a>
+          <div class="pricing-combo">
+            <span class="pricing-combo-name">Pro + IA</span>
+            <span class="pricing-currency js-currency">UYU</span>
+            <span class="pricing-amount js-price-proia">1.799</span>
+            <span class="pricing-period">/mes</span>
+          </div>
+          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20de%20los%20planes%20con%20IA" target="_blank" class="btn btn-primary" style="background:var(--pink); border-color:var(--pink);">Pedí tu demo</a>
         </div>
       </div>
 
@@ -1596,7 +1662,7 @@
           <div class="footer-links-title">Recursos</div>
           <ul class="footer-links">
             <li><a href="#">Centro de ayuda</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="/calendi/blog">Blog</a></li>
             <li><a href="#">Guías y tutoriales</a></li>
             <li><a href="#">Casos de éxito</a></li>
           </ul>
@@ -1670,14 +1736,14 @@
     })();
 
     // switch de moneda en precios
-    // Cotizaciones del 2026-07-09 (exchangerate-api.com, base UYU):
-    // ARS 36.98 · CLP 23.03 · PEN 0.0845 — redondeado hacia arriba a terminación 999/9
+    // Cotizaciones del 2026-10-09 (open.er-api.com, base UYU):
+    // ARS 37.92 · CLP 24.39 · PEN 0.0858 — redondeado hacia arriba a terminación 999/9
     (function () {
       var PRICES = {
-        UYU: { pro: '799', max: '1.499', business: '2.999' },
-        ARS: { pro: '29.999', max: '55.999', business: '110.999' },
-        CLP: { pro: '18.999', max: '34.999', business: '69.999' },
-        PEN: { pro: '69', max: '129', business: '259' }
+        UYU: { solo: '599',    pro: '1.050',  max: '2.490',  soloia: '999',    proia: '1.799' },
+        ARS: { solo: '22.999', pro: '39.999', max: '94.999', soloia: '37.999', proia: '68.999' },
+        CLP: { solo: '14.999', pro: '25.999', max: '60.999', soloia: '24.999', proia: '43.999' },
+        PEN: { solo: '59',     pro: '99',     max: '219',    soloia: '89',     proia: '159' }
       };
       var wrap = document.getElementById('currency-switch');
       if (!wrap) return;
@@ -1690,7 +1756,9 @@
         document.querySelectorAll('.js-currency').forEach(function (el) { el.textContent = code; });
         document.querySelectorAll('.js-price-pro').forEach(function (el) { el.textContent = p.pro; });
         document.querySelectorAll('.js-price-max').forEach(function (el) { el.textContent = p.max; });
-        document.querySelectorAll('.js-price-business').forEach(function (el) { el.textContent = p.business; });
+        document.querySelectorAll('.js-price-solo').forEach(function (el) { el.textContent = p.solo; });
+        document.querySelectorAll('.js-price-soloia').forEach(function (el) { el.textContent = p.soloia; });
+        document.querySelectorAll('.js-price-proia').forEach(function (el) { el.textContent = p.proia; });
         buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === code); });
         if (note) note.hidden = (code === 'UYU');
       }
