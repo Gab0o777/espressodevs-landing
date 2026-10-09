@@ -2,42 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://espressodevs.com/</loc>
+    <loc>https://www.espressodevs.com/</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://espressodevs.com/turnix</loc>
+    <loc>https://www.espressodevs.com/turnix</loc>
     <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://espressodevs.com/calendi</loc>
-    <lastmod>2026-09-28</lastmod>
+    <loc>https://www.espressodevs.com/calendi</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://espressodevs.com/calendi/precios</loc>
-    <lastmod>2026-09-28</lastmod>
+    <loc>https://www.espressodevs.com/calendi/precios</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://espressodevs.com/calendi/blog</loc>
+    <loc>https://www.espressodevs.com/calendi/blog</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://espressodevs.com/calendi/blog/mejores-apps-turnos-barberos-uruguay-2026</loc>
+    <loc>https://www.espressodevs.com/calendi/blog/mejores-apps-turnos-barberos-uruguay-2026</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.espressodevs.com/calendi/blog/ia-whatsapp-meta-vs-ia-calendi</loc>
     <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
