@@ -54,9 +54,9 @@
     free:   { name: 'calendi Free', uyu: 0,    msgs: 0,    items: ['Turnos ilimitados en tu agenda', 'Link de reservas (hasta 30 reservas por mes desde el link)', 'Sincronización con Google Calendar o iPhone'] },
     solo:   { name: 'calendi Solo', uyu: 599,  msgs: 0,    items: ['Recordatorios y confirmaciones por email', 'Cobros con Mercado Pago sin comisión', 'Historial de visitas de cada cliente'] },
     soloia: { name: 'calendi Solo + IA', uyu: 999, msgs: 0, items: ['Todo lo del plan Solo', 'IA que contesta los mensajes de tus clientes', 'Cobros con Mercado Pago sin comisión'] },
-    pro:    { name: 'calendi Pro',  uyu: 1050, msgs: 300,  items: ['Hasta 3 barberos', '300 mensajes de WhatsApp por mes', 'Recordatorios, confirmaciones y reagendas automáticas'] },
+    pro:    { name: 'calendi Pro',  uyu: 1050, msgs: 300,  items: ['Hasta 3 profesionales', '300 mensajes de WhatsApp por mes', 'Recordatorios, confirmaciones y reagendas automáticas'] },
     proia:  { name: 'calendi Pro + IA', uyu: 1799, msgs: 300, items: ['Todo lo del plan Pro', 'IA que contesta los mensajes de tus clientes', '300 mensajes de WhatsApp por mes'] },
-    max:    { name: 'calendi Max',  uyu: 2490, msgs: 1500, items: ['Hasta 10 barberos', '1.500 mensajes de WhatsApp por mes', 'Difusiones y mensajes desde tu propio número'] }
+    max:    { name: 'calendi Max',  uyu: 2490, msgs: 1500, items: ['Hasta 10 profesionales', '1.500 mensajes de WhatsApp por mes', 'Difusiones y mensajes desde tu propio número'] }
   };
 
   var $ = function (id) { return document.getElementById(id); };
@@ -85,11 +85,11 @@
     if (!r.key) {
       $('calcPlan').textContent = 'Plan a medida';
       $('calcUsd').textContent = 'Hablemos';
-      $('calcUyu').textContent = 'Para más de 10 barberos';
+      $('calcUyu').textContent = 'Para más de 10 profesionales';
       list.innerHTML = '<li>Armamos un plan para tu equipo</li><li>Soporte de 7 a 21 h, todos los días</li>';
       note.textContent = '';
       cta.textContent = 'Escribinos por WhatsApp';
-      cta.href = WA + encodeURIComponent('Hola! Tengo una barbería con más de 10 barberos y quiero saber más de calendi');
+      cta.href = WA + encodeURIComponent('Hola! Tengo un negocio con más de 10 profesionales y quiero saber más de calendi');
       return;
     }
 
