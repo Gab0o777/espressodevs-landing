@@ -192,6 +192,7 @@
   }
   </script>
 
+  <link rel="stylesheet" href="/calendi/plan-calc.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Kalam:wght@700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -227,19 +228,66 @@
 
     /* ── NAV ── */
     nav {
+      --nav-ease: cubic-bezier(.22, 1, .36, 1);
+      --nav-dur: .42s;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
       padding: 0 28px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       height: 76px;
     }
+    /* fondo de la barra en su propia capa: al flotar se encoge esta capa,
+       el nav mantiene su altura y el contenido de la página no salta */
+    nav::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 0;
+      box-shadow: 0 0 0 1px rgba(18,23,94,0), 0 10px 30px rgba(18,23,94,0);
+    }
     .nav-logo { margin-left: 14px; justify-self: start; }
-    .nav-logo img { height: 54px; width: auto; display: block; }
+    .nav-logo img { height: 54px; width: auto; display: block; transform-origin: left center; }
+
+    /* navbar flotante al scrollear (solo desktop) */
+    @media (min-width: 901px) {
+      nav {
+        --nav-gap: max(24px, calc((100% - 1240px) / 2));
+        transition: padding var(--nav-dur) var(--nav-ease);
+      }
+      nav::before {
+        transition:
+          inset var(--nav-dur) var(--nav-ease),
+          border-radius var(--nav-dur) var(--nav-ease),
+          background-color var(--nav-dur) var(--nav-ease),
+          box-shadow var(--nav-dur) var(--nav-ease);
+      }
+      .nav-logo { transition: margin var(--nav-dur) var(--nav-ease); }
+      .nav-logo img { transition: transform var(--nav-dur) var(--nav-ease); }
+
+      nav.is-floating {
+        padding: 12px calc(var(--nav-gap) + 14px) 0;
+        pointer-events: none;
+      }
+      nav.is-floating > * { pointer-events: auto; }
+      nav.is-floating::before {
+        inset: 12px var(--nav-gap) 0;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.86);
+        box-shadow: 0 0 0 1px rgba(18,23,94,.08), 0 10px 30px rgba(18,23,94,.10);
+      }
+      nav.is-floating .nav-logo { margin-left: 4px; }
+      nav.is-floating .nav-logo img { transform: scale(.8); }
+    }
+    @media (min-width: 901px) and (prefers-reduced-motion: reduce) {
+      nav, nav::before, .nav-logo, .nav-logo img { transition: none; }
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -1195,6 +1243,56 @@
       margin-top: 24px;
     }
 
+    /* ── TOGGLE IA + CALCULADORA + ASESORÍA ── */
+    .pricing-controls { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 auto 36px; }
+    .pricing-controls .currency-switch { margin: 0; }
+    .ai-toggle {
+      display: flex; gap: 4px; padding: 5px; border-radius: 100px;
+      background: var(--ink); box-shadow: 0 8px 22px rgba(18,23,94,.18);
+    }
+    .ai-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800;
+      color: rgba(255,255,255,.75); background: transparent; border: none;
+      border-radius: 100px; padding: 10px 22px; cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .ai-btn svg { width: 16px; height: 16px; }
+    .ai-btn:hover { color: var(--white); }
+    .ai-btn.is-active { background: var(--white); color: var(--ink); }
+    .ai-btn[data-ai="on"].is-active { background: var(--acid); color: var(--ink); }
+    .ia-only { display: none; }
+    body.ia-on span.ia-only { display: inline; }
+    .pricing-features li.ia-only { display: none; }
+    body.ia-on .pricing-features li.ia-only { display: flex; }
+    body.ia-on p.ia-only { display: block; }
+    .ia-muted { font-size: 13px !important; color: #9A9AB8 !important; font-style: italic; }
+    .ai-explainer { text-align: center; max-width: 620px; margin: -18px auto 30px; font-size: 15px; font-weight: 600; color: var(--mid); line-height: 1.6; }
+    .ai-explainer a, .pricing-features a { color: var(--brand); font-weight: 800; }
+    .js-max-price.is-custom .pricing-currency, .js-max-price.is-custom .pricing-period { display: none; }
+    .js-max-price.is-custom .pricing-amount { font-size: 44px; letter-spacing: -1.5px; }
+    .pricing-calc { max-width: 1100px; margin: 88px auto 0; }
+    .pricing-calc .calc { margin-top: 32px; }
+    .advice-card {
+      max-width: 1100px; margin: 64px auto 0; padding: 36px 44px;
+      display: flex; align-items: center; gap: 36px;
+      border-radius: 28px; background: linear-gradient(135deg, #ECEBFF, #F7F6FF);
+      box-shadow: 0 0 0 2px var(--brand);
+    }
+    .advice-card img { width: 240px; height: auto; flex: none; }
+    .advice-title { font-weight: 900; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.8px; line-height: 1.15; color: var(--ink); margin-bottom: 10px; }
+    .advice-sub { font-size: 17px; font-weight: 600; color: var(--mid); line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
+    .btn-whatsapp { background: #25D366; color: var(--white); font-size: 16px; padding: 13px 26px; }
+    .btn-whatsapp svg { width: 20px; height: 20px; }
+    .btn-whatsapp:hover { box-shadow: 0 8px 24px rgba(37,211,102,.45); }
+    @media (max-width: 900px) {
+      .ai-btn { padding: 9px 18px; font-size: 14px; }
+      .pricing-calc { margin-top: 56px; }
+      .advice-card { flex-direction: column; text-align: center; padding: 30px 22px; gap: 18px; }
+      .advice-card img { width: 180px; }
+      .advice-sub { margin-left: auto; margin-right: auto; }
+    }
+
     /* ── FOOTER ── */
     footer { background: var(--white); }
     .footer-bottom-wrap { background: #DBDBFB; margin: 0 16px; }
@@ -1501,18 +1599,28 @@
           <div class="trial-days-label">días</div>
         </div>
         <div class="trial-banner-center">
-          <div class="trial-title">Probá calendi Pro gratis, sin compromiso</div>
-          <div class="trial-sub">Sin tarjeta de crédito · Cancelás cuando querés · Acceso completo a todas las funciones</div>
+          <div class="trial-title">Probá Solo, Pro o Max gratis durante 30 días</div>
+          <div class="trial-sub">Sin tarjeta de crédito · Cancelás cuando querés · Otras apps te dan 7 o 14 días de prueba: nosotros te damos 30</div>
         </div>
         <div class="trial-banner-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
       </div>
 
+      <div class="pricing-controls">
+        <div class="ai-toggle" id="aiToggle" role="group" aria-label="Planes con o sin IA">
+          <button type="button" class="ai-btn is-active" data-ai="off" aria-pressed="true">Sin IA</button>
+          <button type="button" class="ai-btn" data-ai="on" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9z"/><path d="M19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9z"/></svg>
+            Con IA
+          </button>
+        </div>
       <div class="currency-switch" id="currency-switch">
         <button class="currency-btn is-active" data-currency="UYU">UYU</button>
         <button class="currency-btn" data-currency="ARS">ARS</button>
         <button class="currency-btn" data-currency="CLP">CLP</button>
         <button class="currency-btn" data-currency="PEN">PEN</button>
       </div>
+      </div>
+      <p class="ai-explainer ia-only">Con IA, una inteligencia artificial contesta los mensajes de tus clientes por vos mientras atendés. <a href="/calendi/blog/ia-whatsapp-meta-vs-ia-calendi">¿En qué se diferencia de la IA de WhatsApp?</a></p>
 
       <div class="pricing-grid">
 
@@ -1529,13 +1637,14 @@
             <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Link para que tus clientes reserven solos: hasta 30 reservas por mes</li>
             <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Sincronización con tu calendario: Google Calendar, iPhone y más</li>
             <li><span class="check" style="background:#F2E8FA; color:var(--purple);">✓</span>Tablero de tareas tipo kanban para organizar tu trabajo</li>
+            <li class="ia-only ia-muted">La IA se suma desde el plan Solo</li>
           </ul>
           <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--purple); color:var(--purple);">Crear cuenta gratis</a>
         </div>
 
         <!-- SOLO -->
         <div class="pricing-card">
-          <div class="pricing-name">Solo</div>
+          <div class="pricing-name">Solo<span class="ia-only"> + IA</span></div>
           <div class="pricing-price">
             <span class="pricing-currency js-currency">UYU</span>
             <span class="pricing-amount js-price-solo" style="color:var(--brand);">599</span>
@@ -1545,6 +1654,7 @@
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Todo lo del plan Free</li>
+            <li class="ia-only"><span class="check" style="background:#ECEBFF; color:var(--brand);">✦</span><span><strong>IA que contesta los mensajes de tus clientes por vos</strong></span></li>
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Recordatorios y confirmaciones automáticas por email</li>
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Recordatorios manuales por WhatsApp</li>
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span><span><strong>Cobros con Mercado Pago sin comisión de calendi</strong></span></li>
@@ -1553,12 +1663,13 @@
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Perfil personalizado con link para que tus clientes reserven solos</li>
             <li><span class="check" style="background:#ECEBFF; color:var(--brand);">✓</span>Confirmación de turnos automática o manual, como prefieras</li>
           </ul>
-          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Solo" target="_blank" class="btn btn-brand-outline" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-brand-outline" style="width:100%; justify-content:center;">Empezar mi prueba gratis</a>
+          <div class="free-trial-badge">30 días gratis</div>
         </div>
 
         <!-- PRO -->
         <div class="pricing-card featured">
-          <div class="pricing-name">Pro <span class="pricing-badge">Más popular</span></div>
+          <div class="pricing-name">Pro<span class="ia-only"> + IA</span> <span class="pricing-badge">Más popular</span></div>
           <div class="pricing-price">
             <span class="pricing-currency js-currency">UYU</span>
             <span class="pricing-amount js-price-pro" style="color:var(--cyan);">1.050</span>
@@ -1568,20 +1679,21 @@
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Todo lo del plan Solo</li>
+            <li class="ia-only"><span class="check" style="background:#E8F9FC; color:var(--cyan);">✦</span><span><strong>IA que contesta los mensajes de tus clientes por vos</strong></span></li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Hasta 3 profesionales</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Servicios ilimitados</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>300 mensajes de WhatsApp incluidos por mes</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Recordatorios, re-recordatorios, confirmaciones y reagendas automáticas por WhatsApp</li>
             <li><span class="check" style="background:#E8F9FC; color:var(--cyan);">✓</span>Agenda súper personalizable y totalmente configurable</li>
           </ul>
-          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Pro" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Pedí tu demo</a>
+          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-primary" style="width:100%; justify-content:center;">Empezar mi prueba gratis</a>
           <div class="free-trial-badge">30 días gratis</div>
         </div>
 
         <!-- MAX -->
         <div class="pricing-card">
           <div class="pricing-name">Max</div>
-          <div class="pricing-price">
+          <div class="pricing-price js-max-price">
             <span class="pricing-currency js-currency">UYU</span>
             <span class="pricing-amount js-price-max" style="color:var(--orange);">2.490</span>
             <span class="pricing-period">/mes</span>
@@ -1590,6 +1702,7 @@
           <div class="pricing-divider"></div>
           <ul class="pricing-features">
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Todo lo del plan Pro</li>
+            <li class="ia-only"><span class="check" style="background:#FEF3E2; color:var(--orange);">✦</span><span><strong>IA para Max a medida:</strong> <a href="https://wa.me/59892364754?text=Hola!%20Quiero%20sumar%20IA%20al%20plan%20Max" target="_blank" rel="noopener">escribinos</a></span></li>
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Hasta 10 profesionales activos al mismo tiempo</li>
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>1.500 mensajes de WhatsApp incluidos por mes</li>
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Difusiones por WhatsApp y email</li>
@@ -1597,7 +1710,7 @@
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Estadísticas más completas</li>
             <li><span class="check" style="background:#FEF3E2; color:var(--orange);">✓</span>Asistente interno que te recomienda mejoras para tu negocio</li>
           </ul>
-          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20del%20plan%20Max" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Pedí tu demo</a>
+          <a href="https://calendi.espressodevs.com/auth/register" target="_blank" class="btn btn-outline" style="width:100%; justify-content:center; border-color:var(--orange); color:var(--orange);">Empezar mi prueba gratis</a>
           <div class="free-trial-badge">30 días gratis</div>
         </div>
 
@@ -1608,31 +1721,60 @@
         <span>Todos los planes incluyen <strong>soporte gratis de 7 a 21 h, todos los días</strong> y la <strong>app para Android</strong>.</span>
       </p>
 
-      <!-- COMBOS CON IA -->
-      <div class="pricing-card-wide">
-        <div class="pricing-wide-left">
-          <div class="pricing-name">Tu plan + IA <span class="pricing-wide-badge">Nuevo</span></div>
-          <p class="pricing-desc">Sumale a tu plan una IA que contesta los mensajes de tus clientes por vos, mientras vos atendés.</p>
-          <ul class="pricing-wide-features">
-            <li><span class="check">✓</span>Responde los mensajes de tus clientes automáticamente</li>
-            <li><span class="check">✓</span><span><strong>Solo + IA:</strong> recordatorios por email y una IA que contesta por vos</span></li>
-            <li><span class="check">✓</span><span><strong>Pro + IA:</strong> todo lo del plan Pro, con una IA que contesta por vos</span></li>
-          </ul>
+
+      <!-- CALCULADORA -->
+      <div class="pricing-calc" id="calculadora">
+        <div class="section-header" style="text-align:center; margin-bottom: 0;">
+          <div class="section-tag" style="color: var(--brand);">Calculadora</div>
+          <h2 class="section-title">¿No sabés qué plan elegir?</h2>
+          <p class="section-sub" style="margin: 0 auto;">Contanos cómo es tu negocio y te decimos qué plan te conviene y cuánto vas a pagar por mes.</p>
         </div>
-        <div class="pricing-wide-right">
-          <div class="pricing-combo">
-            <span class="pricing-combo-name">Solo + IA</span>
-            <span class="pricing-currency js-currency">UYU</span>
-            <span class="pricing-amount js-price-soloia">999</span>
-            <span class="pricing-period">/mes</span>
+        <div class="calc" id="planCalc">
+          <form class="calc-form" onsubmit="return false">
+            <div class="calc-field">
+              <label for="calcPros">¿Cuántos profesionales atienden?</label>
+              <div class="calc-range-row">
+                <input type="range" id="calcPros" min="1" max="11" step="1" value="2" />
+                <output id="calcProsOut" for="calcPros">2</output>
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="calcTurnos">¿Cuántos turnos dan por mes, entre todos?</label>
+              <div class="calc-range-row">
+                <input type="range" id="calcTurnos" min="10" max="1000" step="10" value="150" />
+                <output id="calcTurnosOut" for="calcTurnos">150</output>
+              </div>
+            </div>
+            <fieldset class="calc-checks">
+              <legend class="calc-legend">¿Qué necesitás?</legend>
+              <label class="calc-check"><input type="checkbox" id="calcWa" checked /><span>Recordatorios y confirmaciones automáticas por WhatsApp<small>Bajan los faltazos sin que mandes un mensaje.</small></span></label>
+              <label class="calc-check"><input type="checkbox" id="calcMp" /><span>Cobrar seña o el turno con Mercado Pago<small>Sin comisión de calendi por tus cobros.</small></span></label>
+              <label class="calc-check"><input type="checkbox" id="calcIa" /><span>Una IA que conteste los mensajes de mis clientes<small>Responde consultas mientras vos atendés.</small></span></label>
+              <label class="calc-check"><input type="checkbox" id="calcMax" /><span>Difusiones o mensajes desde el número de mi negocio<small>Promociones por WhatsApp y email, con tu propio número.</small></span></label>
+            </fieldset>
+          </form>
+          <div class="calc-result" aria-live="polite">
+            <span class="calc-result-tag">Tu plan ideal</span>
+            <div class="calc-plan" id="calcPlan">calendi Pro</div>
+            <div class="calc-price"><strong id="calcUsd">USD 26</strong><span id="calcUyu">UYU 1.050 por mes</span></div>
+            <ul class="calc-list" id="calcList"></ul>
+            <p class="calc-note" id="calcNote"></p>
+            <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid" id="calcCta">Probar gratis</a>
           </div>
-          <div class="pricing-combo">
-            <span class="pricing-combo-name">Pro + IA</span>
-            <span class="pricing-currency js-currency">UYU</span>
-            <span class="pricing-amount js-price-proia">1.799</span>
-            <span class="pricing-period">/mes</span>
-          </div>
-          <a href="https://wa.me/59892364754?text=Hola%20!%20Me%20interesa%20saber%20mas%20de%20los%20planes%20con%20IA" target="_blank" class="btn btn-primary" style="background:var(--pink); border-color:var(--pink);">Pedí tu demo</a>
+        </div>
+      </div>
+
+      <!-- ASESORÍA -->
+      <div class="advice-card">
+        <img src="/calendi/assets/calendi_soporte_cta.webp" alt="La mascota de calendi con auriculares, lista para asesorarte" width="440" height="294" loading="lazy" />
+        <div class="advice-body">
+          <div class="section-tag" style="color: var(--brand); margin-bottom: 8px;">Asesoría gratuita</div>
+          <h2 class="advice-title">¿Querés asesoría gratuita sobre tu negocio?</h2>
+          <p class="advice-sub">Escribinos y te damos atención personalizada: te ayudamos a elegir el plan, configurar tu agenda y sacarle el máximo a calendi. Te respondemos todos los días, de 7 a 21 h.</p>
+          <a href="https://wa.me/59892364754?text=Hola!%20Quiero%20una%20asesor%C3%ADa%20gratuita%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.9 9.9 0 0 0 12.04 2zm5.8 14.06c-.24.68-1.42 1.31-1.96 1.39-.5.07-1.13.1-1.83-.12-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.18-4.94-4.37-.15-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.3.58-.37.78-.37h.56c.18.01.42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.1.2-.15.32-.29.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.31 2.38 1.46.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.71.81 2 .96.3.15.5.22.57.34.07.12.07.7-.17 1.38z"/></svg>
+            Escribinos por WhatsApp
+          </a>
         </div>
       </div>
 
@@ -1712,6 +1854,21 @@
 
 
   <script>
+    // navbar flotante: se activa apenas se deja el tope de la página
+    (function () {
+      var nav = document.querySelector('nav');
+      if (!nav || !('IntersectionObserver' in window)) return;
+
+      var sentinel = document.createElement('div');
+      sentinel.setAttribute('aria-hidden', 'true');
+      sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:24px;pointer-events:none;';
+      document.body.prepend(sentinel);
+
+      new IntersectionObserver(function (entries) {
+        nav.classList.toggle('is-floating', !entries[0].isIntersecting);
+      }).observe(sentinel);
+    })();
+
     // dropdown "Recursos" del nav
     (function () {
       var dropdown = document.getElementById('navResourcesDropdown');
@@ -1740,6 +1897,7 @@
     // switch de moneda en precios
     // Cotizaciones del 2026-10-09 (open.er-api.com, base UYU):
     // ARS 37.92 · CLP 24.39 · PEN 0.0858 — redondeado hacia arriba a terminación 999/9
+    // El toggle "Con IA" muestra los precios de Solo + IA y Pro + IA; Max con IA es a medida.
     (function () {
       var PRICES = {
         UYU: { solo: '599',    pro: '1.050',  max: '2.490',  soloia: '999',    proia: '1.799' },
@@ -1747,29 +1905,46 @@
         CLP: { solo: '14.999', pro: '25.999', max: '60.999', soloia: '24.999', proia: '43.999' },
         PEN: { solo: '59',     pro: '99',     max: '219',    soloia: '89',     proia: '159' }
       };
+      var state = { currency: 'UYU', ai: false };
       var wrap = document.getElementById('currency-switch');
-      if (!wrap) return;
+      var aiWrap = document.getElementById('aiToggle');
+      if (!wrap || !aiWrap) return;
       var note = document.getElementById('pricing-fx-note');
       var buttons = wrap.querySelectorAll('.currency-btn');
+      var aiButtons = aiWrap.querySelectorAll('.ai-btn');
+      var maxPrice = document.querySelector('.js-max-price');
 
-      function setCurrency(code) {
-        var p = PRICES[code];
-        if (!p) return;
-        document.querySelectorAll('.js-currency').forEach(function (el) { el.textContent = code; });
-        document.querySelectorAll('.js-price-pro').forEach(function (el) { el.textContent = p.pro; });
-        document.querySelectorAll('.js-price-max').forEach(function (el) { el.textContent = p.max; });
-        document.querySelectorAll('.js-price-solo').forEach(function (el) { el.textContent = p.solo; });
-        document.querySelectorAll('.js-price-soloia').forEach(function (el) { el.textContent = p.soloia; });
-        document.querySelectorAll('.js-price-proia').forEach(function (el) { el.textContent = p.proia; });
-        buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === code); });
-        if (note) note.hidden = (code === 'UYU');
+      function setText(sel, value) {
+        document.querySelectorAll(sel).forEach(function (el) { el.textContent = value; });
+      }
+
+      function render() {
+        var p = PRICES[state.currency];
+        setText('.js-currency', state.currency);
+        setText('.js-price-solo', state.ai ? p.soloia : p.solo);
+        setText('.js-price-pro', state.ai ? p.proia : p.pro);
+        setText('.js-price-max', state.ai ? 'A medida' : p.max);
+        if (maxPrice) maxPrice.classList.toggle('is-custom', state.ai);
+        document.body.classList.toggle('ia-on', state.ai);
+        buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === state.currency); });
+        aiButtons.forEach(function (b) {
+          var on = (b.dataset.ai === 'on') === state.ai;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        if (note) note.hidden = (state.currency === 'UYU');
       }
 
       buttons.forEach(function (b) {
-        b.addEventListener('click', function () { setCurrency(b.dataset.currency); });
+        b.addEventListener('click', function () { state.currency = b.dataset.currency; render(); });
       });
+      aiButtons.forEach(function (b) {
+        b.addEventListener('click', function () { state.ai = b.dataset.ai === 'on'; render(); });
+      });
+      render();
     })();
 
   </script>
+  <script src="/calendi/plan-calc.js" defer></script>
 </body>
 </html>
