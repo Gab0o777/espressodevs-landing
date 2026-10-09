@@ -15,7 +15,8 @@
     soloia: { name: 'calendi Solo + IA', uyu: 999, msgs: 0, items: ['Todo lo del plan Solo', 'IA que contesta los mensajes de tus clientes', 'Cobros con Mercado Pago sin comisión'] },
     pro:    { name: 'calendi Pro',  uyu: 1050, msgs: 300,  items: ['Hasta 3 profesionales', '300 mensajes de WhatsApp por mes', 'Recordatorios, confirmaciones y reagendas automáticas'] },
     proia:  { name: 'calendi Pro + IA', uyu: 1799, msgs: 300, items: ['Todo lo del plan Pro', 'IA que contesta los mensajes de tus clientes', '300 mensajes de WhatsApp por mes'] },
-    max:    { name: 'calendi Max',  uyu: 2490, msgs: 1500, items: ['Hasta 10 profesionales', '1.500 mensajes de WhatsApp por mes', 'Difusiones y mensajes desde tu propio número'] }
+    max:    { name: 'calendi Max',  uyu: 2490, msgs: 1000, items: ['Hasta 8 profesionales', '1.000 mensajes de WhatsApp por mes', 'Difusiones y mensajes desde tu propio número'] },
+    maxia:  { name: 'calendi Max + IA', uyu: 3490, msgs: 1000, items: ['Todo lo del plan Max', 'IA que contesta los mensajes de tus clientes', '1.000 mensajes de WhatsApp por mes'] }
   };
 
   var $ = function (id) { return document.getElementById(id); };
@@ -26,8 +27,8 @@
 
   function pick(p, t, needWa, needIa, needMax, needMp) {
     var msgs = needWa ? t * MSGS_PER_TURNO : 0;
-    if (p > 10) return { key: null, msgs: msgs };
-    if (p > 3 || needMax || msgs > 300) return { key: 'max', msgs: msgs };
+    if (p > 8 || msgs > 1000) return { key: null, msgs: msgs };
+    if (p > 3 || needMax || msgs > 300) return { key: needIa ? 'maxia' : 'max', msgs: msgs };
     if (p > 1 || needWa) return { key: needIa ? 'proia' : 'pro', msgs: msgs };
     if (needIa) return { key: 'soloia', msgs: msgs };
     return { key: (needMp || t * LINK_SHARE > 30) ? 'solo' : 'free', msgs: msgs };
@@ -35,20 +36,20 @@
 
   function render() {
     var p = +pros.value, t = +turnos.value;
-    $('calcProsOut').textContent = p > 10 ? '10+' : p;
+    $('calcProsOut').textContent = p > 8 ? '8+' : p;
     $('calcTurnosOut').textContent = t >= 1000 ? '1.000+' : fmt(t);
 
     var r = pick(p, t, wa.checked, ia.checked, max.checked, mp.checked);
     var cta = $('calcCta'), note = $('calcNote'), list = $('calcList');
 
     if (!r.key) {
-      $('calcPlan').textContent = 'Plan a medida';
-      $('calcUsd').textContent = 'Hablemos';
-      $('calcUyu').textContent = 'Para más de 10 profesionales';
-      list.innerHTML = '<li>Armamos un plan para tu equipo</li><li>Soporte de 7 a 21 h, todos los días</li>';
+      $('calcPlan').textContent = 'calendi Business';
+      $('calcUsd').textContent = '¡Hablemos!';
+      $('calcUyu').textContent = p > 8 ? 'Para más de 8 profesionales' : 'Para más de 1.000 mensajes por mes';
+      list.innerHTML = '<li>Profesionales ilimitados</li><li>Mensajes de WhatsApp ilimitados</li><li>Soporte de 7 a 21 h, todos los días</li>';
       note.textContent = '';
       cta.textContent = 'Escribinos por WhatsApp';
-      cta.href = WA + encodeURIComponent('Hola! Tengo un negocio con más de 10 profesionales y quiero saber más de calendi');
+      cta.href = WA + encodeURIComponent('Hola! Quiero saber más del plan Business de calendi');
       return;
     }
 
@@ -61,8 +62,6 @@
 
     var notes = [];
     if (r.msgs) notes.push('Estimamos ' + fmt(r.msgs) + ' mensajes de WhatsApp por mes (' + MSGS_PER_TURNO + ' por turno); tu plan incluye ' + fmt(plan.msgs) + '.');
-    if (r.msgs > plan.msgs && plan.msgs) notes.push('Si necesitás más mensajes, escribinos y lo armamos a tu medida.');
-    if (r.key === 'max' && ia.checked) notes.push('La IA para el plan Max la cotizamos a medida: escribinos.');
     if (plan.uyu) notes.push('Sin comisión por tus ventas: este es el precio final que le pagás a calendi.');
     note.textContent = notes.join(' ');
 
