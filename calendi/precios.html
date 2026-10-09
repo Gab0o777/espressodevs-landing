@@ -1547,6 +1547,7 @@
       .stats-inner { flex-wrap: wrap; justify-content: center; }
     }
   </style>
+  <link rel="stylesheet" href="/calendi/country.css" />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -1576,8 +1577,26 @@
           <a href="/calendi/privacidad">Privacidad</a>
         </div>
       </li>
+      <li class="nav-country" data-country-picker>
+        <button type="button" class="country-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar país"><span class="country-flag" data-country-current></span><svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="country-menu" role="menu" aria-label="Elegí tu país">
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="UY"><span class="country-flag"></span>Uruguay</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="AR"><span class="country-flag"></span>Argentina</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="CL"><span class="country-flag"></span>Chile</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="PE"><span class="country-flag"></span>Perú</button>
+        </div>
+      </li>
     </ul>
     <div class="nav-actions">
+      <div class="nav-country nav-country-mobile" data-country-picker>
+        <button type="button" class="country-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar país"><span class="country-flag" data-country-current></span><svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="country-menu" role="menu" aria-label="Elegí tu país">
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="UY"><span class="country-flag"></span>Uruguay</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="AR"><span class="country-flag"></span>Argentina</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="CL"><span class="country-flag"></span>Chile</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="PE"><span class="country-flag"></span>Perú</button>
+        </div>
+      </div>
       <a href="https://calendi.espressodevs.com" class="btn btn-brand-outline nav-btn nav-cta-desktop">Iniciar sesión</a>
       <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-desktop" style="margin-left:10px;">Probar gratis</a>
       <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-mobile">Probar gratis</a>
@@ -1613,12 +1632,6 @@
             Con IA
           </button>
         </div>
-      <div class="currency-switch" id="currency-switch">
-        <button class="currency-btn is-active" data-currency="UYU">UYU</button>
-        <button class="currency-btn" data-currency="ARS">ARS</button>
-        <button class="currency-btn" data-currency="CLP">CLP</button>
-        <button class="currency-btn" data-currency="PEN">PEN</button>
-      </div>
       </div>
       <p class="ai-explainer ia-only">Con IA, una inteligencia artificial contesta los mensajes de tus clientes por vos mientras atendés. <a href="/calendi/blog/ia-whatsapp-meta-vs-ia-calendi">¿En qué se diferencia de la IA de WhatsApp?</a></p>
 
@@ -1778,7 +1791,7 @@
         </div>
       </div>
 
-      <p class="pricing-fx-note" id="pricing-fx-note" hidden>Precio de referencia según el tipo de cambio del día. La facturación se realiza en UYU.</p>
+      <p class="pricing-fx-note" id="pricing-fx-note" hidden>Precio de referencia en tu moneda según el tipo de cambio del día. La facturación se realiza en pesos uruguayos (UYU).</p>
     </div>
   </section>
 
@@ -1906,11 +1919,9 @@
         PEN: { solo: '59',     pro: '99',     max: '219',    soloia: '89',     proia: '159' }
       };
       var state = { currency: 'UYU', ai: false };
-      var wrap = document.getElementById('currency-switch');
       var aiWrap = document.getElementById('aiToggle');
-      if (!wrap || !aiWrap) return;
+      if (!aiWrap) return;
       var note = document.getElementById('pricing-fx-note');
-      var buttons = wrap.querySelectorAll('.currency-btn');
       var aiButtons = aiWrap.querySelectorAll('.ai-btn');
       var maxPrice = document.querySelector('.js-max-price');
 
@@ -1926,7 +1937,6 @@
         setText('.js-price-max', state.ai ? 'A medida' : p.max);
         if (maxPrice) maxPrice.classList.toggle('is-custom', state.ai);
         document.body.classList.toggle('ia-on', state.ai);
-        buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.currency === state.currency); });
         aiButtons.forEach(function (b) {
           var on = (b.dataset.ai === 'on') === state.ai;
           b.classList.toggle('is-active', on);
@@ -1935,9 +1945,11 @@
         if (note) note.hidden = (state.currency === 'UYU');
       }
 
-      buttons.forEach(function (b) {
-        b.addEventListener('click', function () { state.currency = b.dataset.currency; render(); });
+      // la moneda la define el selector de país de la navbar (country.js)
+      window.addEventListener('calendi:country', function (e) {
+        if (PRICES[e.detail.currency]) { state.currency = e.detail.currency; render(); }
       });
+      if (window.calendiCountry && PRICES[window.calendiCountry.currency]) state.currency = window.calendiCountry.currency;
       aiButtons.forEach(function (b) {
         b.addEventListener('click', function () { state.ai = b.dataset.ai === 'on'; render(); });
       });
@@ -1946,5 +1958,6 @@
 
   </script>
   <script src="/calendi/plan-calc.js" defer></script>
+  <script src="/calendi/country.js" defer></script>
 </body>
 </html>

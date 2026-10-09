@@ -78,6 +78,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Kalam:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/calendi/blog/blog.css" />
+  <link rel="stylesheet" href="/calendi/country.css" />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -107,8 +108,26 @@
           <a href="/calendi/privacidad">Privacidad</a>
         </div>
       </li>
+      <li class="nav-country" data-country-picker>
+        <button type="button" class="country-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar país"><span class="country-flag" data-country-current></span><svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="country-menu" role="menu" aria-label="Elegí tu país">
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="UY"><span class="country-flag"></span>Uruguay</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="AR"><span class="country-flag"></span>Argentina</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="CL"><span class="country-flag"></span>Chile</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="PE"><span class="country-flag"></span>Perú</button>
+        </div>
+      </li>
     </ul>
     <div class="nav-actions">
+      <div class="nav-country nav-country-mobile" data-country-picker>
+        <button type="button" class="country-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Cambiar país"><span class="country-flag" data-country-current></span><svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="country-menu" role="menu" aria-label="Elegí tu país">
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="UY"><span class="country-flag"></span>Uruguay</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="AR"><span class="country-flag"></span>Argentina</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="CL"><span class="country-flag"></span>Chile</button>
+          <button type="button" class="country-option" role="menuitemradio" aria-checked="false" data-country-option="PE"><span class="country-flag"></span>Perú</button>
+        </div>
+      </div>
       <a href="https://calendi.espressodevs.com" class="btn btn-brand-outline nav-btn nav-cta-desktop">Iniciar sesión</a>
       <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-desktop" style="margin-left:10px;">Probar gratis YA</a>
       <a href="https://calendi.espressodevs.com/auth/register" class="btn btn-acid nav-btn nav-cta-mobile">Probar gratis YA</a>
@@ -232,5 +251,6 @@
   </a>
 
   <script src="/calendi/blog/blog.js" defer></script>
+  <script src="/calendi/country.js" defer></script>
 </body>
 </html>

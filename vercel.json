@@ -8,6 +8,7 @@
     { "source": "/calendi",            "destination": "/calendi/index.html"      },
     { "source": "/calendi/",           "destination": "/calendi/index.html"      },
     { "source": "/calendi/precios",    "destination": "/calendi/precios.html"    },
+    { "source": "/calendi/agenda-de-turnos-gratis", "destination": "/calendi/agenda-de-turnos-gratis.html" },
     { "source": "/calendi/terminos",   "destination": "/calendi/terminos.html"   },
     { "source": "/calendi/privacidad", "destination": "/calendi/privacidad.html" },
     { "source": "/calendi/blog",       "destination": "/calendi/blog/index.html" },
