@@ -51,7 +51,7 @@
   var WA = 'https://wa.me/59892364754?text=';
 
   var PLANS = {
-    free:   { name: 'calendi Free', uyu: 0,    msgs: 0,    items: ['Agenda online', 'Link de reservas (hasta 30 por mes)', 'Sincronización con Google Calendar o iPhone'] },
+    free:   { name: 'calendi Free', uyu: 0,    msgs: 0,    items: ['Turnos ilimitados en tu agenda', 'Link de reservas (hasta 30 reservas por mes desde el link)', 'Sincronización con Google Calendar o iPhone'] },
     solo:   { name: 'calendi Solo', uyu: 599,  msgs: 0,    items: ['Recordatorios y confirmaciones por email', 'Cobros con Mercado Pago sin comisión', 'Historial de visitas de cada cliente'] },
     soloia: { name: 'calendi Solo + IA', uyu: 999, msgs: 0, items: ['Todo lo del plan Solo', 'IA que contesta los mensajes de tus clientes', 'Cobros con Mercado Pago sin comisión'] },
     pro:    { name: 'calendi Pro',  uyu: 1050, msgs: 300,  items: ['Hasta 3 barberos', '300 mensajes de WhatsApp por mes', 'Recordatorios, confirmaciones y reagendas automáticas'] },
@@ -60,17 +60,18 @@
   };
 
   var $ = function (id) { return document.getElementById(id); };
-  var pros = $('calcPros'), turnos = $('calcTurnos'), wa = $('calcWa'), ia = $('calcIa'), max = $('calcMax');
+  var pros = $('calcPros'), turnos = $('calcTurnos'), wa = $('calcWa'), ia = $('calcIa'), max = $('calcMax'), mp = $('calcMp');
+  var LINK_SHARE = 0.1; // estimamos que 1 de cada 10 turnos entra por el link de reservas
 
   function fmt(n) { return n.toLocaleString('es-UY'); }
 
-  function pick(p, t, needWa, needIa, needMax) {
+  function pick(p, t, needWa, needIa, needMax, needMp) {
     var msgs = needWa ? t * MSGS_PER_TURNO : 0;
     if (p > 10) return { key: null, msgs: msgs };
     if (p > 3 || needMax || msgs > 300) return { key: 'max', msgs: msgs };
     if (p > 1 || needWa) return { key: needIa ? 'proia' : 'pro', msgs: msgs };
     if (needIa) return { key: 'soloia', msgs: msgs };
-    return { key: t <= 30 ? 'free' : 'solo', msgs: msgs };
+    return { key: (needMp || t * LINK_SHARE > 30) ? 'solo' : 'free', msgs: msgs };
   }
 
   function render() {
@@ -78,7 +79,7 @@
     $('calcProsOut').textContent = p > 10 ? '10+' : p;
     $('calcTurnosOut').textContent = t >= 1000 ? '1.000+' : fmt(t);
 
-    var r = pick(p, t, wa.checked, ia.checked, max.checked);
+    var r = pick(p, t, wa.checked, ia.checked, max.checked, mp.checked);
     var cta = $('calcCta'), note = $('calcNote'), list = $('calcList');
 
     if (!r.key) {
@@ -110,6 +111,6 @@
     cta.href = REGISTER;
   }
 
-  [pros, turnos, wa, ia, max].forEach(function (el) { el.addEventListener('input', render); });
+  [pros, turnos, wa, ia, max, mp].forEach(function (el) { el.addEventListener('input', render); });
   render();
 })();

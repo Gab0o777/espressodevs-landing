@@ -522,13 +522,13 @@ footer { background: var(--white); }
   margin-top: 24px;
   -webkit-overflow-scrolling: touch;
   /* la tabla sale del ancho de lectura (760px) para respirar en desktop */
-  --table-w: min(1180px, calc(100vw - 56px));
+  --table-w: min(1240px, calc(100vw - 56px));
   width: var(--table-w);
   margin-left: calc((100% - var(--table-w)) / 2);
 }
 .compare {
   width: 100%;
-  min-width: 980px;
+  min-width: 1120px;
   border-collapse: collapse;
   font-size: 15.5px;
   line-height: 1.5;
