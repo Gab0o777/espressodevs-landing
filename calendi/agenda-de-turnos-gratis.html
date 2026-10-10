@@ -985,6 +985,21 @@
       gap: 40px;
       margin-top: 72px;
     }
+    /* testimonios rotativos */
+    .testi-slides { flex: 1; min-width: 0; display: grid; }
+    .testi-slide {
+      grid-area: 1 / 1; margin: 0;
+      display: flex; align-items: center; gap: 32px;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: opacity .5s ease, transform .5s ease, visibility .5s;
+    }
+    .testi-slide.is-active { opacity: 1; visibility: visible; transform: none; }
+    .testi-slide .testi-text { font-size: 19px; margin: 0; }
+    img.testi-avatar { object-fit: cover; background: var(--white); }
+    .testi-dots { grid-area: 2 / 1; display: flex; gap: 8px; margin-top: 18px; }
+    .testi-dot { width: 9px; height: 9px; border-radius: 100px; border: none; padding: 0; cursor: pointer; background: rgba(139,68,191,.25); transition: width .3s, background .3s; }
+    .testi-dot.is-active { width: 26px; background: var(--purple); }
+    @media (prefers-reduced-motion: reduce) { .testi-slide { transition: none; } }
     .testi-mark { flex-shrink: 0; color: var(--purple); opacity: .85; }
     .testi-mark svg { width: 52px; height: 52px; }
     .testi-text {
@@ -1833,6 +1848,8 @@
       .testi-div { width: 84px; height: 1.5px; }
       .testi-count-label { max-width: none; }
       .testi-faces { justify-content: center; }
+      .testi-slide { flex-direction: column; gap: 18px; }
+      .testi-dots { justify-content: center; }
 
       /* CTA band */
       .cta-band { flex-direction: column; padding: 36px 24px; gap: 24px; }
@@ -2431,18 +2448,46 @@
       <!-- TESTIMONIAL -->
       <div class="testi">
         <div class="testi-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 5C6.5 5 4 7.5 4 10.5c0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C13.5 7.5 12 5 9.5 5zm10 0c-3 0-5.5 2.5-5.5 5.5 0 2.6 1.9 4.8 4.4 5.3-.4 1.3-1.2 2.4-2.4 3.2-.3.2-.4.6-.2.9.1.3.4.5.7.5h.2c3.9-.8 6.8-4.2 6.8-8.2V10.5C23.5 7.5 22 5 19.5 5z"/></svg></div>
-        <p class="testi-text">calendi cambió la forma en que trabajamos. Más orden, más clientes y mucho menos estrés.</p>
-        <div class="testi-person">
-          <div class="testi-avatar">CR</div>
-          <div>
-            <div class="testi-name">Camila Rodríguez</div>
-            <div class="testi-role">Studio Glam</div>
-            <div class="testi-stars">★★★★★</div>
+        <div class="testi-slides" id="testiSlides" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
+          <figure class="testi-slide is-active">
+            <blockquote class="testi-text">“Son unos genios, aparte re rápido hacen todo. Está genial: a mí, que me gusta visualizar todo, me encanta verlo todo junto en un solo lugar.”</blockquote>
+            <figcaption class="testi-person">
+              <img class="testi-avatar" src="/calendi/assets/client-isa-nails.jpeg" alt="" width="62" height="62" loading="lazy" />
+              <div>
+                <div class="testi-name">Isabel</div>
+                <div class="testi-role">Isa Nails</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testi-slide" aria-hidden="true">
+            <blockquote class="testi-text">“¡Amoo! Ahí ya cargué mis servicios y anoche mismo me reservarooon. ¡Qué felicidad no tener que estar al chat todo el día!”</blockquote>
+            <figcaption class="testi-person">
+              <div class="testi-avatar" aria-hidden="true">S</div>
+              <div>
+                <div class="testi-name">Sofi</div>
+                <div class="testi-role">Beauty by Sofi</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="testi-slide" aria-hidden="true">
+            <blockquote class="testi-text">“¡Ay, sí! Todas re contentas con el cambio. Lo que más me dolía era estar mandando recordatorios o que me cancelen a último momento.”</blockquote>
+            <figcaption class="testi-person">
+              <div class="testi-avatar" aria-hidden="true">R</div>
+              <div>
+                <div class="testi-name">Romi</div>
+                <div class="testi-role">Glam Studio</div>
+              </div>
+            </figcaption>
+          </figure>
+          <div class="testi-dots" role="tablist" aria-label="Elegir testimonio">
+            <button type="button" class="testi-dot is-active" aria-label="Testimonio 1"></button>
+            <button type="button" class="testi-dot" aria-label="Testimonio 2"></button>
+            <button type="button" class="testi-dot" aria-label="Testimonio 3"></button>
           </div>
         </div>
         <div class="testi-div"></div>
         <div class="testi-count">
-          <div class="testi-count-num">+1.200</div>
+          <div class="testi-count-num">+100</div>
           <div class="testi-count-label">negocios ya confían en calendi</div>
           <div class="testi-faces">
             <span class="testi-face" style="background:var(--cyan);">MA</span>
@@ -2450,7 +2495,7 @@
             <span class="testi-face" style="background:var(--pink);">SO</span>
             <span class="testi-face" style="background:var(--orange);">DP</span>
             <span class="testi-face" style="background:var(--green);">LU</span>
-            <span class="testi-face-more">+987</span>
+            <span class="testi-face-more">+95</span>
           </div>
         </div>
       </div>
@@ -2730,6 +2775,34 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') close();
       });
+    })();
+
+    // testimonios rotativos (cambian solos; pausa al pasar el mouse o enfocar)
+    (function () {
+      var root = document.getElementById('testiSlides');
+      if (!root) return;
+      var slides = root.querySelectorAll('.testi-slide');
+      var dots = root.querySelectorAll('.testi-dot');
+      var current = 0, timer = null;
+
+      function show(i) {
+        current = (i + slides.length) % slides.length;
+        slides.forEach(function (s, k) {
+          s.classList.toggle('is-active', k === current);
+          s.setAttribute('aria-hidden', k === current ? 'false' : 'true');
+        });
+        dots.forEach(function (d, k) { d.classList.toggle('is-active', k === current); });
+      }
+      function start() { stop(); timer = setInterval(function () { show(current + 1); }, 6000); }
+      function stop() { if (timer) clearInterval(timer); timer = null; }
+
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); start(); }); });
+      var card = root.closest('.testi') || root;
+      card.addEventListener('mouseenter', stop);
+      card.addEventListener('mouseleave', start);
+      card.addEventListener('focusin', stop);
+      card.addEventListener('focusout', start);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
     })();
 
     // modal con el video ampliado (botón "play" del art del hero + "Ver cómo funciona")
