@@ -121,34 +121,55 @@
     }
 
     /* ── NAV ── */
+    /* Transparente sobre el hero; al scrollear toma fondo oscuro con blur */
     nav {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      display: flex;
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 0 56px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
-      height: 76px;
+      height: 96px;
+      border-radius: 0;
+      transition: top .4s ease, left .4s ease, right .4s ease, height .4s ease,
+                  padding .4s ease, border-radius .4s ease, background .4s ease,
+                  border-color .4s ease, box-shadow .4s ease;
     }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 58px; display: block; }
+    /* Al scrollear: se achica y queda como una pastilla flotante de vidrio */
+    nav.is-scrolled {
+      top: 12px; left: 24px; right: 24px;
+      height: 66px;
+      padding: 0 28px;
+      border-radius: 999px;
+      background: rgba(28,24,38,.55);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      backdrop-filter: blur(22px) saturate(140%);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    nav.is-scrolled .nav-logo img { height: 44px; }
+    nav.is-scrolled > .btn { padding: 10px 22px; font-size: 14px; }
+    .nav-logo { grid-column: 2; display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 58px; display: block; transition: height .4s ease; }
     .nav-links {
+      grid-column: 1; grid-row: 1;
+      justify-self: start;
       display: flex;
       align-items: center;
       gap: 34px;
       list-style: none;
-      margin: 0 auto;
     }
+    nav > .btn { grid-column: 3; grid-row: 1; justify-self: end; }
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
       font-size: 13px;
       letter-spacing: .4px;
       text-transform: uppercase;
-      color: var(--mid);
+      color: rgba(255,255,255,.7);
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--lime); }
@@ -173,6 +194,8 @@
       color: var(--white);
       cursor: pointer;
       flex-shrink: 0;
+      grid-column: 1; grid-row: 1;
+      justify-self: start;
     }
     .nav-burger svg { width: 24px; height: 24px; display: block; }
     .nav-burger .icon-close { display: none; }
@@ -244,58 +267,96 @@
       position: relative;
       background: var(--black);
       border-bottom: 1px solid var(--border);
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    /* Fondo aurora WebGL (shader animado, reacciona al mouse) */
+    #shader-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+    }
+    #hero-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, transparent 0%, var(--black) 100%);
+      z-index: 3; pointer-events: none;
     }
     .hero {
+      position: relative;
+      z-index: 5;
       width: 100%;
-      max-width: 1360px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 80px 48px 56px;
-      display: grid;
-      grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+      padding: 160px 40px 140px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 60px;
     }
-    .hero-eyebrow {
+    .hero-content {
+      max-width: 980px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--lime);
-      margin-bottom: 22px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      color: #C4A6FF;
+      border: 1px solid rgba(196,166,255,.35);
+      background: rgba(10,4,24,.35);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      margin-bottom: 28px;
     }
-    .hero-eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--lime); border-radius: 2px; display: inline-block; }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .6; transform: scale(.8); }
+    }
     .hero-title {
-      font-weight: 900;
-      font-size: clamp(38px, 4.4vw, 62px);
-      line-height: 1.02;
-      letter-spacing: -2.5px;
+      font-weight: 500;
+      font-size: clamp(34px, 4.8vw, 64px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
       color: var(--white);
-      text-transform: uppercase;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
     .hero-title .accent { color: var(--lime); }
     .hero-subtitle {
-      font-size: 17.5px;
-      font-weight: 500;
-      color: var(--mid);
-      line-height: 1.7;
-      max-width: 460px;
-      margin-bottom: 36px;
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 400;
+      color: rgba(255,255,255,.65);
+      line-height: 1.65;
+      max-width: 600px;
+      margin-bottom: 40px;
     }
-    .hero-actions {
+    .hero-actions { margin-bottom: 36px; }
+    .hero-trust {
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 48px;
+      gap: 12px 24px;
+      font-size: 13.5px;
+      color: rgba(255,255,255,.55);
     }
-    /* ── HERO VISUAL ── */
-    .hero-visual { position: relative; min-width: 0; width: 100%; display: flex; align-items: center; }
-    .hv-dashboard { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,.65)); transform: scale(1.1); transform-origin: right center; }
-
+    .hero-trust-item { display: flex; align-items: center; gap: 7px; }
+    .hero-trust-item svg { width: 15px; height: 15px; color: var(--lime); flex-shrink: 0; }
     .hero-scroll-cue {
       display: none;
       align-items: center;
@@ -315,6 +376,13 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-scroll-cue { animation: none; }
+    }
+
+    /* Entrada escalonada del contenido del hero */
+    .hero-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .hero-in.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-in { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── SECTION COMMONS ── */
@@ -656,17 +724,10 @@
     .footer-social a:hover { color: var(--black); background: var(--lime); border-color: var(--lime); }
     .footer-social svg { width: 15px; height: 15px; }
 
-    /* ── RESPONSIVE SMALL DESKTOP/LAPTOP ── */
-    @media (max-width: 1500px) and (min-width: 1101px) {
-      .hero { gap: 24px; padding-left: 32px; padding-right: 32px; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); }
-      .hv-dashboard { transform: scale(1.14); transform-origin: right center; }
-    }
-
     /* ── RESPONSIVE TABLET ── */
     @media (max-width: 1100px) {
-      .hero { grid-template-columns: 1fr; gap: 52px; }
-      .hero-visual { max-width: 680px; margin: 30px auto 0; width: 100%; }
-      .hv-dashboard { transform: scale(1.08); transform-origin: center; }
+      nav { padding: 0 32px; }
+      .nav-links { gap: 22px; }
       .dw-steps { flex-direction: column; gap: 22px; }
       .dw-connector { display: none; }
       .results-grid { grid-template-columns: 1fr; }
@@ -687,7 +748,9 @@
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; height: 66px; }
-      .nav-logo img { height: 42px; }
+      nav.is-scrolled { top: 10px; left: 12px; right: 12px; height: 58px; padding: 0 14px; }
+      nav.is-scrolled + .mobile-menu { inset: 80px 0 0 0; }
+      .nav-logo img, nav.is-scrolled .nav-logo img { height: 40px; }
       .nav-links { display: none; }
       nav > .btn { display: none; }
       .nav-burger { display: flex; }
@@ -698,15 +761,12 @@
       section { padding: 60px 20px; }
       .doing-wrap section { padding-left: 20px; padding-right: 20px; }
 
-      .hero { padding: 44px 20px 56px; text-align: center; gap: 44px; }
-      .hero-content { order: 1; }
-      .hero-visual { order: 2; margin-top: 0; }
-      .hero-scroll-cue { order: 3; }
-      .hero-title { letter-spacing: -1.5px; }
-      .hero-eyebrow { justify-content: center; }
-      .hero-subtitle { margin: 0 auto 32px; }
-      .hero-actions { justify-content: center; }
-      .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+      .hero { padding: 110px 20px 90px; }
+      #hero-fade { height: 160px; }
+      .hero-title br { display: none; }
+      .hero-subtitle { font-size: 15px; margin-bottom: 32px; }
+      .hero-actions { width: 100%; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
 
       .ts-wrap { padding: 60px 20px 0; }
       .ts-col { flex-direction: column; }
@@ -799,12 +859,11 @@
     }
 
     @media (max-width: 680px) {
-      .hv-dashboard { filter: drop-shadow(0 16px 28px rgba(0,0,0,.65)); }
       .hero-scroll-cue { display: flex; margin-top: 56px; }
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: clamp(42px, 13vw, 58px); }
+      .hero-title { font-size: clamp(28px, 8.5vw, 38px); letter-spacing: -0.03em; }
     }
   </style>
 </head>
@@ -841,24 +900,32 @@
   </div>
 
   <!-- HERO -->
-  <div class="hero-wrap">
+  <div class="hero-wrap" id="hero">
+    <div id="shader-bg" aria-hidden="true"></div>
+    <div id="hero-fade" aria-hidden="true"></div>
     <div class="hero">
       <div class="hero-content">
-        <div class="hero-eyebrow">Software Factory</div>
-        <h1 class="hero-title">
-          Build.<br />Ship.<br />Automate.<br /><span class="accent">Grow_</span>
+        <div class="hero-badge hero-in"><span class="dot" aria-hidden="true"></span>Software Factory</div>
+        <h1 class="hero-title hero-in">
+          Implementamos <span class="accent">IA</span> que transforma<br />
+          la operación de tu empresa
         </h1>
-        <p class="hero-subtitle">
-          Creamos productos digitales, automatizamos procesos e implementamos IA para que las empresas escalen más rápido.
+        <p class="hero-subtitle hero-in">
+          Desarrollamos y capacitamos a empresas en el uso de IA para que operen con más eficiencia, más control y menos fricción.
         </p>
-        <div class="hero-actions">
-          <a href="#contacto" class="btn btn-primary btn-large">Empecemos →</a>
-          <a href="#casos" class="btn btn-outline btn-large">Ver proyectos</a>
+        <div class="hero-actions hero-in">
+          <a href="#contacto" class="btn btn-primary btn-large">Agendar mi auditoría →</a>
         </div>
-      </div>
-
-      <div class="hero-visual">
-        <img class="hv-dashboard" src="assets/hero-dashboard.png" alt="Dashboard de espressodevs mostrando proyectos activos, automaciones y despliegues" />
+        <div class="hero-trust hero-in">
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>+300 empresas confían en nosotros</span>
+          </div>
+          <div class="hero-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Resultados garantizados</span>
+          </div>
+        </div>
       </div>
 
       <a href="#lo-que-hacemos" class="hero-scroll-cue" aria-label="Desplazate para ver más">
@@ -1224,6 +1291,210 @@
           el.classList.add('reveal');
           revealObserver.observe(el);
         });
+      }
+    })();
+  </script>
+
+  <script>
+    // ── Nav: transparente arriba, con fondo al scrollear ──
+    (function () {
+      var nav = document.querySelector('nav');
+      if (!nav) return;
+      var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 40); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // ── Hero: entrada escalonada del contenido ──
+    (function () {
+      var items = document.querySelectorAll('.hero-in');
+      items.forEach(function (el, i) {
+        setTimeout(function () { el.classList.add('visible'); }, 120 + i * 110);
+      });
+    })();
+
+    // ── Hero: fondo aurora WebGL ──
+    (function () {
+      var el = document.getElementById('shader-bg');
+      if (!el) return;
+
+      var canvas = document.createElement('canvas');
+      canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+      el.appendChild(canvas);
+
+      // Gradiente superpuesto (fundido arriba + abajo)
+      var overlay = document.createElement('div');
+      overlay.style.cssText = 'position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(6,6,10,0.35) 0%,transparent 50%,rgba(6,6,10,0.2) 100%);';
+      el.appendChild(overlay);
+
+      var gl = canvas.getContext('webgl');
+      if (!gl) return;
+
+      var vertSrc = [
+        'attribute vec2 aPosition;',
+        'void main(){gl_Position=vec4(aPosition,0.0,1.0);}'
+      ].join('\n');
+
+      var fragSrc = [
+        'precision highp float;',
+        'uniform vec2  iResolution;',
+        'uniform float iTime;',
+        'uniform vec2  iMouse;',
+        'uniform float uFlowSpeed;',
+        'uniform float uColorIntensity;',
+        'uniform float uNoiseLayers;',
+        'uniform float uMouseInfluence;',
+
+        'float hash(vec2 p){',
+        '  p=fract(p*vec2(123.34,456.21));',
+        '  p+=dot(p,p+45.32);',
+        '  return fract(p.x*p.y);',
+        '}',
+
+        'float fbm(vec3 p){',
+        '  float f=0.0,amp=0.5;',
+        '  for(int i=0;i<8;i++){',
+        '    if(float(i)>=uNoiseLayers)break;',
+        '    f+=amp*hash(p.xy);',
+        '    p*=2.0; amp*=0.5;',
+        '  }',
+        '  return f;',
+        '}',
+
+        'float map(vec3 p){',
+        '  vec3 q=p;',
+        '  q.z+=iTime*uFlowSpeed;',
+        '  vec2 m=(iMouse/iResolution-0.5)*2.0;',
+        '  q.xy+=m*uMouseInfluence;',
+        '  float f=fbm(q*2.0);',
+        '  f*=sin(p.y*2.0+iTime)*0.5+0.5;',
+        '  return clamp(f,0.0,1.0);',
+        '}',
+
+        'void main(){',
+        '  vec2 uv=(gl_FragCoord.xy-0.5*iResolution)/iResolution.y;',
+        '  vec3 ro=vec3(0.0,-1.0,0.0);',
+        '  vec3 rd=normalize(vec3(uv,1.0));',
+        '  vec3 col=vec3(0.0);',
+        '  float t=0.0;',
+
+        // Paleta (5 colores) — cambiar acá para ajustar el tono del aurora
+        '  vec3 cPurple  =vec3(0.239,0.090,0.522);',  // #3D1785 violeta profundo
+        '  vec3 cGlitter =vec3(0.533,0.212,0.992);',  // #8836FD violeta del logo
+        '  vec3 cPink    =vec3(0.651,0.420,1.000);',  // #A66BFF violeta claro
+        '  vec3 cLavender=vec3(0.776,1.000,0.000);',  // #C6FF00 lima (--lime), toque de acento
+        '  vec3 cSoft    =vec3(0.769,0.651,1.000);',  // #C4A6FF violeta suave
+
+        '  for(int i=0;i<32;i++){',
+        '    vec3 p=ro+rd*t;',
+        '    float d=map(p);',
+        '    if(d>0.0){',
+        '      float t1=sin(iTime*0.30+p.y*1.5)*0.5+0.5;',
+        '      float t2=sin(iTime*0.50+p.x*1.2+1.0)*0.5+0.5;',
+        '      float t3=sin(iTime*0.18+p.z*0.9+2.1)*0.5+0.5;',
+        '      vec3 warm=mix(cPink,cSoft,t1);',
+        '      vec3 cool=mix(cPurple,cGlitter,t2);',
+        '      vec3 mid =mix(cLavender,cPink,t3);',
+        '      vec3 ac  =mix(mix(warm,cool,0.5),mid,t3*0.4);',
+        '      col+=ac*d*0.1*uColorIntensity;',
+        '    }',
+        '    t+=0.1;',
+        '  }',
+
+        '  gl_FragColor=vec4(col,1.0);',
+        '}'
+      ].join('\n');
+
+      function compile(src, type) {
+        var sh = gl.createShader(type);
+        gl.shaderSource(sh, src);
+        gl.compileShader(sh);
+        if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+          console.error('Shader:', gl.getShaderInfoLog(sh));
+          return null;
+        }
+        return sh;
+      }
+
+      var vs = compile(vertSrc, gl.VERTEX_SHADER);
+      var fs = compile(fragSrc, gl.FRAGMENT_SHADER);
+      if (!vs || !fs) return;
+
+      var prog = gl.createProgram();
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        console.error('Link:', gl.getProgramInfoLog(prog));
+        return;
+      }
+      gl.useProgram(prog);
+
+      var verts = new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]);
+      var buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+      var aPos = gl.getAttribLocation(prog, 'aPosition');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+      var uRes   = gl.getUniformLocation(prog, 'iResolution');
+      var uTime  = gl.getUniformLocation(prog, 'iTime');
+      var uMouse = gl.getUniformLocation(prog, 'iMouse');
+      var uFlow  = gl.getUniformLocation(prog, 'uFlowSpeed');
+      var uCI    = gl.getUniformLocation(prog, 'uColorIntensity');
+      var uNL    = gl.getUniformLocation(prog, 'uNoiseLayers');
+      var uMI    = gl.getUniformLocation(prog, 'uMouseInfluence');
+
+      var mx = 0.5, my = 0.5;
+      window.addEventListener('mousemove', function (e) {
+        var r = canvas.getBoundingClientRect();
+        mx = e.clientX - r.left;
+        my = e.clientY - r.top;
+      });
+
+      function resize() {
+        canvas.width  = canvas.clientWidth  || window.innerWidth;
+        canvas.height = canvas.clientHeight || window.innerHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        if (reduceMotion) draw();
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var t0 = performance.now();
+      var rafId;
+
+      function draw() {
+        var t = (performance.now() - t0) / 1000.0;
+        gl.uniform1f(uTime,  t);
+        gl.uniform2f(uMouse, mx, canvas.height - my);
+        gl.uniform1f(uFlow,  0.4);
+        gl.uniform1f(uCI,    0.72);
+        gl.uniform1f(uNL,    4.0);
+        gl.uniform1f(uMI,    0.3);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      }
+
+      function render() {
+        if (gl.isContextLost()) return;
+        draw();
+        rafId = requestAnimationFrame(render);
+      }
+
+      if (reduceMotion) { t0 -= 4000; draw(); return; }
+
+      // Solo anima mientras el hero está en pantalla
+      var heroEl = document.getElementById('hero');
+      if ('IntersectionObserver' in window && heroEl) {
+        new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { if (!rafId) render(); }
+          else { cancelAnimationFrame(rafId); rafId = null; }
+        }, { threshold: 0 }).observe(heroEl);
+      } else {
+        render();
       }
     })();
   </script>
