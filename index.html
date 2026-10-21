@@ -886,6 +886,9 @@
     .xp-bg {
       position: absolute; inset: 0;
       background: #7b2ff7 url('assets/brand/expandite-cups.webp') center / cover no-repeat;
+      /* El JS nunca baja la escala de ~1.08, así que el borde difuminado del
+         blur queda siempre fuera de la pantalla. */
+      filter: blur(2px);
       transform-origin: 50% 50%;
       will-change: transform;
     }
