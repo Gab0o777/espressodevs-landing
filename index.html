@@ -64,6 +64,78 @@
     "url": "https://www.espressodevs.com"
   }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué tipo de proyectos hacen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Productos digitales a medida: webs, apps móviles, plataformas y dashboards. También automatizamos procesos, armamos bots de WhatsApp e integramos IA en la operación de tu negocio. Y tenemos productos propios, como Calendi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un proyecto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del alcance. Arrancamos con una auditoría para entender tu operación y dónde está el impacto real; con eso te pasamos una propuesta con alcance, tiempos y costo antes de empezar, sin sorpresas en el camino."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en estar funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una automatización puntual o un primer MVP puede estar andando en pocas semanas. Los proyectos más grandes los dividimos en etapas para que veas resultados desde el principio, sin esperar meses a un lanzamiento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tengo que cambiar las herramientas que ya uso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesariamente. Trabajamos sobre lo que ya tenés —WhatsApp, tu CRM, planillas, Mercado Pago, tu sistema de gestión— y lo conectamos para que funcione como una sola operación. Si algo conviene cambiarlo, te lo decimos con el porqué."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito saber de tecnología para trabajar con ustedes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para nada. Nosotros nos encargamos de toda la parte técnica; vos aportás lo que mejor conocés, que es tu negocio. Te explicamos cada paso en simple y te dejamos todo funcionando."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa después del lanzamiento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No desaparecemos. Seguimos con soporte, mantenimiento y mejoras: medimos cómo se usa lo que construimos y lo vamos ajustando para que siga rindiendo a medida que tu negocio crece."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajan solo con empresas de Uruguay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estamos en Montevideo, pero trabajamos de forma remota con equipos de toda la región y del mundo. From Uruguay to the world."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo empezamos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Agendá tu auditoría o escribinos a hola@espressodevs.com. Charlamos sobre tu operación, detectamos qué conviene automatizar o construir primero y te proponemos un plan concreto."
+      }
+    }
+  ]
+}
+  </script>
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon_32.png?v=2" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon_180.png?v=2" />
@@ -807,7 +879,7 @@
 
     /* ── EXPANDITE (sección atada al scroll) ──
        Una palabra gigante en lima cruza el patrón de tazas, hace zoom dentro
-       de la "i" hasta tapar toda la pantalla y sobre ese lima aparece el
+       de la "t" hasta tapar toda la pantalla y sobre ese lima aparece el
        contenido. Todo sale del progreso del scroll (ver script "Expandite"). */
     section.xp { position: relative; height: 380vh; padding: 0; background: var(--lime); }
     .xp-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
@@ -928,6 +1000,47 @@
     .robot-cta .btn { background: var(--black); color: var(--white); align-self: flex-start; position: relative; z-index: 1; }
     .robot-cta .btn:hover { background: #1a1a1a; }
 
+
+    /* ── PREGUNTAS FRECUENTES ── */
+    .faq-section { background: var(--black); }
+    .faq-inner { max-width: 1010px; margin: 0 auto; text-align: center; }
+    .faq-icon { width: 60px; height: 60px; transform: rotate(-6deg); margin-bottom: 20px; }
+    .faq-title {
+      font-size: clamp(44px, 6.4vw, 96px); font-weight: 900;
+      line-height: .92; letter-spacing: -0.05em; color: var(--white);
+      margin-bottom: 72px;
+    }
+    .faq-list { text-align: left; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,.16); }
+    .faq-item summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      padding: 26px 0; font-size: clamp(17px, 1.5vw, 21px); font-weight: 500; line-height: 1.4; color: var(--white);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--lime); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; border-radius: 4px; }
+    .faq-chevron {
+      flex-shrink: 0; width: 13px; height: 13px; margin-right: 6px;
+      border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: translateY(-4px) rotate(45deg); transition: transform .3s ease;
+    }
+    .faq-item[open] .faq-chevron { transform: translateY(3px) rotate(-135deg); }
+    .faq-answer p { font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.66); max-width: 820px; padding: 0 0 28px; }
+    /* Apertura animada donde el navegador lo soporta (Chrome 131+); el resto abre al instante */
+    @supports (interpolate-size: allow-keywords) {
+      .faq-list { interpolate-size: allow-keywords; }
+      .faq-item::details-content {
+        block-size: 0; overflow: hidden;
+        transition: block-size .35s ease, content-visibility .35s allow-discrete;
+      }
+      .faq-item[open]::details-content { block-size: auto; }
+    }
+    @media (max-width: 900px) {
+      .faq-title { margin-bottom: 40px; }
+      .faq-item summary { padding: 20px 0; }
+      .faq-answer p { font-size: 15px; padding-bottom: 22px; }
+    }
 
     /* ── CTA / FOOTER ── */
     .cta-section {
@@ -1365,7 +1478,7 @@
   <section class="xp" id="lo-que-hacemos" aria-label="Lo que hacemos">
     <div class="xp-sticky">
       <div class="xp-bg" aria-hidden="true"></div>
-      <div class="xp-word" aria-hidden="true">Expand<span class="xp-zoom">i</span>te</div>
+      <div class="xp-word" aria-hidden="true">Expandi<span class="xp-zoom">t</span>e</div>
       <div class="xp-fill" aria-hidden="true"></div>
       <div class="xp-content">
         <h2 class="xp-title">Expandite más allá<br />de lo manual.</h2>
@@ -1431,6 +1544,48 @@
           </div>
           <a href="#contacto" class="btn">Automatizar mi negocio →</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <svg class="faq-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 10 L58 6 L54 44 L36 46 L30 58 L28 46 L10 46 Z" fill="#C6FF00"/><circle cx="27" cy="22" r="2.6" fill="#000"/><circle cx="37" cy="21.4" r="2.6" fill="#000"/><path d="M24 30 Q32 38 41 29" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      <h2 class="faq-title">Preguntas<br />frecuentes</h2>
+      <div class="faq-list">
+          <details class="faq-item">
+            <summary>¿Qué tipo de proyectos hacen?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Productos digitales a medida: webs, apps móviles, plataformas y dashboards. También automatizamos procesos, armamos bots de WhatsApp e integramos IA en la operación de tu negocio. Y tenemos productos propios, como Calendi.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cuánto cuesta un proyecto?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Depende del alcance. Arrancamos con una auditoría para entender tu operación y dónde está el impacto real; con eso te pasamos una propuesta con alcance, tiempos y costo antes de empezar, sin sorpresas en el camino.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cuánto tarda en estar funcionando?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Una automatización puntual o un primer MVP puede estar andando en pocas semanas. Los proyectos más grandes los dividimos en etapas para que veas resultados desde el principio, sin esperar meses a un lanzamiento.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Tengo que cambiar las herramientas que ya uso?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>No necesariamente. Trabajamos sobre lo que ya tenés —WhatsApp, tu CRM, planillas, Mercado Pago, tu sistema de gestión— y lo conectamos para que funcione como una sola operación. Si algo conviene cambiarlo, te lo decimos con el porqué.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Necesito saber de tecnología para trabajar con ustedes?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Para nada. Nosotros nos encargamos de toda la parte técnica; vos aportás lo que mejor conocés, que es tu negocio. Te explicamos cada paso en simple y te dejamos todo funcionando.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Qué pasa después del lanzamiento?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>No desaparecemos. Seguimos con soporte, mantenimiento y mejoras: medimos cómo se usa lo que construimos y lo vamos ajustando para que siga rindiendo a medida que tu negocio crece.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Trabajan solo con empresas de Uruguay?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Estamos en Montevideo, pero trabajamos de forma remota con equipos de toda la región y del mundo. From Uruguay to the world.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>¿Cómo empezamos?<span class="faq-chevron" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Agendá tu auditoría o escribinos a hola@espressodevs.com. Charlamos sobre tu operación, detectamos qué conviene automatizar o construir primero y te proponemos un plan concreto.</p></div>
+          </details>
       </div>
     </div>
   </section>
@@ -1957,7 +2112,7 @@
     // 0 = el borde superior de la sección entra por abajo; 1 = se termina el
     // tramo fijo (la sección queda fija desde ~0.26). Un solo movimiento
     // continuo (0.12–0.70): la palabra entra grande por la derecha y no para
-    // de crecer —lento al principio, cada vez más rápido— alrededor de la "i"
+    // de crecer —lento al principio, cada vez más rápido— alrededor de la "t"
     // hasta tapar la pantalla. El lima la reemplaza (0.64–0.71) y el
     // contenido aparece enseguida (0.68–0.85).
     (function () {
@@ -1978,8 +2133,9 @@
       function measure() {
         vw = window.innerWidth;
         var fs = parseFloat(getComputedStyle(word).fontSize);
-        // Punto de zoom: centro del palo de la "i" (offset* ignora transforms)
-        ox = zoomLetter.offsetLeft + zoomLetter.offsetWidth / 2;
+        // Punto de zoom: el palo vertical de la "t", que en Inter queda a ~40%
+        // del ancho de la letra (offset* ignora transforms)
+        ox = zoomLetter.offsetLeft + zoomLetter.offsetWidth * 0.4;
         oy = fs * 0.6;
         word.style.transformOrigin = ox + 'px ' + oy + 'px';
         // Lo suficiente para que el palo (~0.11em) cubra todo el ancho
