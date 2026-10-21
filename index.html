@@ -110,9 +110,6 @@
       transition: opacity .7s cubic-bezier(.16,.8,.3,1), transform .7s cubic-bezier(.16,.8,.3,1);
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .case-grid > .reveal:nth-child(2) { transition-delay: .06s; }
-    .case-grid > .reveal:nth-child(3) { transition-delay: .12s; }
-    .case-grid > .reveal:nth-child(4) { transition-delay: .18s; }
     .stats-card > .reveal:nth-child(2) { transition-delay: .06s; }
     .stats-card > .reveal:nth-child(3) { transition-delay: .12s; }
     .stats-card > .reveal:nth-child(4) { transition-delay: .18s; }
@@ -706,7 +703,7 @@
 
     /* ── PROYECTOS SELECCIONADOS (CALENDI SHOWCASE) ── */
     .ts-wrap { background: var(--black); border-bottom: 1px solid var(--border); padding: 88px 48px 0; overflow: hidden; }
-    .ts-wrap .section-inner, .doing-wrap .section-inner { max-width: 1400px; }
+    .ts-wrap .section-inner { max-width: 1400px; }
     /* Sube como una hoja sobre la animación del asistente, que queda fija debajo */
     .ts-wrap.ts-sheet {
       position: relative;
@@ -808,116 +805,89 @@
     }
     .ts-building-text .accent { -webkit-text-stroke: 2.5px rgba(198,255,0,.65); }
 
-    /* ── LO QUE HACEMOS ── */
-    .doing-wrap { background: var(--black); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .dw-header { margin-bottom: 48px; }
-    .dw-steps { display: flex; align-items: flex-start; margin-bottom: 56px; }
-    .dw-step {
-      flex: 1; min-width: 0;
-      height: clamp(300px, 27vw, 400px);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .dw-step img { height: 100%; width: auto; max-width: 100%; object-fit: contain; display: block; border-radius: 20px; }
-    .dw-connector { width: 44px; flex-shrink: 0; position: relative; margin-top: 58px; height: 8px; }
-    .dw-connector::before {
-      content: ''; position: absolute; left: 0; right: 0; top: 50%;
-      height: 2px; background: currentColor; opacity: .5; transform: translateY(-50%);
-    }
-    .dw-connector::after {
-      content: ''; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px;
-      border-radius: 50%; background: currentColor; transform: translate(-50%,-50%);
-      box-shadow: 0 0 10px currentColor;
-    }
-    .dw-connector-lime { color: var(--lime); }
-    .dw-connector-violet { color: var(--violet); }
-
-    .dw-strip {
-      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-      padding-top: 40px; border-top: 1px solid var(--border);
-    }
-    .dw-strip-mascot { height: 64px; width: auto; flex-shrink: 0; }
-    .dw-strip-words { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
-    .dw-word {
-      font-weight: 900;
-      font-size: clamp(26px, 3.6vw, 48px);
-      letter-spacing: -1px;
-      text-transform: uppercase;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(255,255,255,.35);
-    }
-    .dw-word-fill { color: var(--lime); -webkit-text-stroke: 0; }
-    .dw-arrow { color: var(--mid); font-size: 22px; font-weight: 700; }
-    .dw-strip-cta { white-space: nowrap; }
-
-    /* ── CASOS DE ÉXITO ── */
-    .case-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .case-card {
-      display: block;
-      position: relative;
-      aspect-ratio: 285 / 350;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      color: inherit;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-    }
-    .case-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: 0 16px 36px rgba(0,0,0,.4); }
-    .case-card:hover .case-bg { transform: scale(1.05); }
-    .case-dots { display: none; }
-    .case-bg {
+    /* ── EXPANDITE (sección atada al scroll) ──
+       Una palabra gigante en lima cruza el patrón de tazas, hace zoom dentro
+       de la "i" hasta tapar toda la pantalla y sobre ese lima aparece el
+       contenido. Todo sale del progreso del scroll (ver script "Expandite"). */
+    section.xp { position: relative; height: 420vh; padding: 0; background: var(--lime); }
+    .xp-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+    .xp-bg {
       position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: grayscale(.25) contrast(1.05) brightness(.72) blur(1px);
-      transform: scale(1.03);
-      transition: transform .4s ease;
+      background: #7b2ff7 url('assets/brand/expandite-cups.webp') center / cover no-repeat;
+      transform-origin: 50% 50%;
+      will-change: transform;
     }
-    .case-card::after {
-      content: '';
+    .xp-word {
+      position: absolute; left: 0; top: 50%;
+      font-size: 40vh; font-weight: 900; line-height: 1; letter-spacing: -0.06em;
+      color: var(--lime); white-space: nowrap;
+      margin-top: -0.5em; padding-right: 0.1em;
+      will-change: transform;
+      pointer-events: none;
+    }
+    .xp-fill {
+      position: absolute; inset: 0; opacity: 0;
+      background-color: var(--lime);
+      background-image:
+        linear-gradient(rgba(0,0,0,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.07) 1px, transparent 1px);
+      background-size: 12.5vw 12.5vw;
+      background-position: center;
+    }
+    .xp-content {
       position: absolute; inset: 0;
-      background: rgba(0,0,0,.2);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 96px 48px 48px; text-align: center; color: var(--black);
+      opacity: 0; visibility: hidden;
     }
-    .case-body { position: relative; z-index: 1; height: 100%; padding: 22px; display: flex; flex-direction: column; }
-    .case-project {
-      display: block;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--lime);
-      margin-bottom: 16px;
+    .xp-title {
+      font-size: clamp(40px, 6.4vw, 104px); font-weight: 900;
+      line-height: .92; letter-spacing: -0.05em;
     }
-    .case-tag {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      color: var(--text);
-      padding: 6px 12px;
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 100px;
-      margin-top: 14px;
+    .xp-sub { font-size: clamp(16px, 1.4vw, 21px); font-weight: 500; margin: 22px 0 52px; color: rgba(0,0,0,.72); }
+    .xp-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 1160px; }
+    .xp-card {
+      background: var(--black); color: var(--white); text-align: left;
+      padding: 28px 28px 24px; border-radius: 4px;
+      display: flex; flex-direction: column; min-height: 230px;
     }
-    .case-stat { font-weight: 900; font-size: 34px; letter-spacing: -1.5px; line-height: 1; margin-bottom: 10px; }
-    .case-headline { font-weight: 800; font-size: 17px; line-height: 1.35; letter-spacing: -.3px; color: var(--white); }
-    .case-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
-    .case-link { font-size: 13px; font-weight: 800; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-    .case-link:hover, .case-card:hover .case-link { color: var(--lime); }
-    .case-arrow-btn {
-      width: 32px; height: 32px; flex-shrink: 0;
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 50%;
+    .xp-card h3 { display: flex; align-items: center; gap: 12px; font-size: clamp(22px, 1.9vw, 30px); font-weight: 800; letter-spacing: -0.03em; }
+    .xp-card-icon {
+      width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+      background: var(--lime); color: var(--black);
       display: flex; align-items: center; justify-content: center;
-      color: var(--white);
-      transition: background .2s, border-color .2s;
     }
-    .case-arrow-btn svg { width: 15px; height: 15px; }
-    .case-card:hover .case-arrow-btn { background: var(--lime); border-color: var(--lime); color: var(--black); }
+    .xp-card-icon svg { width: 19px; height: 19px; }
+    .xp-card p { font-size: 15.5px; line-height: 1.5; color: rgba(255,255,255,.68); margin-top: 14px; }
+    .xp-card a {
+      margin-top: auto; padding-top: 22px; align-self: flex-start;
+      font-size: 13px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--lime); text-decoration: none; border-bottom: 1px solid rgba(198,255,0,.4);
+    }
+    .xp-card a:hover { border-bottom-color: var(--lime); }
+
+    /* Sin animación: queda directamente el estado final */
+    @media (prefers-reduced-motion: reduce) {
+      section.xp { height: auto; }
+      .xp-sticky { position: relative; height: auto; min-height: 100vh; }
+      .xp-bg, .xp-word { display: none; }
+      .xp-fill { opacity: 1; }
+      .xp-content { position: relative; opacity: 1; visibility: visible; min-height: 100vh; }
+    }
+    @media (max-width: 900px) {
+      .xp-word { font-size: 34vh; }
+      .xp-content { padding: 84px 20px 24px; }
+      .xp-title { font-size: clamp(34px, 10vw, 48px); }
+      .xp-sub { font-size: 15px; margin: 12px 0 20px; }
+      .xp-cards { grid-template-columns: 1fr; gap: 8px; }
+      .xp-card { min-height: 0; padding: 14px 16px; }
+      .xp-card h3 { font-size: 19px; gap: 10px; }
+      .xp-card-icon { width: 28px; height: 28px; border-radius: 8px; }
+      .xp-card-icon svg { width: 16px; height: 16px; }
+      .xp-card p { font-size: 13.5px; margin-top: 6px; }
+      .xp-card a { display: none; }
+      .xp-fill { background-size: 25vw 25vw; }
+    }
 
     /* ── RESULTADOS ── */
     .results-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: stretch; }
@@ -1046,14 +1016,11 @@
     @media (max-width: 1100px) {
       nav { padding: 0 32px; }
       .nav-links { gap: 22px; }
-      .dw-steps { flex-direction: column; gap: 22px; }
-      .dw-connector { display: none; }
       .results-grid { grid-template-columns: 1fr; }
       .cx-card { grid-template-columns: 1fr; padding: 36px 32px 28px; }
       .cx-visual { margin: 0 auto; max-width: 640px; }
     }
     @media (max-width: 1024px) {
-      .case-grid { grid-template-columns: 1fr 1fr; }
       .stat-item { padding: 26px 20px; }
     }
 
@@ -1071,7 +1038,6 @@
       .btn-large { font-size: 14px; padding: 13px 24px; }
 
       section { padding: 60px 20px; }
-      .doing-wrap section { padding-left: 20px; padding-right: 20px; }
 
       .hero { padding: 110px 20px 90px; }
       #hero-fade { height: 160px; }
@@ -1101,38 +1067,7 @@
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-header > div { width: 100%; min-width: 0; }
 
-      .dw-strip { gap: 16px; padding-top: 28px; }
-      .dw-strip-mascot { height: 44px; }
-      .dw-word { font-size: clamp(22px, 8vw, 34px); }
 
-      .case-grid,
-      .product-grid {
-        display: flex;
-        grid-template-columns: unset;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 14px;
-        margin: 0 -20px;
-        padding: 0 20px 4px;
-        scrollbar-width: none;
-      }
-      .case-grid::-webkit-scrollbar, .product-grid::-webkit-scrollbar { display: none; }
-      .case-card { flex: 0 0 84%; scroll-snap-align: center; }
-      .product-grid .case-card { aspect-ratio: 4 / 4.4; }
-      .case-dots {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-      }
-      .case-dot {
-        width: 7px; height: 7px;
-        border-radius: 50%;
-        background: rgba(255,255,255,.22);
-        transition: background .2s, transform .2s;
-      }
-      .case-dot.is-active { background: var(--lime); transform: scale(1.2); }
 
       .stats-card { grid-template-columns: 1fr; }
       .stat-item { border-right: none !important; }
@@ -1198,7 +1133,7 @@
       <img src="assets/brand/logo-horizontal.png" alt="espressodevs" />
     </a>
     <ul class="nav-links">
-      <li><a href="#casos">Proyectos</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#lo-que-hacemos">Nosotros</a></li>
       <li><a href="#">Insights</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -1212,7 +1147,7 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-menu-links">
-      <li><a href="#casos">Proyectos</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#lo-que-hacemos">Nosotros</a></li>
       <li><a href="#">Insights</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -1379,7 +1314,7 @@
   </section>
 
   <!-- PROYECTOS SELECCIONADOS -->
-  <section class="ts-wrap ts-sheet">
+  <section class="ts-wrap ts-sheet" id="proyectos">
     <div class="section-inner">
       <div class="ts-layout">
         <div class="ts-eyebrow-row">
@@ -1424,112 +1359,32 @@
     </div>
   </section>
 
-  <!-- LO QUE HACEMOS -->
-  <div class="doing-wrap" id="lo-que-hacemos">
-    <section style="padding-top: 100px; padding-bottom: 100px;">
-      <div class="section-inner">
-        <div class="dw-header">
-          <div class="section-tag">Lo que hacemos_</div>
-          <h2 class="section-title">Convertimos ideas y procesos en software que funciona.</h2>
-          <p class="section-sub">Del primer prototipo a la automatización completa de tu operación.</p>
+  <!-- EXPANDITE (sección atada al scroll) -->
+  <section class="xp" id="lo-que-hacemos" aria-label="Lo que hacemos">
+    <div class="xp-sticky">
+      <div class="xp-bg" aria-hidden="true"></div>
+      <div class="xp-word" aria-hidden="true">Expand<span class="xp-zoom">i</span>te</div>
+      <div class="xp-fill" aria-hidden="true"></div>
+      <div class="xp-content">
+        <h2 class="xp-title">Expandite más allá<br />de lo manual.</h2>
+        <p class="xp-sub">Convertimos ideas y procesos en software que funciona:</p>
+        <div class="xp-cards">
+          <article class="xp-card">
+            <h3><span class="xp-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Productos digitales</h3>
+            <p>Apps, plataformas y dashboards a medida, del primer prototipo al lanzamiento.</p>
+            <a href="#contacto">Hablemos <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="xp-card">
+            <h3><span class="xp-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>Automatización</h3>
+            <p>Conectamos WhatsApp, CRM, pagos y planillas para que tu operación corra sola.</p>
+            <a href="#contacto">Hablemos <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="xp-card">
+            <h3><span class="xp-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.4z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span>IA aplicada</h3>
+            <p>Asistentes e insights con IA integrados a cómo ya trabaja tu equipo.</p>
+            <a href="#contacto">Hablemos <span aria-hidden="true">→</span></a>
+          </article>
         </div>
-
-        <div class="dw-steps">
-          <div class="dw-step"><img src="assets/photos/step-01-productos.png" alt="Paso 1: Productos digitales — dashboard y app móvil de ejemplo" /></div>
-          <div class="dw-connector dw-connector-lime" aria-hidden="true"></div>
-          <div class="dw-step"><img src="assets/photos/step-02-automatizacion.png" alt="Paso 2: Automatización — flujo conectando leads, WhatsApp, CRM y pagos" /></div>
-          <div class="dw-connector dw-connector-violet" aria-hidden="true"></div>
-          <div class="dw-step"><img src="assets/photos/step-03-ia.png" alt="Paso 3: IA aplicada — asistente de IA e insights de negocio" /></div>
-        </div>
-
-        <div class="dw-strip">
-          <img class="dw-strip-mascot" src="assets/brand/mascot-head.png" alt="" aria-hidden="true" />
-          <div class="dw-strip-words">
-            <span class="dw-word">Build</span>
-            <span class="dw-arrow">→</span>
-            <span class="dw-word">Ship</span>
-            <span class="dw-arrow">→</span>
-            <span class="dw-word">Automate</span>
-            <span class="dw-arrow">→</span>
-            <span class="dw-word dw-word-fill">Grow_</span>
-          </div>
-          <a href="#contacto" class="btn btn-outline dw-strip-cta">Ver cómo trabajamos →</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- CASOS DE ÉXITO -->
-  <section id="casos" style="padding-top: 48px;">
-    <div class="section-inner">
-      <div class="section-header">
-        <div>
-          <div class="section-tag">Casos de éxito</div>
-          <h2 class="section-title">Resultados reales para negocios reales</h2>
-        </div>
-        <a href="#contacto" class="section-link">Ver todos los proyectos →</a>
-      </div>
-      <div class="case-grid">
-
-        <div class="case-card">
-          <img class="case-bg" src="assets/photos/case-turnix.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Calendi</span>
-            <div class="case-stat">+92%</div>
-            <div class="case-headline">menos tiempo administrativo</div>
-            <span class="case-tag">Automatización</span>
-            <div class="case-footer">
-              <a href="/calendi/" class="case-link">Ver caso →</a>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <img class="case-bg" src="assets/photos/case-mercadopago.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Mercado Pago</span>
-            <div class="case-headline">Automatización de operaciones internas</div>
-            <div class="case-footer">
-              <a href="#contacto" class="case-link">Ver caso →</a>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <img class="case-bg" src="assets/photos/case-healthypets.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Healthy Pets</span>
-            <div class="case-stat">-70%</div>
-            <div class="case-headline">en tiempo de respuesta</div>
-            <span class="case-tag">Desarrollo a medida</span>
-            <div class="case-footer">
-              <a href="#contacto" class="case-link">Ver caso →</a>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="case-card">
-          <img class="case-bg" src="assets/photos/case-dataflow.png" alt="" />
-          <div class="case-body">
-            <span class="case-project">Data Flow</span>
-            <div class="case-headline">Dashboard en tiempo real para toma de decisiones</div>
-            <span class="case-tag">Data &amp; Analytics</span>
-            <div class="case-footer">
-              <a href="#contacto" class="case-link">Ver caso →</a>
-              <span class="case-arrow-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="case-dots" role="tablist" aria-label="Casos de éxito">
-        <span class="case-dot is-active"></span>
-        <span class="case-dot"></span>
-        <span class="case-dot"></span>
-        <span class="case-dot"></span>
       </div>
     </div>
   </section>
@@ -1601,7 +1456,6 @@
             <ul class="footer-links">
               <li><a href="/calendi/">calendi</a></li>
               <li><a href="#contacto">Calendi Creators</a></li>
-              <li><a href="#casos">Ver casos de éxito</a></li>
             </ul>
           </div>
           <div>
@@ -1661,30 +1515,6 @@
         });
       }
 
-// ── Casos de éxito carousel dots ──
-      var caseGrid = document.querySelector('.case-grid');
-      var caseDots = document.querySelectorAll('.case-dot');
-      if (caseGrid && window.matchMedia('(max-width: 900px)').matches) {
-        var healthyPetsCard = caseGrid.querySelectorAll('.case-card')[2];
-        if (healthyPetsCard) {
-          caseGrid.scrollLeft = healthyPetsCard.offsetLeft - (caseGrid.clientWidth - healthyPetsCard.clientWidth) / 2;
-        }
-      }
-      if (caseGrid && caseDots.length && 'IntersectionObserver' in window) {
-        var caseCards = caseGrid.querySelectorAll('.case-card');
-        var caseObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.intersectionRatio > 0.6) {
-              var idx = Array.prototype.indexOf.call(caseCards, entry.target);
-              caseDots.forEach(function (dot, i) {
-                dot.classList.toggle('is-active', i === idx);
-              });
-            }
-          });
-        }, { root: caseGrid, threshold: [0.6] });
-        caseCards.forEach(function (card) { caseObserver.observe(card); });
-      }
-
       // ── Stretch "Building what's next_" to fill the section width ──
       var buildingText = document.querySelector('.ts-building-text');
       if (buildingText) {
@@ -1708,8 +1538,8 @@
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if ('IntersectionObserver' in window && !prefersReducedMotion) {
         var revealSelectors = [
-          '.section-header', '.case-card', '.stat-item',
-          '.robot-cta', '.dw-step', '.dw-header', '.dw-strip', '.cta-inner',
+          '.section-header', '.stat-item',
+          '.robot-cta', '.cta-inner',
           '.ts-eyebrow-row', '.ts-title-row', '.ts-main', '.ts-building'
         ];
         var revealEls = document.querySelectorAll(revealSelectors.join(','));
@@ -2117,6 +1947,83 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
       onScroll();
+    })();
+  </script>
+
+  <script>
+    // ── Expandite: toda la animación sale del progreso del scroll (0 → 1) ──
+    // 0 = el borde superior de la sección entra por abajo; 1 = se termina el
+    // tramo fijo. La palabra entra por la derecha (0.02–0.45), hace zoom
+    // dentro de la "i" hasta tapar la pantalla (0.40–0.66), el lima la
+    // reemplaza (0.60–0.68) y aparece el contenido (0.70–0.90).
+    (function () {
+      var section = document.querySelector('.xp');
+      if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var bg = section.querySelector('.xp-bg'), word = section.querySelector('.xp-word');
+      var zoomLetter = section.querySelector('.xp-zoom'), fill = section.querySelector('.xp-fill');
+      var content = section.querySelector('.xp-content');
+      var heads = section.querySelectorAll('.xp-title, .xp-sub'), cards = section.querySelectorAll('.xp-card');
+
+      var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+      var seg = function (v, a, b) { return clamp((v - a) / (b - a)); };
+      var lerp = function (a, b, t) { return a + (b - a) * t; };
+      var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+      var vw, ox, oy, maxScale;
+      function measure() {
+        vw = window.innerWidth;
+        var fs = parseFloat(getComputedStyle(word).fontSize);
+        // Punto de zoom: centro del palo de la "i" (offset* ignora transforms)
+        ox = zoomLetter.offsetLeft + zoomLetter.offsetWidth / 2;
+        oy = fs * 0.6;
+        word.style.transformOrigin = ox + 'px ' + oy + 'px';
+        // Lo suficiente para que el palo (~0.11em) cubra todo el ancho
+        maxScale = Math.max(24, 1.6 * vw / (0.11 * fs));
+      }
+
+      function update(p) {
+        var slide = seg(p, 0.02, 0.45);
+        var zoom = seg(p, 0.40, 0.66);
+        var x = lerp(vw * 0.92, vw / 2 - ox, easeOut(slide));
+        var scale = Math.pow(maxScale, zoom * zoom);
+        var cover = seg(p, 0.60, 0.68);
+        word.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0) scale(' + scale.toFixed(3) + ')';
+        word.style.visibility = cover >= 1 ? 'hidden' : 'visible';
+        bg.style.transform = 'scale(' + (1.12 - 0.12 * slide + 0.15 * zoom).toFixed(4) + ')';
+        bg.style.visibility = cover >= 1 ? 'hidden' : 'visible';
+        fill.style.opacity = cover;
+
+        var c = seg(p, 0.70, 0.80);
+        content.style.opacity = c;
+        content.style.visibility = c > 0 ? 'visible' : 'hidden';
+        heads.forEach(function (el, i) {
+          var t = easeOut(seg(p, 0.70 + i * 0.02, 0.80 + i * 0.02));
+          el.style.transform = 'translateY(' + ((1 - t) * 40).toFixed(1) + 'px)';
+        });
+        cards.forEach(function (el, i) {
+          var t = easeOut(seg(p, 0.74 + i * 0.03, 0.86 + i * 0.03));
+          el.style.opacity = t;
+          el.style.transform = 'translateY(' + ((1 - t) * 60).toFixed(1) + 'px)';
+        });
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          ticking = false;
+          var rect = section.getBoundingClientRect();
+          var vh = window.innerHeight;
+          update(clamp((vh - rect.top) / section.offsetHeight));
+        });
+      }
+      function onResize() { measure(); onScroll(); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize);
+      // La fuente cambia el ancho de la palabra: re-medir cuando carga
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(onResize);
+      onResize();
     })();
   </script>
 
