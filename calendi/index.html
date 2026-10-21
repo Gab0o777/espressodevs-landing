@@ -537,6 +537,12 @@
     .hero-play-btn:hover { transform: scale(1.08); }
     .hero-play-btn svg { width: 42%; height: 42%; margin-left: 6%; }
 
+    .hero-mobile-video {
+      display: none; width: 100%; height: auto; aspect-ratio: 16 / 9;
+      border-radius: 20px; background: #6a3ce8;
+      box-shadow: 0 18px 40px rgba(30, 20, 80, .22);
+    }
+
     /* ── VIDEO MODAL (lightbox "Ver cómo funciona") ── */
     .video-modal {
       position: fixed;
@@ -1735,6 +1741,12 @@
       .hero-actions .btn { width: 100%; justify-content: center; }
       .hero-checks { justify-content: center; }
       .hero-visual { flex: none; width: 100%; max-width: 440px; height: auto; }
+      /* Mobile: video en loop en lugar del art con botón de play */
+      .hero-jumbo { display: none; }
+      .hero-mobile-video { display: block; }
+
+      /* CTA final "¡Es ahora!": no va en mobile */
+      #cta-final { display: none; }
 
       /* Stats bar */
       .stats-bar { display: none; }
@@ -1933,6 +1945,8 @@
             </button>
           </div>
         </div>
+        <!-- En mobile reemplaza al art + botón de play (ver script "hero-mobile-video") -->
+        <video class="hero-mobile-video" src="/calendi/assets/calendi-dinamico.mp4" poster="/calendi/assets/calendi-dinamico-poster.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="calendi en acción: agendá en un clic y tus clientes eligen su horario"></video>
       </div>
     </div>
 
@@ -2783,9 +2797,33 @@
         if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
       });
 
-      // reproducir el video apenas entra a la página
-      video.muted = true;
-      openModal();
+      // reproducir el video apenas entra a la página — solo en desktop: en
+      // mobile el modal ocupa toda la pantalla y tapaba la página al entrar
+      if (!window.matchMedia('(max-width: 900px)').matches) {
+        video.muted = true;
+        openModal();
+      }
+    })();
+
+    // hero-mobile-video: en mobile reproduce en loop mientras está en pantalla.
+    // En desktop está oculto y nunca se descarga (preload="none", sin play()).
+    (function () {
+      var v = document.querySelector('.hero-mobile-video');
+      var mq = window.matchMedia('(max-width: 900px)');
+      if (!v) return;
+      var visible = true;
+      function sync() {
+        if (mq.matches && visible) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      }
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          sync();
+        }, { threshold: 0.25 }).observe(v);
+      }
+      if (mq.addEventListener) mq.addEventListener('change', sync);
+      sync();
     })();
 
     // carruseles con scroll horizontal + flechas + dots
